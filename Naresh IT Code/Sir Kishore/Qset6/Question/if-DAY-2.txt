@@ -1,0 +1,149 @@
+1)
+
+Write a C program to input any alphabet and check whether it is vowel or consonant using simple(if) only.
+
+Sample input  : a
+Sample output : Vowel
+
+Sample input  : g
+Sample output : Consonant
+
+----------------------------------------------------------------------------------------------
+2)
+
+Write a C program to check whether a number is negative, positive or zero using simple(if) only.
+
+
+Sample input  :  10
+Sample output : positive number
+
+Sample input  :  0
+Sample output : zero
+
+Sample input  :  -2
+Sample output : negative number
+
+----------------------------------------------------------------------------------------------
+3)
+Write a C program that takes the marks of a student in three subjects as input and prints whether the student has passed or failed in three subject using  if statement.
+	if marks is above 35 then pass and student is fail in any one subject then fail.
+
+
+Sample input  :  
+		Enter three subject marks : 57 66 88
+Sample output : 
+		Result is pass 
+
+Sample input  :  
+		Enter three subject marks : 71 64 32
+Sample output : 
+		Result is Fail
+
+----------------------------------------------------------------------------------------------
+4)
+write a C program takes the cost price and selling price of an item as input and prints whether the transaction was profitable or loss-making.
+
+Sample input  :
+	Cost Price: 100
+	Selling Price: 150
+
+Expected Output: 
+	The transaction was profitable.
+
+Sample input  :
+	Cost Price: 200
+	Selling Price: 150
+Expected Output: 
+	The transaction was loss-making.
+
+-----------------------------------------------------------------------------------------------------
+5)
+Write a C program that takes the number of items purchased by a customer as input and prints whether the customer is eligible for a discount or not using an if statement.
+
+ customers who purchase 10 or more items in a single transaction. The program should take the number of items purchased as input and print whether the customer is eligible for the discount or not.
+
+case 1:
+Sample input  :
+ 		Enter no.of items purchased:  12
+
+Expected Output: 
+		The customer is eligible for a discount.
+
+case 2
+Sample input  :
+ 		Enter no.of items purchased:  5
+
+
+Expected Output: 
+		The customer is not eligible for a discount.
+
+-----------------------------------------------------------------------------------------------------
+6)
+Write a C program that takes the temperature in Celsius as input and prints whether the weather is hot, cold, or normal using an if statement.
+	weather into three categories based on the temperature in Celsius:
+
+ if Temperature above 30°C then Hot
+ if Temperature below 15°C then Cold
+ if Temperature between 15°C and 30°C then Normal
+
+Case 1:
+Input: 
+	Enter temperature : 35
+ Expected Output: 
+	The weather is hot.
+
+Case 2:
+- Input: 
+	Enter temperature : 10
+ Expected Output: 
+	The weather is cold.
+
+Case 3:
+ Input: 
+	Enter temperature : 20
+ Expected Output: 
+	The weather is normal.
+
+-----------------------------------------------------------------------------------------------------
+7)Write a C program that takes the time of day as input (in hours) and prints whether it is morning, afternoon, evening, or night using an if statement.
+
+-categorize the time of day into four categories:
+if the time between 0 - 5 then print Night
+if the time between 6 - 11 then print Morning
+if the time between 12 -17 then print Afternoon
+if the time between 18 - 23 then print Evening
+
+
+case 1:
+Input: 
+	Enter time  : 3
+Expected Output: 
+	"It is night."
+
+case 2:
+- Input: 
+	Enter time  :  9
+Expected Output: 
+	"It is morning."
+
+case 3:
+- Input: 
+	Enter time  : 14
+Expected Output: 
+	"It is afternoon."
+
+case 4:
+- Input:
+	 Enter time  : 20
+Expected Output: 
+	"It is evening."
+
+
+
+
+
+
+
+
+
+

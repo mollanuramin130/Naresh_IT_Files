@@ -1,0 +1,64 @@
+1) Without using control statements Write a C program to determine the next or previous multiple of 10 for a given two-digit number. 
+--------  The program should follow these rules:
+          If the last digit of the given number is greater than or equal to 5, the program should print the next multiple of 10.
+          If the last digit of the given number is less than 5, the program should print the previous multiple of 10..
+
+
+Sample input : int a = 34 , b = 25 , c = 86;
+
+Sample Output : 30 , 30 , 90
+
+-----------------------------------------------------------------------------------------------
+2)Write a 'C' program to check and print the Maximum number among three numbers without using ternary operator and control statements.
+--------
+
+Sample input : int a = 10 , b = 200, c = 134;
+Sample Output : MAX = 200
+-----------------------------------------------------------------------------------------------
+
+3) Write a 'C' program to take the number of seconds and convert into (H:M:S)
+--------
+
+Sample input : int seconds = 3665
+
+Sample Output :   1 hour 1 minute and 5 second
+
+-----------------------------------------------------------------------------------------------
+
+4) Write a C program to find the previous multiple of 100 of a given three digit number . The given number is  and the output is 200.
+-------
+
+Sample input  : 234
+
+Sample output : 200
+-----------------------------------------------------------------------------------------------
+5)Write a C program to perform arithmetical operation based on user input using scanf()
+	if user enter '+' operator then addition
+	if user enter '-' operator then subtraction 
+
+case 1:
+input :
+Enter a operator(+,-,*,/) : +
+Enter first number : 5
+Enter second number : 2
+output :
+Addition is : 7
+
+case 2:
+input :
+Enter a operator(+,-,*,/) : *
+Enter first number : 10
+Enter second number : 2
+output :
+multiplication : 20
+
+
+
+
+
+
+
+
+
+
+

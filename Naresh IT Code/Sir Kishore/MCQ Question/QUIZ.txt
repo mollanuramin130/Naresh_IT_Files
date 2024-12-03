@@ -1,0 +1,375 @@
+QUIZ
+ No Answerwas selected
+Question: 1
+include
+int main() {
+
+int a = 5;
+int b = 4;
+a += b % a;
+printf(“%d”,a);
+
+return 0;
+}
+
+
+
+A. 7
+
+
+B. 8
+
+
+D. 10
+
+
+E. 9 correct
+
+ No Answerwas selected
+Question: 2
+include
+int main() {
+int a = 5;
+int b = 10;
+int c = 15;
+int d = 2;
+int result = a++ * ++b - --c / d++;
+printf(“%d %d %d %d”,a,b,c,result);
+return 0;
+}
+
+
+Correct Answer
+A. 6 11 14 48
+
+
+B. 6 11 14 49
+
+
+C. 6 11 15 49
+
+
+D. 6 10 14 48
+
+
+E. None
+
+ No Answerwas selected
+Question: 3
+include
+int main() {
+int x = 3;
+int y = 2;
+int z = x++ * x * –-y - y--;
+printf(“%d %d %d”,x,y,z);
+return 0;
+}
+
+
+Correct Answer
+A. 4 0 11
+
+
+B. 4 4 11
+
+
+C. 4 4 15
+
+
+D. 4 4 4
+
+
+E. None
+
+ No Answerwas selected
+Question: 4
+Which of the following operator takes only integer operands ?
+
+
+
+A.+
+
+
+B.*
+
+
+C./
+
+Correct Answer
+D.%
+
+
+E.None of these
+
+ No Answerwas selected
+Question: 5
+In an expression involving || operator ,evaluation
+
+I. Will be stopped if one of its components evaluates to false
+II. Will be stopped if one of its components evalutes to true
+III. Takes place from right to left
+IV. Takes place from left to right
+
+
+
+A.I and II
+
+
+B.I and III
+
+
+C.II and III
+
+Correct Answer
+D.II and IV
+
+
+E.III and IV
+
+ No Answerwas selected
+Question: 6
+what is the Output :
+
+void main()
+{
+
+int i =10;
+i=!i>14;
+printf(“i=%d”,i);
+}
+
+
+
+A.10
+
+
+B.14
+
+Correct Answer
+C.0
+
+
+D.1
+
+
+E.None of these
+
+ No Answerwas selected
+Question: 7
+include
+int main()
+{
+int x[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+printf(“%d”,sizeof(x));
+return 0;
+}
+
+
+
+A. 2
+
+
+B. 4
+
+
+C. 20
+
+Correct Answer
+D. 40
+
+ No Answerwas selected
+Question: 8
+What will be the output of the C program?
+
+int main()
+{
+printf(“%d”,3 * 2–);
+}
+
+
+
+A. 3
+
+
+B. 9
+
+
+C. 6
+
+Correct Answer
+D. Compilation error
+
+ No Answerwas selected
+Question: 9
+include
+int main()
+{
+int i = 10;
+i++;
+i * i;
+printf(“%d\n”,i);
+return 0;
+}
+
+
+
+A. 121
+
+
+B. 100
+
+
+C. 10
+
+Correct Answer
+D. 11
+
+ No Answerwas selected
+Question: 10
+int main()
+{
+int a;
+a = (1, 2, 3);
+printf(“%d”, b);
+return 0;
+}
+
+
+
+A. 7
+
+
+B. 9
+
+
+C. 3
+
+Correct Answer
+D. Compilation error
+
+ No Answerwas selected
+Question: 11
+include
+int main()
+{
+int a=4,b,c;
+b = –-a;
+c = a–-;
+printf(“%d %d %d”,a,b,c);
+return 0;
+}
+
+
+
+a) 3 3 2
+
+
+b) 2 3 2
+
+
+c) 3 2 2
+
+Correct Answer
+d) 2 3 3
+
+ No Answerwas selected
+Question: 12
+include
+int main()
+{
+int x, y, z;
+x = 9 > 8 > 7;
+y = 9 > 8 > 0;
+z = 9 > 8 > 1;
+printf(“%d %d %d”, x, y, z);
+return 0;
+}
+
+
+
+a) 0 0 1
+
+Correct Answer
+b) 0 1 0
+
+
+c) 1 0 0
+
+
+d) 0 1 1
+
+ No Answerwas selected
+Question: 13
+include
+int main()
+{
+int a=-1, b=1, c, d;
+c = !a && b;
+d = !a || b;
+printf(“%d %d %d %d”,a,b,c,d);
+return 0;
+}
+
+
+
+a) -1 1 1 0
+
+
+b) -1 1 0 0
+
+
+c) -1 1 1 1
+
+Correct Answer
+d) -1 1 0 1
+
+ No Answerwas selected
+Question: 14
+Find the output of the given C program.
+
+include
+int main()
+{
+printf(“%d Hello %d”);
+return 0;
+}
+
+
+
+a) None of these
+
+Correct Answer
+b) Garbage_value Hello Garbage_value
+
+
+c) 1 Hello 1
+
+
+d) 0 Hello 0
+
+
+e) Compilation error
+
+ No Answerwas selected
+Question: 15
+include
+int main()
+{
+printf(“%d”, 1.9);
+return 0;
+}
+
+
+Correct Answer
+a) garbage value
+
+
+b) 1.9
+
+
+c) 1
+
+
+d) incompaitable type
+
+-----

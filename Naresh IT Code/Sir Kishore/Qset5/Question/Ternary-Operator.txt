@@ -1,0 +1,41 @@
+
+1) Develop a program on a payroll system for a company. The system needs to calculate the salary of an employee based on their employee type ('M' for manager or 'H' for HR employee) and their basic salary. 
+For managers, their salary should be increased by 10% as a performance bonus and for HR  increased by 5% . Write a C program that takes the employee type and basic salary as inputs and calculates the increased salary using the ternary operator.
+
+case 1:
+Input :
+	Enter Employee Type : M
+	Enter Employee Salary : 25000
+output :
+	Basic Salary : 25000
+	Total Salary : 27500
+case 2:
+Input :
+	Enter Employee Type : H
+	Enter Employee Salary : 20000
+output :
+	Basic Salary : 20000
+	Total Salary : 21000
+
+	
+
+
+----------------------------------------------------------------------------------
+
+2)Write a C program to print sum of N natural numbers without using loops.
+
+Sample input : int n = 10
+Sample output : 55
+
+----------------------------------------------------------------------------------
+3)Write a C program to calculate simple interest. Prompt the user to enter the principal amount, the rate of interest (in percentage), and the time period (in years). Then, calculate and display the simple interest.
+
+input :-
+Enter the principal amount: 25000
+Enter the rate of interest (in percentage): 2
+Enter the time period (in years): 3
+
+output:-
+The simple interest for the given principal amount 25000.00,
+ rate 2.00%, 
+ time 3.00 years is 1500.00.

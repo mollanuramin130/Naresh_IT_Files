@@ -1,0 +1,71 @@
+Que 1)write a C program to check number is Even or Odd take number from the user using scanf()?
+(without using any control flow statement like if else)
+
+case 1:
+Input : 2
+output : 2 is Even
+
+case 2:
+Input : 9
+output : 9 is Odd
+-----------------------------------------------------------
+Que 2) write a C program to convert character from lower case to Upper case and upper case to lower case based on the user input using scanf().
+
+Note : if user enter lowercase character convert it to uppercase and if user enters uppercase convert it to lowercase without using control flow statements. 
+case 1:
+Input : a
+output : Uppercase : A
+
+case 2:
+Input : r
+output : Uppercase : R
+
+case 3:
+Input : H
+output : Uppercase : h
+
+``````````````````````````````````````````````````````````````````````````````````````
+Que 3 : Write a 'C' program to take the marks of a student in 5 subjects as input and determine how many subjects have marks greater than or equal to 35 and how many have marks less than 35. 
+-------  The program should not use any control statements (if, else, switch, etc.) or the ternary operator. 
+
+Sample input : int sub1 = 38, sub2 = 34, sub3 = 35, sub4 = 78, sub5 = 20
+Sample Output : Pass in 3 subject and fail in 2 subject.  
+
+```````````````````````````````````````````````````````````````````````````````````
+Que 4 : Write a 'C' program to take the number of days and convert into (days:months:years)
+--------
+
+Sample input : int days = 500
+
+Sample Output :  1 year 4 month and 15 days. 
+
+`````````````````````````````````````````````````````````````````````````````````````````````````
+
+Que 5 : A shopkeeper buys a TV set for Rs. 3500 and sells it at a profit of 27%. Apart from this a VAT of 12.7% and Service Charge is 3.87% is charged. 
+-------  Write a C program to Display total selling price, profit along with vat and service charge.
+         To calculate the selling price, profit, VAT, and service charge, follow these steps:
+
+         1) Calculate the selling price:
+
+            Selling Price = Cost Price + Profit
+
+            Selling Price = Rs. 3500 + (27% of Rs. 3500)
+
+
+         2) Calculate the profit:
+
+            Profit = Selling Price - Cost Price
+
+
+         3) Calculate VAT:
+
+            VAT = 12.7% of Selling Price
+
+
+         4) Calculate Service Charge:
+
+            Service Charge = 3.87% of Selling Price
+
+========================================================================================================       
+
+

@@ -1,0 +1,316 @@
+1.what will be the output when following code is executed?
+
+#include <stdio.h>
+void main()
+{
+      int i = 3;
+      int j;
+      j = sizeof(++i + ++i);
+      printf("i=%d j=%d", i, j);
+}
+
+A. i=4 j=2
+
+B. i=3 j=2
+
+C. i=5 j=2
+
+D. the behavior is undefined
+
+
+
+
+2.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+      int a, b, c, d;
+      a = 3;
+      b = 5;
+      c = a, b;
+      d = (a, b);
+      printf("c=%d d=%d", c, d);
+}
+
+A. c=3 d=3
+
+B. c=3 d=5
+
+C. c=5 d=3
+
+D. c=5 d=5
+
+
+
+3.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+      int i=0, j=1, k=2, m;
+      m = i++ || j++ || k++;
+      printf("%d %d %d %d", m, i, j, k);
+}
+
+A. 1 1 2 3
+
+B. 1 1 2 2
+
+C. 0 1 2 2
+
+D. 0 1 2 3
+
+E. None of these
+
+
+
+
+4.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+      int c = - -2; 
+      printf("c=%d", c); 
+}
+A. 1
+
+B. -2
+
+C. 2
+
+D. Error
+
+
+
+5.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main(){ 
+    int a=10, b=20;
+    char x=1, y=0;
+    if(a,b,x,y){ 
+        printf("EXAM"); 
+    } 
+}
+
+A. XAM is printed
+
+B. exam is printed
+
+C. Compiler Error
+
+D. Nothing is printed
+
+
+
+
+6.what will be the output when following code is executed?
+
+int z, x=5, y= -10, a=4, b=2;
+z = x++ - --y*b/a;
+
+A. 5
+
+B. 6
+
+C. 9
+
+D. 10
+
+E. 11
+
+
+
+
+7.what will be the output when following code is executed?
+
+int b=15, c=5, d=8, e=8, a;
+a = b>c ? c>d ? 12 : d>e ? 13 : 14 : 15;
+printf("%d", a);
+
+A. 13
+
+B. 14
+
+C. 15
+
+D. 12
+
+E. Garbage Value
+
+
+
+
+8.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+   int a, b=7;
+   a = b<4 ? b<<1 : ++b>4 ? 7>>1 : a;
+   printf("%d %d", a, b);
+}
+A. 3 7
+
+B. 7 3
+
+C. 8 3
+
+D. 3 8
+
+E. None of these
+
+
+
+
+9.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+   int a=10, b;
+   b = a++ + ++a;
+   printf("%d %d %d %d", b, a++, a, ++a);
+}
+
+A. 12 10 11 13
+
+B. 22 12 12 13
+
+C. 22 11 11 11
+
+D. 22 14 12 13
+
+E. 22 13 14 14
+
+
+
+
+10.Given b=110 and c=20, what is the value of 'a' after execution of the expression a=b-=c*=5?
+
+A. 450
+
+B. 10
+
+C. 110
+
+D. -10
+
+E. -110
+
+
+
+
+11.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+   int w=10, x=5, y=3, z=3;
+   if( (w < x ) && (y=z++) )
+      printf("%d %d %d %d", w, x, y, z);
+   else
+      printf("%d %d %d %d", w, x, y, z);
+}
+
+A. 10 5 4 4
+
+B. 10 5 3 3
+
+C. 10 5 4 3
+
+D. 10 5 3 4
+
+E. 10 5 5 5
+
+
+
+
+12.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+   int y=10;
+   if(y++>9 && y++!=10 && y++>11)
+      printf("%d", y);
+   else
+      printf("%d", y);
+}
+
+A. 11
+
+B. 12
+
+C. 13
+
+D. 14
+
+E. Compilation error
+
+
+
+
+13.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+   printf("%x",-1<<4);
+}
+
+A. fff0
+
+B. fff1
+
+C. fff2
+
+D. fff3
+
+E. fff4
+
+
+
+
+
+14.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+      int c = - -2; 
+      printf("c=%d", c); 
+}
+
+A. 1
+
+B. -2
+
+C. 2
+
+D. Error
+
+
+15.what will be the output when following code is executed?
+
+#include<stdio.h>
+void main()
+{
+   int a=10, b=11, c=13, d;
+   d = (a=c, b+=a, c=a+b+c);
+   printf("%d %d %d %d", d, a, b, c);
+}
+
+A. 50, 13, 11, 13
+
+B. 50, 13, 24, 50
+
+C. 13, 10, 24, 50
+
+D. 50, 13, 24, 13
+
+E. 13, 13, 24, 13
+
+

@@ -1,0 +1,80 @@
+Que 1 : Write a C program to calculate and print the area of a square and rectangle.
+-------
+
+Sample input :
+Side of square is : 5
+Length and breadth of rectanngle is : 4 , 5
+
+Sample output :
+The area of the square with side 5 is: 25
+The area of the rectangle with length 4 and breadth 5 is: 20
+
+
+======================================================================================================== 
+
+Que 2 :  Write a 'C' program to swap any two integer number using third variable
+-------
+
+Sample input : int a = 10 , b = 20 ;
+
+Sample Output : Before Swapping : a = 10 , b = 20
+                After Swapping  : a = 20 , b = 10
+                               
+========================================================================================================    
+
+Que 3 :  Write a 'C' program to swap any two integer number without using third variable
+-------
+
+Sample input : int a = 10 , b = 20 ;
+
+Sample Output : Before Swapping : a = 10 , b = 20
+                After Swapping  : a = 20 , b = 10
+                               
+========================================================================================================   
+
+Que 4 :  Write a 'C' program to find previous multiple of 10 of given 2 digit value only.
+-------
+
+Sample input : int a = 26;
+
+Sample Output : 20
+                               
+========================================================================================================  
+
+Que 5 :  Write a 'C' program to find next multiple of 10 of given 2 digit value only.
+--------
+
+Sample input : int a = 34;
+
+Sample Output : 40
+                               
+========================================================================================================    
+
+Que 6 :  Without using control statements Write a C program to determine the next or previous multiple of 10 for a given two-digit number. 
+--------  The program should follow these rules:
+          If the last digit of the given number is greater than or equal to 5, the program should print the next multiple of 10.
+          If the last digit of the given number is less than 5, the program should print the previous multiple of 10..
+
+
+Sample input : int a = 34 , b = 25 , c = 86;
+
+Sample Output : 30 , 30 , 90
+                               
+========================================================================================================  
+
+Que 7 :  Write a 'C' program to check and print that given number is even or odd without using ternary operator and control statements.
+--------
+
+Sample input : int a = 10
+Sample Output : EVEN
+
+Sample input : int a = 125
+Sample Output : ODD
+                               
+======================================================================================================== 
+
+Que 8 :  Write a 'C' program to check and print the Maximum number among two numbers without using ternary operator and control statments.
+--------
+
+Sample input : int a = 10 , b = 20
+Sample Output : MAX = 20

@@ -1,0 +1,109 @@
+1)
+Write a C program to input all sides of a triangle and check whether triangle is valid or not using if-else.
+ 
+          Validity Check:
+          The sum of side1 and side2 must be greater than side3.
+          The sum of side1 and side3 must be greater than side2.
+          The sum of side2 and side3 must be greater than side1.
+          If all three conditions are true, the program prints "The triangle is valid."
+          If any of the conditions are false, the program prints "The triangle is not valid."
+
+Sample input  : 
+	Enter the lengths of the three sides :
+                Side 1: 3
+                Side 2: 4
+                Side 3: 5
+
+Sample output : The triangle is valid.
+
+
+
+Sample input  : 
+	Enter the lengths of the three sides :
+                Side 1: 1
+                Side 2: 2
+                Side 3: 3
+
+Sample output : The triangle is not valid.
+
+-------------------------------------------------------------------------------------------
+2)
+Write a C program that takes the year as input and prints whether the year is a leap year or not using an if-else.
+
+input :
+	Enter year : 2004
+output :
+	2001 is leap year
+
+
+input :
+	Enter year : 2009
+output :
+	2009 not leap year
+
+
+-------------------------------------------------------------------------------------------
+3)
+Write a C program to read  age of person and  check the person is eligible for marriage or not using if-else.
+	if user age is above 21 then eligible.
+Sample input  :
+                Enter your age: 21
+Sample output :  
+		you are eligible to marriage.
+
+Sample input  :
+		 Enter your age: 16
+Sample output :
+		 Sorry  are not eligible to marriage.
+
+
+-------------------------------------------------------------------------------------------
+4)
+A company is organizing a sales competition between two sales representatives, Sales Rep A and Sales Rep B. The sales representative with the highest sales amount at the end of the month wins a bonus. 
+Write a C program that takes the sales amounts of Sales Rep A and Sales Rep B as input and prints whether Sales Rep A has won, Sales Rep B has won using if-else. 
+
+Sample input  :
+                Enter sales amounts of team A : 30000
+		Enter sales amounts of team B : 45000
+
+Sample output :  
+		Congratulations Team B wins bonus.
+
+Sample input  :
+                Enter sales amounts of team A : 20000
+		Enter sales amounts of team B : 15000
+
+Sample output :  
+		Congratulations Team A wins bonus.
+
+-------------------------------------------------------------------------------------------
+5)
+Write a C program to find the previous multiple & next multiple of 100 of a given three digit number using if-else. 
+if the number is not 3 digit print invalid massege.
+
+Case 1:
+
+Sample input  : 234
+
+Sample output : Previous multiple : 200
+		next multiple : 300
+
+Case 2:
+
+Sample input  : 23
+
+Sample output : Invalid Input
+
+case 3:
+
+Sample input : 1234
+Sample output : Invalid Input
+
+case 4:
+
+Sample input  : -567
+
+Sample output : Invalid Input
+
+
+

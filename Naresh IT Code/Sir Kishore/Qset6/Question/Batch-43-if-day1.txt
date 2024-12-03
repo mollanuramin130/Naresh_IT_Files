@@ -1,0 +1,120 @@
+1)Write a C program to find the user given number is Odd or Even using only if Statement.
+
+Case 1:
+
+Input :
+	Enter a number : 4
+Output : 
+	4 is Even
+
+Case 2:
+
+Input :
+	Enter a number : 9
+Output : 
+	9 is odd
+
+--------------------------------------------------------------------------------------------
+2) Write a C program to find maximum between two numbers using simple (if) only.
+
+case 1:
+Sample input  :
+	Enter two Number : 10 20
+
+Sample output :
+	Max is : 20
+
+
+case 1:
+Sample input  :
+	Enter two Number : 50 30
+
+Sample output :
+	Max is : 50
+
+-------------------------------------------------------------------------------------------
+3) Write a C program to check whether a character is uppercase or lowercase alphabet using simple(if) only. 
+	Take input from the user using scanf().
+
+case 1:
+
+Sample input  : 
+	Enter a Character : m
+		
+Sample output : 
+	lower case
+
+case 2:
+
+Sample input  : 
+	Enter a Character : D
+		
+Sample output : 
+	upper case
+
+
+-------------------------------------------------------------------------------------------
+4)Write a C program to find the Next multiple and Previous multiple of 10.
+	Take two digit number from the user.
+	if the number last digit is less than 5 then find Previous multiple.
+	if the number last digit is greater than and equal to 5 then find Next multiple.
+
+Case 1:
+
+Input :
+	Enter a number : 43
+Output : 
+	Previous multiple : 40 
+
+Case 2:
+
+Input :
+	Enter a number : 68
+Output : 
+	Next multiple : 70 
+
+-------------------------------------------------------------------------------------------
+5)Write C program to check two numbers are equal or not using (if only). 
+	Take two integer number from the user using scanf().
+
+
+case 1:
+Sample input  :
+	Enter two Number : 10 20
+
+Sample output :
+	Both are not equals
+
+case 1:
+Sample input  :
+	Enter two Number : 50 50
+
+Sample output :
+	Both are equals
+
+-------------------------------------------------------------------------------------------
+6)Write a C program to read name and age of person and by age check the person is eligible for vote or not using simple (if) only.
+
+Sample input  : Enter your name: Kishor
+                Enter your age: 20
+Sample output : Hi Kishor you are eligible to vote.
+
+Sample input  : Enter your age: 16
+Sample output : Sorry Kishor you are not eligible to vote.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

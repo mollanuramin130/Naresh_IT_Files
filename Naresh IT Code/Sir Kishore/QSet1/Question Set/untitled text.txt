@@ -1,0 +1,15 @@
+1.write a c program to  swap the two numbers using third variable
+ input is :-
+ a=10 b=5
+output : a=5 and b=10;
+
+2.write a c program to  swap the two numbers without using third variable
+ input is :-
+ a=10 b=5
+output : a=5 and b=10;
+
+3.write a c program to perform addition of two given number without using + operators.
+input a=5,b=15
+out sum=20
+
+Admin@123

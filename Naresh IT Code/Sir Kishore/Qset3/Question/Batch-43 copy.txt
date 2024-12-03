@@ -1,0 +1,56 @@
+1)write a C program that perform arithmetic operations(addition,subtraction,multiplication,division and modulus)on two integers ?
+
+input :-
+int num1 = 10;
+int num2 = 20;
+
+output :-
+Addition is 10 and 20 : 30
+subtraction is 10 and 20 : -20
+multiplication is 10 and 20 : 200
+division is 10 and 20 : 0
+modulus is 10 and 20 : 2
+
+--------------------------------------------------------------------------------------
+2)write a C program that perform arithmetic operations(addition,subtraction,multiplication,division )on two float ?
+
+input :-
+float num1 = 15.10;
+float num2 = 10.0;
+
+output :-
+Addition is 10 and 20 : 25.1
+subtraction is 10 and 20 : 5.1
+multiplication is 10 and 20 : 151.0
+division is 10 and 20 : 1.5
+
+--------------------------------------------------------------------------------------
+3)write a C program print each digit separate from given three digit number ?
+input :-
+	number is : 678
+output :
+	First number : 6
+	second number : 7
+	third number : 8
+
+--------------------------------------------------------------------------------------
+4)write a C program that print ascii value of two character and perform arithmetic operations on character ?
+input :-
+char ch1 = 'a';
+char ch2 = 'b';
+
+output :
+Ascii value of a is 97
+Ascii value of b is 98
+Sum of a and b is 195
+
+--------------------------------------------------------------------------------------
+5)write a C program add first and last digit from given three digit number ?
+input :-
+int a = 987;
+output = 
+sum of first and last digit is : 16
+
+
+
+	

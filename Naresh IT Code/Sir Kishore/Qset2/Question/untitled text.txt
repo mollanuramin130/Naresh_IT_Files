@@ -1,0 +1,62 @@
+Q1.Write a c programm to print student details using printf() function only.
+
+Sample Output:
+			Name = Nur
+			Roll No =101
+			Branch = CSE
+			Address = West Bengal
+			Institute Name = Naresh IT
+
+Q2.Q1.Write a c programm to print following pattern/diagram using printf() function only.
+
+
+Sample Output:
+			# # # # #
+			#		#
+			#		#
+			#		#
+			# # # # #
+
+Q3.Q1.Write a c programm to declare and initialize two variables like int a=10,b=20 and print the addition ,sub
+mul,modulation operators.
+
+Sample input:
+			a=20 b=10
+
+Sample Output:
+			Add is : 30
+			sub is : 10
+			Mul is : 200
+			Div is : 2
+			Modulation is : 0
+Q4.Write a c programm to print sum of first and last digit of given any 2 digit number
+
+Sample input:
+			int number =23
+Sample Output:5
+
+Q5.Write a c programm to print sum of first and last digit of given any 3 digit number
+
+Sample input:
+			int number =123
+Sample Output:4
+
+
+		http://codeide.nareshit.net
+		Password: JGK@838410
+
+Q6.
+
+Q7.
+
+Q8.
+
+Q9.
+
+Q10.
+
+
+
+
+
+

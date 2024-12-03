@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .front-end {
+            list-style: none;
+            list-style-image: url("./images/favicon.ico");
+            font-size: 34px;
+        }
+        .back-end {
+            list-style: none;
+            font-size: 34px;
+        }
+        .social {
+            list-style: none;
+            font-size: 34px;
+        }
+        .child-list {
+            display: flex;
+            justify-content: space-around;
+        }
+        .child-list li {
+            margin-top: 20px;
+        }
+        .child-list2 {
+           columns : 2;
+           margin-top: 40px;
+        }
+        .child-list3 {
+            display: grid;
+            grid-template-columns: 6fr 6fr;
+        }
+    </style>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <ul class="front-end">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+    <ul class="back-end">
+        <li class="bi bi-tag-fill"> Java</li>
+        <li class="bi bi-tag-fill">.NET</li>
+        <li class="bi bi-tag-fill">PHP</li>
+    </ul>
+    <ul class="social">
+        <li class="bi bi-facebook">Facebook</li>
+        <li class="bi bi-instagram">Instagram</li>
+    </ul>
+    <ol type="1">
+        <li>
+            ___________ element doesn't require end token?
+            <ol type="a" class="child-list">
+                <li>Normal</li>
+                <li>Void</li>
+                <li>RC Data</li>
+                <li>Raw Text</li>
+            </ol>
+        </li>
+    </ol>
+    <ol type="1">
+        <li>
+            ___________ element doesn't require end token?
+            <ol type="a" class="child-list2">
+                <li>Normal</li>
+                <li>Void</li>
+                <li>RC Data</li>
+                <li>Raw Text</li>
+            </ol>
+        </li>
+    </ol>
+    <ol type="1">
+        <li>
+            ___________ element doesn't require end token?
+            <ol type="a" class="child-list3">
+                <li>Normal</li>
+                <li>Void</li>
+                <li>RC Data</li>
+                <li>Raw Text</li>
+            </ol>
+        </li>
+    </ol>
+</body>
+</html>
