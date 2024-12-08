@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header-content{
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 12px gray;
+            height: 55px;
+        }
+        section{
+            display: grid;
+            grid-template-columns: 2fr 10fr;
+            height: 530px;
+            margin-top: 15px;
+        }
+        .side-nav{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 2px 12px gray;
+            font-weight: bold;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .main-content{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 2px 2px 12px gray;
+            margin-left: 5px;
+            margin-right: 5px;
+            /* display: grid; */
+            justify-content: space-evenly;
+        }
+        .main-div-content{
+            height: 140px;
+            width: 120px;
+            box-shadow: 2px 2px 12px gray;
+            /* display: grid; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        .footer-content{
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 12px gray;
+            height: 55px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            Header
+        </div>
+    </header>
+    <section>
+        <nav>
+            <div class="side-nav">side navigation</div>
+        </nav>
+        <main>
+            <div class="main-content">
+                <div class="main-div-content">Content 1</div>
+                <div class="main-div-content">Content 2</div>
+                <div class="main-div-content">Content 3</div>
+            </div>
+        </main>
+    </section>
+    <footer>
+        <div class="footer-content">footer</div>
+    </footer>
+</body>
+</html>

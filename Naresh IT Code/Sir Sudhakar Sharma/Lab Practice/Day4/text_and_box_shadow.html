@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header-content{
+            display: flex;
+            height: 55px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 4px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        section{
+            height: 520px;
+            display: grid;
+            grid-template-columns: 2fr 10fr;
+            margin-top: 15px;
+        }
+        .nav-div{
+            height: 100%;
+            box-shadow: 0px 0px 4px;
+        }
+        .nav-div span{
+            display: block;
+            text-align: center;
+            padding: 10px;
+            color: blueviolet;
+            font-weight: bold;
+        }
+        main{
+            display: grid;
+            grid-template-rows: 6fr 6fr;
+            margin-left: 10px;
+            box-shadow: 0px 0px 4px;
+
+        }
+        .main-content1{
+            box-shadow: 0px 0px 8px green;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .main-content1 span{
+            display: block;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 15px;
+        }
+        .simple-shadow{
+            text-shadow: 0px 0px 2px;
+        }
+        .Blurred-shadow{
+            text-shadow: 0px 0px 10px;
+        }
+        .multiple-shadow{
+            text-shadow: 0px 2px 2px red, 0px 2px 2px yellow,2px 2px 2px gray;
+        }
+        .glowing-effect{
+
+        }
+        .inset-shadow{
+
+        }
+        .main-content2{
+            box-shadow: -2px -2px 5px rgb(223, 23, 237),2px 2px 5px blue;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .main2-content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-weight: bold;
+
+        }
+        .footer-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 55px;
+            box-shadow: 0px 0px 4px;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">Header</div>
+    </header>
+    <section>
+        <nav>
+            <div class="nav-div">
+                <span class="nav-items">Nav Item 1</span>
+                <span class="nav-items">Nav Item 2</span>
+                <span class="nav-items">Nav Item 3</span>
+                <span class="nav-items">Nav Item 4</span>
+                <span class="nav-items">Nav Item 5</span>
+            </div>
+        </nav>
+        <main>
+            <div class="main-content1">
+                <span class="simple-shadow">Simple Text Shadow</span>
+                <span class="Blurred-shadow">Blurred Text Shadow</span>
+                <span class="multiple-shadow">Multiple Shadows</span>
+                <span class="glowing-effect">Glowing Effect</span>
+                <span class="inset-shadow">Inset Shadow</span>
+            </div>
+            <div class="main-content2">
+                <div class="main2-content">content 2</div>
+            </div>
+        </main>
+    </section>
+    <footer>
+        <div class="footer-content">footer</div>
+    </footer>
+</body>
+</html>

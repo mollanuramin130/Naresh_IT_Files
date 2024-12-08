@@ -1,0 +1,147 @@
+
+Que 1 :
+=======
+
+Write a C program to check the number is even or odd by using Switch Case.
+
+Sample input : 12
+Sample output : even
+
+Sample input : 11
+Sample output : odd
+
+=====================================================================
+
+Que 2 : 
+=======
+
+Write a C program to find the maximum between two numbers using Switch statement.
+
+Sample input : 10   20
+Sample output : Max = 20
+
+=====================================================================
+
+Que 3 :
+=======
+
+1. Problem Statement:
+Write a C program that takes a month number (1-12) as input from the user and prints the number of days in that month using a switch statement. 
+If the user enters a number outside the range of 1-12, the program should display an error message.
+
+2. Explanation:
+You need to use a switch statement to handle different cases for each month.
+For months with 31 days (January, March, May, July, August, October, December), display "31 days".
+For months with 30 days (April, June, September, November), display "30 days".
+For February (month 2), print "28 or 29 days (depending on leap year)" as February can have 28 or 29 days.
+For any invalid month number (not between 1 and 12), print "Invalid month number!".
+
+3. Additional Considerations:
+The program should handle user input and validate it using a switch-case structure.
+No need for a leap year calculation in this basic program, but mention that leap years affect February’s day count.
+
+
+Sample input_1  : 3
+Sample output_1 : 31 days
+
+Sample input_2  : 2
+Sample output_2 : 28 or 29 days (depending on leap year)
+
+Sample input_3  : 11
+Sample output_3 : 30 days
+
+=====================================================================
+
+Que 4 :
+=======
+
+Write a C program to do a arithmetic operation on two numbers by using Switch Case. 
+Take the operators(+,-,*,/,%) as cases and take the input from the user that what kind of operation user want to do on two number.
+
+case 1:
+Sample input :
+	Enter num1 :10
+	Enter num2 :20
+	Enter operation : *
+
+
+Sample output :
+	Multiplication is :200
+
+case 2:
+Sample input :
+	Enter num1 :30
+	Enter num2 :20
+	Enter operation : +
+
+
+Sample output :
+	Multiplication is :50
+
+=====================================================================
+Que 5 :
+=======
+
+[Solve Using Switch-case & Goto Statment]
+
+You are required to write a C program that allows the user to control the state of a light and an air conditioner (AC). 
+The program should present the following menu options to the user:
+
+	1)Turn ON the Light.
+	2)Turn OFF the Light.
+	3)Turn ON the AC.
+	4)Turn OFF the AC.
+Based on the user's choice, the program should display the corresponding action message:
+
+If the user selects option 1, display "Light is now ON."
+If the user selects option 2, display "Light is now OFF."
+If the user selects option 3, display "AC is now ON."
+If the user selects option 4, display "AC is now OFF."
+The program should also handle invalid input:
+
+If the user enters a number outside the range of 1 to 4, display an error message indicating "Invalid choice! Please enter 1, 2, 3 or 4."
+The program should allow the user to retry entering a valid option by using the (goto statement).
+
+Example_1:
+-----------
+
+Select an option:
+1. Turn ON the Light
+2. Turn OFF the Light
+3. Turn ON the AC
+4. Turn OFF the AC
+Enter your choice: 1
+Light is now ON.
+
+Example_2:
+-----------
+
+Select an option:
+1. Turn ON the Light
+2. Turn OFF the Light
+3. Turn ON the AC
+4. Turn OFF the AC
+Enter your choice: 4
+AC is now OFF.
+
+
+Example_3:
+-----------
+
+Select an option:
+1. Turn ON the Light
+2. Turn OFF the Light
+3. Turn ON the AC
+4. Turn OFF the AC
+Enter your choice: 5
+
+Invalid choice! Please enter 1, 2, 3, or 4.
+Select an option:
+1. Turn ON the Light
+2. Turn OFF the Light
+3. Turn ON the AC
+4. Turn OFF the AC
+Enter your choice: 2
+Turn OFF the Light
+
+
