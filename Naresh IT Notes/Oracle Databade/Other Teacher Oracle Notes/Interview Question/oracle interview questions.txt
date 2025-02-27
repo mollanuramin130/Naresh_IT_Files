@@ -1,0 +1,275 @@
+
+1. What is Oracle and what are its different editions?  Answer: Oracle is one of the popular database provided by Oracle Corporation, which works on relational management concepts and hence it is referred to as Oracle RDBMS as well.
+
+It is widely used for online transaction processing, data warehousing, and enterprise grid computing.
+
+2. What is a Data Dictionary and how can it be created? Answer: Whenever a new database is created, a database-specific data dictionary gets created by the system. This dictionary maintains all the metadata related to the database and owned by the SYS user.
+
+It has a set of read-only tables and views and it is physically stored in the SYSTEM tablespace.
+
+3. Why do we use %ROWTYPE & %TYPE in PLSQL?  Answer: %ROWTYPE & %TYPE are the attributes in PL/SQL which can inherit the datatypes of a table defined in a database. The purpose of using these attributes is to provide data independence and integrity.
+
+If any of the datatypes or precision gets changed in the database, PL/SQL code gets updated automatically with the data type changes.
+
+%TYPE is used for declaring a variable which needs to have the same data type as of a table column.
+
+While %ROWTYPE will be used to define a complete row of record having a structure similar to the structure of a table.
+
+4. Why do we create Stored Procedures & Functions in PL/SQL and how are they different?  Answer: A stored procedure is a set of SQL statements that are written to perform a specific task. These statements can be saved as a group in the database with an assigned name and can be shared with different programs if permissions are there to access the same.
+
+Functions are again subprograms that are written to perform specific tasks but there are differences between both of them.
+
+Stored Procedures Functions SPs may or may not return a value and can return multiple values as well. The function will always return only a single value. SPs can include DML statements like insert, update & delete. We cannot use DML statements in a function. SPs can call functions. Functions cannot call stored procedures. SPs support exception handling using Try/Catch block. Functions do not support Try/Catch block.
+
+5. What is Oracle?  Answer: Oracle is a company. Oracle is also a database server, which manages data in a very structured way. It allows users to store and retrieve related data in a multi-user environment so that many users can concurrently access the same data. All this is accomplished while delivering high performance. A database server also prevents unauthorized access and provides efficient solutions for failure recovery. A standby database is a database replica created by taking a backup of a primary database.
+
+6. List out the Tools for Administering the Database?  Answer: The following are some of the products, tools, and utilities you can use in achieving your goals as a database administrator.
+
+Oracle Universal Installer (OUI)- The Oracle Universal Installer installs your Oracle software and options. It can automatically launch the Database Configuration Assistant to install a database.
+Database Configuration Assistant (DBCA)- The Database Configuration Assistant creates a database from templates that are Oracle supplied, or you can create your own. It enables you to copy a preconfigured seed database, thus saving the time and effort of customizing and generating a database from scratch.
+Database Upgrade Assistant- This tool guides you through the upgrade of your existing database to a new Oracle release.
+Oracle Net Manager- This tool guides you through your Oracle Net network configuration.
+Oracle Enterprise Manager- The primary tool for managing your database is Oracle Enterprise Manager, a web-based interface. After you have installed the Oracle software, created or upgraded a database, and configured the network, you can use Oracle Enterprise Manager as the single interface for managing your database. In addition, Oracle Enterprise Manager also provides an interface for performance advisors and an interface for Oracle utilities such as SQL*Loader and Recovery Manager.
+7. What do you mean by Redo Log file mirroring? Answer: The process of having a copy of redo log files is called mirroring. It is done by creating a group of log files together. This ensures that LGWR automatically writes them to all the members of the current on-line redo log group. In case a group fails, the database automatically switches over to the next group. It diminishes the performance. Hot backup vs. cold backup A database backup, while it is still up and running, is a Hot backup and it must be in archive log mode. A cold backup is a backup while it is shut down. The database does not require being in archive log mode in this mode. The benefit of a hot backup is that the database is still available for use while the backup is occurring. A cold backup is easier to administer the backup and recovery process. Cold backups do not require being in archive log mode and thus slight performance gain as the database is not writing archive logs to disk.  
+
+8. What are SQL functions? Describe in brief different types of SQL functions? Answer: SQL Functions are a very powerful feature of SQL. SQL functions can take arguments but always return some value. There are two distinct types of SQL functions:
+
+1) Single-Row functions: These functions operate on a single row to give one result per row.
+
+Types of Single-Row functions:
+
+Character
+Number
+Date
+Conversion
+General
+2) Multiple-Row functions: These functions operate on groups of rows to give one result per group of rows.
+
+Types of Multiple-Row functions:
+
+AVG
+COUNT
+MAX
+MIN
+SUM
+STDDEV
+VARIANCE
+9. Describe different types of General Function used in SQL?  Answer: General functions are of following types:
+
+NVL: Converts a null value to an actual value. NVL (exp1, exp2) .If exp1 is null then NVL function return value of exp2. NVL2: If exp1 is not null, nvl2 returns exp2, if exp1 is null, nvl2 returns exp3. The argument exp1 can have any data type. NVL2 (exp1, exp2, exp3) NULLIF: Compares two expressions and returns null if they are equal or the first expression if they are not equal. NULLIF (exp1, exp2) COALESCE: Returns the first non-null expression in the expression list. COALESCE (exp1, exp2… expn). The advantage of the COALESCE function over NVL function is that the COALESCE function can take multiple alternative values. Conditional Expressions: Provide the use of IF-THEN-ELSE logic within a SQL statement. Example: CASE Expression and DECODE Function. ( data science training )
+
+10. Find the error in the below code snippet if any?  Answer: SELECT student_id s_id, student_name name, birthdate date, student_number s_no FROM students;
+
+Here, a reserved keyword ‘date’ has been used as an alias for the column birthdate. This action is illegal in Oracle SQL. In order to set a reserved keyword as an alias, we can use quotation marks. SELECT student_id s_id, student_name name, birthdate “date”, student_number s_no FROM students;
+
+11. What is the difference between a Primary Key & a Unique Key?  Answer: Primary key is used to identify each table row uniquely, while a Unique Key prevents duplicate values in a table column.
+
+Given below are a few differences:
+
+The primary key can be only one on the table while unique keys can be multiple.
+The primary key cannot hold null value at all while the unique key can hold one null value per column.
+The primary key is a clustered index while a unique key is a non-clustered index.
+12. Why do we need integrity constraints in a database?  Answer: Integrity constraints are required to enforce business rules so as to maintain the integrity of the database and prevent the entry of invalid data into the tables. With the help of the below-mentioned constraints, relationships can be maintained between the tables .
+
+13. What are the set operators UNION, UNION ALL, MINUS & INTERSECT meant to do?  Answer: Set operator facilitates the user to fetch the data from two or more than two tables at once if the columns and relative data types are the same in the source tables.
+
+UNION operator returns all the rows from both the tables except the duplicate rows.
+UNION ALL returns all the rows from both the tables along with the duplicate rows.
+MINUS returns rows from the first table, which does not exist in the second table.
+INTERSECT returns only the common rows in both the tables.
+14. What do you understand by a database object? Can you list a few of them?  Answer: An object used to store the data or references of the data in a database is known as a Database object.
+
+The database consists of various types of DB objects such as tables, views, indexes, constraints, stored procedures, triggers, etc.
+
+15. What do you understand by database schema and what does it hold?  Answer: Schema is a collection of database objects owned by a database user who can create or manipulate new objects within this schema.
+
+The schema can contain any DB objects like table, view, indexes, clusters, stored procs, functions, etc
+
+16. What is a database trigger? How to create it?  Answer: A database trigger is a stored PL/SQL block. Oracle database executes it automatically when certain conditions are satisfied. The stored PL/SQL block is connected to a table, a schema or a database. A trigger can be created using the CREATE TRIGGER clause. We can choose to enable or disable it using the ENABLE and DISABLE clauses of the ALTER TABLE or ALTER TRIGGER statement. This is the frequently asked Oracle Interview Questions in an interview.
+
+17. What is the relationship among database, tablespace and data file?  Answer: An Oracle database contains one or more logical storage units called tablespaces. These tablespaces collectively store whole data of databases and each tablespace in Oracle database consists of one or more files called datafiles. These datafiles are a physical structure that confirms with the operating system in which Oracle is running.
+
+18. What is the difference between a hot backup and cold backup in Oracle? Tell about their benefits also?  Answer: Hot backup (Online Backup): A hot backup is also known as an online backup because it is done while the database is active. Some sites can not shut down their database while making a backup copy, they are used for 24 hours a day, 7 days a week.
+
+Cold backup (Offline Backup): A cold backup is also known as an offline backup because it is done while the database has been shut down using the SHUTDOWN normal command. If the database is suddenly shutdown with an uncertain condition it should be restarted with RESTRICT mode and then shut down with NORMAL option.
+
+For a complete cold backup, the following files must be backed up.
+
+All datafiles, All control files, All online redo log files(optional) and the init.ora file (you can recreate it manually).
+
+19. What is the difference between pre-select and pre-query?  Answer: A pre-query trigger fire before the query executes and fire once while you try to query. With the help of this trigger, you can modify the where clause part dynamically.
+
+Pre- select query fires during the execute query and count query processing after Oracle forms construct the select statement to be issued, but before the statement is actually issued.
+Pre- query trigger fires before Pre-select trigger.
+20. How will you differentiate between VARCHAR & VARCHAR2?  Answer: Both VARCHAR & VARCHAR2 are Oracle data types that are used to store character strings of variable length.
+
+VARCHAR can store characters up to 2000 bytes while VARCHAR2 can store up to 4000 bytes.
+
+VARCHAR will hold the space for characters defined during declaration even if all of them are not used whereas VARCHAR2 will release the unused space.
+
+21. What do you mean by a database transaction & what all TCL statements are available in Oracle?  Answer: Transaction occurs when a set of SQL statements are executed in one go. To control the execution of these statements, Oracle has introduced TCL i.e. Transaction Control Statements that use a set of statements (top 50 oracle interview questions and answers pdf).
+
+The set of statements include:
+
+COMMIT: Used to make a transaction permanent. ROLLBACK: Used to roll back the state of DB to last the commit point.
+
+22. Can we save images in a database and if yes, how?  Answer: BLOB stands for Binary Large Object, which is a data type that is generally used to hold images, audio & video files or some binary executables.
+
+This datatype has the capacity of holding data up to 4 GB.
+
+23. What is a View and how is it different from a table?  Answer: A view is a user-defined database object that is used to store the results of a SQL query, which can be referenced later. Views do not store this data physically but as a virtual table, hence it can be referred to as a logical table.
+
+A table can hold data but not SQL Query results whereas View can save the query results, which can be used in another SQL Query as a whole.
+
+The table can be updated or deleted while Views cannot be done so.
+
+24. How will you distinguish a global variable with a local variable in PL/SQL?  Answer: Global variable is the one, which is defined at the beginning of the program and survives until the end.
+
+It can be accessed by any methods or procedures within the program, while the access to the local variable is limited to the procedure or method where it is declared.
+
+25. What is the difference between varchar and varchar2 data types?  Answer: Varchar can store up to 2000 bytes and varchar2 can store up to 4000 bytes. While Varchar will occupy space for a NULL value, Varchar2 will not occupy any space. They are differentiated by space.
+
+26. What is an Oracle Database?  Answer: Oracle provides software to create and manage the Oracle database. The database consists of physical and logical structures in which system, user, and control information are stored. The software that manages the database is called the Oracle database server. Collectively, the software that runs oracle and the physical database is called the Oracle database system. A database buffer cache stores the data in memory for quicker access. The redo logs track and store all the changes made to the database. A Data Guard ensures data protection and high availability of data and control file records the physical structure of the database. Click on the above link to read more and to become an Oracle DBA.
+
+27. What are the benefits of ORDBMS?  Answer: The objects as such can be stored in the database. The language of the DBMS can be integrated with an object-oriented programming language. The language may even be exactly the same as that used in the application, which does not force the programmer to have two representations of his objects.
+
+28. What are the Common Oracle DBA Tasks?  Answer: As an Oracle DBA, you can expect to be involved in the following tasks:
+
+Installing Oracle software
+Creating Oracle databases
+Performing upgrades of the database and software to new release levels
+Starting up and shutting down the database
+Managing the database’s storage structures
+Managing users and security
+Managing schema objects, such as tables, indexes, and views
+Making database backups and performing recovery when necessary
+Proactively monitoring the database’s health and taking preventive or corrective action as required
+Monitoring and tuning performance a small to a midsize database environment, you might be the sole person performing these tasks. In
+large enterprise environments, the job is often divided among several DBAs, each with their own area of specialty, such as the database security administrator or database tuning expert. (Company)
+Go through the Oracle DBA Video to get a clear understanding of Oracle DBA
+29. Differentiate between a cluster and a grid?  Answer: Clustering is one technology used to create a grid infrastructure. Simple clusters have static resources for specific applications by specific owners. Grids, which can consist of multiple clusters, are dynamic resource pools shareable among many different applications and users. A grid does not assume that all servers in the grid are running the same set of applications. Applications can be scheduled and migrated across servers in the grid. Grids share resources from and among independent system owners.
+
+At the highest level, the idea of grid computing is computing as a utility. In other words, you should not care where your data resides, or what computer processes your request. You should be able to request information or computation and have it delivered – as much as you want, and whenever you want. This is analogous to the way electric utilities work, in that you don’t know where the generator is, or how the electric grid is wired, you just ask for electricity, and you get it. The goal is to make computing a utility, a commodity, and ubiquitous. Hence the name ‘The Grid’. This view of utility computing is, of course, a “client-side” view.
+
+From the “server-side”, or behind the scenes, the grid is about resource allocation, information sharing, and high availability. Resource allocation ensures that all those that need or request resources are getting what they need, that resources are not standing idle while requests are going unserviced. Information sharing makes sure that the information users and applications need is available where and when it is needed. High availability features guarantee all the data and computation is always there, just like a utility company always provides electric power.
+
+30. What is meant by recursive hints in oracle?  Answer: Number of times a dictionary table is repeatedly called by various processes is known as a recursive hint. It occurs because of the small size of the data dictionary cache.
+
+31. Explain all Joins used in Oracle 8i?  Answer: Cartesian Join: When a Join condition is invalid or omitted completely, the result is a Cartesian product, in which all combinations of rows are displayed. To avoid a Cartesian product, always include a valid join condition in a “where” clause. To Join ‘N’ tables together, you need a minimum of N-1 Join conditions. Forex: to join four tables, a minimum of three joins is required. This rule may not apply if the table has a concatenated primary key, in which case more than one column is required to uniquely identify each row.
+
+Equi Join: This type of Join involves primary and foreign key relation. Equi Join is also called Simple or Inner Joins.
+
+Non-Equi Joins A Non-Equi Join condition containing something other than an equality operator. The relationship is obtained using an operator other than equal operator (=). The conditions such as <= and >= can be used, but BETWEEN is the simplest to represent Non-Equi Joins.
+
+Outer Joins: Outer Join is used to fetch rows that do not meet the join condition. The outer join operator is the plus sign (+), and it is placed on the side of the join that is deficient in information (Top 50 Oracle Interview Questions and Answers pdf). The Outer Join operator can appear on only one side of the expression, the side that has information missing. It returns those rows from one table that has no direct match in the other table. A condition involving an Outer Join cannot use IN and OR operator
+
+32. Explain all Joins used in Oracle 9i and later release?  Answer: Cross Join: Cross Join clause produces the cross-product of two tables. This is same as a Cartesian product between the two tables.
+
+Natural Joins: Is used to join two tables automatically based on the columns which have matching data types and names, using the keyword NATURAL JOIN. It is equal to the Equi-Join. If the columns have the same names but different data types, then the Natural Join syntax causes an error.
+
+Join with the USING clause: If several columns have the same names but the data types do not match, then the NATURAL JOIN clause can be modified with the USING clause to specify the columns that should be used for an equi Join. Use the USING clause to match only one column when more than one column matches. Do not use a table name or alias in the referenced columns. The NATURAL JOIN clause and USING clause are mutually exclusive.
+
+Forex: Select a.city, b.dept_name from loc a Join dept b USING (loc_id) where loc_id=10;
+
+Joins with the ON clause: Use the ON clause to specify a join condition. The ON clause makes code easy to understand. ON clause is equals to Self Joins. The ON clause can also be used to join columns that have different names.
+
+Left/ Right/ Full Outer Joins: Left Outer Join displays all rows from the table that is Left to the LEFT OUTER JOIN clause, right outer join displays all rows from the table that is right to the RIGHT OUTER JOIN clause, and full outer join displays all rows from both the tables either left or right to the FULL OUTER JOIN clause
+
+33. What is a DEFAULT option in a table?  Answer: A column can be given a default value by using the DEFAULT option. This option prevents null values from entering the column if a row is inserted without a value for that column. The DEFAULT value can be a literal, an expression, or a SQL function such as SYSDATE and USER but the value cannot be the name of another column or a pseudo column such as NEXTVAL or CURRVAL.
+
+34. In what scenario you can modify a column in a table?  Answer: During modifying a column:
+
+You can increase the width or precision of a numeric column.
+You can increase the width of numeric or character columns.
+You can decrease the width of a column only if the column contains null values or if the table has no rows.
+You can change the data type only if the column contains null values (Top 50 Oracle Interview Questions and Answers pdf).
+You can convert a CHAR column to the VARCHAR2 data type or convert a VARCHAR2 column to the CHAR data type only if the column contains null values or if you do not change the size.
+35. Describe types of Constraints in brief?  Answer: NOT NULL: NOT NULL Constraint ensures that the column contains no null values.
+
+UNIQUE KEY: UNIQUE Key Constraint ensures that every value in a column or set of columns must be unique, that is, no two rows of a table can have duplicate values in a specified column or set of columns. If the UNIQUE constraint comprises more than one column, that group of columns is called a Composite Unique Key. There can be more than one Unique key on a table. Unique Key Constraint allows the input of Null values. Unique Key automatically creates an index on the column it is created.
+
+PRIMARY KEY: Uniquely identifies each row in the Table. Only one PRIMARY KEY can be created for each table but can have several UNIQUE constraints. PRIMARY KEY ensures that no column can contain a NULL value. A Unique Index is automatically created for a PRIMARY KEY column. PRIMARY KEY is called a Parent key.
+
+FOREIGN KEY: Is also called Referential Integrity Constraint. FOREIGN KEY is one in which a column or set of columns take references of the Primary/Unique key of the same or another table. FOREIGN KEY is called a child key. A FOREIGN KEY value must match an existing value in the parent table or be null.
+
+CHECK KEY: Defines a condition that each row must satisfy. A single column can have multiple CHECK Constraints. During CHECK constraint following expressions is not allowed:
+
+References to CURRVAL, NEXTVAL, LEVEL, and ROWNUM Pseudo columns.
+Calls to SYSDATE, UID, USER and USERENV Functions
+36. What is PL/SQL?  Answer: PL/SQL is a procedural language extension over SQL provided by Oracle. It facilitates the declaration of variables, functions, and conditional operators in SQL syntax thereby giving the developer more freedom and ease to design complex queries. 
+
+37. What is dynamic SQL? When to use dynamic SQL?  Answer: Dynamic SQL is an enhancement over static SQL. It enables writing SQL queries at run-time. It comes into picture when we need to customize SQL queries during execution
+
+Few common cases where Dynamic SQL can be utilized:
+
+If database objects do not exist at compile-time, we can use dynamic SQL to reference them.
+Certain DDL (Data Definition Language) statements and SCL (Session Control Language) Statements are not supported by Static SQL in PL/SQL. These statements can be executed by via dynamic SQL programming.
+Dynamic SQL can be used for executing Dynamic PL/SQL block. By using EXECUTE IMMEDIATE clause, PL/SQL calls can be determined at runtime.
+38. What are the packages in PL SQL?  Answer: A Package is a group of related database objects like stored procs, functions, types, triggers, cursors, etc. that are stored in the Oracle database. It is a kind of library of related objects which can be accessed by multiple applications if permitted.
+
+39. What is WITH CHECK OPTION?  Answer: The WITH CHECK option clause specifies the level of check to be done in DML statements. It aids in preventing changes to a view that would produce results not contained in the subquery.
+
+40. Explain Oracle Grid Architecture?  Answer: The Oracle grid architecture pools large numbers of servers, storage, and networks into a flexible, on-demand computing resource for enterprise computing needs. The grid computing infrastructure continually analyzes the demand for resources and adjusts supply accordingly.
+
+For example, you could run different applications on a grid of several linked database servers. When reports are due at the end of the month, the database administrator could automatically provision more servers to that application to handle the increased demand. Grid computing uses sophisticated workload management that makes it possible for applications to share resources across many servers. Data processing capacity can be added or removed on demand, and resources within a location can be dynamically provisioned. Web services can quickly integrate applications to create new business processes.
+
+41. What is the purpose of Save Points in Oracle database?  Answer: Save Points are used to divide a transaction into smaller phases.
+
+It enables rolling back part of a transaction.
+Maximum 5 save points are allowed in Oracle Database.
+Whenever an error is encountered, it is possible to rollback from the point where the SAVEPOINT has been saved
+42. What is a trace file and how is it created in oracle?  Answer: Trace files are files used to store details of exceptions thrown by Oracle background processes i.e. bar, low, pmon, smon, etc. They are usually created for diagnostic dumps as well and help in debugging and solving exceptions in Oracle.
+
+To create a Trace file in oracle:
+
+Set sql_trace=true with alter session command. This will generate a trace file for all sql commands issued by your user session. This is known as a level-1 trace file. One can also create super detailed level-4 trace files with additional details if the need be. These files are stored in the form $ORACLE_SID_ora_xxx.trc in the trace directory, where xxx is a sequential number. To create a level-4 detailed trace file, we need to know the SID and SERIAL# for the session to trace. Eg: to trace for a session for SID 5: Connect system as sysdba; oradebug SETOSPID 5; oradebug EVENT 10046 TRACE NAME CONTEXT FOREVER, LEVEL4
+
+43. Explain the character, number, and date function in detail?  Answer: Character functions: accept character input and return both character and number values. Types of character function are:
+
+Case-Manipulation Functions: LOWER, UPPER, INITCAP
+Character-Manipulation Functions: CONCAT, SUBSTR, LENGTH, INSTR, LPAD/RPAD, TRIM, REPLACE
+Number Functions: accept Numeric input and return numeric values. Number Functions are: ROUND, TRUNC, and MOD
+
+Date Functions: operates on values of the Date data type. (All date functions return a value of DATE data type except the MONTHS_BETWEEN Function, which returns a number. Date Functions are MONTHS_BETWEEN, ADD_MONTHS, NEXT_DAY, LAST_DAY, ROUND, TRUNC.
+
+44. What is a Sub Query? Describe its Types?  Answer: A subquery is a SELECT statement that is embedded in a clause of another SELECT statement. A subquery can be placed in WHERE HAVING and FROM clause.
+
+Guidelines for using subqueries:
+
+Enclose sub queries within parenthesis
+Place subqueries on the right side of the comparison condition.
+Use Single-row operators with single-row subqueries and Multiple-row operators with multiple-row subqueries.
+Types of subqueries:
+
+Single-Row Subquery: Queries that return only one row from the inner select statement. Single-row comparison operators are: =, >, >=, <, <=, <> Multiple-Row Subquery: Queries that return more than one row from the inner Select statement. There are also multiple-column subqueries that return more than one column from the inner select statement. Operators include: IN, ANY, ALL.
+
+45. What is locking in SQL? Describe its types?  Answer: Locking prevents destructive interaction between concurrent transactions. Locks held until Commit or Rollback. Types of locking are:
+
+Implicit Locking: Occurs for all SQL statements except SELECT.
+Explicit Locking: Can be done by the user manually.
+Further, there are two locking methods:
+
+Exclusive: Locks out other users
+Share: Allows other users to access
+46. What is the difference between USER TABLES and DATA DICTIONARY?  Answer: USER TABLES: Is a collection of tables created and maintained by the user. Contain USER information. DATA DICTIONARY: Is a collection of tables created and maintained by the Oracle Server. It contains database information. All data dictionary tables are owned by the SYS user.
+
+47. What is a SET UNUSED option?  Answer: SET UNUSED option marks one or more columns as unused so that they can be dropped when the demand on system resources is lower. Unused columns are treated as if they were dropped, even though their column data remains in the table’s rows. After a column has been marked as unused, you have no access to that column. A select query will not retrieve data from unused columns. In addition, the names and types of columns marked unused will not be displayed during a DESCRIBE, and you can add to the table a new column with the same name as an unused column. The SET UNUSED information is stored in the USER_UNUSED_COL_TABS dictionary view.
+
+48. What are Constraints? How many types of constraints are there?  Answer: Constraints are used to prevent invalid data entry or deletion if there are dependencies. Constraints enforce rules at the table level. Constraints can be created either at the same time as the table is created or after the table has been created. Constraints can be defined at the column or table level. Constraint defined for a specific table can be viewed by looking at the USER-CONSTRAINTS data dictionary table. You can define any constraint at the table level except NOT NULL which is defined only at the column level.
+
+There are 5 types of constraints:
+
+Not Null Constraint
+Unique Key Constraint
+Primary Key Constraint
+Foreign Key Constraint
+Check Key Constraint
+49. What is a difference between ON DELETE CASCADE and ON DELETE SET NULL?  Answer: ON DELETE CASCADE Indicates that when the row in the parent table is deleted, the dependent rows in the child table will also be deleted. ON DELETE SET NULL Coverts foreign key values to null when the parent value is removed. Without the ON DELETE CASCADE or the ON DELETE SET NULL options, the row in the parent table cannot be deleted if it is referenced in the child table
+
+50. What is Mutating Trigger?  Answer: Into a row-level trigger based on a table trigger body cannot read data from the same table and also we cannot perform DML operation on the same table.
+
+If we are trying this oracle server returns mutating error oracle-4091: table is mutating.
+This error is called mutating error, and this trigger is called a mutating trigger, and the table is called a mutating table.
+Mutating errors are not occurred in statement-level trigger because through this statement-level trigger when we are performing DML operations automatically data committed into the database, whereas in the row-level trigger when we are performing transaction data is not committed and also again we are reading this data from the same table then only mutating errors occur.
+ 
+ 

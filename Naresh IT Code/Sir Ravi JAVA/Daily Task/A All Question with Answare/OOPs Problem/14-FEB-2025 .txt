@@ -1,0 +1,284 @@
+Program 01 :
+------------
+Create a BLC(Business Logic Class) called Bowler. Add below details to the class. 
+
+1. Instance variables:
+ name: String
+ wickets: int
+ matches: int,
+ balls_bowled: int,
+ runs_conceded: int. 
+
+2. Method - bowlerDetails() : public void
+
+Create a method name called bowlerDetails() that accepts name, wickets, matches, balls_bowled and runs_conceded.
+
+Method name: bowlerDetails 
+
+Return type: void
+
+
+3. Create below public methods,
+ Method name: computeBowlingAverage
+ Return type: void
+
+ This method should print the bowling average of the bowler by dividing runs_conceded with wickets.
+
+ Input:
+ name = "Sachin",
+ wickets = 10,
+ matches = 5,
+ balls_bowled = 750,
+ runs_conceded 463.
+
+ Output:
+ Name: Sachin
+ bowling_avg=46.3
+ Note: a. If any values are negative print 'Error'.
+
+ b. If runs_conceded or balls_bowled are greater than 0 when matches are 0 print 'Error'.
+
+ Method name: computeStrikeRate
+ Return type: void
+
+This method should print the Strike Rate of the bowler by dividing runs_conceded with balls_bowled.
+
+ Input:
+ name = "Sachin",
+ wickets = 10,
+ matches = 5,
+ balls_bowled = 750,
+ runs_conceded 463.
+
+ Output:
+ Name: Sachin
+ Strike_rate=0.61733335
+ Note: a. If any values are negative print 'Error'.
+
+ b. If runs_conceded or balls_bowled are greater than 0 when matches are 0 print 'Error'.
+
+ Method name: showStatistics
+ Return type: void
+
+ This method should print the details of the batter.
+ Input:
+ name = "Sachin",
+ wickets = 10,
+ matches = 5,
+ balls_bowled = 750,
+ runs_conceded 463.
+
+ Output:
+ Name=Sachin
+ wickets=10
+ matches=5
+
+ balls_bowled=750
+ runs_conceded=463
+
+ Note: a. If any values are negative print 'Error'.
+
+ b. If runs_conceded or balls_bowled are greater than 0 when matches are 0 print 'Error'.
+
+ An ELC(Executable Logic Class) Test that contains main method. Use this class to test your code.
+
+Bowler.java
+
+package com.ssnmarket.OOPs_Program.Feb_14_2025.Program1;
+
+public class Bowler {
+	String name;
+	int wickets,matches,balls_bowled,runs_conceded;
+	
+	double bowling_avg,strike_rate;
+	
+	public void bowlerDetails(String name,int wickets,int matches,int balls_bowled,int run_conceded	) {
+		this.name=name;
+		this.wickets=wickets;
+		this.matches=matches;
+		this.balls_bowled=balls_bowled;
+		this.runs_conceded=run_conceded;
+	}
+	
+	public void computeBowlingAverage() {
+		if(runs_conceded<0 || wickets<0) {
+			System.out.println("Error: Run & Wicket must be non negetive..");
+		}else {
+			bowling_avg=runs_conceded*1.0/wickets;
+			System.out.println("This is computeBowlingAverage() method calling result");
+			System.out.println("Name : "+name+"\nbowling_avg = "+bowling_avg);
+		}
+	}
+	
+	public void computeStrikeRate() {
+		if(runs_conceded>0 || balls_bowled>0) {
+			if(matches<=0) {
+				System.out.println("ERROR: Matches not be zero since Boll or Run greater than Zero...");
+			}
+			else {
+				strike_rate=runs_conceded*1.0/balls_bowled;
+				System.out.println("\n\nThis is computeStrikeRate() method calling result");
+				System.out.println("Name: "+name+"\nStrick_Rate = "+strike_rate);
+			}
+		}
+	}
+	
+	public void showStatistics() {
+		if(wickets<0 || matches<0||balls_bowled<0||runs_conceded<0) {
+			System.out.println("ERROR: Every Values must be Positive...");
+		}
+		else {
+			System.out.println("\n\nThis is showStatistics() method calling result");
+			System.out.println("Name : "+name+"\nwickets = "+wickets+"\nMatches = "+matches+"\n\nBalls_Bowled = "+balls_bowled+"\nRun_conceded = "+runs_conceded+"\n");
+		}
+	}
+	
+}
+
+BowlerInput.java
+-----------------
+
+package com.ssnmarket.OOPs_Program.Feb_14_2025.Program1;
+
+public class BowlerInput {
+
+	public static void main(String[] args) {
+		Bowler sachinBowler= new Bowler();
+		sachinBowler.bowlerDetails("Sachin", 10, 5, 750, 463);
+		sachinBowler.computeBowlingAverage();
+		sachinBowler.computeStrikeRate();
+		sachinBowler.showStatistics();
+		
+		Bowler mdShamiBowler= new Bowler();
+		mdShamiBowler.bowlerDetails("Md Shami", 15,7, 2000, 1530);
+		mdShamiBowler.computeBowlingAverage();
+		mdShamiBowler.computeStrikeRate();
+		mdShamiBowler.showStatistics();
+	}
+
+}
+
+-----------------------------------------------------------------------
+Program 02 :
+------------
+Class Batter is given to you. Add below details to the class
+
+ 1. Instance variables:
+ name: String,
+ runs: int,
+ matches: int,
+ batting_avg: float.
+
+2.  Method batterDetails() : public void
+
+Create a method name called batterDetails() that accepts name, runs, matches.
+
+Method name: batterDetails
+Return type: void
+
+ 3. Create below public methods,
+ Method name: computeBattingAverage
+ Return type: void
+
+ This method should print the batting average of the batter by dividing run with matches.
+
+ Input: 
+
+ Name: "Sachin"
+ Runs: 18000
+ Matches: 463
+
+
+
+ Output:
+ Name: Sachin
+ Batting_Avg: 38.87689
+
+ Note: a. If runs or matches values are negative print 'Error'.
+
+ b. If runs are greater than 0 when matches are 0 print 'Error'.
+
+ Method name: getStatistics
+ Return type: void
+ This method should print the details of the batter.
+
+ Input: 
+Name: "Sachin"
+Runs: 18000
+Matches: 463
+
+ Output:
+ Name: Sachin
+ Runs: 18000
+ Matches: 463
+
+
+ Note: a. If runs or matches values are negative print 'Error'.
+ b. If runs are greater than 0 when matches are 0 print 'Error'.
+
+ Given an ELC(Executable Logic class) class for Testing that contains main method. Use this class to test your code.
+
+
+Batter.java
+
+package com.ssnmarket.OOPs_Program.Feb_14_2025.Program2;
+
+public class Batter {
+	String name;
+	int runs,matches;
+	float batting_avg;
+	
+	public void batterDetails(String name,int runs,int matches) {
+		this.name=name;
+		this.runs=runs;
+		this.matches=matches;
+	}
+	public void computeBattingAverage() {
+		if(runs<0 || matches<0) {
+			System.out.println("This is computeBattingAverage() method calling result");
+			System.out.println("ERROR: Runs and Matches must be non negetive...");
+		}else {
+			batting_avg=runs*1.0f/matches;
+			System.out.println("This is computeBattingAverage() method calling result");
+			System.out.println("Name: "+name+"\nBatting_Avg: "+batting_avg);
+		}
+	}
+	
+	public void getStatistics() {
+		if(runs<0 || matches<=0) {
+			System.out.println("\n\nThis is getStatistics() method calling result");
+			System.out.println("ERROR: Runs and Matches must be non negetive....");
+		}else {
+			System.out.println("\n\nThis is getStatistics() method calling result");
+			System.out.println("Name: "+name+"\nRuns: "+runs+"\nMatches: "+matches);
+		}
+	}
+	
+}
+
+BatterInput.java
+
+package com.ssnmarket.OOPs_Program.Feb_14_2025.Program2;
+
+public class BatterInput {
+
+	public static void main(String[] args) {
+		
+		Batter rohitBatter=new Batter();
+		
+		rohitBatter.batterDetails("Rohit Sharma", 18000, 463);
+		rohitBatter.computeBattingAverage();
+		rohitBatter.getStatistics();
+		
+		System.out.println("\n------------------------");
+		Batter viratBatter=new Batter();
+		
+		viratBatter.batterDetails("virat Koheli", -12000, 320);
+		viratBatter.computeBattingAverage();
+		viratBatter.getStatistics();
+	}
+
+}
+
+ 
+

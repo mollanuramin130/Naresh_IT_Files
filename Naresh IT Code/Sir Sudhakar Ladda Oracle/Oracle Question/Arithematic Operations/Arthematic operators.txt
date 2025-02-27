@@ -1,0 +1,168 @@
+1)Arthematic operators
+----------------------
+
+1.Write a query to display ename,sal,annsal from emp table?
+
+SQL> SELECT ENAME,SAL ,SAL*12 AS "ANNUAL SALARY" FROM EMP ;
+
+ENAME         SAL    ANNUAL SALARY 
+_________ _______ ________________ 
+SMITH         800             9600 
+ALLEN        1600            19200 
+WARD         1250            15000 
+JONES        2975            35700 
+MARTIN       1250            15000 
+BLAKE        2850            34200 
+CLARK        2450            29400 
+SCOTT        3000            36000 
+KING         5000            60000 
+TURNER       1500            18000 
+ADAMS        1100            13200 
+JAMES         950            11400 
+FORD         3000            36000 
+MILLER       1300            15600 
+
+
+2.Calculate the experience of the all employees from emp table?
+
+calculation of experience of emp means :so many date functions are there
+one date function is suitable for calculating exp i.e sysdate
+
+sysdate:it returns current date of the system in oracle date 
+=======    format.in oracle by default date formatt
+                        is DD-MON-YY
+
+SQL> SELECT EMPNO, ENAME, HIREDATE, 
+            TRUNC(MONTHS_BETWEEN(SYSDATE, HIREDATE) / 12) AS EXPERIENCE_YEARS,
+            TRUNC(MOD(MONTHS_BETWEEN(SYSDATE, HIREDATE), 12)) AS EXPERIENCE_MONTHS
+     FROM EMP;
+
+   EMPNO ENAME     HIREDATE       EXPERIENCE_YEARS    EXPERIENCE_MONTHS 
+________ _________ ___________ ___________________ ____________________ 
+    7369 SMITH     17-12-80                     44                    1 
+    7499 ALLEN     20-02-81                     43                   11 
+    7521 WARD      22-02-81                     43                   11 
+    7566 JONES     02-04-81                     43                   10 
+    7654 MARTIN    28-09-81                     43                    4 
+    7698 BLAKE     01-05-81                     43                    9 
+    7782 CLARK     09-06-81                     43                    7 
+    7788 SCOTT     09-12-82                     42                    1 
+    7839 KING      17-11-81                     43                    2 
+    7844 TURNER    08-09-81                     43                    4 
+    7876 ADAMS     12-01-83                     42                    0 
+    7900 JAMES     03-12-81                     43                    2 
+    7902 FORD      03-12-81                     43                    2 
+    7934 MILLER    23-01-82                     43                    0 
+
+
+3.Calculate TA,HRA,TAX and NETSAL from emp table based on
+  following condintions?
+
+10% on sal=>TA
+20% on sal=>HRA
+5% on sal=>TAx
+NETSAL =SAL+TA+HRA-TAX
+
+[TA--->Total Allowance  HRA--->House Rent Allowances   NETSAL--->Take-home Salary]
+
+Gross Salary includes all earnings (before deductions).
+
+Net Salary is the actual salary received after all deductions.
+
+
+SQL> SELECT ENAME ,SAL AS BASIC_SALARY,SAL*0.1 AS TA,SAL*0.2 AS HRA,SAL*0.05 AS TAX,SAL+SAL*0.1+SAL*0.2-SAL*0.05 AS "NET SALARY" FROM EMP;
+
+ENAME        BASIC_SALARY       TA     HRA       TAX    NET SALARY 
+_________ _______________ ________ _______ _________ _____________ 
+SMITH                 800       80     160        40          1000 
+ALLEN                1600      160     320        80          2000 
+WARD                 1250      125     250      62.5        1562.5 
+JONES                2975    297.5     595    148.75       3718.75 
+MARTIN               1250      125     250      62.5        1562.5 
+BLAKE                2850      285     570     142.5        3562.5 
+CLARK                2450      245     490     122.5        3062.5 
+SCOTT                3000      300     600       150          3750 
+KING                 5000      500    1000       250          6250 
+TURNER               1500      150     300        75          1875 
+ADAMS                1100      110     220        55          1375 
+JAMES                 950       95     190      47.5        1187.5 
+FORD                 3000      300     600       150          3750 
+MILLER               1300      130     260        65          1625 
+
+
+4.Write a query to display the all employee salaries after 
+  adding 1200 rupees?
+
+SQL> SELECT ENAME ,SAL AS "BASIC SALARY" ,SAL+1200 AS "SALARY WITH BONUS" FROM EMP;
+
+ENAME        BASIC SALARY    SALARY WITH BONUS 
+_________ _______________ ____________________ 
+SMITH                 800                 2000 
+ALLEN                1600                 2800 
+WARD                 1250                 2450 
+JONES                2975                 4175 
+MARTIN               1250                 2450 
+BLAKE                2850                 4050 
+CLARK                2450                 3650 
+SCOTT                3000                 4200 
+KING                 5000                 6200 
+TURNER               1500                 2700 
+ADAMS                1100                 2300 
+JAMES                 950                 2150 
+FORD                 3000                 4200 
+MILLER               1300                 2500 
+
+
+5.create the student1 table and insert the records as below(this table u already 
+                                                             created.)
+
+   sno      sname      sub1         sub2        sub3 
+  -----    -------    ------       ------      ------  
+    1      gowtham      72          18          24
+    2       kiran       60          50          45
+    3       raju        12          30          25
+    4       subbu       80          88          74
+
+Q)Calculate the total marks of students?
+
+Q)Calculate the average marks?
+
+SQL> SELECT STUDENT1.*,SUB1+SUB2+SUB3 AS "TOTAL MARKS",ROUND((SUB1+SUB2+SUB3)/3.0,2) AS AVERAGE FROM STUDENT1;
+
+   SNO SNAME         SUB1    SUB2    SUB3    TOTAL MARKS    AVERAGE 
+______ __________ _______ _______ _______ ______________ __________ 
+     1 GOWTHAM         72      18      24            114         38 
+     2 KIRAN           60      50      45            155      51.67 
+     3 RAJU            12      30      25             67      22.33 
+     4 SUBBU           80      88      74            242      80.67 
+
+
+------------------------------------------------------------------------------------
+mixed query
+-----------
+1.Write a query To display employee who are working as a 
+  MANAGER,CLERK and 
+  earning salary between 1500 and 3000 and
+  joined in 1981 year and 
+  not working in deptno 10 or 20?
+
+SQL> SELECT * FROM EMP WHERE JOB IN('MANAGER','CLERK') AND SAL BETW
+EEN 1500 AND 3000 AND HIREDATE BETWEEN '01-JAN-1981' AND '31-DEC-1981' AND DEPTNO IN(10,20);
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7566 JONES    MANAGER       7839 02-04-81       2975                20 
+    7782 CLARK    MANAGER       7839 09-06-81       2450                10 
+
+SQL> SELECT * FROM EMP WHERE JOB IN('MANAGER','CLERK') AND (SAL BETWEEN 1500 AND 3000) AND (HIREDATE BETWEEN '01-JAN-1981' AND '31-DEC-1981') AND DEPTNO IN(10,20);
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7566 JONES    MANAGER       7839 02-04-81       2975                20 
+    7782 CLARK    MANAGER       7839 09-06-81       2450                10 
+
+SQL> SELECT * FROM EMP WHERE JOB IN ('MANAGER', 'CLERK') AND SAL BETWEEN 1500 AND 3000 AND EXTRACT(YEAR FROM HIREDATE) = 1981 AND DEPTNO NOT IN (10, 20);
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7698 BLAKE    MANAGER       7839 01-05-81       2850                30 

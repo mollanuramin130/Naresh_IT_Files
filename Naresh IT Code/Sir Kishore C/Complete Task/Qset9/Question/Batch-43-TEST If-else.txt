@@ -1,0 +1,314 @@
+					[ SET - A ]
+-----------------------------------------------------------------------------------------------------
+
+Que 1:
+-------
+Write a C program to find maximum between three numbers.
+case 1:
+input :
+	Enter first number: 5
+	Enter second number: 6
+	Enter third number: 7
+output:
+	Maximum : 7
+case 2:
+input :
+	Enter first number: -3
+	Enter second number: -6
+	Enter third number: -9
+output:
+	Maximum number is: -3
+case 3:
+input :
+	Enter first number: 88
+	Enter second number: 88
+	Enter third number: 55
+output:
+	Maximum number is: 88
+
+
+Que 2:
+-------
+Write a C program to check whether a year is leap year or not
+
+case 1:
+input :
+	Enter a year: 2001
+output:
+	not a leap year
+
+case 2:
+input :
+	Enter a year: 2016
+output:
+	is a leap year
+
+
+Que 3:
+-------
+Write a C program that takes two numbers and an operator as input and performs the appropriate operation.
+
+input :
+	Enter Two number : 10 20
+	Enter Operator : +
+output :
+	Addition is : 30
+
+input :
+	Enter Two number : 5 2
+	Enter Operator : *
+output :
+	Addition is : 10
+
+input :
+	Enter Two number : 8 1
+	Enter Operator : #
+output :
+	Invalid input
+
+
+Que 4:
+-------
+
+A hospital has a policy to provide different types of rooms to its patients based on their age, medical condition, and insurance coverage. The policy is as follows:
+
+- If the patient is below 18 years old, they are eligible for a general ward.
+- If the patient is between 18 and 39 years old, they are eligible for a semi-private room.
+- If the patient is between 40 and 59 years old, they are eligible for a private room.
+- If the patient is above 60 years old, they are eligible for a deluxe room.
+
+
+case 1:
+input :
+	Enter age of the patient: 10
+output :
+	Patient is eligible for a General ward.
+
+case 2:
+input :
+	Enter age of the patient: 30
+output :
+	Patient is eligible for a Semi-private room.
+
+case 3:
+input :
+	Enter age of the patient: 50
+output :
+	Patient is eligible for a Private room.
+
+case 4:
+input :
+	Enter age of the patient: 65
+output:
+	Patient is eligible for a Deluxe room
+
+					[ SET - B ]
+-----------------------------------------------------------------------------------------------------
+
+Que 1:
+-------
+Write a C program to check whether a number is even or odd.
+
+case 1:
+input :
+	Enter a number : 5
+output :
+	Is odd
+
+case 2:
+input :
+	Enter a number : 8
+output :
+	Is even
+
+case 3:
+input :
+	Enter a number : -6
+output :
+	Is even
+
+
+Que 2:
+-------
+Write a C program to check whether a number is negative, positive or zero.
+
+case 1:
+input :
+	Enter a number : 5
+output :
+	Positive
+case 2:
+input :
+	Enter a number : 0
+output :
+	Zero
+case 3:
+input :
+	Enter a number : -6
+output :
+	Negative
+
+
+
+Que 3:
+-------
+Write a C program using else if statements to determine the type of bonus an employee is eligible for based on their years of service.
+-Read year on service from the user.
+
+- If an employee has less than 2 years of service, they are not eligible for a bonus.
+- If an employee has between 2 and 4 years of service, they are eligible for a 10% bonus.
+- If an employee has between 5 and 9 years of service, they are eligible for a 15% bonus.
+- If an employee has 10 or more years of service, they are eligible for a 20% bonus.
+
+ Case 1:
+Input: 
+	Enter years Of Service = 12
+Output: 
+	Employee is eligible for a 20% bonus
+
+ Case 2:
+Input: 
+	Enter years Of Service = 7
+Output: 
+	Employee is eligible for a 15% bonus
+
+ Case 3:
+Input:
+	 Enter years Of Service = 3
+Output:
+	 Employee is eligible for a 10% bonus
+
+ Case 4:
+Input: 
+	Enter years Of Service = 1
+Output:
+	 Employee is not eligible for a bonus
+
+
+
+Que 4:
+-------
+Write a C program to read  age of person and  check the person is eligible for marriage or not using if-else.
+	if user age is above 21 then eligible.
+Sample input  :
+                Enter your age: 25
+Sample output :  
+		you are eligible to marriage.
+
+Sample input  :
+		 Enter your age: 16
+Sample output :
+		 Sorry are not eligible to marriage.
+
+
+
+
+					[ SET - C ]
+-----------------------------------------------------------------------------------------------------
+
+Que 1:
+-------
+Write a C program that takes the marks of a student in three subjects as input and prints whether the student has passed or failed in three subject using  if statement.
+	if marks is above 35 then pass and student is fail in any one subject then fail.
+
+
+Sample input  :  
+		Enter three subject marks : 57 66 88
+Sample output : 
+		Result is pass 
+
+Sample input  :  
+		Enter three subject marks : 71 64 32
+Sample output : 
+		Result is Fail
+
+
+
+Que 2:
+-------
+Write a C program to input any character and check whether it is alphabet, digit or special character using ladder else-if.
+
+
+Sample input  : 
+		Enter a character : A
+Sample output : 
+		A is Alphabet
+
+Sample input  : 
+		Enter a character : h
+Sample output : 
+		h is Alphabet
+
+Sample input  : 
+		Enter a character : 9
+Sample output : 
+		9 is Digit
+
+Sample input  : 
+		Enter a character : @
+Sample output : 
+		@ is Special character 
+
+
+
+Que 3:
+-------
+Write a C program using if-else statements to determine the interest rate on a deposit based on the amount deposited.
+- If the deposit amount is less than 1000, the interest rate is 2%.
+- If the deposit amount is between 1000 and 5000, the interest rate is 3%.
+- If the deposit amount is between 5000 and 10000, the interest rate is 4%.
+- If the deposit amount is greater than 10000, the interest rate is 5%.
+
+ Case 1:
+Input:
+	Enter deposit Amount = 500
+Output: 
+	Interest rate is 2%.
+
+ Case 2:
+Input:
+	 Enter deposit Amount = 2000
+Output: 
+	Interest rate is 3%.
+
+ Case 3:
+Input:
+	 Enter deposit Amount = 7000
+Output: 
+	Interest rate is 4%.
+
+ Case 4:
+Input: 
+	Enter deposit Amount = 15000
+Output: 
+	Interest rate is 5%.
+
+
+Que 4:
+-------
+
+Write a C program to calculate the profit or loss based on the user input.
+Take Cost price and selling price from the user. 
+
+Case 1:
+input:
+	Enter Cost Price: 100
+	Enter Selling Price: 120
+output:
+	Profit is: 20.00
+
+Case 2:
+input:
+	Enter Cost Price: 200
+	Enter Selling Price: 180
+output:
+	Loss is: 20.00
+
+ Case 3:
+input:
+	Enter Cost Price: 300
+	Enter Selling Price: 300
+output:
+	No profit or loss.
+
+

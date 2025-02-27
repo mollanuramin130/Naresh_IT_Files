@@ -1,0 +1,294 @@
+Que : 1
+========
+Write a C program that defines a function printNumbers to print the numbers from 1 to N using a for loop.
+
+- Define a function printNumbers(int num) that takes one arguments.
+- Use a for loop inside the printNumbers function to print the numbers.
+- The loop should iterate from 1 to N.
+- Call the printNumbers function from the main function.
+- The program should prompt the user to enter a positive integer.
+- if the number is zero or negative print Invalid input message on console.
+
+case 1:
+-------
+Input:
+	Enter a number : 10
+
+Output:
+	The numbers from 1 to 10: 
+	1 2 3 4 5 6 7 8 9 10
+
+case 2:
+-------
+Input:
+	Enter a number : -15
+Output:
+	Invalid input
+
+Solution:
+
+#include<stdio.h>
+
+void printNumber(int number){
+    if(number<=0){
+        printf("invalid input\n");       
+    }
+    else{
+        printf("The number from 1 to %d:\n",number);
+        for (int i = 1; i <=number; i++)
+        {
+            printf("%-4d",i);
+        }
+        
+    }
+}
+int main(){
+    int number;
+
+    printf("Enter your Number : ");
+    scanf("%d",&number);
+    printNumber(number);
+}
+
+=========================================================================
+Que : 2
+========
+Write a C program that defines a function printEvenNumbers to print the even numbers from 1 to N using a for loop.
+
+- Define a function printEvenNumbers(int num) that takes one arguments.
+- Use a for loop inside the printEvenNumbers function to print the even numbers.
+- The loop should iterate from 1 to N and print only the even numbers.
+- Call the printEvenNumbers function from the main function.
+- The program should prompt the user to enter a positive integer.
+- if the number is zero or negative print Invalid input message on console.
+
+case 1:
+-------
+Input:
+	Enter a number : 20
+
+Output:
+	The even numbers from 1 to 20: 
+ 	2 4 6 8 10 12 14 16 18 20
+case 2:
+-------
+Input:
+	Enter a number : 0
+Output:
+	Invalid input
+Solution:
+#include<stdio.h>
+
+void printEvenNumber(int number){
+    if(number<=0){
+        printf("invalid input\n");       
+    }
+    else{
+        printf("The even number from 1 to %d:\n",number);
+        for (int i = 2; i<=number; i++)
+        {
+            if(i%2==0){
+                printf("%-4d",i);
+            }
+        }
+        printf("\n");
+    }
+}
+int main(){
+    int number;
+
+    printf("Enter your Number : ");
+    scanf("%d",&number);
+    printEvenNumber(number);
+}
+
+
+=========================================================================
+Que : 3
+========
+Write a C program that defines a function calculateSum to calculate and print the sum of the numbers from 1 to N using a for loop.
+
+- Define a function calculateSum(int num) that takes one arguments.
+- Use a for loop inside the calculateSum function to calculate the sum.
+- The loop should iterate from 1 to N.
+- Call the calculateSum function from the main function.
+- The program should prompt the user to enter a positive integer.
+- if the number is zero or negative print Invalid input message on console.
+
+case 1:
+-------
+Input:
+	Enter a number : 10
+Output:
+	The sum of the numbers from 1 to 10: 55
+
+case 2:
+-------
+Input:
+	Enter a number : -20
+Output:
+	Invalid input
+
+Solution:
+#include<stdio.h>
+
+int calculateSum(int number){
+    int sum=0;
+    if(number<=0){
+       return 0;      
+    }
+    else{
+        for (int i = 1; i<=number; i++)
+        {
+           sum+=i;
+        }
+        return sum;
+    }
+}
+int main(){
+    int number;
+    printf("Enter your Number : ");
+    scanf("%d",&number);
+    if(calculateSum(number)){
+        printf("The sum of the numbers from 1 to %d: %d\n",number,calculateSum(number));
+    }
+    else{
+        printf("Invalid input\n");
+    }
+}
+
+=========================================================================
+Que : 4
+========
+Write a C program that defines a function to print the multiplication table of a given number. The function should take an integer argument and print the multiplication table of user given number.
+
+- Define a function printTable(int num) that takes an integer argument.
+- Use a for loop inside the printTable function to print the multiplication table.
+- The loop should iterate from 1 to 10.
+- Call the printTable function from the main function.
+- The program should prompt the user to enter a positive integer.
+- if the number is zero or negative print Invalid input message on console.
+
+case 1:
+-------
+Input:
+	Enter a number : 5
+Output:
+	5 x 1 = 5
+	5 x 2 = 10
+	5 x 3 = 15
+	.
+	.
+	5 x 10 = 50
+case 2:
+-------
+Input:
+	Enter a number : -8
+Output:
+	Invalid input
+	
+Solution:
+
+#include<stdio.h>
+
+void printTable(int number);
+
+void printTable(int number){
+    if (number<=0)
+    {
+        printf("Invalid Input\n");
+    }
+    else{
+        for (int i = 1; i <=10; i++)
+        {
+            printf("%d x %d = %d\n",number,i,number*i);
+        }
+    }  
+}
+int main(){
+    int number;
+    printf("enter your number : ");
+    scanf("%d",&number);
+    printTable(number);
+}
+
+
+=========================================================================
+Que : 5
+========
+Write a C program that defines a function printSquares to print the numbers from 1 to N and their corresponding squares.
+
+- Define a function printSquares(int num) that takes one arguments.
+- Use a for loop inside the printSquares function to print the numbers and their squares.
+- The loop should iterate from 1 to N.
+- Print the output in a tabular format with headings "Number" and "Square".
+- Call the printSquares function from the main function.
+- The program should prompt the user to enter a positive integer.
+- if the number is zero or negative print Invalid input message on console.
+
+
+
+case 1:
+-------
+Input:
+	Enter a number : 10
+Output:
+	Number	Square
+	1	1
+	2	4
+	3	9
+	4	16
+	5	25
+	6	36
+	7	49
+	8	64
+	9	81
+	10	100
+
+case 2:
+-------
+Input:
+	Enter a number : -5
+Output:
+	Invalid Input
+
+
+Solution:
+
+#include<stdio.h>
+void printSquares(int num);
+
+int main(){
+    int number;
+    printf("Enter your Number : ");
+    scanf("%d",&number);
+    printSquares(number);
+}
+
+void printSquares(int num){
+    if(num<=0){
+        printf("Invalid Input\n");
+    }
+    else{
+        printf("Number           Square\n");
+        for(int i=1;i<=num;i++){
+            printf("%d%10d\n",i,i*i);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

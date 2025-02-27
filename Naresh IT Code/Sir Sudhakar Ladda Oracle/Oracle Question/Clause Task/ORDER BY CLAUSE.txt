@@ -1,0 +1,246 @@
+                          ORDER BY CLAUSE
+                         ==================
+
+Order by:-order by clause is used to sorting data either ascending 
+========  order or desending order.
+     
+order by clause having two keywords.
+1)asc
+2)desc
+syntax:-
+=======
+    select * from tablename
+    order by columnname[asc/desc];
+
+-----------------------------------------------------------------------------------
+
+1.Display the all employee records and arrange them in desending order
+   according to salary
+
+SOLUTION:
+===================================================================
+
+SQL> SELECT * FROM EMP ORDER BY SAL;
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ____________ _______ ___________ _______ _______ _________ 
+    7369 SMITH     CLERK           7902 17-12-80        800                20 
+    7900 JAMES     CLERK           7698 03-12-81        950                30 
+    7876 ADAMS     CLERK           7788 12-01-83       1100                20 
+    7521 WARD      SALESMAN        7698 22-02-81       1250     500        30 
+    7654 MARTIN    SALESMAN        7698 28-09-81       1250    1400        30 
+    7934 MILLER    CLERK           7782 23-01-82       1300                10 
+    7844 TURNER    SALESMAN        7698 08-09-81       1500       0        30 
+    7499 ALLEN     SALESMAN        7698 20-02-81       1600     300        30 
+    7782 CLARK     MANAGER         7839 09-06-81       2450                10 
+    7698 BLAKE     MANAGER         7839 01-05-81       2850                30 
+    7566 JONES     MANAGER         7839 02-04-81       2975                20 
+    7788 SCOTT     ANALYST         7566 09-12-82       3000                20 
+    7902 FORD      ANALYST         7566 03-12-81       3000                20 
+    7839 KING      PRESIDENT            17-11-81       5000                10 
+
+
+2.display the all employee records and arrange them according to
+   seniority
+
+SOLUTION:
+===================================================================
+SQL> SELECT * FROM EMP ORDER BY HIREDATE DESC;
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ____________ _______ ___________ _______ _______ _________ 
+    7876 ADAMS     CLERK           7788 12-01-83       1100                20 
+    7788 SCOTT     ANALYST         7566 09-12-82       3000                20 
+    7934 MILLER    CLERK           7782 23-01-82       1300                10 
+    7902 FORD      ANALYST         7566 03-12-81       3000                20 
+    7900 JAMES     CLERK           7698 03-12-81        950                30 
+    7839 KING      PRESIDENT            17-11-81       5000                10 
+    7654 MARTIN    SALESMAN        7698 28-09-81       1250    1400        30 
+    7844 TURNER    SALESMAN        7698 08-09-81       1500       0        30 
+    7782 CLARK     MANAGER         7839 09-06-81       2450                10 
+    7698 BLAKE     MANAGER         7839 01-05-81       2850                30 
+    7566 JONES     MANAGER         7839 02-04-81       2975                20 
+    7521 WARD      SALESMAN        7698 22-02-81       1250     500        30 
+    7499 ALLEN     SALESMAN        7698 20-02-81       1600     300        30 
+    7369 SMITH     CLERK           7902 17-12-80        800                20 
+
+
+3.display the employee records and display salaries in ascending order
+   according to deptno
+
+SQL>select ename,deptno,sal
+    from emp
+    order by deptno,sal desc;
+
+SOLUTION:
+===================================================================
+SQL> SELECT ENAME,DEPTNO,SAL FROM EMP ORDER BY DEPTNO,SAL DESC;
+
+ENAME        DEPTNO     SAL 
+_________ _________ _______ 
+KING             10    5000 
+CLARK            10    2450 
+MILLER           10    1300 
+SCOTT            20    3000 
+FORD             20    3000 
+JONES            20    2975 
+ADAMS            20    1100 
+SMITH            20     800 
+BLAKE            30    2850 
+ALLEN            30    1600 
+TURNER           30    1500 
+MARTIN           30    1250 
+WARD             30    1250 
+JAMES            30     950 
+
+
+4.check the following order by clause outputs
+1)SQL>select ename,comm 
+         from emp
+         order by comm desc;
+
+2)SQL>select ename,comm
+     from emp
+     order by comm desc nulls last;
+
+SOLUTION:
+===================================================================
+SQL> SELECT ENAME,JOB,SAL,COMM FROM EMP ORDER BY COMM;
+
+ENAME     JOB              SAL    COMM 
+_________ ____________ _______ _______ 
+TURNER    SALESMAN        1500       0 
+ALLEN     SALESMAN        1600     300 
+WARD      SALESMAN        1250     500 
+MARTIN    SALESMAN        1250    1400 
+SCOTT     ANALYST         3000         
+KING      PRESIDENT       5000         
+ADAMS     CLERK           1100         
+JAMES     CLERK            950         
+FORD      ANALYST         3000         
+MILLER    CLERK           1300         
+BLAKE     MANAGER         2850         
+JONES     MANAGER         2975         
+SMITH     CLERK            800         
+CLARK     MANAGER         2450         
+
+14 rows selected. 
+
+SQL> SELECT ENAME,JOB,SAL,COMM FROM EMP ORDER BY COMM DESC;
+
+ENAME     JOB              SAL    COMM 
+_________ ____________ _______ _______ 
+SMITH     CLERK            800         
+CLARK     MANAGER         2450         
+FORD      ANALYST         3000         
+JAMES     CLERK            950         
+ADAMS     CLERK           1100         
+JONES     MANAGER         2975         
+BLAKE     MANAGER         2850         
+MILLER    CLERK           1300         
+SCOTT     ANALYST         3000         
+KING      PRESIDENT       5000         
+MARTIN    SALESMAN        1250    1400 
+WARD      SALESMAN        1250     500 
+ALLEN     SALESMAN        1600     300 
+TURNER    SALESMAN        1500       0 
+
+14 rows selected. 
+
+SQL> SELECT ENAME,JOB,SAL,COMM FROM EMP ORDER BY COMM NULLS FIRST;
+
+ENAME     JOB              SAL    COMM 
+_________ ____________ _______ _______ 
+SMITH     CLERK            800         
+CLARK     MANAGER         2450         
+FORD      ANALYST         3000         
+JAMES     CLERK            950         
+ADAMS     CLERK           1100         
+JONES     MANAGER         2975         
+BLAKE     MANAGER         2850         
+MILLER    CLERK           1300         
+SCOTT     ANALYST         3000         
+KING      PRESIDENT       5000         
+TURNER    SALESMAN        1500       0 
+ALLEN     SALESMAN        1600     300 
+WARD      SALESMAN        1250     500 
+MARTIN    SALESMAN        1250    1400 
+
+14 rows selected. 
+
+SQL> SELECT ENAME,JOB,SAL,COMM FROM EMP ORDER BY COMM DESC NULLS LAST;
+
+ENAME     JOB              SAL    COMM 
+_________ ____________ _______ _______ 
+MARTIN    SALESMAN        1250    1400 
+WARD      SALESMAN        1250     500 
+ALLEN     SALESMAN        1600     300 
+TURNER    SALESMAN        1500       0 
+SCOTT     ANALYST         3000         
+KING      PRESIDENT       5000         
+ADAMS     CLERK           1100         
+JAMES     CLERK            950         
+FORD      ANALYST         3000         
+MILLER    CLERK           1300         
+BLAKE     MANAGER         2850         
+JONES     MANAGER         2975         
+SMITH     CLERK            800         
+CLARK     MANAGER         2450         
+
+
+
+5.Write the query to  display the emp_first_name and emp_last_name as 
+  emp_fullname  and year of birth and 
+ sort them based on their desending age.
+
+NOTE:-By default Calender order is ascending order
+
+
+
+
+emp_id        emp_first_name        emp_last_name     birth date
+------      -----------------     --------------      ------------
+  1            john                  doe               23-apr-1985
+  2            jill                  davis             15-jun-1999
+  3            jack                  Johnson           25-oct-1992
+  4            james                 Wilson            12-sep-1983
+
+SOLUTION:
+===================================================================
+SQL> SELECT EMP_FIRST_NAME || ' '||EMP_LAST_NAME AS EMP_FULL_NAME ,TO_CHAR(DOB,'YYYY') AS YEAR_OF_BIRTH FROM EMP_INFO ORDER BY DOB ;
+
+EMP_FULL_NAME    YEAR_OF_BIRTH    
+________________ ________________ 
+JAMES WILSON     1983             
+JOHN DOE         1985             
+JACK JOHNSON     1992             
+JILL DAVIS       1999             
+
+
+6.display job column from emp table by using distinct
+   clause?
+
+SOLUTION:
+===================================================================
+SQL> SELECT DISTINCT JOB FROM EMP ORDER BY JOB;
+
+JOB          
+____________ 
+ANALYST      
+CLERK        
+MANAGER      
+PRESIDENT    
+SALESMAN     
+
+SQL> SELECT DISTINCT JOB FROM EMP ORDER BY JOB DESC;
+
+JOB          
+____________ 
+SALESMAN     
+PRESIDENT    
+MANAGER      
+CLERK        
+ANALYST      
+
+
+

@@ -1,0 +1,225 @@
+                          OPERATORS TASK
+                        =================
+ 
+
+4.like operator:-like operator is used to retrive data based on 
+===============   specified pattern in where clause.
+
+.like operator performance is very high compare to oracle predefined 
+  searching functions.
+
+.In all  relational databases along with like operator oracle provided 2 special
+  wild card charcters.These are having special meaning.
+
+1)% -> string or group of characters matching(replaces 0 or 
+       any no of characters)
+2)_ -> single character matching purpose(replaces 1 char)
+
+----------------------------------------------------------------------------
+
+
+1.Write a query to display the employees whose ename start with M 
+  from emp table using like operator?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE'M%';
+
+   EMPNO ENAME     JOB             MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ___________ _______ ___________ _______ _______ _________ 
+    7654 MARTIN    SALESMAN       7698 28-09-81       1250    1400        30 
+    7934 MILLER    CLERK          7782 23-01-82       1300                10 
+
+
+2.Write a query to display the employees whose ename end with S from 
+  emp table using like operator?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '%S';
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7566 JONES    MANAGER       7839 02-04-81       2975                20 
+    7876 ADAMS    CLERK         7788 12-01-83       1100                20 
+    7900 JAMES    CLERK         7698 03-12-81        950                30 
+
+
+3.Write a query to display the employees whose name contain either
+  'AM' or 'AR' strings from emp table by using like operator
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '%AM%' OR ENAME LIKE '%AR%';
+
+   EMPNO ENAME     JOB             MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ___________ _______ ___________ _______ _______ _________ 
+    7521 WARD      SALESMAN       7698 22-02-81       1250     500        30 
+    7654 MARTIN    SALESMAN       7698 28-09-81       1250    1400        30 
+    7782 CLARK     MANAGER        7839 09-06-81       2450                10 
+    7876 ADAMS     CLERK          7788 12-01-83       1100                20 
+    7900 JAMES     CLERK          7698 03-12-81        950                30 
+
+
+4.Write a query to display the employee records whose name 2nd
+ character is A?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '_A%';
+
+   EMPNO ENAME     JOB             MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ___________ _______ ___________ _______ _______ _________ 
+    7521 WARD      SALESMAN       7698 22-02-81       1250     500        30 
+    7654 MARTIN    SALESMAN       7698 28-09-81       1250    1400        30 
+    7900 JAMES     CLERK          7698 03-12-81        950                30 
+
+
+5.Write a query to display the employee records whose name 3rd 
+  character is M?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '__M%';
+
+   EMPNO ENAME    JOB          MGR HIREDATE       SAL    COMM    DEPTNO 
+________ ________ ________ _______ ___________ ______ _______ _________ 
+    7900 JAMES    CLERK       7698 03-12-81       950                30 
+
+
+6.Write a query to display the employee records whose name has 4
+  letters from emp table by using like operator?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE '____';
+
+   EMPNO ENAME    JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ ____________ _______ ___________ _______ _______ _________ 
+    7521 WARD     SALESMAN        7698 22-02-81       1250     500        30 
+    7839 KING     PRESIDENT            17-11-81       5000                10 
+    7902 FORD     ANALYST         7566 03-12-81       3000                20 
+
+
+7.Write a query to display the employees who are getting 3 digit
+  salary?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE SAL LIKE '___';
+
+   EMPNO ENAME    JOB          MGR HIREDATE       SAL    COMM    DEPTNO 
+________ ________ ________ _______ ___________ ______ _______ _________ 
+    7369 SMITH    CLERK       7902 17-12-80       800                20 
+    7900 JAMES    CLERK       7698 03-12-81       950                30 
+
+
+8.Write a query to display the employees who are joining in the year
+  81 from emp table using like operator?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE HIREDATE LIKE '%81';
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ____________ _______ ___________ _______ _______ _________ 
+    7499 ALLEN     SALESMAN        7698 20-02-81       1600     300        30 
+    7521 WARD      SALESMAN        7698 22-02-81       1250     500        30 
+    7566 JONES     MANAGER         7839 02-04-81       2975                20 
+    7654 MARTIN    SALESMAN        7698 28-09-81       1250    1400        30 
+    7698 BLAKE     MANAGER         7839 01-05-81       2850                30 
+    7782 CLARK     MANAGER         7839 09-06-81       2450                10 
+    7839 KING      PRESIDENT            17-11-81       5000                10 
+    7844 TURNER    SALESMAN        7698 08-09-81       1500       0        30 
+    7900 JAMES     CLERK           7698 03-12-81        950                30 
+    7902 FORD      ANALYST         7566 03-12-81       3000                20 
+
+
+
+9.Write a query to display the employees who are joining in the 
+  month December from the emp table using like operator.
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE HIREDATE LIKE '___12%';
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7369 SMITH    CLERK         7902 17-12-80        800                20 
+    7788 SCOTT    ANALYST       7566 09-12-82       3000                20 
+    7900 JAMES    CLERK         7698 03-12-81        950                30 
+    7902 FORD     ANALYST       7566 03-12-81       3000                20 
+
+
+10.Write a query to display the employees who are joining in 
+  JAN or DEC month?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE HIREDATE LIKE '___12%' OR HIREDATE LIKE '___01%';
+
+   EMPNO ENAME     JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ __________ _______ ___________ _______ _______ _________ 
+    7369 SMITH     CLERK         7902 17-12-80        800                20 
+    7788 SCOTT     ANALYST       7566 09-12-82       3000                20 
+    7876 ADAMS     CLERK         7788 12-01-83       1100                20 
+    7900 JAMES     CLERK         7698 03-12-81        950                30 
+    7902 FORD      ANALYST       7566 03-12-81       3000                20 
+    7934 MILLER    CLERK         7782 23-01-82       1300                10 
+
+
+11.Write a query to display the employee records whose name started
+   and ended with S?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE 'S%S';
+
+12.Write a query to display the employee records whose name 
+   starting with VOWEL?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP WHERE ENAME LIKE'A%' OR ENAME LIKE'E%' OR ENAME LIKE'I%' OR ENAME LIKE'O%' O
+R ENAME LIKE'U%';
+
+   EMPNO ENAME    JOB             MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ ___________ _______ ___________ _______ _______ _________ 
+    7499 ALLEN    SALESMAN       7698 20-02-81       1600     300        30 
+    7876 ADAMS    CLERK          7788 12-01-83       1100                20 
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+mixed query
+-----------
+1.Write a query To display employee who are working as a 
+  MANAGER,CLERK and 
+  earning salary between 1500 and 3000 and
+  joined in 1981 year and 
+  not working in deptno 10 or 20?
+
+SOLUTION:
+============================================================================
+
+SQL> SELECT * FROM EMP 
+     WHERE 
+     JOB IN('MANAGER','CLERK') AND 
+     (SAL BETWEEN 1500 AND 3000) AND 
+     HIREDATE LIKE '%81' AND 
+     DEPTNO NOT IN(10,20);
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7698 BLAKE    MANAGER       7839 01-05-81       2850                30 

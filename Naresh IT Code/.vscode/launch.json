@@ -4,6 +4,13 @@
             "type": "java",
             "name": "Test",
             "request": "launch",
+            "mainClass": "Test.Test",
+            "projectName": "Naresh IT Code_76ef7303"
+        },
+        {
+            "type": "java",
+            "name": "Test",
+            "request": "launch",
             "mainClass": "Java.Test",
             "projectName": "Naresh IT Code_76ef7303"
         },

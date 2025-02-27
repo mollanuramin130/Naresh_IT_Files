@@ -1,0 +1,153 @@
+                       GROUP FUNCTIONS Task
+                     =========================
+
+1.find sum of salaries of all employees from emp table?
+
+SOLUTION:
+===============================================================
+SQL> SELECT SUM(SAL) AS TOTAL_SALARY FROM EMP;
+
+   TOTAL_SALARY 
+_______________ 
+          29025 
+
+
+2.find sum of salaries of all managers from emp table?
+
+SOLUTION:
+===============================================================
+
+SQL> SELECT SUM(SAL) AS TOTAL_MANAGER_SALARY FROM EMP WHERE JOB='MANAGER';
+
+   TOTAL_MANAGER_SALARY 
+_______________________ 
+                   8275 
+
+
+3.find  sum of salaries of  deptno 10,30 from table?
+
+SOLUTION:
+===============================================================
+SQL> SELECT SUM(SAL) AS DEPT_10_AND_30_TOTAL_SALARY FROM EMP WHERE DEPTNO IN(10,30);
+
+   DEPT_10_AND_30_TOTAL_SALARY 
+______________________________ 
+                         18150 
+
+
+4.find average salaries of all employees from emp table?
+
+SOLUTION:
+===============================================================
+SQL> SELECT TRUNC(AVG(SAL),2) AS "AVERAGE SALARY" FROM EMP;
+
+   AVERAGE SALARY 
+_________________ 
+          2073.21 
+
+SQL> SELECT ROUND(AVG(SAL),2) AS "AVERAGE SALARY" FROM EMP;
+
+   AVERAGE SALARY 
+_________________ 
+          2073.21 
+
+
+5.find average salaries of all clerks from emp table?
+
+SOLUTION:
+===============================================================
+SQL> SELECT ROUND(AVG(SAL),2) AS AVERAGE_SALARY_OF_CLERK FROM EMP WHERE JOB='CLERK';
+
+   AVERAGE_SALARY_OF_CLERK 
+__________________________ 
+                    1037.5 
+
+
+6.find the minimum salary in the table? 
+
+SOLUTION:
+===============================================================
+SQL> SELECT MIN(SAL) AS MINIMUM_SALARY FROM EMP;
+
+   MINIMUM_SALARY 
+_________________ 
+              800 
+
+
+7.find the maximum salary in emp table?
+
+SOLUTION:
+===============================================================
+SQL> SELECT MAX(SAL) AS MAXIMUM_SALARY FROM EMP;
+
+   MAXIMUM_SALARY 
+_________________ 
+             5000 
+
+
+8.find the no of employees in emp table?
+
+SOLUTION:
+===============================================================
+SQL> SELECT COUNT(*) AS NUMBER_OF_EMP FROM EMP;
+
+   NUMBER_OF_EMP 
+________________ 
+              14 
+
+
+9.find the no of managers in emp table?
+
+SOLUTION:
+===============================================================
+SQL> SELECT COUNT(*) AS NO_OF_MANAGER FROM EMP WHERE JOB='MANAGER';
+
+   NO_OF_MANAGER 
+________________ 
+               3 
+
+
+10.find no of employees in 10,30 departments from emp table?
+
+SOLUTION:
+===============================================================
+SQL> SELECT COUNT(*) AS NO_OF_EMP_IN_DEPT_10_30 FROM EMP WHERE DEPTNO IN(10,30);
+
+   NO_OF_EMP_IN_DEPT_10_30 
+__________________________ 
+                         9 
+
+
+12.Write a query to find the no of employees in 4th quarter?
+
+SOLUTION:
+===============================================================
+SQL> SELECT COUNT(*) AS NO_OF_EMP_IN_4QTR FROM EMP WHERE TO_CHAR(HIREDATE,'Q')=4;
+
+   NO_OF_EMP_IN_4QTR 
+____________________ 
+                   5 
+
+SQL> SELECT COUNT(*) AS NO_OF_EMP_IN_4QTR FROM EMP WHERE TO_CHAR(HIREDATE,'Q')='4';
+
+   NO_OF_EMP_IN_4QTR 
+____________________ 
+                   5 
+
+
+Count(column name):- It counts number of not null values within
+==================      a column. 
+
+13.find how many employees are getting commission?
+
+SOLUTION:
+===============================================================
+SQL> SELECT COUNT(COMM) AS NULL_ROW_ELIMINATE FROM EMP;
+
+   NULL_ROW_ELIMINATE 
+_____________________ 
+                   4 
+
+
+
+

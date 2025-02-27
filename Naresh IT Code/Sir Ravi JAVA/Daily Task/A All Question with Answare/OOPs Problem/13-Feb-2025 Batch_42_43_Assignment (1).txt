@@ -1,0 +1,177 @@
+Program 01 :
+------------
+A BLC (Business Logic Class) called Student is given to you.
+Instance Variables: 
+studentId :int
+studentName : String
+marks: int
+grade: char
+
+method : calculateGrade():public:void
+
+Create a method public void setStudentData() with the parameters: studentId, studentName, marks.
+
+Note that grade is not set through method because it is a calculated value.
+
+Methods :
+displayDetails(): This method should return a String with  the details of the student in the following format:
+Student [name=John Smith, studentId=123, marks=95, grade=A] 
+
+calculateGrade(): This is a public method that calculates the grade based on the marks that is set. 
+If marks is above 90, grade is set to A. 
+If marks is between 81 and 90, grade is set to B, 
+if marks is between 71 and 80, grade is set to C, 
+if marks is between 61 and 70, grade is set to D, 
+if marks is less than 61, grade is set to E.
+Use this method when you need to set or reset grade.
+
+An ELC(Executable Logic class) Tester with main method is given to you to test your code.
+
+Solution:
+======================================================
+
+Student.java
+
+package com.ssnmarket.OOPs_Program.Feb_13_2025.Program1;
+
+public class Student {
+
+	public static void main(String[] args) {
+		StudentDetails nurDetails =new StudentDetails();
+		
+
+nurDetails.setStudentData(102, "Nur Amin Molla", 50);
+		
+		nurDetails.calculateGrade();
+		System.out.println(nurDetails.displayDetails());
+	}
+
+}
+
+StudentDetails.java
+
+
+package com.ssnmarket.OOPs_Program.Feb_13_2025.Program1;
+
+public class StudentDetails {
+	int studentId;
+	String studentName;
+	int marks;
+	char grade;
+	
+	public void setStudentData(int id,String name,int mark) {
+		studentId=id;
+		studentName=name;
+		marks=mark;
+	}
+	
+	public void calculateGrade() {
+		if(marks>=90) {
+			grade='A';
+		}
+		else if (marks>=80 && marks<90) {
+			grade='B';
+		}
+		else if (marks>=70 && marks<80	) {
+			grade='C';
+		}
+		else if (marks>=60 && marks<70) {
+			grade='D';
+		}
+		else {
+			grade='E';
+		}
+	}
+	
+	public String displayDetails() {
+		return "Student [name= "+studentName+", studentId= "+studentId+", marks= "+ marks+", grade= "+grade+"]";
+	}
+	
+}
+
+
+Program 02 :
+------------
+Create a BLC class Employee class with properties 
+
+String firstName
+String lastName
+int employeeId
+double salary 
+int noOfProject
+
+
+Create a setEmployeeData() method with 5 parameters to initialize all the instance variables.
+
+Implement calculateSalary() method that will add extra ammount in salary based on NoOfProject by using following criteria.
+
+NoOfProject is more than 5 and less that 10 then add 5000.
+NoOfProject is more than 10 and less that 20 then add 10000.
+NoOfProject is more than 20 then add 15000. 	
+
+ Take a method called displayDetails() to display the salary.
+
+ Take an ELC class Tester to test your logic.
+
+Employee.java
+
+package com.ssnmarket.OOPs_Program.Feb_13_2025.Program2;
+
+public class Employee {
+
+	public static void main(String[] args) {
+		EmployeeDetails nurEmployeeDetails=new EmployeeDetails();
+		
+	nurEmployeeDetails.setEmployeeData("Nur","Amin"	, 1002,56000, 11);	
+	nurEmployeeDetails.calculateSalary();
+	System.out.println(nurEmployeeDetails.displayDetails());
+	EmployeeDetails shadabEmployeeDetails=new EmployeeDetails();
+	
+	shadabEmployeeDetails.setEmployeeData("Shadab","Khan"	, 2001,55000, 9);	
+	shadabEmployeeDetails.calculateSalary();
+	System.out.println(shadabEmployeeDetails.displayDetails());
+		
+	}
+
+}
+
+EmployeeDetails.java
+
+package com.ssnmarket.OOPs_Program.Feb_13_2025.Program2;
+
+public class EmployeeDetails {
+	String firstName;
+	String lastName;
+	int employeeId;
+	double salary;
+	int noOfProject;
+	
+	public void setEmployeeData(String firstName,String lastName,int id,double salary,int noOfProject) {
+		this.firstName=firstName;
+		this.lastName=lastName;
+		employeeId=id;
+		this.salary=salary;
+		this.noOfProject=noOfProject;
+	}
+	public void calculateSalary() {
+		if(noOfProject>=5 && noOfProject<10) {
+			salary=salary+5000;
+		}
+		else if (noOfProject>=10 && noOfProject<20) {
+			salary=salary+10000;
+		}
+		else {
+			salary+=15000;
+		}
+	}
+	
+	public String displayDetails() {
+		return "["
+				+ "\nEmployee Name is: "+firstName+" "+lastName
+				+ "\nEmployee ID is:"+employeeId	
+				+ "\nSalary: "+salary
+				+ "\nNumber of Project done:"
+				+noOfProject+ "\n]";
+	}
+}
+

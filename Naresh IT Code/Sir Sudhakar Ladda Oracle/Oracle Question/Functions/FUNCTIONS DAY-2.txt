@@ -1,0 +1,331 @@
+                            Functions TASK
+                         ---------------------
+
+SUBSTR():-
+========
+
+1. Write a query to display the employees whose ename second 
+    letter would be LA from emp table using 
+    substring function?
+
+SOLUTION:
+============================================================================================
+SQL> SELECT * FROM EMP WHERE SUBSTR(ENAME,2,2)='LA';
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO MAIL_ID           
+________ ________ __________ _______ ___________ _______ _______ _________ _________________ 
+    7698 BLAKE    MANAGER       7839 01-05-81       2850     500        30 bla698@tcs.com    
+    7782 CLARK    MANAGER       7839 09-06-81       2450     500        10 cla782@tcs.com    
+
+
+2. Write a query to display employee records whose name ended
+   with S by using substring function?
+
+SOLUTION:
+============================================================================================
+SQL> SELECT * FROM EMP WHERE SUBSTR(ENAME,-1,1)='S';
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO MAIL_ID           
+________ ________ __________ _______ ___________ _______ _______ _________ _________________ 
+    7566 JONES    MANAGER       7839 02-04-81       2975     500        20 jon566@tcs.com    
+    7876 ADAMS    CLERK         7788 12-01-83       1100     500        20 ada876@tcs.com    
+    7900 JAMES    CLERK         7698 03-12-81        950     500        30 jam900@tcs.com    
+
+
+3. Write a query to display employee records whose
+    names are started with vowel by using 
+    substring function?
+
+SOLUTION:
+============================================================================================
+SQL> SELECT * FROM EMP WHERE SUBSTR(ENAME,1,1) IN('A','E','I','O','U','a','e','i','o','u');
+
+   EMPNO ENAME    JOB             MGR HIREDATE        SAL    COMM    DEPTNO MAIL_ID           
+________ ________ ___________ _______ ___________ _______ _______ _________ _________________ 
+    7499 ALLEN    SALESMAN       7698 20-02-81       1600     800        30 all499@tcs.com    
+    7876 ADAMS    CLERK          7788 12-01-83       1100     500        20 ada876@tcs.com    
+
+
+4. Write a query to display employee records whose name
+   started and end with same letter by using 
+   substring function?
+
+SOLUTION:
+============================================================================================
+SQL> SELECT * FROM EMP WHERE SUBSTR(ENAME,1,1)=SUBSTR(ENAME,-1,1);
+
+   EMPNO ENAME     JOB          MGR HIREDATE        SAL    COMM    DEPTNO MAIL_ID           
+________ _________ ________ _______ ___________ _______ _______ _________ _________________ 
+    7876 ADAMSA    CLERK       7788 12-01-83       1100     500        20 ada876@tcs.com    
+
+
+5. Write a query to display employee records whose name
+   started and end with vowel letter by using
+   substring function?
+
+SOLUTION:
+============================================================================================
+SQL> SELECT * FROM EMP WHERE SUBSTR(ENAME,1,1)IN('A','E','I','O','U','a','e','i','o','u') AND SUBST
+R(ENAME,-1,1)IN('A','E','I','O','U','a','e','i','o','u');
+
+   EMPNO ENAME     JOB          MGR HIREDATE        SAL    COMM    DEPTNO MAIL_ID           
+________ _________ ________ _______ ___________ _______ _______ _________ _________________ 
+    7876 ADAMSA    CLERK       7788 12-01-83       1100     500        20 ada876@tcs.com    
+
+-----------------------------------------------------------------------------------------------
+
+6.Check the following lpad() and rpad() queries output
+
+SQL>select lpad('kiran',10,'#") from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT LPAD('kiran',10,'#') FROM DUAL;
+
+LPAD('KIRAN',10,'#')    
+_______________________ 
+#####kiran              
+
+
+SQL>select lpad('gowtham',10,'$@') from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT LPAD('GOWTHAN',10,'$@') FROM DUAL;
+
+LPAD('GOWTHAN',10,'$@')    
+__________________________ 
+$@$GOWTHAN                 
+
+
+SQL>select lpad('X',4,'X') from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT LPAD('X',4,'X') FROM DUAL;
+
+LPAD('X',4,'X')    
+__________________ 
+XXXX               
+
+
+SQL> select rpad('ABCD',10,'#')from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT RPAD('ABCD',10,'#') FROM DUAL;
+
+RPAD('ABCD',10,'#')    
+______________________ 
+ABCD######             
+
+
+SQL> select rpad('kiran',10)||'hello' from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT RPAD('KIRAN',10)|| 'HELLO' FROM DUAL;
+
+RPAD('KIRAN',10)||'HELLO'    
+____________________________ 
+KIRAN     HELLO              
+
+
+SQL>select rpad(ename,20)||sal from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT RPAD(ENAME,20)|| SAL FROM EMP;
+
+RPAD(ENAME,20)||SAL         
+___________________________ 
+SMITH               800     
+ALLEN               1600    
+WARD                1250    
+JONES               2975    
+MARTIN              1250    
+BLAKE               2850    
+CLARK               2450    
+SCOTT               3000    
+KING                5000    
+TURNER              1500    
+ADAMSA              1100    
+JAMES               950     
+FORD                3000    
+MILLER              1300    
+
+7.Display the message if the account no is 1234567473 
+
+  output--->ammount debited from XXXXXX7473
+
+SOLUTION:
+============================================================================================
+SQL> SELECT 'Ammount debited from '||LPAD('X',6,'X')||SUBSTR('1234567473',-4) FROM DUAL;
+-----------------------------------------------------------------------------------------------
+
+8.Check the following query outputs
+
+ *
+***Translate() and Replace():-
+ * =========================
+
+Translate() is used to replaces character by character 
+where as replace() is used to replaces character by string (or)
+string by string.
+
+
+SQL> select translate('india','in','xy'),replace('india','in','xy')
+ from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT TRANSLATE('INDIAN','IN','XY'), REPLACE('INDIAN','IN','XY') FROM DUAL;
+
+TRANSLATE('INDIAN','IN','XY')    REPLACE('INDIAN','IN','XY')    
+________________________________ ______________________________ 
+XYDXAY                           XYDIAN                         
+
+
+SQL> select translate('JOHN','H','N') from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT TRANSLATE('JOHN','H','N') FROM DUAL;
+
+TRANSLATE('JOHN','H','N')    
+____________________________ 
+JONN                         
+
+
+SQL> select replace('JOHN','H','N') from dual;
+
+SQL> SELECT REPLACE('JOHN','H','N') FROM DUAL;
+
+REPLACE('JOHN','H','N')    
+__________________________ 
+JONN                       
+
+
+SQL> select translate('JOHN','H'.'AMMERPET') from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT TRANSLATE('JOHN','H','AMMERPET') FROM DUAL;
+
+TRANSLATE('JOHN','H','AMMERPET')    
+___________________________________ 
+JOAN                                
+
+SQL> SELECT TRANSLATE('JOHNHHHHHHHH','H','AMMERPET') FROM DUAL;
+
+TRANSLATE('JOHNHHHHHHHH','H','AMMERPET')    
+___________________________________________ 
+JOANAAAAAAAA                                
+
+
+SQL> select replace('JOHN','H','AMMERPET') from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT REPLACE('JOHNHH','H','AMMERPET') FROM DUAL;
+
+REPLACE('JOHNHH','H','AMMERPET')    
+___________________________________ 
+JOAMMERPETNAMMERPETAMMERPET         
+
+
+SQL> select translate('ABCDEF','FEDCBA','123456');
+
+SOLUTION:
+============================================================================================
+SQL> SELECT TRANSLATE('ABCDEF','FEDCBA','123456') FROM DUAL;
+
+TRANSLATE('ABCDEF','FEDCBA','123456')    
+________________________________________ 
+654321                                   
+
+
+SQL> select replace('ABC',' ','india')from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT REPLACE('ABC',' ','INDIA') FROM DUAL;
+
+REPLACE('ABC','','INDIA')    
+____________________________ 
+ABC                          
+
+SQL> SELECT REPLACE('A C',' ','INDIA') FROM DUAL;
+
+REPLACE('AC','','INDIA')    
+___________________________ 
+AINDIAC                     
+
+
+Note: in oracle whenever we are not using third parameter
+      in replace function then second parameter specified
+      character or string perminently removed from the
+      given first parameter.
+
+
+SQL> select replace('SSMISSTHSS','S') from dual;
+
+SOLUTION:
+============================================================================================
+QL> SELECT REPLACE('SSMISSTHSS','S') FROM DUAL;
+
+REPLACE('SSMISSTHSS','S')    
+____________________________ 
+MITH                         
+
+
+SQL>select replace('SSMISSTHS','THS') from dual;
+
+SOLUTION:
+============================================================================================
+SQL> SELECT REPLACE('SSMISSTHSS','THS') FROM DUAL;
+
+REPLACE('SSMISSTHSS','THS')    
+______________________________ 
+SSMISSS                        
+
+
+9. Write a query to count number of times that particular I occurred
+    within given string INDIA by using length(),replace()function?
+
+
+NOTE:-If you want to count number of times particular character
+      occurs within a given string then also we are using 
+      replace function along with length function.
+
+SOLUTION:
+============================================================================================
+SQL> SELECT LENGTH('INDIA') - LENGTH(REPLACE('INDIA', 'I', '')) AS I_Count FROM DUAL;
+
+   I_COUNT 
+__________ 
+         2 
+
+--------------------------------------------------------------------------------------------
+10.Check the ltrim ,rtrim and trim queries in class notes?
+
+SOLUTION:
+============================================================================================
+SQL> SELECT LTRIM('***NUR***','*') FROM DUAL;
+
+LTRIM('***NUR***','*')    
+_________________________ 
+NUR***                    
+
+SQL> SELECT RTRIM('***NUR***','*') FROM DUAL;
+
+RTRIM('***NUR***','*')    
+_________________________ 
+***NUR                    
+
+SQL> SELECT TRIM('*' FROM '***NUR***') FROM DUAL;
+
+TRIM('*'FROM'***NUR***')    
+___________________________ 
+NUR                         
+

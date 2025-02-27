@@ -1,0 +1,7366 @@
+ORACLE :-
+
+1  SQL (structured query language)
+ 2 PL/SQL (procedural language/SQL)
+
+ Database :- 
+ -----------------
+
+  =>  a database is a organized collection of interrelated data.
+        for example a bank db stores data related to customers,
+        accounts,transactions and loans etc and a univ db stores
+        data related to students,courses,faculty etc.
+
+  Types of Databases :- 
+  -----------------------------
+
+  1  OLTP DB (online transaction processing)
+  2  OLAP DB (online analytical processing)
+
+ => organizations uses OLTP db for storing day-to-day transactions
+ => organizations uses OLAP db for analysis.
+ => OLTP stores current data and OLAP stores historical data.
+ => day-to-day operations on db includes 
+
+    C	create
+    R	read
+    U	update
+    D	delete
+ 
+ DBMS :- 
+ ------------
+
+  => Database Management System.
+  => It is a software used to create and to manage database.
+  => DBMS is an interface between user and database.
+   
+       USER--------------------DBMS------------------DB
+
+  Evolution of DBMS :- 
+  ---------------------------
+
+ 	1960		FMS (File Mgmt System)
+
+	1970		HDBMS (Hierarchical DBMS)
+			NDBMS (Network DBMS)
+
+	1980		RDBMS (Relational DBMS)
+
+	1990		ORDBMS (Object Relational DBMS)
+
+ RDBMS :- 
+ -------------
+
+  => RDBMS concepts introduced by E.F.CODD 
+  => E.F.CODD introduced 12 rules called codd rules
+  => a dbms software that supports all 12 rules is called perfect rdbms
+ 
+ Information rule :- 
+ ------------------------
+ 
+ => according to information rule data must be organized in tables
+      i.e. rows and columns 
+
+      customers
+      cid	cname	city     => columns/fields/attributes
+      100	sachin	mum
+      101	rahul	del
+      102	vijay	hyd    => row/record/tuple
+
+       Database =   collection of tables
+       Table        =   collection of rows & cols
+       Row         =   collection of field values
+       Column    =   collection of values belongs to one field
+
+  => every table must contain primary key to uniquely identify records
+
+        ex :-  accno,empid,aadharno,panno,voterid
+
+ RDBMS features :- 
+ ---------------------------
+
+ 1  easy to access and manipulate data
+ 2  less redundency (duplication of data)
+ 3  more security 
+ 4  gurantees data quality or data consistency
+ 5  supports data sharing
+ 6  supports transactions 
+
+RDBMS softwares :- 
+---------------------------
+
+SQL Databases :-
+------------------------
+
+ORACLE			from oracle corp
+MYSQL			from oracle corp
+SQL SERVER                           from microsoft
+DB2                                           from ibm
+RDS                                          from amazon
+POSTGRESQL                         from postgresql development
+
+ ORDBMS :- 
+ ------------------
+
+  => object relational dbms
+  => It is the combination of rdbms & oops 
+
+            ordbms =  rdbms + oops (reusability)
+
+  => rdbms doesn't support reusability but ordbms supports reusability
+  => ordbms supports reusability by using UDT (user define type)
+
+ ORDBMS softwares :- 
+ ---------------------------------
+
+  oracle upto 7 ver  rdbms
+  oracle from 8 ver  ordbms 
+                  
+summary :- 
+---------------
+
+what is db ?
+what is dbms ?
+what is rdbms ?
+what is ordbms ?
+
+===========================================================
+
+			ORACLE
+			------------
+
+  => oracle is  basically a rdbms software and also supports features of
+       ordbms and used to create and to manage database.
+
+ => oracle can be used for both db development and administration
+
+ versions :- 
+ --------------
+   
+   2,3,4,5,6,7,8i,9i,10g,11g,12c,18c,19c,21c,23c
+
+                i  =>  internet
+                g =>  grid
+                c =>  cloud
+  
+ => before 8 oracle supports only desktop application and from 8
+      onwards oracle supports internet applications. 
+
+ => grid means collection of servers , from 10g onwards oracle db can 
+      be accessed through multiple servers and the advantage of grid is
+      it improves db availability.
+ 
+ => from 12c onwards oracle db can be deployed in 
+
+        1  on premises 
+        2  on cloud
+
+ => in "on premises" db is deployed in server managed by client.
+ => in " on cloud " db is deployed in server managed by cloud service provider for ex amazon
+ => cloud reduces initial investment for client.
+
+ CLIENT / SERVER Architecture :- 
+ ---------------------------------------------
+
+ 1  server
+ 2 client
+
+ SERVER  :- 
+ ------------
+
+=> server is a system where oracle is installed and running
+=> inside the server oracle manages
+
+    1 DB
+    2 INSTANCE
+
+ => DB is created in hard disk and acts as permanent storage
+ => INSTANCE is created in ram and acts as temporary storage
+  	
+CLIENT :-
+--------------
+  => client is also a system from where users can
+
+    1  connects to server
+    2  submit requests to server
+    3  receives response from server
+
+ client tools :- 
+ ----------------
+
+  SQLPLUS (CUI based)  (character user interface)
+  SQL DEVELOPER      (GUI based)
+
+  SQL :- 
+  ---------
+
+ => SQL stands for structured query language
+ => It is a language used to communicate with oracle
+ => user communicates with oracle by sending commands called queries
+ => a query is a command / question given to oracle to perform some operation over db
+ => sql is introduced by IBM and initial name of this language was "sequel"
+      and later it is renamed to sql.
+ => sql is common to all relational dbms
+
+   user-----sqlplus-----------------------sql-------------------------oracle-------------db
+
+   user----mysqlworkbench---------------sql-----------------mysql-----------db
+
+  user-------ssms----------------------------sql-------------------sql server--------db
+
+  user------pgadmin---------------------------sql------------------postgresql---------db
+
+ => based on operations over db sql is categorized into following
+      sublanguages.
+
+       DDL (DATA DEFINITION LANG)
+       DML (DATA MANIPULATION LANG)
+       DQL (DATA QUERY LANG)
+       TCL  (TRANSACTION CONTROL LANG)
+       DCL  (DATA CONTROL LANG)
+
+		 	SQL
+	
+	DDL	DML	DQL	TCL	DCL
+	create	insert	select	commit	grant
+	alter	update		rollback	revoke
+	drop	delete		savepoint
+	truncate	merge
+	rename	insert all
+	flashback
+	purge	
+
+ => sql commands are not case sensitive
+ => commands must be terminated with  ; 
+
+ DATA & DATA DEFINITION :- 
+ --------------------------------------	
+
+ EMPID	ENAME	SAL  => DATA DEFINITION / METADATA
+ 100	SACHIN	5000  => DATA
+
+SCHEMA :- 
+----------------
+
+ =>  a user in oracle db is called schema
+ => objects created by user are called schema objects
+
+  SERVER
+           DATABASE
+                      USERS
+                             TABLES
+                                        DATA
+
+ SERVER
+          ORCL
+                SYS/MANAGER                                    (DBA)
+                SYSTEM/MANAGER                            (DBA)
+
+How to connect to oracle :- 
+--------------------------------------
+
+ => open sqlplus and enter username and password
+
+          USERNAME  :-  SYSTEM
+          PASSWORD :-  MANAGER
+
+          OR
+
+          USERNAME :-  SYSTEM/MANAGER
+
+creating user / account / schema :- 
+---------------------------------------------- 
+
+=> only DBAs are having permissions to create new users
+
+ STEP 1 :-  connect as DBA
+
+                 USERNAME :-  SYSTEM/MANAGER
+
+ STEP 2 :-  create new user
+
+   syntax :- 
+
+     CREATE USER  <name> IDENTIFIED BY <pwd>
+     DEFAULT TABLESPACE USERS
+     QUOTA UNLIMITED ON USERS ;
+
+ Example :- 
+ 
+     SQL>CREATE USER BATCH39 IDENTIFIED BY ORACLE
+              DEFAULT TABLESPACE USERS
+              QUOTA UNLIMITED ON USERS ;
+
+  NOTE :- a user is created with name BATCH39 but the user is dummy
+  because user is not having not having permissions to connect to db
+  and create tables.
+
+ STEP 3 :-  granting permissions to user
+
+    SQL>GRANT CONNECT,RESOURCE TO BATCH39 ; 
+
+                    CONNECT    => to connect to db
+                    RESOURCE => to create tables
+                    DBA              => all permissions
+
+Changing password :- 
+-------------------------------
+
+ => both user & dba can change password
+
+ by user :-      (BATCH39/ORACLE)
+ -------------
+
+SQL> PASSWORD
+Changing password for BATCH39
+Old password: ORACLE
+New password: TIGER
+Retype new password: TIGER
+Password changed
+ 
+by dba :-
+-----------           
+
+SQL>ALTER USER BATCH39 IDENTIFIED BY NARESH ; 
+ 
+ ===================================================================
+
+DATATYPES IN ORACLE :- 
+-------------------------------------
+
+ => a datatype specifies 
+
+  1  type of the data allowed in a column
+  2  amount of memory allocated for column 
+
+ 			DATATYPES
+
+        CHAR		NUMERIC		DATE		BINARY
+
+ASCII	    UNICODE	number(p)		date		bfile
+			number(p,s)	timestamp		blob
+char	    nchar
+varchar2       nvarchar2
+long               nclob
+clob
+
+ASCII types :- 
+------------------
+
+  => ascii types allows ascii chars (256) that includes a-z,A-Z,0-9,special chars 
+
+ char(size) :- 
+ ----------------
+
+  => allows characters upto 2000
+  => char is recommended for fixed length char columns
+         
+    ex :-    NAME     CHAR(10)
+
+              SACHIN - - - -
+                              wasted 
+
+               RAVI - - - - - -
+                            wasted 
+
+   => In char datatype extra bytes are wasted , so char is not recommended for
+        variable length fields and char is recommended for fixed length fields.
+
+         ex :-    GENDER     CHAR(1)
+
+                     M
+                     F
+
+                    STATE_CODE   CHAR(2)
+
+                    AP
+                    TG
+
+                     PANNO            CHAR(10)
+
+varchar2(size) :-
+-------------------------
+
+  => allows characters upto 4000
+  => it is recommended for variable length fields
+ 
+  ex  :-   NAME   VARCHAR2(10)
+
+             SACHIN - - - -
+                              released
+             
+            EMAILID    VARCHAR2(30)
+
+   LONG :- 
+  --------------
+
+  => allows character data upto 2GB 
+  
+         ex  :-  REVIEW    LONG
+
+ CLOB :- 
+ -------------
+
+   => CLOB stands for character large object
+   => allows characters upto 4GB.
+
+  ex :-   TEXT     CLOB 
+
+ NCHAR/NVARCHAR2/NCLOB :- 
+ ---------------------------------------------
+
+   => allows unicode chars (65536) that includes all ascii chars and also chars 
+        belongs to different languages.
+
+ NUMBER(P) :- 
+ -------------------
+
+ => allows numbers without decimal point (integer)
+ => number can be upto 38 digits
+ 
+      ex  :-    EMPID      NUMBER(4)
+
+                  10
+                  100
+                  1000
+                  10000   => not allowed
+
+                  AADHARNO    NUMBER(12)
+
+                  MOBILE          NUMBER(10)
+
+                  ACCNO           NUMBER(11)
+
+07-AUG-24
+
+ NUMBER(P,S) :- 
+ ------------------------
+
+   => allows numbers with decimal point (float)
+
+      P  => precision  =>   total no of digits allowed
+      S  =>  scale       =>   no of digits allowed after decimal
+
+   ex   :-           SALARY    NUMBER(7,2)
+
+                       5000     
+                       5000.55
+                       50000.55
+                       500000.55   => NOT ALLOWED 
+   
+                         5000.5678  => ALLOWED  =>  5000.57
+                         5000.5638  => ALLOWED  =>  5000.56
+
+                         BALANCE  NUMBER(12,4)
+                       
+                         SAVG        NUMBER(5,2)                   
+
+    NOTE :-  if before decimal exceeds number is not accepted
+                   if after decimal exceeds number is rounded
+
+ 
+ DATE :- 
+ -------------
+
+   => date datatype allows date & time
+   => time is optional , if not entered then oracle stores 12:00AM
+   => default date format in oracle is dd-mon-yy / yyyy 
+
+          ex  :-     DOB       DATE
+
+                       07-AUG-03     => 17-AUG-2003 00:00:00
+                       10-OCT-98     =>  10-OCT-2098 00:00:00
+                       10-OCT-1998  => 10-OCT-1998 00:00:00
+
+ TIMESTAMP :- 
+  --------------------
+
+  => allows date ,time and also milliseconds
+
+   ex :-     T      TIMESTAMP 
+
+               07-AUG-24  9:50:20.123
+               ---------------  ---------- -------
+                  DATE        TIME      MS 
+
+Binary Types :- 
+--------------------
+
+=> binary types are used for storing multimedia objects like audio,video,images 
+=> oracle supports 2 binary types 
+
+   1  BFILE (Binary File)
+   2  BLOB  (Binary Large Object)
+
+ => BFILE is called external lob because lob is stored outside db but db stores path.
+ => BLOB is called internal lob because lob is stored inside db.
+ => if security is njot important then use BFILE , if security is important then use BLOB.
+
+CREATING TABLES :- 
+-----------------------------
+
+syntax :- 
+
+  CREATE TABLE <tabname>
+  (
+     COLNAME    DATATYPE(SIZE) ,
+     COLNAME    DATATYPE(SIZE),
+     ---------------------------------
+  );
+
+ Rules :- 
+ 
+ 1  tabname should start with alphabet
+ 2  tabname should not contain spaces & special chars but   allows   _    $    #
+ 3  tabname can be upto 128 chars
+ 4  table can have max 1000 columns 
+ 5  no of rows unlimited 
+
+                 tablename :-    123emp     invalid
+                                         emp 123    invalid
+                                         emp*123    invalid
+                                         emp_123   valid
+
+Example :- 
+
+  => create table with following structure ?
+
+      EMP
+      EMPID    ENAME    JOB   SAL    HIREDATE    DNO
+
+         CREATE TABLE EMP
+         (
+            EMPID         NUMBER(4) ,
+            ENAME        VARCHAR2(10),
+            JOB              VARCHAR2(10),
+            SAL               NUMBER(7,2),
+            HIREDATE    DATE,
+            DNO              NUMBER(2)
+          );
+
+  => above command created table structure / defintion / metadata that includes columns,
+       datatype and size.
+
+  DESC :-        (DESCRIBE)
+  ------------
+ 
+   => command to see the structure of the table             
+   
+             syntax :-         DESC  <tabname>
+
+             Ex :-                DESC  EMP 
+
+		EMPID                 NUMBER(4)
+ 		ENAME                VARCHAR2(10)
+ 		JOB                      VARCHAR2(10)
+ 		SAL                       NUMBER(7,2)
+ 		HIREDATE           DATE
+		 DNO                    NUMBER(2)
+
+ INSERTING DATA INTO TABLE :- 
+------------------------------------------------
+
+ => "insert" command is used to insert data into table.
+ => insert command creates new row
+ => we can insert 
+
+   1 single row
+   2 mutiple rows 
+
+ inserting single row :- 
+ ---------------------------
+
+syn :-
+---------
+
+    INSERT INTO <tabname> VALUES(v1,v2,v3,-----------);
+
+ Ex :- 
+
+ SQL> INSERT INTO EMP VALUES(100,'sachin','clerk',5000,'07-aug-24',20);
+ SQL> INSERT INTO EMP VALUES(101,'arvind','manager',8000,SYSDATE,10);
+
+ inserting multiple rows :- 
+ ----------------------------------
+
+ => insert command can be executed  multiple times with different values using
+      variables prefixed with "&". 
+
+       SQL>INSERT INTO EMP 
+                   VALUES(&EMPNO,&ENAME,&JOB,&SAL,&HIREDATE,&DNO);
+
+Enter value for empno: 102
+Enter value for ename: 'rahul'
+Enter value for job: 'analyst'
+Enter value for sal: 9000
+Enter value for hiredate: '05-sep-20'
+Enter value for dno: 30
+
+1 row created.
+
+SQL> /   ( executes previous command)
+
+Enter value for empno: 103
+Enter value for ename: 'kumar'
+Enter value for job: 'clerk'
+Enter value for sal: 4000
+Enter value for hiredate: '15-mar-19'
+Enter value for dno: 20
+
+1 row created.
+
+8-aug-24 
+
+ inserting  nulls :- 
+ -----------------------
+
+  => a null means blank or empty
+  => it is not equal to 0 or space
+  => nulls are inserted  when value is not present or unknown
+  => nulls can be inserted in two ways 
+
+ method 1 :- 
+ ---------------
+
+   INSERT INTO EMP VALUES(104,'satish','',NULL,'20-APR-18',10);
+
+  method 2 :- 
+ ----------------
+
+   INSERT INTO EMP(EMPID,ENAME,HIREDATE,DNO)
+                              VALUES(105,'vijay','18-JAN-21',30);
+			
+   remaining two fields job,sal are automatically filled with nulls.
+
+NOTE :- 
+
+ => above insert commands inserted data into instance which is temporary storage
+      to save this data execute commit.
+
+         SQL>COMMIT ; 
+
+ => after executing commit then data is copied to db which is permanent storage
+
+ Operators in oracle :- 
+ -----------------------------
+
+     Arithmetic Operators	=>     +   -     *       /      
+     Relational Operators	=>     >   >=    <     <=    =    <>    != 
+     Logical Operators		=>     AND   OR   NOT
+     Speical Operators	=>    BETWEEN
+			         IN
+                                                             LIKE
+                                                             IS
+                                                             ANY 
+                                                             ALL
+                                                             EXISTS
+     Set Operators		=>     UNION
+			          UNION ALL
+			          INTERSECT
+			          MINUS
+
+ Displaying Data :- 
+ -------------------------
+
+ => "select" command is used to display data from table.
+ => we can display all columns and specific columns
+ => we can display all rows and specific rows
+ 
+ syn :-    SELECT columns / *  FROM tabname ; 
+
+                  sql         =    english 
+                  queries  =   sentences
+                  clauses  =   words
+
+                  FROM     =>  specify tablename
+                  SELECT  =>   specify columns 
+                           *      =>   all columns
+
+   =>  display all the data from emp table ?
+
+          SELECT  *  FROM  EMP ; 
+
+  => display employee names and salaries ?
+ 
+         SELECT ENAME,SAL FROM EMP ; 
+
+  => display employee names,jobs and hiredates ?
+
+        SELECT ENAME,JOB,HIREDATE FROM EMP ; 
+
+WHERE clause :- 
+------------------------
+
+ => where clause is used to display specific row/rows from table based on a condition
+
+    SELECT columns / * 
+    FROM tabname
+    WHERE  condition ; 
+
+ condition :- 
+ ------------------
+
+                      COLNAME   OP   VALUE 
+
+  =>  OP must be any relational operator like  =  >   >=   <   <=   =   <> 
+  =>  if cond = true row is selected
+  =>  if cond = false row is not selected 
+
+ examples :- 
+
+   => display employee details whose id = 103  ?
+
+        SELECT * FROM EMP WHERE EMPID = 103 ;
+
+   => display employee details whose name is rahul ?
+
+        SELECT * FROM EMP WHERE ENAME =  'rahul' ; 
+
+       SELECT * FROM EMP WHERE ENAME =  'RAHUL' ;  => no rows 
+
+       NOTE :- in oracle string comparision is case sensitive.
+
+   => display employee details earning more than 5000 ?
+
+         SELECT * FROM EMP WHERE   SAL > 5000 ; 
+
+  => employees joined after 2020  ?
+
+       SELECT  *  FROM EMP WHERE HIREDATE  > 2020 ;  => ERROR
+
+      SELECT  *  FROM EMP WHERE HIREDATE  > '31-DEC-2020 ' ; 
+
+ => employees joined before 2020  ?
+
+    SELECT  *  FROM EMP WHERE HIREDATE   <  '01-JAN-2020'  ; 
+
+=> employees not belongs to 10th dept ?
+
+    SELECT * FROM EMP WHERE DNO <> 10; 
+
+ 9-aug-24
+
+ compound condition :- 
+ -------------------------------
+
+  => multiple conditions combined with AND / OR  operators is called compound condition
+
+           WHERE  COND1   AND   COND2            RESULT
+                              T		  T		T
+	             T		  F		F
+                              F		  T		F
+	             F		  F		F
+		 
+          WHERE   COND1   OR    COND2              RESULT
+                              T                       T                          T
+                              T                       F                          T
+                              F                       T                          T
+                              F                       F                          F
+ 
+     => employees working as clerk,manager ?
+ 
+         SELECT * 
+         FROM EMP
+         WHERE JOB='clerk'  OR JOB='manager' ; 
+    
+  => employees whose id = 100,103,105 ?
+
+        SELECT *
+        FROM EMP
+        WHERE EMPID=100 OR EMPID=103 OR EMPID=105 ; 
+
+ => employees working for 20th dept and working as clerk ?
+
+      SELECT *
+      FROM EMP 
+      WHERE  DNO = 20 AND JOB='clerk' ; 
+
+=> employees belongs to 20th dept working as clerk and earning more than 4000 ?
+
+    SELECT *
+    FROM EMP
+   WHERE DNO=20 AND JOB='clerk' AND SAL>4000 ; 
+
+=> employees earning more than 5000 and less than 10000 ?
+
+     SELECT *
+     FROM EMP
+     WHERE SAL>5000    AND  SAL<10000 ; 
+ 
+ => employees joined in 2020 year ?
+
+    SELECT *
+    FROM EMP
+    WHERE HIREDATE >= '01-JAN-2020'  
+                   AND
+                  HIREDATE <= '31-DEC-2020'  ; 
+
+ => 
+
+   STUDENT
+   SNO	SNAME	S1	S2	S3
+   1	A	80	90	70
+   2	B	30	60	50
+
+ => list of students who are passed ?
+
+    SELECT * 
+    FROM STUDENT
+    WHERE  S1>=35  AND S2>=35 AND S3>=35 ; 
+
+=> list of students who are failed ? 
+
+    SELECT *
+    FROM STUDENT
+    WHERE  S1<35 OR  S2<35 OR S3<35 ; 
+
+ 
+=> employees working as clerk,manager and earning more than 5000 ?
+
+    SELECT *
+    FROM EMP
+    WHERE JOB='clerk' OR job='manager'  AND sal > 5000 ; 
+                   ---------------       -------------------------------------------
+ 
+ => above query returns clerk records earning less than 5000 because 
+      sal>5000 is applied only to managers but not to clerk because
+      operator AND has more priority then operator OR , to control this use ( )
+
+    SELECT *
+    FROM EMP
+    WHERE (JOB='clerk' OR job='manager')  AND sal > 5000 
+
+ IN operator :- 
+ ------------------
+
+  => use IN operator for list comparision 
+  => use IN operator for "=" comparision with multiple values 
+
+             WHERE COLNAME  =  V1,V2,V3,---         INVALID
+
+             WHERE COLNAME  IN (V1,V2,V3,----)     VALID
+ 
+  => employees whose id = 100,103,105 ?
+
+     SELECT *
+     FROM EMP 
+     WHERE EMPID IN (100,103,105) ;
+
+ => employees whose name is sachi,rahul,vijay ?
+
+     SELECT *
+     FROM EMP 
+     WHERE  ENAME IN ('sachin','rahul','vijay') ; 
+
+ => employees   not working for dept 10,20 ?
+
+     SELECT *
+     FROM EMP
+     WHERE DNO  NOT IN (10,20) ;
+
+BETWEEN operator :- 
+--------------------------------
+
+ => use between operator for range comparision
+
+       WHERE COLNAME BETWEEN V1 AND V2  (COL>=V1 AND COL<=V2)
+
+  => employees earning between 5000 and 10000 ?
+
+      SELECT * FROM EMP WHERE SAL BETWEEN 5000 AND 10000 ; 
+
+ => employees joined in 2020 ?
+
+         SELECT *
+         FROM EMP 
+         WHERE HIREDATE BETWEEN '01-JAN-2020' AND '31-DEC-2020' ; 
+
+ => not joined in 2020 ?
+
+        SELECT *
+         FROM EMP 
+         WHERE HIREDATE NOT BETWEEN '01-JAN-2020' AND '31-DEC-2020' ; 
+
+
+     COL=V1
+     OR
+     COL=V2           ===================>    COL  IN (V1,V2,V3,)
+     OR
+     COL=V3 
+
+     COL>=V1
+     AND                 ====================>  COL BETWEEN V1 AND V2 
+     COL<=V2
+
+ => employees working as clerk,manager and earning between 5000 and 10000
+      and working for dept 10,20 and not joined in 2020 year ?
+
+     SELECT *
+     FROM EMP
+     WHERE JOB IN ('clerk','manager')
+                    AND
+                   SAL  BETWEEN 5000 AND 10000
+                   AND
+                   DNO IN (10,20)
+                    AND
+                    HIREDATE NOT BETWEEN '01-JAN-20' AND '31-DEC-20' ; 
+
+=> list of samsung,redmi,realme mobiles price between 10000 and 20000 ?
+
+ products
+ prodid   pname  price  category  brand 
+
+ SELECT *
+ FROM PRODUCTS
+ WHERE BRAND IN ('samsung','redmi','realme')
+                AND
+                PRICE BETWEEN 10000 AND 20000
+                AND
+               CATEGORY='mobiles'  ;
+
+ LIKE operator :- 
+ -----------------------
+
+   => use LIKE operator for pattern comparision
+         
+        ex :-  name starts with 'a'
+                 name ends with 'd'
+                 name contains 'a' 
+
+               WHERE COLNAME LIKE  'PATTERN'
+               
+ => pattern may contain alphabets,digits,special chars and wildcard chars 
+
+    wildcard chars :- 
+    -----------------------
+
+                %          =>    0 or many chars
+
+                 _          =>    exactly 1 char
+
+examples :- 
+
+   => employees name starts with 's' ?
+
+       SELECT * FROM EMP WHERE ENAME LIKE  's%' ; 
+
+  => employees name ends with 'd' ?
+
+       SELECT * FROM EMP WHERE ENAME LIKE  '%d' ; 
+
+  => employees name contains 'a'  ?
+
+       SELECT * FROM EMP WHERE ENAME LIKE '%a%' ;  
+
+   => where 'a' is the 4th char in their name ?
+
+      SELECT * FROM EMP WHERE ENAME LIKE '___a%' ; 
+
+ => where 'a' is the 4th char from last ?
+
+    SELECT * FROM EMP WHERE ENAME LIKE '%a___' ;
+
+ => name contains 5 chars ? 
+
+      SELECT * FROM EMP WHERE ENAME LIKE  '_____'   ; 
+
+ => employees  joined in april month ?          dd-mon-yy
+
+           SELECT * FROM EMP WHERE  HIREDATE LIKE '%APR%' ; 
+
+ => employees joined 2020 year ?
+
+      SELECT * FROM EMP WHERE  HIREDATE LIKE '%20' ; 
+
+ => 
+
+  SELECT *
+  FROM EMP 
+  WHERE JOB  IN ('clerk','man%') ; 
+ 
+ A   returns error
+ B  returns only clerk
+ C  returns clerk,manager
+ D  none 
+
+ ANS :- B 
+
+  WHERE JOB='clerk' OR JOB LIKE 'man%' ; 
+
+ ANS :-   C 
+
+IS operator :- 
+------------------
+
+   => use IS operator for NULL comparision
+ 
+              WHERE COLNAME IS NULL
+              WHERE COLNAME IS NOT NULL 
+
+  => employees not earning salary ? 
+
+       SELECT * FROM EMP WHERE SAL  IS  NULL  ; 
+
+   => employees earning salary ? 
+
+            SELECT * FROM EMP WHERE SAL IS  NOT  NULL  ; 
+
+10-aug-24 
+
+  ALIAS  :- 
+ -----------
+
+  =>  alias means another name or alternative name
+  =>  used to change column heading
+  
+              COLNAME  / EXPR  [AS]  ALIAS 
+
+ Ex :- 
+
+     => display ENAME   ANNSAL   ?
+
+         SELECT  ENAME,SAL*12  AS ANNSAL  FROM EMP ; 
+
+         SELECT  ENAME,SAL*12  AS "ANNUAL SAL"  FROM EMP ; 
+
+   => display  ENAME  HIREDATE   EXPERIENCE ? 
+
+       SELECT  ENAME,HIREDATE, ROUND( (SYSDATE-HIREDATE)/365)  AS EXPERIENCE 
+       FROM EMP;
+
+   => display employees having more than 43 years of experience ? 
+
+       SELECT  ENAME,HIREDATE, ROUND( (SYSDATE-HIREDATE)/365)  AS EXPERIENCE 
+       FROM EMP 
+       WHERE (SYSDATE-HIREDATE)/365  > 43 ; 
+                
+  => display  ENAME   SAL   HRA   DA   TAX    TOTSAL   ? 
+
+   
+          HRA = house rent allowance =  20% on sal
+          DA   =  dearness allowance  =  30% on sal
+          TAX = 10% on sal 
+          TOTSAL = SAL + HRA + DA - TAX 
+
+           SELECT  ENAME,SAL,
+                           SAL*0.2 AS HRA,
+                           SAL*0.3 AS DA,
+                           SAL*0.1 AS TAX,
+                           SAL + (SAL*0.2) + (SAL*0.3) - (SAL*0.1) AS TOTSAL
+           FROM EMP ; 
+
+
+          smith	800	160	240	80	1120
+
+ 
+ DML commands :-   (Data Manipulation Lang)
+ -------------------------
+
+ 
+  INSERT
+  UPDATE
+  DELETE
+  MERGE
+  INSERT ALL
+
+  => all dml commands acts on table data.
+  => all dml commands acts on instance
+  => to save the operation execute commit
+  => to cancel the operation execute rollback
+  
+ UPDATE command :- 
+ ------------------------------
+
+   => command used to modify table data.
+   => we can update all rows or specific rows
+   => we can update single column or multiple columns
+
+    UPDATE tabname
+    SET  colname = value ,  colname = value , ----------
+    [WHERE cond] ; 
+
+ Ex :- 
+
+  =>  update all employees comm with 500 ? 
+
+        UPDATE EMP  SET  COMM = 500 ; 
+
+  => update employees comm with 500 whose comm = null ?
+
+       UPDATE EMP SET COMM = 500 WHERE COMM IS NULL ; 
+
+   => update 7369 employee sal with 1000 and comm with 500 ?
+
+       UPDATE EMP 
+       SET  SAL = 1000 , COMM = 500
+       WHERE EMPNO = 7369 ; 
+
+   => increment sal by 20% and comm by 10% those working as salesman and 
+        joined in 1981 year ?
+
+       UPDATE EMP
+       SET SAL = SAL + (SAL*0.2) , COMM = COMM + (COMM*0.1)
+       WHERE JOB='SALESMAN'
+                      AND
+                     HIREDATE  LIKE '%81' ; 
+ 
+  => transfer all the employees from 10th dept 20th dept ?
+
+       UPDATE EMP 
+       SET DEPTNO = 20
+       WHERE DEPTNO = 10 ; 
+ 
+ DELETE command :- 
+ ------------------------------
+
+  => command used to delete row/rows from table
+  => we can delete all rows or specific rows 
+
+  Syn :-        DELETE FROM <tabname> [WHERE cond] ; 
+
+Ex :- 
+
+     => delete all rows from emp table ?
+
+        SQL>DELETE FROM EMP ; 
+
+    => delete employees joined after 1981 ?
+
+       SQL>DELETE FROM EMP WHERE HIREDATE >  '31-DEC-1981' ; 
+
+    => delete employees having more than 40 years of expr ?
+
+      SQL> DELETE FROM EMP WHERE (SYSDATE-HIREDATE)/365 > 40  ; 
+
+    DDL commands :-     (Data Definition Lang)
+    --------------------------
+
+   CREATE
+   ALTER
+   DROP
+   TRUNCATE
+   RENAME
+   FLASHBACK
+   PURGE
+
+  => all DDL commands acts on table structure
+  => all DDL commands are auto committed.
+
+             DDL command = DDL command + COMMIT
+
+   Ex 1 :- 
+
+  create table a(a number(2));
+  insert into a values(10);
+  insert into a values(20);
+  insert into a values(30);
+  insert into a values(40);
+  rollback ; 
+
+  output :- 
+
+  create table => saved
+  inserts         => cancelled
+
+ Ex 2 :- 
+
+  create table a(a number(2));  => commit 
+  insert into a values(10);
+  insert into a values(20);
+  create table b(b number(2));   => commit
+  insert into a values(30);
+  insert into a values(40);
+  rollback ; 
+
+ output :- 
+ 
+  select * from a ;
+ 
+ 10
+  20
+
+12-aug-24 
+
+ALTER command :- 
+----------------------------
+
+  => command used to modify table structure
+  => using alter command we can 
+
+    1  add columns
+    2 drop columns
+    3 rename a column 
+    4 modify a column
+                changing size
+                changing datatype
+
+ Adding columns :- 
+---------------------------
+ 
+   ALTER TABLE <TABNAME>
+              ADD ( COLNAME DATATYPE(SIZE) , COLNAME DATATYPE(SIZE),---);
+
+Ex :- 
+
+ => add column gender to emp table ? 
+
+     ALTER TABLE EMP
+            ADD (GENDER  CHAR(1));
+
+  after adding by default the new column is filled with nulls , to insert data into the new column
+ use update command.
+
+1    UPDATE EMP SET GENDER = 'M'  WHERE EMPNO = 7369 ; 
+ 
+2   SQL>UPDATE EMP SET GENDER  = &GENDER WHERE EMPNO = &EMPNO ;
+
+	Enter value for gender: 'F'
+	Enter value for empno: 7499
+
+                1 row updated
+
+     SQL>  /    (previous command executed)
+
+             Enter value for gender: 'M'
+             Enter value for empno: 7521
+
+               1 row updated
+ 
+     SQL> COMMIT ;  
+
+  Droping columns :-  
+ ----------------------------
+
+    ALTER TABLE <tabname>
+               DROP (col1,col2,-----------) ; 
+ 
+Ex :- 
+
+  =>  drop column gender from emp  ? 
+
+       ALTER TABLE EMP
+                     DROP (GENDER)   ; 
+
+ Renaming a column :- 
+ -------------------------------
+
+    ALTER TABLE <TABNAME>
+                RENAME COLUMN <oldname> TO <newname> ;
+
+ Ex :- 
+
+ => rename column comm to bonus in emp table ?
+
+     ALTER TABLE EMP
+               RENAME  COLUMN COMM TO BONUS ; 
+
+   
+    SELECT ENAME,SAL,COMM AS BONUS FROM EMP ; 
+
+    difference between alias and rename  ? 
+
+                  ALIAS				RENAME
+ 
+1               not permanent			permanent
+
+2	changes column heading                           changes column name in table
+                in select stmt output
+
+	
+ Modifying a column :- 
+ -----------------------------
+
+  ALTER TABLE <TABNAME>
+           MODIFY (COLNAME DATATYPE(SIZE) ) ; 
+
+ Ex :- 
+
+ =>  increase the size of ename to 20 ? 
+
+     ALTER TABLE EMP
+                MODIFY (ENAME  VARCHAR2(20));
+
+   ALTER TABLE EMP
+                MODIFY (ENAME  VARCHAR2(5)) ;   => ERROR => some names contains more than
+						5 chars.
+
+  
+  NOTE :- 
+
+   1   column must be empty to decrease precison or scale
+
+          ALTER TABLE EMP
+                            MODIFY ( SAL  NUMBER( 6,2));   =>  ERROR
+ 
+  2   column must be empty to change datatype 
+
+         ALTER TABLE EMP
+                   MODIFY ( EMPNO   VARCHAR2(10));   =>  ERROR 
+
+
+  How to change datatype even if column contains data ? 
+
+  modify column empno  datatype to varchar2(10)            
+
+ STEP1 :-   add a new column with name empid  
+
+    ALTER TABLE EMP
+               ADD ( EMPID    VARCHAR2(10));
+
+ STEP 2 :-  copy data from empno to empid 
+ 
+   UPDATE EMP SET EMPID =  'TCS'||EMPNO ;
+
+ STEP 3 :- drop column empno 
+
+  ALTER TABLE EMP
+              DROP (empno) ; 
+
+STEP 4 :-  rename column empid to empno 
+
+   ALTER TABLE EMP
+            RENAME COLUMN EMPID TO EMPNO ; 
+
+
+
+DROP command :-
+--------------------------
+
+  => command used to drop table from database.
+  => drops table structure along with data.
+
+   syn :-  DROP TABLE  <tabname> ; 
+
+  Ex :- 
+ 
+    SQL>DROP TABLE EMP ; 
+
+  => when table is dropped then it is moved to recyclebin , to see the recyclebin
+
+   SQL>SHOW RECYCLEBIN 
+
+ FLASHBACK command :- 
+ ------------------------------------
+
+  => command to recover table from recyclebin.
+  => useful when tables are dropped accidentally.
+ 
+   syn :-   FLASHBACK TABLE <TABNAME> TO BEFORE DROP ;
+
+   Ex :- 
+ 
+   SQL> FLASHBACK TABLE EMP TO BEFORE DROP ; 
+
+ 
+ PURGE command :- 
+ ----------------------------
+
+   => command used delete table from recyclebin.
+   => once table deleted from recyclebin we cannot flashback the table.
+   
+         syn :- PURGE TABLE <tabname> 
+
+        Ex :-  
+     
+           SQL>PURGE TABLE EMP ;
+      
+ DROP & PURGE :- 
+ ----------------------------
+
+   SQL>DROP TABLE STUDENT PURGE ; 
+
+   => drops table and also deletes table recyclebin.
+
+ How to empty the recyclebin ?
+
+   SQL>PURGE RECYCLEBIN ;   
+
+   command deletes all the tables from recyclebin.
+
+ 13-aug-24
+
+ TRUNCATE command :- 
+ ---------------------------------
+
+ => command deletes all the data from table but keeps structure
+ => will empty the table
+ => releases memory allocated for table
+
+    syn :-  TRUNCATE TABLE  <tabname> ;
+
+    Ex :-   TRUNCATE TABLE EMP ;
+
+   =>  oracle goes to memory and releases all the block allocated for table and when blocks are
+          released data stored in memory also deleted.
+
+  DELETE VS TRUNCATE :- 
+ -------------------------------------
+
+	 DELETE				TRUNCATE
+
+1 	 DML				DDL
+
+2	can delete all rows and 		can delete only all rows
+                 specific rows 			but cannot delete specific rows
+
+3	where cond can be used		where cond cannot be used with
+	with delete			truncate
+
+ 4	operation can be rolledback		cannot be rolledback
+
+ 5	deletes row-by-row			deletes all rows at a time
+
+ 6	slower				faster
+
+ 7	will not release memory		releases memory
+
+
+RENAME :- 
+---------------
+
+ => command used to change tablename
+
+       RENAME  <oldname> TO <newname> ;
+
+ Ex :- 
+
+   => rename table emp to employees ? 
+
+   SQL>RENAME EMP TO EMPLOYEES ; 
+
+ Built-in Functions :- 
+ ---------------------------
+
+ => a function accepts some input performs some calculation and returns one value
+
+  Types of functions :- 
+  ----------------------------
+
+  1 STRING/CHAR
+  2 NUMERIC 
+  3 DATE
+  4 CONVERSION
+  5 SPECIAL 
+  6 ANALYTICAL OR WINDOW OR OLAP 
+  7 GROUP OR AGGREGATE
+
+ STRING / CHAR functions :- 
+ --------------------------------------
+
+ UPPER() :- 
+ -------------
+
+  => converts string to uppercase
+
+                           UPPER(arg)
+		           string      => 'hello'
+                                            colname  =>  ename
+
+ Ex :- 
+
+      SQL>SELECT UPPER('hello')   FROM  DUAL ;    =>  HELLO
+           
+     what is DUAL ?
+ 
+     DUAL is a dummy table  provided by oracle used to select non db values. 
+
+    LOWER() :- 
+   ------------------
+
+    => converts string to lowercase 
+
+                 LOWER(arg)
+
+  Ex :- 
+
+   SQL>SELECT LOWER('HELLO') FROM DUAL ;     =>   hello 
+
+ 
+=> display  EMPNO  ENAME SAL ?  display names in lowercase ?
+
+    SELECT EMPNO,LOWER(ENAME) AS ENAME,SAL FROM EMP ; 
+ 
+=>   convert names to lowercase in table ?
+
+     UPDATE EMP SET ENAME = LOWER(ENAME) ; 
+ 
+ INITCAP() :- 
+ -----------------
+
+   => converts initials into capitals 
+
+                   INITCAP(arg) 
+
+ Ex :- 
+
+        SELECT INITCAP('sachin tendulkar') FROM DUAL ;   =>    Sachin Tendulkar
+
+ LENGTH() :- 
+ -----------------
+
+  => returns string length i.e. no of chars
+
+                          LENGTH(arg) 
+
+ Ex :- 
+
+  SQL>SELECT LENGTH('HELLO WELCOME')  FROM DUAL ;   =>  13 
+
+ => display employees name contains more than 5 chars ?
+
+     SELECT *
+     FROM EMP
+     WHERE LENGTH(ENAME) > 5 ; 
+
+ SUBSTR() :- 
+ ------------------
+
+   => returns part of the string 
+
+                          SUBSTR(string,start,[no of chars])
+
+ EX :- 
+
+    SUBSTR('HELLO WELCOME',1,5)	=>  	HELLO
+    SUBSTR('HELLO WELCOME',10,4)	=>	COME
+    SUBSTR('HELLO WELCOME',7)	=>	WELCOME	
+ 
+   SUBSTR('HELLO WELCOME',-5,3)	=>	LCO
+   SUBSTR('HELLO WELCOME',-7)	=>	WELCOME
+
+   => employees name starts with 's' ? 
+
+            WHERE ENAME LIKE 's%' ;
+ 
+      SELECT * FROM EMP WHERE SUBSTR(ENAME,1,1) = 's' ; 
+
+  => employees name ends with 's' ?
+
+      SELECT * FROM EMP WHERE SUBSTR(ENAME,-1,1) = 's'  ; 
+
+  => employees name starts and ends with same char  ? 
+
+        WHERE ENAME LIKE  'a%a' 
+                      OR
+                      ENAME LIKE 'b%b'
+                      OR
+                      ENAME LIKE 'c%c' 
+     
+    SELECT * FROM EMP WHERE SUBSTR(ENAME,1,1)  =  SUBSTR(ENAME,-1,1) ; 
+
+=> generate emailids for employees ?
+
+     EMPNO	ENAME		EMAILID
+     7369		smith		smi736@tcs.com
+     7499		allen		all749@tcs.com
+
+   SELECT  EMPNO,ENAME,
+                  SUBSTR(ENAME,1,3)||SUBSTR(EMPNO,1,3)||'@tcs.com'   AS EMAILID
+   FROM EMP ; 
+ 
+ 14-AUG-24 
+
+  => store emailids in db ?
+
+   STEP 1 :- add emailid column to emp table
+
+    ALTER TABLE EMP
+              ADD (EMAILID  VARCHAR2(20));
+ 
+  STEP 2 :-  update the column with emailids
+
+   UPDATE EMP 
+   SET EMAILID = SUBSTR(ENAME,1,3)||SUBSTR(EMPNO,1,3)||'@tcs.com' ;
+  
+ INSTR() :- 
+ -------------
+
+  => returns position of a character in a string
+
+                   INSTR(string,char,[start,occurance])
+
+ Ex :- 
+
+   INSTR('HELLO WELCOME','O')	=>	5
+   INSTR('HELLO WELCOME','K')	=>	0
+   INSTR('HELLO WELCOME','O',1,2)	=>	11 
+   INSTR('HELLO WELCOME','E',5,2)	=>	13	    
+   INSTR('HELLO WELCOME','E',1,3)	=>	13 
+   INSTR('HELLO WELCOME','E',-1,3)	=>	2	
+   INSTR('HELLO WELCOME','L',-5,2)	=>	4
+
+ => employees name contains 'a' ?
+
+     SELECT *
+     FROM EMP
+     WHERE   INSTR(ENAME,'a') <> 0  ; 
+
+  => display  CID     FNAME     LNAME   ?
+
+     CUST
+     CID	CNAME
+     10	sachin tendulkar
+     11	rohit sharma
+     
+        SUBSTR(string,start,[no of chars])
+ 
+       FNAME   = SUBSTR(cname,1, INSTR(cname,' ')-1)
+
+       LNAME  =  SUBSTR(cname,INSTR(cname,' ')+1)
+
+       SELECT CID,
+                      SUBSTR(CNAME,1,INSTR(CNAME,' ')-1) AS FNAME,
+                      SUBSTR(CNAME,INSTR(CNAME,' ')+1) AS LNAME
+       FROM CUST ; 
+
+ => display  CID   FNAME    MNAME   LNAME   ?
+
+     CUST
+     CID	CNAME
+     10	sachin ramesh tendulkar
+     11	mahendra singh dhoni
+
+ RPAD & LPAD :- 
+ -----------------------
+
+ => both functions are used to fill string with a character
+
+        RPAD(STRING,LENGTH,CHAR)  =>  fills on right side
+        LPAD(STRING,LENGTH,CHAR)  =>  fills on left side 
+
+  Ex :- 
+
+   RPAD('HELLO',10,'*')	=>	HELLO*****
+   LPAD('HELLO',10,'*')	=>	*****HELLO
+   RPAD('*',10,'*') 		=>	**********
+  
+ display  ENAME  SAL   ?
+                              ***
+                              ****
+                              *****
+ SELECT ENAME,RPAD('*',LENGTH(SAL),'*') AS SAL FROM EMP ; 
+                
+  => 
+
+    ACCOUNTS
+    ACCNO		BAL
+    123456789371	10000
+
+    your a/c no XXXX9371 debited -------- ? 
+         
+          LPAD('X',4,'X')||SUBSTR(ACCNO,-4,4)
+
+RTRIM,LTRIM :- 
+----------------------
+
+ => used to remove spaces and unwanted chars 
+
+               RTRIM(string,[char])  => removes right side
+               LTRIM(string,[char])   => removes left side
+
+    Ex :- 
+
+     RTRIM('        HELLO    ')		=>    '      HELLO'
+     LTRIM('         HELLO   ')        		=>    'HELLO     '
+     RTRIM( '@@@HELLO@@@','@')	=>    @@@HELLO
+     LTRIM('@@@HELLO@@@','@')	=>    HELLO@@@
+
+  => remove '@'  from '@@@HELLO@@@'   ?
+   
+    SELECT       LTRIM(RTRIM('@@@HELLO@@@','@') , '@') FROM DUAL ; 
+                      ---------------------------------------------
+                                   @@@HELLO
+ 
+ REPLACE() :- 
+ ---------------------
+
+   =>  used to replace one string with another string.
+
+         REPLACE(str1,str2,str3)
+
+ Ex :- 
+
+   REPLACE('HELLO','ELL','ABC')	=>  HABCO
+   REPLACE('HELLO','L','ABC')		=>  HEABCABCO
+   REPLACE('HELLO','ELO','ABC')	=>  HELLO          
+   REPLACE(  '@@HE@@LL@@O@@','@','')   => HELLO
+
+  => employees name contains exactly 2 'a' s ?
+
+     SELECT * FROM EMP WHERE ENAME LIKE '%a%a%'  ; 
+
+      above query returns names contains 2 'a'  & 3 'a' -- etc
+
+       SELECT *
+       FROM EMP
+       WHERE LENGTH(ENAME)  -  LENGTH(REPLACE(ENAME,'a',''))  =  2 ;
+                     
+16-aug-24 
+
+  TRANSLATE() :- 
+  ---------------------
+
+  => used to translate one char to another char
+ 
+                TRANSLATE(str1,str2,str3)
+
+ Ex :- 
+
+   TRANSLATE('HELLO','ELO','ABC')		=>	HABBC	
+
+	 	E   =>   A
+                                 L    =>   B
+                                 O   =>   C
+
+   TRANSLATE('HELLO','ELO','')		=>	NULL
+
+=>  translate function can be used to encrypt data i.e. converting plain text to cipher text.
+
+                  =>  display   ENAME  SAL   ?  encrypt salaries  ? 
+
+                   SELECT ENAME,
+                                  TRANSLATE(SAL,'0123456789','$bT*p@E#%^')  AS SAL
+                    FROM EMP ;
+
+ 
+	   jones	2975	T^#@
+
+
+  =>      remove all special chars from  @#HE*^LL%$O!*  ?
+
+
+        SELECT
+                 REPLACE(TRANSLATE( '@#HE*^LL%$O!*' , '@#*^%$!','$$$$$$$') , '$','')
+      F ROM DUAL       ---------------------------------------------------------------------------
+
+                                                       $$HE$$LL$$O$$
+
+ NUMERIC functions :- 
+ -------------------------------
+
+ rounding numbers :- 
+ ---------------------------
+
+ ROUND
+ TRUNC
+ CEIL
+ FLOOR
+
+          38.7865         =>    39   /  38
+                                        38.7
+                                        38.78
+                                        38.786
+
+ ROUND() :- 
+ -----------------
+
+   => rounds number to integer or to decimal places
+   => round function acts according to avg.
+
+                 ROUND(number , [decimal places]) 
+
+  Ex :- 
+
+     ROUND(38.7865)		=>	39
+  
+       38-------------------------------38.5--------------------------------39
+
+              number >= avg  => rounded to highest
+              number < avg    => rounded to lowest
+
+    ROUND(38.4865)		=>	38
+
+    ROUND(38.7865,2)	=>	38.79
+
+    ROUND(38.7864,3)	=>	38.786      
+
+   ROUND(38.7864,1)	=>	38.8
+
+   ROUND(38.9864,1)	=>	39
+
+ 
+  ROUND(384,-2)		=>	400
+	
+     300---------------------------------350---------------------------------400
+	 	
+ ROUND(384,-1)		=>	380
+
+  380------------------------------------385----------------------------------------390
+ 
+  ROUND(384,-3)		=>	0
+
+   0----------------------------------------500----------------------------------------1000
+
+
+ =>  SELECT ROUND(4567,-1),ROUND(4567,-2) , ROUND(4567,-3) FROM DUAL ; 
+
+     O/P :-       4570		4600		5000
+
+
+ => round all employee salaries to hundreds  in table ?
+
+       UPDATE EMP SET SAL = ROUND(SAL,-2) ;
+
+ TRUNC() :- 
+ ---------------
+
+  => rounds number always to lowest 
+
+             TRUNC(number,[decimal places])
+
+  Ex :- 
+
+    TRUNC(38.7864)		=>	38
+    TRUNC(38.7864,2)	=>	38.78
+    TRUNC(38.7864,1)	=>	38.7
+    TRUNC(384,-2)		=>	300
+    TRUNC(999,-3)		=>	0 
+
+CEIL() :- 
+------------
+
+  => rounds number always to highest
+
+                  CEIL(number)
+
+ Ex :- 
+
+           CEIL(38.1)		=>	39\
+
+
+FLOOR() :- 
+------------------
+
+   => rounds number always to lowest
+
+
+             FLOOR(number) 
+
+Ex :- 
+
+            FLOOR(38.9)		=>	38 
+
+
+=> display ENAME EXPERIENCE  in years ? 
+
+     SELECT  ENAME,  FLOOR((SYSDATE-HIREDATE)/365) AS EXPR  FROM EMP ; 
+                    
+DATE functions :- 
+-------------------------
+
+ SYSDATE + 10		=>   adds 10 days to sysdate
+ SYSDATE - 10		=>   subtracts 10 days from sysdate
+ SYSDATE - HIREDATE  	=>   returns difference in days
+ SYSDATE + HIREDATE	=>   ERROR
+
+ => ROUND / TRUNC functions can also be applied on dates  but dates can be rounded to
+       year / month / day.
+
+      ROUND(SYSDATE,'YEAR')		=>   01-JAN-25	
+
+     01-JAN-24----------------------------------30-JUN-----------------------01-JAN-25
+
+    ROUND(SYSDATE,'MONTH')	=>  01-SEP-24
+
+    01-AUG-24----------------------------------15-AUG--------------------------------------01-SEP-24
+ 
+    ROUND(SYSDATE,'DAY')		=>     18-AUG-24
+   
+    11-AUG-24---------------------------------------THU--------------------------------------------18-AUG-24
+
+    
+     TRUNC(SYSDATE,'YEAR')		=>	01-JAN-24
+     TRUNC(SYSDATE,'MONTH')	=>	01-AUG-24
+     TRUNC(SYSDATE,'DAY')		=>	11-AUG-24 
+
+ ADD_MONTHS() :- 
+ -------------------------
+
+   => used to add / subtract    months   to / from a date
+
+                   ADD_MONTHS(DATE,NUMBER)
+
+ Ex :- 
+
+    ADD_MONTHS(SYSDATE,2)		=>	16-OCT-24
+    ADD_MONTHS(SYSDATE,-2)	=>	16-JUN-24 
+
+ 
+Question 1 :-  
+
+ 1  display first day of the current year ?
+ 2  display first day of the next year ?
+ 3  display first day of the current month ?
+ 4  display first day of the next month ?
+
+ 
+Question 2 :- 
+
+  GOLD_RATES 
+  DATEID		RATE
+  01-JAN-20	?
+  02-JAN-20	?
+  
+ 16-AUG-24	?
+
+ 
+  1   display today's gold rate ?
+  2   display yesterday's gold rate ?
+  3   display last month same day gold rate ?
+  4   display last year same day gold rate ?
+  5   display last 1 mont gold rates ?
+
+ 
+  => display employees joined in last 5 years ?
+
+
+   SELECT *
+   FROM EMP 
+   WHERE HIREDATE >=  ADD_MONTHS(SYSDATE,-60) ; 
+
+17-aug-24 
+
+ MONTHS_BETWEEN() :-
+ -----------------------------------
+
+ => returns no of  months between two dates 
+
+                MONTHS_BETWEEN(DATE1,DATE2)
+
+ Ex :- 
+
+     MONTHS_BETWEEN(SYSDATE,'17-AUG-23')	=>	12
+ 
+ => display   ENAME   EXPERIENCE in months ?
+
+     SELECT ENAME, 
+                   FLOOR(MONTHS_BETWEEN(SYSDATE,HIREDATE)) AS EXPR 
+      FROM EMP ;
+
+   => display ENAME   EXPERIENCE  ?
+                                    M YEARS N MONTHS 
+
+          EXPERIENCE = 40 MONTHS = 3 YEARS 4 MONTHS 
+
+          YEARS  =  MONTHS/12 = FLOOR(40/12)  =   3 
+
+          MONTHS =  MOD(MONTHS,12) = MOD(40,12) = 4 
+
+          SELECT ENAME,
+                         FLOOR(MONTHS_BETWEEN(SYSDATE,HIREDATE)/12) AS YEARS,
+                        MOD(FLOOR(MONTHS_BETWEEN(SYSDATE,HIREDATE)),12) AS MONTHS
+          FROM EMP ;
+
+  conversion functions :- 
+  -------------------------------
+
+ => used to convert one datatype to another datatype
+ => the following functions provided by oracle for conversion
+
+  1   TO_CHAR            
+  2   TO_DATE
+  3   TO_NUMBER
+
+ converting number to char type :- 
+ ---------------------------------------------
+
+ =>   numbers converted to char type to display numbers in different formats 
+	
+   		TO_CHAR(number,'format')
+				
+             formats  :- 
+             --------------
+
+		9		represents a digit
+		0		represents a digit
+		G		thousand seperator
+		D		decimal seperator
+		L		currency symbol
+		C		currency 
+
+       Ex :- 
+
+               TO_CHAR(1234,'99999')	=>	1234	
+               TO_CHAR(1234,'00000')	=>	01234
+               TO_CHAR(1234,'000000')	=>	001234
+               TO_CHAR(1234,'999999')	=>	1234
+               TO_CHAR(1234,'9G999')	=>	1,234
+               TO_CHAR(500000,'9G99G999')  =>	5,00,000
+               TO_CHAR(1234,'L9G999')	=>	$1,234
+               TO_CHAR(1234,'C9G999')	=>	USD1,234
+               
+  => DISPLAY  ENAME  SAL  ?
+
+       display salaries with thousand seperator and with currency symbol ?
+
+       SELECT ENAME,TO_CHAR(SAL,'L99G999') AS SAL FROM EMP ;
+
+
+	SMITH	800	$800
+	KING	5000	$5,000
+	ABC	20000	$20,000
+  
+  
+    How to change currency ? 
+
+    SQL>ALTER SESSION SET NLS_TERRITORY='INDIA' ;
+
+                        NLS => National language specification
+
+ Converting date to char type :- 
+ -------------------------------------------
+
+   => dates converted to char type to display dates in different formats 
+
+                            TO_CHAR(DATE,'FORMAT')                   date = sysdate
+    
+      formats :- 
+      --------------
+
+            	yyyy			2024
+	   yy			24
+	year			twenty twenty four		
+
+	mm			08
+	mon			aug
+	month			august
+
+	dd			17        (1-31   day of the month)	
+	ddd			230       (1-366 day of the year)
+	d			7             (1-7    day of the week)
+   	dy			sat
+	day			saturday
+
+	hh			hour part  in 12 hrs format
+	hh24			hour part in 24 hrs format
+     	mi			minutes
+	ss			seconds
+	AM/PM			AM time or PM time
+	
+	Q			Quarter  (1-4)
+
+				jan-mar	1
+				apr-jun	2
+				jul-sep	3
+				oct-dec	4
+
+ 21-AUG-24 
+
+  => display  ENAME    YEAR_OF_JOIN  ?
+
+      SELECT  ENAME,TO_CHAR(HIREDATE,'YYYY') AS YEAR_OF_JOIN FROM EMP ;
+
+ => display employees joined in 1980,1983,1985 ?
+
+      SELECT *
+      FROM EMP 
+      WHERE  TO_CHAR(HIREDATE,'YYYY')  IN (1980,1983,1985) ;
+
+ => display employees joined in leap year ?
+
+     SELECT *
+     FROM EMP 
+     WHERE  MOD(TO_CHAR(HIREDATE,'YYYY'),4) = 0 ; 
+
+ => display employees joined in jan,apr,dec months ?
+
+      SELECT *
+      FROM EMP 
+      WHERE TO_CHAR(HIREDATE,'MM')  IN (1,4,12) ; 
+
+ => display  ENAME   DAY   ?
+
+      SELECT ENAME,TO_CHAR(HIREDATE,'DAY') AS DAY FROM EMP ; 
+
+=> display employees joined on sunday ?
+
+     SELECT * FROM EMP WHERE TO_CHAR(HIREDATE,'DY')  = 'SUN' ; 
+
+=> display employees joined in 2nd quarter of 1981 year ?
+
+     SELECT  *
+     FROM EMP
+     WHERE  YEAR = 1981 
+                    AND
+                    QUARTER = 2 ; 
+
+    SELECT  *
+     FROM EMP
+     WHERE   TO_CHAR(HIREDATE,'YYYY') = 1981 
+                     AND
+                     TO_CHAR(HIREDATE,'Q') = 2 ; 
+
+    WHERE  TO_CHAR(HIREDATE,'YYYY-Q') = '1981-2' ; 
+
+
+ 
+ => list of employees joined today ?
+
+    SELECT * FROM EMP WHERE HIREDATE = SYSDATE ;   => no rows 
+
+                                                       21-aug-24 00:00:00 =  21-aug-24 9:51:00
+
+    SELECT * 
+    FROM EMP 
+    WHERE TO_CHAR(HIREDATE,'DD-MON-YYYY')  = TO_CHAR(SYSDATE,'DD-MON-YYYY') ;
+
+ 
+ Converting char to date :- 
+ ----------------------------------
+
+                    char   =>   '21-aug-24'
+                                     '08/21/24'
+                                     '2024-08-21'
+
+                    TO_DATE(date string , 'format')
+
+  Ex :- 
+
+     SQL>SELECT  SYSDATE + 100 FROM DUAL ;   => 29-NOV-24 
+
+     SQL>SELECT '21-AUG-24' + 100 FROM DUAL ;  => ERROR
+
+
+        NUMBER + NUMBER => VALID
+        DATE + NUMBER => VALID
+        STRING + NUMBER => INVALID
+
+    SQL>SELECT TO_DATE('21-AUG-24','DD-MON-YY') + 100 FROM DUAL ;  => 29-NOV-24
+
+   =>  calculate   '01/01/25' + 150    ?
+
+        SELECT  TO_DATE('01/01/25' , 'DD/MM/YY') + 150  FROM DUAL ;  => 31-MAY-25 
+
+ => write a query to display on which day india got independence ?
+  
+      SELECT  TO_CHAR(TO_DATE('15-AUG-1947','DD-MON-YYYY'),'DAY') FROM DUAL ; 
+        
+    converting char to number :- 
+    ---------------------------------------
+
+              char =>   '5000' 
+                             '5,000' 
+                             '$5,000'
+
+                          TO_NUMBER(NUMERIC STRING , 'format')
+
+ ex :- 
+
+          SQL>SELECT   5000 + 3000  FROM DUAL  ;   => 8000
+
+         SQL>SELECT   '5,000' + 3000  FROM DUAL  ;  =>  ERROR
+
+        SQL>SELECT   TO_NUMBER('5,000','9G999') + 3000  FROM DUAL  ;  => 8000
+
+  => calculate   '$5,000' + 'USD3,000'    ? 
+
+      SELECT TO_NUMBER('$5,000','L9G999') + TO_NUMBER('USD3,000','C9G999') 
+      FROM DUAL;
+   
+                  INPUT		OUTPUT		FUNCTION
+	 5000		$5,000		TO_CHAR
+	 $5,000		5000		TO_NUMBER
+
+	DD-MON-YY	MM/DD/YY	TO_CHAR
+	MM/DD/YY	DD-MON-YY	TO_DATE
+
+	DEFAULT		OTHER		TO_CHAR
+	OTHER		DEFAULT		TO_DATE					
+ 
+ Special functions :- 
+ ------------------------
+
+   NVL() :- 
+   -----------
+
+   => used to convert null values 
+
+                          NVL(arg1,arg2) 
+
+        if arg1 = null returns arg2
+        if arg1 <> null returns arg1 only 
+
+  Ex :- 
+
+      NVL(100,200)		=>	100
+      NVL(NULL,200)		=.	200	     
+
+   => display  ENAME  SAL  COMM   TOTSAL   ?
+
+                      TOTSAL = SAL + COMM 
+
+         SELECT ENAME,SAL,COMM,SAL+NVL(COMM,0)  AS TOTSAL FROM EMP ; 
+
+	SMITH	800	NULL	800
+	ALLEN	1600	300	1900
+ 
+     => display   ENAME  SAL  COMM  ?
+          if comm = null display  N/A  ?
+
+         SELECT ENAME,SAL, NVL(COMM,'N/A') AS COMM FROM EMP ;   => ERROR
+ 
+        SELECT ENAME,SAL, NVL(TO_CHAR(COMM),'N/A') AS COMM FROM EMP ; 
+ 
+ 22-aug-24 
+
+  Analytical / OLAP  functions :- 
+  ----------------------------------------
+
+ RANK & DENSE_RANK :- 
+ -------------------------------------
+
+ => both functions are used to find ranks
+ => ranking is always based on some columns
+ =>  for rank functions data must be sorted
+
+                RANK() OVER (ORDER BY colname ASC/DESC)
+                DENSE_RANK() OVER (ORDER BY colname ASC/DESC)
+
+  Ex :- 
+
+   => find ranks of the employees based on sal and highest paid employee should get 1st rank ?
+
+       SELECT EMPNO,ENAME,SAL,
+                     RANK() OVER  (ORDER BY SAL DESC) AS RNK
+       FROM EMP ; 
+
+      SELECT EMPNO,ENAME,SAL,
+                     DENSE_RANK() OVER  (ORDER BY SAL DESC) AS RNK
+       FROM EMP ; 
+  
+      difference between rank & dense_rank  ?
+
+    1 rank function generates gaps  but dense_rank will not generate gaps
+    2 in rank function ranks may not be in sequence  but in dense_rank ranks are always in sequence
+
+ 	SAL		RNK		DRNK
+	5000		1		1
+	4000		2		2
+	3000		3		3
+	3000		3		3
+	3000		3		3
+	2000		6		4
+	2000		6		4
+	1000		8		5
+
+  =>  find ranks of the employees based on sal , if salaries are same then ranking should be 
+        based on hiredate ?
+
+      
+      SELECT EMPNO,ENAME,HIREDATE,SAL,
+                     DENSE_RANK() OVER  (ORDER BY SAL DESC,HIREDATE ASC) AS RNK
+       FROM EMP ; 
+
+ => find ranks of the students based on total,m,p ?
+
+   STUDENT
+   SNO	SNAME	M	P	C
+   1	A	80	90	70
+   2	B	60	50	70
+   3	C	90	80	70
+   4	D	90	70	80
+   5	E	80	60	70
+
+GROUP /  AGGREGATE functions :- 
+-------------------------------------------------
+
+=> these functions process group of rows and returns one value
+
+MAX
+MIN
+SUM
+AVG
+COUNT
+COUNT(*)
+
+MAX() :- 
+------------
+
+  => returns maximum value
+
+            MAX(arg) 
+
+  Ex :- 
+
+  1  SELECT MAX(SAL) FROM EMP ;    =>   5000
+  2  SELECT MAX(HIREDATE) FROM EMP ;   => 12-JAN-83
+  3  SELECT MAX(ENAME) FROM EMP ;   => ward
+
+ MIN() :- 
+ ------------
+
+  => returns minimum value
+
+                MIN(arg) 
+
+  SELECT MIN(SAL) FROM EMP ;  	 =>     800 
+  SELECT MIN(HIREDATE) FROM EMP;     =>     17-DEC-80
+  
+ SUM() :- 
+ ------------
+
+   => returns total
+
+                  SUM(arg) 
+
+  SELECT SUM(SAL) FROM EMP ;   => 29025
+
+ => round total sal to hundreds ?
+
+  SELECT  ROUND(SUM(SAL) , -2) FROM EMP ;   => 29000
+
+  29000----------------29050-----------------------29100
+
+  => after rounding display total sal with thousand seperator and currency symbol ?
+
+     SELECT 
+     TO_CHAR(ROUND(SUM(SAL) , -2) ,  'L99G999') 
+     FROM EMP ; 
+   
+     O/P :-  $29,000
+
+ AVG() :- 
+ -----------
+
+  => returns average value
+
+                       AVG(arg) 
+
+ Ex :- 
+
+ SQL>SELECT AVG(SAL) FROM EMP ;   =>     2073.21429
+
+ SQL>SELECT FLOOR(AVG(SAL)) FROM EMP ;  => 2073
+
+ =>  display avg sal of managers ?
+
+   SELECT AVG(SAL)  FROM EMP WHERE JOB='MANAGER' ;  => 2758.33333
+
+ NOTE :- 
+
+  => SUM,AVG functions cannot be applied on char,date columns 
+
+COUNT() :- 
+----------------
+
+  => returns no of values present in a column 
+
+             COUNT(arg) 
+
+   SELECT COUNT(EMPNO) FROM EMP ;   => 14 
+
+   SELECT COUNT(COMM) FROM EMP ;   => 4   => nulls are not counted
+
+COUNT(*) :-
+ ------------------
+
+   => returns no of rows in a table
+
+
+   SELECT COUNT(*) FROM EMP ;  => 14
+
+ T1
+ F1
+ 10
+ NULL
+ 20
+ NULL
+ 30
+
+        COUNT(F1)	=>   3	
+        COUNT(*)         =>  5 
+
+ => find no of employees joined in 1981 year ?
+
+     SELECT COUNT(*) FROM EMP WHERE  TO_CHAR(HIREDATE,'YYYY') = 1981 ; 
+
+ => find no of employees joined on sunday ?
+
+      SELECT COUNT(*) FROM EMP WHERE  TO_CHAR(HIREDATE,'DY') = 'SUN' ; 
+
+ 
+==========================================================================
+
+			INTEGRITY CONSTRAINTS
+			======================
+
+ 
+  =>  Integrity constraints are rules to maintain data integrity i.e. data quality or data consistency.
+  =>  used to prevent users from entering invalid data.
+  =>  used to enforce rules like min bal must be 1000
+
+ Types of constraints :- 
+ -----------------------------
+
+1 NOT NULL
+2 UNIQUE
+3 PRIMARY KEY
+4 CHECK
+5 FOREIGN KEY
+6 DEFAULT
+
+NOT NULL :- 
+------------------
+
+=> NOT NULL constraint doesn't accept null values
+=> a column declared with NOT NULL is called mandatory column
+
+  ex :- 
+    
+   CREATE TABLE EMP11
+   (
+       EMPNO  NUMBER(4) ,
+       ENAME  VARCHAR2(10)  NOT NULL
+   );
+
+   INSERT INTO EMP11 VALUES(100,'');   => ERROR
+   INSERT INTO EMP11 VALUES(101,'A');
+
+UNIQUE :- 
+----------------
+
+  => unique constraint doesn't accept duplicates
+
+  Ex :- 
+
+  CREATE TABLE CUST
+  (
+       CID   NUMBER(4),
+       NAME  VARCHAR2(10) NOT NULL,
+       EMAILID  VARCHAR2(20)  UNIQUE
+  );
+
+  INSERT INTO CUST VALUES(100,'A','abc@gmail.com');
+  INSERT INTO CUST VALUES(101,'B','abc@gmail.com');  => ERROR
+  INSERT INTO CUST VALUES(102,'C','');
+  INSERT INTO CUST VALUES(103,'D','');
+
+ NOTE :- unique allows nulls 
+
+PRIMARY KEY :- 
+------------------------
+
+  =>  primary key doesn't accept duplicates & nulls.
+
+  =>  primary key is the combination of unique & not null
+
+  =>  In tables one column must be there to uniquely identity the rows and into that
+        columns duplicates and nulls are not allowed, so declare that column with
+        primary key.
+
+ ex :- 
+
+  CREATE TABLE EMP12
+  (
+     EMPID  INT   PRIMARY KEY,
+     ENAME  VARCHAR2(10)
+   );
+
+  INSERT INTO EMP12 VALUES(100,'A');
+  INSERT INTO EMP12 VALUES(100,'B');    => ERROR
+  INSERT INTO EMP12 VALUES(NULL,'C');  => ERROR
+
+ NOTE :- 
+
+  =>  a table can have only one primary key  , if we want multiple primary keys then
+        declare one column with primary key and other columns with UNIQUE NOT NULL.
+
+   CREATE TABLE CUST
+   (
+      CUSTID   NUMBER(6)  PRIMARY KEY,
+      NAME      VARCHAR2(10) NOT NULL,
+      AADHARNO  NUMBER(12)  UNIQUE NOT NULL,
+      PANNO         CHAR(10)    UNIQUE NOT NULL
+   );
+  
+ CHECK :- 
+ ---------------
+
+  => use check constraint when rule based on condition
+
+                    CHECK(condition) 
+
+Ex  1 :-  sal must be min 3000
+
+  CREATE TABLE EMP14
+  (
+     EMPID  NUMBER(4) PRIMARY KEY,
+     ENAME VARCHAR2(10) NOT NULL,
+     SAL       NUMBER(7)  CHECK(SAL>=3000)
+  );
+
+ INSERT INTO EMP14 VALUES(100,'A',1000);   => ERROR
+ INSERT INTO EMP14 VALUES(101,'B',5000); 
+ INSERT INTO EMP14 VALUES(102,'C',NULL); 
+  
+ NOTE :- check constraint allows nulls
+
+ex 2 :-    gender must be 'M','F'  ?
+
+      GENDER   CHAR(1)   CHECK(GENDER IN ('M','F'))
+
+ex 3  :-  amt  must be multiple of 100
+
+           AMT  NUMBER(6)  CHECK(MOD(AMT,100)=0)
+
+ex 4 :-   pwd must be min 6 chars 
+
+         PWD   VARCHAR2(10) CHECK(LENGTH(PWD) >= 6)
+
+ex  5 :-   emailid must contain '@'
+             emailid must end with  '.com' or '.co' or '.in'  ? 
+
+               emailid  varchar2(20)  check(emailid like '%@%'
+                                                             and
+                                                             (
+                                                                emailid like '%.com'
+                                                                or
+                                                                emailid like '%.co'
+                                                                or
+                                                                 emailid like '%.in'))
+
+23-AUG-24
+
+ FOREGIN KEY :- 
+ ------------------------
+
+  => foreign key is used to establish relationship between two tables 
+
+  => to establish relationship between two tables take primary key of one table
+       and add it to another table as foreign key and declare with references constraint
+
+ex :- 
+
+PROJECTS
+PROJID	NAME	DURATION	COST	CLIENT
+100	ABC	5		200	TATA
+101	KLM	4		100	AIRLINES
+
+EMP
+EMPID	ENAME	JOB	SAL		PROJID   REFERENCES PROJECTS(PROJID)
+1	A	SE	30000		 100 
+2	B	SSE	60000		 999   => NOT ALLOWED
+3	C	SE	40000		 100
+4	D	QAE	30000		NULL
+
+ => values entered in fk column should match with values entered in pk column 
+
+ => fk allows duplicates and nulls.
+
+ => after declaring foreign key a relationship is established between two tables called
+      parent / child relationship.
+
+ => pk table is parent and fk table is child.
+
+ CREATE TABLE PROJECTS
+ (
+   PROJID   NUMBER(3)  PRIMARY KEY,
+   PNAME   VARCHAR2(10) NOT NULL,
+   CLIENT   VARCHAR2(10)
+  );
+
+ INSERT INTO PROJECTS VALUES(100,'A','TATA');
+ INSERT INTO PROJECTS VALUES(101,'B','KLM');
+
+ CREATE TABLE EMP55
+ (
+    EMPID   NUMBER(4)  PRIMARY KEY,
+    ENAME  VARCHAR2(10) NOT NULL,
+    SAL        NUMBER(7)   CHECK(SAL>=3000),
+    PROJID   NUMBER(3)   REFERENCES PROJECTS(PROJID)
+  );
+
+  INSERT INTO EMP55 VALUES(1,'A',5000,100);
+  INSERT INTO EMP55 VALUES(2,'B',4000,999);  => ERROR
+  INSERT INTO EMP55 VALUES(3,'C',3000,100);
+  INSERT INTO EMP55 VALUES(4,'D',3000,NULL);
+
+ Relationship types :- 
+ -----------------------------
+
+ 1 one to one   (1:1)
+ 2 one to many (1:m)
+ 3 many to one  (m:1)
+ 4 many to many  (m:n)
+
+ => by default oracle creates one to many relationship between two tables 
+
+How to establish one to one relationship :- 
+--------------------------------------------------------
+
+=> to establish one to one relationship between two tables then declare foreign key with unique
+     constraint.
+ 
+ ex :- 
+
+  DEPT
+  DEPTID		DNAME
+  10		HR
+  20		IT
+  30		SALES
+
+  MGR
+  MGRNO	  MNAME	    DEPTID    REFERENCES DEPT(DEPTID)   UNIQUE
+  1               A                 10
+  2	  B	    20
+  3	  C	    30 
+  4	 D	    10  => INVALID
+
+
+ How to establish many to many relationship :- 
+ --------------------------------------------------------------
+
+=> to establish many to many relationship between two tables , create 3rd table
+      and add primary keys of the both tables as foreign keys 
+
+ex :- 
+  
+STUDENT				COURSE
+SID	SNAME			CID	CNAME
+1	A			10	JAVA
+2	B			11	ORACLE
+
+REGISTRATIONS
+SID	CID	DOR	FEE		
+1	10	?	?
+1	11	?	?
+2	10	?	?
+
+
+composite primary key :- 
+---------------------------------
+
+ => if combination of columns declared primary key then it is called composite primary key
+
+ => In some tables we may not be able to uniquely identify records using single column
+      and we need combination of columns to uniquely and that combination should be
+      declared primary key.
+
+ ex :- 
+
+ REGISTRATIONS
+SID	CID	DOR	FEE		
+1	10	?	?
+1	11	?	?
+2	10	?	?
+
+
+ => in the above example  sid,cid combination uniquely identifies , so declare this combination
+      as primary key 
+
+  CREATE TABLE REGISTRATIONS
+  (
+    SID   NUMBER(2)  ,
+    CID   NUMBER(2)   ,
+    DOR  DATE,
+    FEE    NUMBER(4),
+          PRIMARY KEY(SID,CID)
+  );
+
+ INSERT INTO REGISTRATIONS VALUES(1,10,SYSDATE,2000);
+ INSERT INTO REGISTRATIONS VALUES(1,11,SYSDATE,2000);
+ INSERT INTO REGISTRATIONS VALUES(2,10,SYSDATE,2000);
+ INSERT INTO REGISTRATIONS VALUES(1,10,SYSDATE,2000);  => ERROR
+
+ DEFAULT :- 
+ ----------------
+
+  => a column can be declared with default value as follows 
+
+    ex :-     HIREDATE  DATE  DEFAULT   SYSDATE
+
+ => while inserting if we skip hiredate then oracle inserts default value
+
+ex :- 
+
+  CREATE TABLE EMP66
+  (
+      EMPNO   NUMBER(4)  PRIMARY KEY,
+      ENAME   VARCHAR2(10) NOT NULL,
+      HIREDATE DATE DEFAULT SYSDATE
+  );
+
+ INSERT INTO EMP66(EMPNO,ENAME) VALUES(100,'A') ; 
+ INSERT INTO EMP66 VALUES(101,'B','01-JAN-24'); 
+ INSERT INTO EMP66 VALUES(102,'C','');
+
+ SELECT * FROM EMP66 ;
+
+ 100	A	23-AUG-24
+ 101	B	01-JAN-24
+ 102	C	NULL
+
+Which CREATE TABLE statement is valid?
+
+A. CREATE TABLE ord_details
+(ord_no NUMBER(2) PRIMARY KEY,
+item_no NUMBER(3) PRIMARY KEY,
+ord_date DATE NOT NULL);
+
+B. CREATE TABLE ord_details
+(ord_no NUMBER(2) UNIQUE, NOT NULL,
+item_no NUMBER(3),
+ord_date DATE DEFAULT SYSDATE NOT NULL);
+
+C. CREATE TABLE ord_details
+(ord_no NUMBER(2) ,
+item_no NUMBER(3),
+ord_date DATE DEFAULT NOT NULL,
+ UNIQUE (ord_no),
+ PRIMARY KEY (ord_no));
+
+D. CREATE TABLE ord_details
+(ord_no NUMBER(2),
+item_no NUMBER(3),
+ord_date DATE DEFAULT SYSDATE NOT NULL,
+     PRIMARY KEY (ord_no, item_no));
+
+
+  Which statements are true regarding constraints ?
+
+A  a foreign key cannot contain NULL value  F
+B  a column with UNIQUE constraint can contain NULL value  T
+C  a constraint is enforced only for the INSERT operation on a table   F
+D all constraints can be defined at column level and table level  F
+
+ Data Dictionary / System tables :- 
+ --------------------------------------------
+
+ => oracle not only stores data and it also stores metadata that includes users,tables,columns
+     and  constraints information and this metadata organized in the form of tables called
+     system tables or data dictionary tables.
+
+  ALL_USERS :- 
+  ---------------------
+
+  => stores users information
+
+    => list of users in database ?
+
+    SQL>SELECT USERNAME FROM ALL_USERS ; 
+
+    => list of users name starts with 'B' ?
+
+   SQL> SELECT USERNAME
+             FROM ALL_USERS
+             WHERE USERNAME LIKE 'B%' ;
+
+ USER_TABLES :- 
+ --------------------------
+
+   => stores information about  tables created by user
+ 
+   => list of tables created by user ? 
+
+    SQL>SELECT TABLE_NAME FROM USER_TABLES ; 
+
+USER_CONSTRAINTS :- 
+------------------------------------
+
+  => stores information about constraints declared in a table.
+
+  CREATE TABLE EMP88
+  (
+   EMPNO  NUMBER(4) PRIMARY KEY,
+   ENAME   VARCHAR2(10) NOT NULL,
+  SAL          NUMBER(7) CHECK(SAL>=3000),
+   EMAILID  VARCHAR2(20) UNIQUE,
+   DNO      NUMBER(2) REFERENCES DEPT(DEPTNO)
+  );
+
+ 
+ => list of constraints declared in emp88 table ? 
+
+   SELECT CONSTRAINT_NAME,CONSTRAINT_TYPE,
+                  SEARCH_CONDITION
+   FROM USER_CONSTRAINTS
+   WHERE TABLE_NAME='EMP88' ; 
+
+ CONSTRAINT_NAME      	C 	SEARCH_CONDITION
+------------------------------	- 	------------------------------
+SYS_C009504          		C	 "ENAME" IS NOT NULL
+SYS_C009505          		C	 SAL>=3000
+SYS_C009508          		R
+SYS_C009506          		P
+SYS_C009507          		U
+
+Droping constraints :- 
+-----------------------------
+
+     ALTER TABLE <tabname>
+            DROP CONSTRAINT  <name> ;
+
+ ex :- 
+
+  =>  drop check constraint in emp88 table ?
+
+        ALTER TABLE EMP88
+                  DROP CONSTRAINT SYS_C009505 ; 
+               
+  => drop primary key in emp88 table ? 
+
+       ALTER TABLE EMP88
+               DROP  PRIMARY KEY ; 
+
+  => drop primary key in dept  table ? 
+
+     ALTER TABLE DEPT
+              DROP  PRIMARY KEY ;  => ERROR
+
+    DROP TABLE DEPT ;  => ERROR
+
+ NOTE :- 
+
+  1 primary key constraint cannot be dropped if referenced by some fk
+  2 primary key table cannot be dropped if referenced by some fk
+
+ CASCADE :- 
+ ------------------
+
+  ALTER TABLE DEPT
+           DROP  PRIMARY KEY CASCADE ;   => drops pk with dependent fk 
+       
+   DROP TABLE DEPT  CASCADE CONSTRAINTS ; =>  drops table with dependent fk 
+
+
+ => create following tables with given rules ?
+
+ ACCOUNTS
+ ACCNO	ACTYPE	BAL
+
+ Rules :- 
+
+ 1   accno should not be duplicate & null
+ 2   actype must be 'S' OR 'C'
+ 3   bal must be min 1000
+
+ TRANSACTIONS
+ TRID	TTYPE	TDATE	TAMT	ACCNO
+
+ Rules :- 
+
+ 1  trid should not be duplicate & null
+ 2  ttype must be 'W' OR 'D' 
+ 3  tdate must be always system date
+ 4  tamt must be multiple of 100
+ 5  accno should mathc with accounts table accno 
+
+
+==========================================================================
+
+ CASE statement :- 
+ -------------------------
+
+ => used to implement if-then-else
+ => similar to switch case
+ => using case stmt we can return values based on conditions
+ => case statements are 2 types 
+
+  1 simple case
+  2 searched case 
+
+ simple case :- 
+ -------------------
+
+ => use simple case when conditions based on "=" operator
+
+     CASE COLNAME
+     WHEN VALUE1 THEN RETURN EXPR1
+     WHEN VALUE2 THEN RETURN EXPR2
+     ----------------------------
+     ELSE RETURN EXPR
+     END
+
+ Ex :- 
+
+  =>  display  ENAME    JOB    ?
+
+            IF JOB=CLERK  DISPLAY WORKER
+                         MANAGER            BOSS
+                         PRESIDENT	     BIG BOSS
+                         ELSE                     EMPLOYEE
+
+     SELECT ENAME,
+                   CASE JOB
+                   WHEN 'CLERK' THEN  'WORKER'
+                   WHEN 'MANAGER' THEN 'BOSS'
+                   WHEN  'PRESIDENT' THEN 'BIG BOSS'
+                   ELSE 'EMPLOYEE'
+                   END  AS JOB
+   FROM EMP ; 
+ 
+
+  => increment employee salaries as follows ? 
+
+       IF DEPTNO  = 10  INCR SAL BY 10%
+                               20                         15%
+                              30                          20%
+                           OTHERS                  5%
+
+     UPDATE EMP 
+     SET SAL = CASE DEPTNO
+                       WHEN 10 THEN  SAL + (SAL*0.1)
+                       WHEN 20 THEN SAL+(SAL*0.15)
+                       WHEN 30 THEN SAL+(SAL*0.2)
+                       ELSE SAL+(SAL*0.05)
+                       END  ;
+
+26-aug-24 
+
+ searched case :- 
+ ------------------------
+
+  => use searched case when conditions not based on "=" operator
+
+    CASE
+    WHEN COND1 THEN RETURN EXPR1
+    WHEN COND2 THEN RETURN EXPR2
+    -------------------------
+    ELSE RETURN EXPR
+    END
+
+   => display  ENAME  SAL   SALRANGE  ?
+                                      
+                          IF SAL>3000 DISPLAY   HISAL
+                          IF SAL<3000                   LOSAL
+                          ELSE                              AVG
+
+     SELECT  ENAME,SAL,
+                     CASE
+                     WHEN SAL>3000 THEN 'HISAL'
+                     WHEN SAL<3000 THEN 'LOSAL'
+                     ELSE 'AVGSAL'
+                     END AS SALRANGR
+    FROM EMP ;
+
+=>  display   SNO  TOTAL   AVG  RESULT  ?
+
+  STUDENT
+  SNO	SNAME	S1	S2	S3
+  1	A	80	90	70
+  2	B	30	60	50
+  
+ SELECT SNO,
+                S1+S2+S3  AS TOTAL,
+                ROUND((S1+S2+S3)/3,2) AS AVG,
+                CASE
+                WHEN S1>=35 AND S2>=35 AND S3>=35 THEN  'PASS'
+                ELSE 'FAIL'
+                END AS RESULT
+FROM STUDENT ; 
+
+==========================================================================
+
+			JOINS
+			---------
+	
+=> join is an operation performed to display data from two or more tables.
+
+=> In database related data stored in multiple tables , to gather or to combine
+     data stored in multple tables we need join those tables.
+
+
+ ex :- 
+
+ orders					cust
+ ordid	orddt	deldt	cid		cid	cname	addr	phone
+1000	22/	26/	10		10	A	HYD	??
+1001	23/	27/	11		11	B	HYD	??
+1002	24/	28/	12		12	C	HYD	??
+
+OUTPUT :- 
+
+ ordid	orddt	deldt	cname	addr	phone
+ 1000	22/	26/	A	HYD	???
+
+ 
+
+Types of joins :- 
+------------------------
+
+1 INNER JOIN
+          EQUI JOIN
+          NON EQUI
+2 OUTER JOIN
+3 CROSS / CARTESIAN JOIN
+
+EQUI JOIN :- 
+-------------------
+
+=> to perform equi join between the two tables there must be a common field and name
+ of the common field need not to be same and fk-pk relationship is not compulsory.
+
+=> => equi join is performed on the common field with same datatype.
+
+ SELECT columns
+    FROM tab1 INNER JOIN tab2 
+         ON join cond ;
+
+join condition :-
+------------------------
+
+=> join condition specifies which record of 1st table1 joined with which record of 2nd table
+=> based on the given join condition oracle joins the records of two tables
+ 
+                   table1.commonfield = table2.commonfield
+
+=> this is join is called equi join because here join condition is based on "=" operator
+
+Ex :- 
+
+
+  EMP                                       			DEPT
+  EMPNO ENAME SAL  DEPTNO                 	 DEPTNO    DNAME            LOC
+  1     	A         5000    10			10	    ACCOUNTS    NEW YORK
+  2     	B        3000     20                     		20      	    RESEARCH    
+  3     	C        4000    30                      		30     	    SALES        
+  4     	D         2000   20                       		40      	    OPERATIONS 
+  5    	 E       3000   NULL
+
+
+=> DISPLAY  ENAME    SAL   DNAME  LOC   ? 
+                     --------------------   --------------------
+                           EMP                    DEPT
+ 
+     SELECT ENAME,SAL,DNAME,LOC
+       FROM EMP  INNER JOIN DEPT 
+            ON  EMP.DEPTNO = DEPT.DEPTNO;
+ 
+	A	5000	ACCOUNTS	NEW YORK
+	B	3000	RESEARCH	??
+	C	4000	SALES		??
+	D	2000	RESEARCH	??
+	 
+ => display   ENAME   DEPTNO     DNAME   LOC   ?
+     
+   note :- 
+
+ => in join queries declare table alias and prefix column names with table alias for two reasons
+
+    1  to avoid ambiguity
+    2  for faster execution
+
+   SELECT  E.ENAME,E.DEPTNO,D.DNAME,D.LOC
+       FROM EMP  E INNER JOIN DEPT  D
+            ON  E.DEPTNO = D.DEPTNO;
+
+ => display employee details with dept details working at NEW YORK loc ?
+
+      SELECT E.ENAME,D.DNAME,D.LOC
+         FROM EMP E INNER JOIN DEPT D
+              ON E.DEPTNO = D.DEPTNO  /* join cond */
+      WHERE D.LOC = 'NEW YORK'    /*  filter cond */ 
+
+ => display order details with cust details ? 
+
+    SELECT O.*,C.*
+      FROM  ORDERS O  INNER JOIN CUST C
+          ON   O.CID = C.CID ;
+
+=> display order details with cust details to be delivered today ? 
+
+     SELECT O.*,C.*
+      FROM  ORDERS O  INNER JOIN CUST C
+          ON   O.CID = C.CID 
+    WHERE  O.DELDT = SYSDATE ; 
+
+ NON EQUI JOIN :- 
+ ------------------------
+
+=> non equi join is performed between the tables not sharing a common field 
+=> here join condition is not based on "=" operator it is based on >   <   between operators
+
+ex :-
+
+  EMP				 SALGRADE
+  EMPNO  ENAME    SAL  		 GRADE	LOSAL	HISAL
+  1	 A	5000		 1	700	1000
+  2	 B	2500		 2	1001	2000
+  3	 C	1000		 3	2001	3000
+  4	 D	3000		 4	3001	4000
+  5	 E	1500		 5	4001	9999
+
+=> display	 ENAME  SAL   GRADE   ? 
+                  ------------------   ---------------
+                          EMP           SALGRADE
+
+     SELECT E.ENAME,E.SAL,S.GRADE
+        FROM EMP E INNER JOIN SALGRADE S 
+            ON  E.SAL BETWEEN S.LOSAL AND S.HISAL ;
+
+   	A	5000	5
+	B	2500	3
+	C	1000	1
+	D	3000	3
+	E	1500	2
+
+=> display grade 3 employees list ?
+
+     SELECT E.ENAME,E.SAL,S.GRADE
+        FROM EMP E INNER JOIN SALGRADE S 
+            ON  E.SAL BETWEEN S.LOSAL AND S.HISAL 
+      WHERE S.GRADE = 3 ; 
+
+ joning more than 2 tables :- 
+--------------------------------------
+
+  => if no of tables increases no of join conditions also increases , to join N tables N-1
+       join conditions required.
+
+       SELECT columns
+       FROM tab1 INNER JOIN tab2
+           ON  join cond
+                          INNER JOIN tab3
+           ON join cond
+                          INNER JOIN tab4
+            ON join cond
+
+   ex  :- 
+
+   => display   ENAME    DNAME    GRADE   ? 
+                      -----------    -----------    ------------
+                        EMP        DEPT       SALGRADE
+
+          SELECT E.ENAME,D.DNAME,S.GRADE
+             FROM EMP E  INNER JOIN DEPT D
+                 ON  E.DEPTNO = D.DEPTNO 
+                                     INNER JOIN SALGRADE S
+                ON  E.SAL BETWEEN S.LOSAL AND S.HISAL ; 
+
+
+FROM EMP E INNER JOIN DEPT D :-
+-----------------------------------------------------
+
+  EMP                                       		DEPT
+  EMPNO ENAME SAL  DEPTNO              DEPTNO    DNAME            LOC
+  1     	A         5000    10		10	    ACCOUNTS    NEW YORK
+  2     	B        3000     20                     	20      	    RESEARCH    
+  3     	C        4000     30                      	30     	    SALES        
+  4     	D         2000    20                      	40      	    OPERATIONS 
+  5    	 E       3000     NULL
+
+ ON E.DEPTNO = D.DEPTNO :- 
+ ---------------------------------------------			SALGRADE
+						GRADE	LOSAL	HISAL
+ 1     	A         5000    10	10      ACCOUNTS     	1	700	1000
+ 2     	B        3000     20       20     RESEARCH    		2	1001	2000
+ 3     	C        4000     30       30     SALES		3	2001	3000
+ 4     	D         2000    20       20    RESEARCH		4	3001	4000
+ 						5	4001	9000
+
+ON E.SAL BETWEEN S.LOSAL AND S.HISAL :-
+-------------------------------------------------------------------
+
+1     	A         5000    10	10      ACCOUNTS  	5
+2     	B        3000     20       20     RESEARCH    	3
+3     	C        4000     30       30     SALES	4
+4     	D         2000    20       20    RESEARCH	2
+
+
+SELECT E.ENAME,D.DNAME,S.GRADE :- 
+------------------------------------------------------------
+
+  A	ACCOUNTS	5
+  B	RESEARCH	3
+  C	SALES		4
+  D	RESEARCH	2
+
+ OUTER JOIN :- 
+ -----------------------
+
+ => inner join returns only matching rows but will not return unmatched rows , to display
+      unmatched rows perform outer join.
+
+  EMP                                       		DEPT
+  EMPNO ENAME SAL  DEPTNO              DEPTNO    DNAME            LOC
+  1     	A         5000    10		10	    ACCOUNTS    NEW YORK
+  2     	B        3000     20                     	20      	    RESEARCH    
+  3     	C        4000     30                      	30     	    SALES        
+  4     	D         2000    20                      	40      	    OPERATIONS  => unmatched row
+  5             E       3000     NULL => unmatched row
+
+ => outer join is 3 types 
+
+   1  LEFT OUTER JOIN
+   2  RIGHT OUTER JOIN
+   3  FULL OUTER JOIN
+
+LEFT OUTER JOIN :- 
+----------------------------
+
+=> returns all rows (matched + unmatched)  from left side table and  matching rows 
+     from right  side table.  
+
+  SELECT E.ENAME,D.DNAME
+     FROM EMP E LEFT OUTER JOIN DEPT D
+          ON E.DEPTNO = D.DEPTNO ; 
+
+	A	ACCOUNTS
+	B	RESEARCH
+	C	SALES
+	D	RESEARCH
+	E	NULL            => unmatched from emp 
+
+ RIGHT OUTER JOIN :- 
+ -------------------------------	
+
+=> returns all rows (matched + unmatched)  from right  side table and  matching rows 
+     from  left side table.  
+ 
+   SELECT E.ENAME,D.DNAME
+     FROM EMP E RIGHT OUTER JOIN DEPT D
+          ON E.DEPTNO = D.DEPTNO ; 
+
+         	A	ACCOUNTS
+	B	RESEARCH	
+	C	SALES
+	D	RESEARCH
+	NULL	OPERATIONS  => unmatched from dept	         	
+	
+FULL OUTER JOIN :- 
+-----------------------------
+
+=> returns all rows (matched + unmatched)  from both tables
+ 
+   SELECT E.ENAME,D.DNAME
+     FROM EMP E FULL OUTER JOIN DEPT D
+          ON E.DEPTNO = D.DEPTNO ; 
+
+	A	ACCOUNTS
+	B	RESEARCH
+	C	SALES
+	D	RESEARCH
+	E	NULL              =>  unmatched from emp 
+	NULL	OPERATIONS => unmatched from dept
+
+Displaying only unmatched records :- 
+-------------------------------------------------
+
+ left side table :- 
+ ---------------------
+
+SELECT E.ENAME,D.DNAME
+     FROM EMP E LEFT OUTER JOIN DEPT D
+          ON E.DEPTNO = D.DEPTNO
+    WHERE D.DNAME IS NULL ; 
+
+	E	NULL
+
+right side table :-
+-----------------------
+
+ SELECT E.ENAME,D.DNAME
+     FROM EMP E  RIGHT OUTER JOIN DEPT D
+          ON E.DEPTNO = D.DEPTNO 
+   WHERE E.ENAME IS NULL ; 
+ 
+     NULL		OPERATIONS
+
+both tables :-
+--------------------
+
+  SELECT E.ENAME,D.DNAME
+     FROM EMP E  FULL OUTER JOIN DEPT D
+          ON E.DEPTNO = D.DEPTNO 
+   WHERE D.DNAME IS NULL
+                 OR
+                E.ENAME IS NULL ; 
+
+	E	NULL
+	NULL	OPERATIONS
+
+ Ex :- 
+		
+  EMP					PROJECTS
+  EMPID	ENAME	SAL	PROJID		PROJID	PNAME	DURATION
+ 1	A		100		100
+ 2	B		101		101
+ 3	C		NULL		102
+
+ => display employee details with project details ?
+
+ => display employee details with project details and also display employees not assigned to any 
+       project ?
+
+ => display only the project where no employeed assigned to it ? 
+
+CROSS JOIN / CARTESIAN JOIN :- 
+-------------------------------------------------
+
+ => cross join returns cross product or cartesian product of two tables 
+
+  A  = 1,2
+  B  = 3,4
+
+  AXB  = (1,3) (1,4) (2,3) (2,4) 
+
+ => if cross join performed between two tables then all records of 1st table joined with all records
+      of 2nd table.
+
+  => to perform cross join submit the join query without join condition.
+
+     SELECT E.ENAME,D.DNAME
+      FROM   EMP E CROSS JOIN DEPT D ; 
+
+==========================================================================
+
+ SET OPERATORS :- 
+ -----------------------------
+
+ UNION
+ UNION ALL
+ INTERSECT
+ MINUS 
+
+  A  =  1,2,3,4
+  B  = 1,2,5,6
+ 
+  A UNION B     	 =  	1,2,3,4,5,6
+  A UNION ALL B  	 =  	1,2,3,4,1,2,5,6
+  A INTERSECT B 	 = 	1,2
+  A MINUS B          	 =  	3,4
+  B MINUS A           	 = 	5,6
+
+=> in oracle set operations performed between the records/rows return by two queries 
+
+  SELECT STATEMENT 1
+  UNION / UNION ALL / INTERSECT / MINUS
+  SELECT STATEMENT 2 ;
+
+  QUERY 1 :- 
+
+  SELECT JOB FROM EMP WHERE DEPTNO = 20 ;
+
+CLERK
+MANAGER
+ANALYST
+CLERK
+ANALYST
+
+QUERY 2 :- 
+
+ SELECT JOB FROM EMP WHERE DEPTNO = 30 ; 
+
+ SALESMAN
+SALESMAN
+SALESMAN
+MANAGER
+SALESMAN
+CLERK
+
+UNION :- 
+-------------
+
+  => combines rows return by two queries
+  => duplicates are eliminated
+  => result is sorted 
+
+  SELECT JOB FROM EMP WHERE DEPTNO = 20
+  UNION
+  SELECT JOB FROM EMP WHERE DEPTNO = 30 ;
+
+ANALYST
+CLERK
+MANAGER
+SALESMAN
+ 
+ => difference between UNION & JOIN  ?
+
+	UNION			JOIN
+ 
+ 1	combines rows		combines columns
+ 
+ 2	horizontal merge		vertical merge
+
+ 3	performed between two              performed between two tables 
+                 queries
+ 
+ 28-aug-24
+
+UNION ALL :- 
+--------------------
+
+  => combines rows  
+ => duplicates are not eliminated
+ => result is not sorted
+
+  SELECT  JOB  FROM EMP WHERE DEPTNO = 20 
+  UNION ALL      
+  SELECT JOB FROM EMP WHERE DEPTNO = 30 ; 
+
+
+CLERK
+MANAGER
+ANALYST
+CLERK
+ANALYST
+SALESMAN
+SALESMAN
+SALESMAN
+MANAGER
+SALESMAN
+CLERK
+
+INTERSECT :-
+-------------------
+
+ => intersect returns common values 
+
+   SELECT  JOB  FROM EMP WHERE DEPTNO = 20 
+   INTERSECT
+   SELECT JOB FROM EMP WHERE DEPTNO = 30 ; 
+
+  CLERK
+  MANAGER
+
+MINUS  :-
+---------------
+
+  => returns values present in 1st query output and not present in 2nd query output 
+
+   SELECT  JOB  FROM EMP WHERE DEPTNO = 20 
+    MINUS
+   SELECT JOB FROM EMP WHERE DEPTNO = 30 ; 
+
+  ANALYST
+
+    SELECT  JOB  FROM EMP WHERE DEPTNO = 30 
+    MINUS
+   SELECT JOB FROM EMP WHERE DEPTNO = 20 ; 
+
+   SALESMAN
+
+ => 
+
+ T1		T2
+ F1		C1
+ 1		1
+ 2		2
+ 3		3
+ 10		40
+ 20		50
+ 30		60
+
+ => write the outputs  for following operations 
+
+ 1 equi join
+ 2 left outer join
+ 3 right outer join
+ 4 full outer join
+ 5 union
+ 6 union all
+ 7 intersect
+ 8 minus
+
+ GROUP BY clause :-  
+ -------------------------------
+
+  => GROUP BY clause is used to group rows based on one or more columns to calculate
+       max,min,sum,avg,count for each group , for ex to calculate dept wise total sal first
+       we need to group rows based on dept and apply sum function on each dept 
+       
+       EMP
+       EMPNO 	ENAME	SAL	DEPTNO
+       1		A	3000	10
+       2		B	4000	20	group by		10	8000
+       3		C	5000	30  ================>	20	10000
+       4		D	6000	20			30	5000
+       5		E	5000	10
+      
+           detailed data						summarized data
+
+
+   => GROUP BY clause converts detailed data into summarized data which is useful for analysis.
+
+ SELECT columns
+ FROM tabname
+ [WHERE cond]
+ GROUP BY colname
+ [HAVING cond]
+ [ORDER BY col ASC/DESC] 
+
+ Execution :- 
+
+ FROM
+ WHERE
+ GROUP BY
+ HAVING
+ SELECT
+ ORDER BY 
+
+ => display dept wise total sal ?
+
+      SELECT DEPTNO,SUM(SAL)
+      FROM EMP
+     GROUP BY DEPTNO ;
+
+ 	DEPTNO   	SUM(SAL)
+	---------- 		----------
+      	  30       		9400
+      	  10       		8750
+       	  20      		10875
+
+ => display job wise no of employees  ?
+
+      SELECT JOB,COUNT(*)
+      FROM EMP
+      GROUP BY JOB ;
+
+  => no of employees joined in each year ?
+
+      SELECT  TO_CHAR(HIREDATE,'YYYY') AS YEAR,COUNT(*)
+      FROM EMP
+      GROUP BY  TO_CHAR(HIREDATE,'YYYY')  ;
+
+ => no of employees joined on each day ?
+
+      SELECT  TO_CHAR(HIREDATE,'day') AS DAY,COUNT(*)
+      FROM EMP
+      GROUP BY  TO_CHAR(HIREDATE,'day')  ;
+
+ => month wise no of employees joined in the year 1981 ?
+
+       SELECT  TO_CHAR(HIREDATE,'month') AS MONTH,COUNT(*)
+       FROM EMP
+       WHERE TO_CHAR(HIREDATE,'YYYY')=1981 
+       GROUP BY  TO_CHAR(HIREDATE,'month')  ;
+
+ => find the departments having more than 3 employees ? 
+
+      SELECT  DEPTNO,COUNT(*)
+      FROM EMP 
+      WHERE  COUNT(*) > 3
+      GROUP BY DEPTNO ;         => ERROR  => group functions are not allowed in where clause
+
+      oracle cannot calculate dept wise count before group by  and it can calculate only 
+      after group by , so apply the condition  COUNT(*) > 3 after group by using
+      HAVING clause.
+
+      SELECT  DEPTNO,COUNT(*)
+      FROM EMP
+      GROUP BY DEPTNO  
+      HAVING COUNT(*) >3 ; 
+
+  WHERE  VS  HAVING  :- 
+  -------------------------------------
+
+	        WHERE                                               HAVING
+
+   1         select specific rows from table		select specific groups after group by 
+
+   2         conditions applied before group by                conditions applied after group by 
+
+   3         use where clause if cond doesn't                   use having clause if cond
+              contain group function			contains group function
+
+ => display dept wise count for  dept  10,20 and no of emps > 3 ? 
+
+     SELECT DEPTNO,COUNT(*)
+     FROM EMP 
+     WHERE DEPTNO IN (10,20)
+     GROUP BY DEPTNO
+     HAVING COUNT(*) > 3 ; 
+
+=========================================================================
+
+  SUB-QUERIES / NESTED QUERIES :- 
+  ------------------------------------------------------
+
+ => a query in another query is called sub-query or nested query.
+ => one query is called inner query 
+ => other query is called outer query
+ => first oracle executes inner query then it executes outer query
+ => output of inner query is input to outer query
+ => use sub-queries when where cond based on unknown value
+
+ syntax :-
+
+  SELECT columns
+  FROM tabname
+  WHERE  colname   op   (SELECT statement) ; 
+
+
+  =>  op must be any relational operator like   >   >=   <   <=    =    <> 
+
+ examples :- 
+
+ => display employees earning more than blake  ?
+
+ SELECT  *
+ FROM EMP
+ WHERE SAL >  (SELECT SAL FROM EMP WHERE ENAME='blake') ;
+
+=> employees who are senior to king ?
+
+  SELECT *
+  FROM EMP 
+  WHERE HIREDATE  <   (SELECT  HIREDATE FROM EMP WHERE ENAME='king') ;
+
+			      17-NOV-81
+
+=> name of the employee earning max sal ?
+
+     SELECT  ENAME
+     FROM EMP
+     WHERE  SAL  =   MAX(SAL) ;   => ERROR => group functions not allowed in where
+
+     SELECT  ENAME
+     FROM EMP
+     WHERE  SAL  =   (SELECT  MAX(SAL) FROM EMP); 
+                                 -------------------------------------------------
+                                                   5000
+
+=> display 2nd max salary  ?
+
+      SELECT  MAX(SAL)
+      FROM EMP 
+      WHERE  SAL  <>   (SELECT MAX(SAL) FROM EMP) ;
+                                     --------------------------------------------
+                                                   5000
+
+=> name of the employee earning 2nd max sal ?
+
+      SELECT ENAME,SAL
+      FROM EMP 
+      WHERE SAL =  ( SELECT  MAX(SAL)
+                                FROM EMP 
+                               WHERE  SAL  <>   (SELECT MAX(SAL) FROM EMP)) ;
+                                                              ------------------------------------------------
+                                                                             5000
+                              ------------------------------------------------------------------------------
+                                                     3000
+
+29-aug-24
+
+CO-RELATED SUB-QUERIES :- 
+--------------------------------------------
+
+=> if inner query references values of outer query then it is called co-related sub-query.
+
+=> execution starts from outer query and inner query is executed no of times depends on
+     no of rows return by outer query 
+
+=> use co-related sub-queries  to execute sub-query for each row return by outer query 
+
+Ex :- 
+
+EMP
+EMPNO	ENAME	SAL	DEPTNO
+1	A	5000	10
+2	B	3000	20
+3	C	4000	30
+4	D	6000	20
+5	E	3000	10	
+
+=> employees earning more than  avg sal of the organization ?  (normal sub-query)
+
+    SELECT *
+    FROM EMP
+    WHERE  SAL  >  (SELECT AVG(SAL) FROM  EMP)
+                                ----------------------------------------------
+                                             4200
+
+ => employees earning more than avg sal of their dept ?  (co-related sub-query)
+
+   SELECT EMPNO,ENAME,SAL,DEPTNO
+   FROM EMP  X 
+   WHERE SAL  >  (SELECT  AVG(SAL) FROM EMP  WHERE DEPTNO = X.DEPTNO) ; 
+
+ EMP
+EMPNO	ENAME	SAL	DEPTNO
+1	A	5000	10		5000 >  (4000)    TRUE
+2	B	3000	20                              3000 >  (4500)    FALSE
+3	C	4000	30                              4000 >  (4000)    FALSE
+4	D	6000	20                              6000 >  (4500)    TRUE
+5	E	3000	10	                 3000 >   (4000)   FALSE
+
+ => employees earning max sal in their dept ?
+
+   SELECT EMPNO,ENAME,SAL,DEPTNO
+   FROM EMP  X 
+   WHERE SAL  =  (SELECT  MAX(SAL) FROM EMP  WHERE DEPTNO = X.DEPTNO)
+
+
+EMP
+EMPNO	ENAME	SAL	DEPTNO
+1	A	5000	10		5000 =  (5000)   TRUE
+2	B	3000	20                              3000 =  (6000)   FALSE
+3	C	4000	30                              4000 =  (4000)   TRUE
+4	D	6000	20                              6000 = (6000)     TRUE
+5	E	3000	10	                 3000 = (5000)    FALSE
+
+ =>  display  top  3  max salaries  ?
+
+      SELECT   A.SAL 
+      FROM EMP A
+      WHERE  3   >   (SELECT  COUNT( B.SAL)
+                                FROM EMP B
+                                WHERE A.SAL < B.SAL) 
+     ORDER BY SAL DESC ; 
+ 
+   EMP   A			EMP  B
+   SAL			SAL
+   5000			5000	3  > (0)      TRUE
+   4000			4000         3 > (1)       TRUE         
+   3000			3000         3 > (3)       FALSE      
+   2000			2000         3 > (4)       FALSE
+   4000			4000         3 > (1)       TRUE
+
+
+      SELECT   DISTINCT  A.SAL 
+      FROM EMP A
+      WHERE  3   >   (SELECT  COUNT( DISTINCT B.SAL)
+                                FROM EMP B
+                                WHERE A.SAL < B.SAL) 
+     ORDER BY SAL DESC ; 
+
+
+  EMP   A			EMP  B
+   SAL			SAL
+   5000			5000	   3 > (0)     TRUE
+   4000			4000            3 > (1)     TRUE    
+   3000			3000            3 > (2)     TRUE
+   2000			2000            3 > (3)     FALSE        
+   4000			4000            3 > (1)     TRUE
+
+ => display  3rd max sal   ? 
+
+      SELECT   DISTINCT  A.SAL 
+      FROM EMP A
+      WHERE (3-1)  =    (SELECT  COUNT( DISTINCT B.SAL)
+                                    FROM EMP B
+                                   WHERE A.SAL < B.SAL) 
+     ORDER BY SAL DESC ; 
+
+=>  display Nth max sal   ? 
+
+      SELECT   DISTINCT  A.SAL 
+      FROM EMP A
+      WHERE (&N-1)  =    (SELECT  COUNT( DISTINCT B.SAL)
+                                    FROM EMP B
+                                   WHERE A.SAL < B.SAL) 
+      ORDER BY SAL DESC ; 
+
+30-aug-24
+
+ROWID :- 
+------------
+
+ => returns address of a row  i.e.  where the recored is stored in memory
+ => rowid is called psuedo column because it is not a column but acts like a column.
+ 
+  Ex :-     to see the rowids 
+
+              SELECT ROWID,EMPNO,ENAME,SAL FROM EMP ;
+
+  => ROWIDs are used to delete duplicate records 
+
+ Ex :- 
+
+    EMP44
+    ENO	ENAME	SAL		ROWID
+   1	A	5000		AAA
+   2	B	6000		AAB
+   3	C	7000		AAC
+   1	A	5000		AAD
+   2	B	6000		AAE
+
+     DELETE FROM EMP44 WHERE  ROWID  LIKE  '%AAD'  ;
+
+     DELETE FROM EMP44 WHERE ROWID LIKE  '%AAE'  ;
+
+ => deleting duplicates row-by-row is difficult if table contains huge number of 
+      duplicate rows , so execute the following query to delete all duplicate rows 
+
+      DELETE
+      FROM EMP44 X
+      WHERE ROWID <>  (SELECT  MIN(ROWID)
+                                          FROM EMP44
+                                          WHERE ENO = X.ENO
+                                                         AND
+                                                         ENAME=X.ENAME
+                                                         AND
+                                                         SAL=X.SAL) ;
+   EMP44
+    ENO	ENAME	SAL		ROWID
+   1	A	5000		AAA   <>  (AAA)   FALSE
+   2	B	6000		AAB  <>   (AAB)  FALSE
+   3	C	7000		AAC  <>   (AAC)  FALSE
+   1	A	5000		AAD  <>   (AAA)  TRUE
+   2	B	6000		AAE  <>   (AAB)   TRUE
+ 
+INLINE views :- 
+---------------------
+
+ => sub-queries in FROM clause are called inline views .
+
+     SELECT  columns
+     FROM  (SELECT  statement)   <ALIAS>
+     WHERE cond ; 
+
+ => sub-query output acts like a table for outer query
+ => inline views are used in following cases
+
+    1  to control order of execution of clauses
+    2  to use result of one operation in another operation
+    3  to join two query outputs 
+
+controlling order of execution of clauses :-
+---------------------------------------------------------
+
+ => by default oracle executes the clauses in the following order
+
+      FROM
+     WHERE
+     GROUP BY
+     HAVING
+     SELECT
+     ORDER BY 
+
+=> to control this order of execution use INLINE views 
+
+SELECT columns                                                    SELECT
+FROM tabname  =====================>     FROM (SELECT 
+WHERE cond                                                                       FROM 
+ORDER BY colname                                                            ORDER BY --)
+                                                                                  WHERE 
+
+Example 1 :- 
+
+ => display ranks of the employees based on salary and highest paid employee
+      should get 1st rank ?
+
+      SELECT  EMPNO,ENAME,SAL,
+                      DENSE_RANK() OVER (ORDER BY SAL DESC) AS RNK
+     FROM EMP ; 
+   
+     above query displays ranks of all the employees but to display top 5 employees 
+
+     SELECT  EMPNO,ENAME,SAL,
+                      DENSE_RANK() OVER (ORDER BY SAL DESC) AS RNK
+     FROM EMP 
+     WHERE  RNK <= 5 ;   => ERROR
+
+    => column alias cannot be used in where clause because where clause is
+         executed before select , to overcome this problem use inline views.
+
+       SELECT  *
+       FROM  (SELECT EMPNO,ENAME,SAL,
+                                    DENSE_RANK() OVER (ORDER BY SAL DESC) AS RNK
+                    FROM EMP)   E
+       WHERE RNK<=5 ; 
+
+      => display top 5 max salaries  ?
+
+       SELECT  DISTINCT SAL
+       FROM  (SELECT  SAL,
+                                    DENSE_RANK() OVER (ORDER BY SAL DESC) AS RNK
+                    FROM EMP)   E
+       WHERE RNK<=5 ; 
+
+    => display  5th max sal  ? 
+
+       SELECT  DISTINCT SAL
+       FROM  (SELECT  SAL,
+                                    DENSE_RANK() OVER (ORDER BY SAL DESC) AS RNK
+                    FROM EMP)   E
+       WHERE RNK=5 ; 
+
+   ROWNUM  :- 
+  --------------------
+
+   => returns r  ecord  numbers for the records return by query
+   => rownum is also a psuedo column
+    
+ ex  :-  SELECT ROWNUM,EMPNO,ENAME,SAL FROM EMP ; 
+
+		9	KING
+
+         SELECT ROWNUM,EMPNO,ENAME,SAL FROM EMP WHERE SAL>=2000;
+
+		5	KING
+
+          SELECT ROWNUM,EMPNO,ENAME,SAL FROM EMP  WHERE SAL>=3000;
+
+		2	KING
+
+   => rownum is not based on table and it is based on select stmt output , if select
+       output changes rownum also changes.
+
+  => rownum is used when displaying records from table based on record number
+
+  ex :- 
+
+   => display first 5 rows from emp ?
+
+       SELECT EMPNO,ENAME,SAL
+       FROM EMP
+       WHERE ROWNUM <= 5 ; 
+
+  => display 5th row   ?
+
+       SELECT EMPNO,ENAME,SAL
+       FROM EMP
+       WHERE ROWNUM  = 5 ; 
+
+  NOTE :- with rownum   in where conditions   =    >    >=   operators will not work
+                only   <    <=  operators can be used with rownum              
+  
+    SELECT *
+    FROM (SELECT  ROWNUM AS RNO,EMPNO,ENAME,SAL FROM EMP)  E
+    WHERE RNO = 5 ; 
+    
+    WHERE RNO  IN (5,10,15) 
+
+    WHERE RNO BETWEEN 5 AND 10 ;
+
+   WHERE MOD(RNO,2) = 0;
+
+   WHERE MOD(RNO,2) = 1 ; 
+
+  => display last 3 rows from emp ?
+
+    SELECT *
+    FROM (SELECT  ROWNUM AS RNO,EMPNO,ENAME,SAL FROM EMP)  E
+    WHERE RNO >= (SELECT COUNT(*)-2  FROM EMP) ; 
+
+
+
+
+Question1 :- 
+
+ T1		T2		
+ F1		F1
+1		A
+2		B	
+3		C
+
+ output :- 
+
+1	A
+2	B
+3	C
+
+
+Question 2 :- 
+
+ T1
+AMT
+1000
+-200
+5000
+-800
+3000
+-500
+
+OUTPUT  :-
+
+	POS		NEG
+	1000		-200
+	5000		-800
+	3000		-500
+
+difference between  sub-query and join  ?
+
+1   to display data from one table and condition based on another table then we can use
+     join or sub-query 
+
+2  to display data from two tables then user join operation.
+
+
+=> display employee names working at NEW YORK loc ?
+
+ join :- 
+---------
+
+      SELECT E.ENAME
+      FROM EMP E  INNER JOIN DEPT D
+          ON  E.DEPTNO = D.DEPTNO 
+     WHERE D.LOC ='NEW YORK' ; 
+      
+ sub-query :-
+-----------------
+
+     SELECT  ENAME
+     FROM EMP 
+     WHERE DEPTNO = ( SELECT DEPTNO  FROM DEPT  WHERE LOC = 'NEW YORK');
+
+
+ => display  employee names and dept names working at NEW YORK loc  ?
+
+   join :- 
+  -------------
+
+   SELECT E.ENAME , D.DNAME
+      FROM EMP E  INNER JOIN DEPT D
+          ON  E.DEPTNO = D.DEPTNO 
+     WHERE D.LOC ='NEW YORK' ; 
+      
+ sub-query :- 
+ ------------------
+
+   not possible 
+
+========================================================================
+
+CREATING A NEW TABLE FROM EXISTING TABLE  (replica) :- 
+--------------------------------------------------------------------------------------
+
+CREATE TABLE <TABNAME>
+AS
+SELECT  STATEMENT  ;
+
+ Ex 1  :-  copying complete table
+
+CREATE TABLE EMP11
+AS
+SELECT  *  FROM EMP ; 
+
+=> a new table is created with name EMP11 and oracle copies all the columns and rows from
+     EMP to EMP11.
+
+ Ex 2 :- copying specific rows and columns 
+
+  CREATE TABLE EMP12
+  AS
+  SELECT  EMPNO,ENAME,JOB,SAL 
+  FROM EMP 
+  WHERE JOB IN ('CLERK','MANAGER') ;
+
+Ex 3 :- copy only structure (cols)  but not data (rows) 
+
+  CREATE TABLE EMP13
+  AS
+ SELECT  * FROM EMP WHERE  1=2 ; 
+   
+Ex 4  :-  copying table from one user to another user  
+
+     copy  emp table from batch39 to user vijay ?
+
+     SYSTEM :- 
+    ----------------
+
+     SQL>CREATE TABLE  VIJAY.EMP
+              AS
+              SELECT  *  FROM  BATCH39.EMP  ;
+
+  copying data from one table to another table :- 
+  --------------------------------------------------------------
+
+  INSERT  INTO  <TARGET-TABLE>
+  SELECT COLUMN FROM <SOURCE-TABLE>  [WHERE COND]  ; 
+
+ Ex :-  copy  data from emp to emp13 ?
+
+     INSERT INTO EMP13
+     SELECT * FROM EMP ; 
+ 
+ MERGE command :- 
+ ----------------------------
+
+ => merge is a DML command
+ => command used to merge data into a table.
+ => merge is the combination of insert & update.
+ => using merge we can apply changes made to one table to another table (replica).
+ =>  used to manage replicas.
+
+ MERGE INTO <TARGET-TABLE> <ALIAS>
+ USING <SOURCE-TABLE>  <ALIAS>
+ ON (CONDITION)
+WHEN MATCHED THEN
+       UPDATE
+WHEN NOT MATCHED THEN 
+      INSERT  ; 
+
+Ex :- 
+
+step 1 :-   create source table
+
+CREATE TABLE CUSTS 
+(
+ CID   NUMBER(2) ,
+CNAME  VARCHAR2(10) ,
+ADDR     CHAR(3)
+ );
+
+ INSERT INTO CUSTS VALUES(1,'A','HYD');
+ INSERT INTO CUSTS VALUES(2,'B','BLR');
+
+step 2 :-  create replica 
+
+ CREATE TABLE CUSTT
+ AS
+ SELECT  * FROM CUSTS ;
+
+step 3  :-   modify source table
+
+ INSERT INTO CUSTS VALUES(3,'C','DEL'); 
+
+ UPDATE CUSTS SET ADDR = 'MUM' WHERE CID = 1; 
+
+step 4 :-  apply changes made to custs to custt 
+
+ MERGE INTO CUSTT  T
+ USING CUSTS  S
+ ON  (S.CID = T.CID)
+ WHEN MATCHED THEN 
+      UPDATE  SET  T.ADDR =  S.ADDR 
+ WHEN NOT MATCHED THEN
+       INSERT VALUES(S.CID,S.CNAME,S.ADDR) ;
+ 
+ Ex  :- 
+
+   EMPS					EMPT
+  EMPNO	ENAME	SAL			EMPNO	ENAME	SAL
+  1	A	5000			1	A
+  2	B	6000			2	B
+  3	C	7000			3	C
+
+ => copy salaries from EMPS to EMPT   ? 
+
+ 1   update command
+ 2   merge command 
+
+=========================================================================
+
+DATABASE  TRANSACTIONS :- 
+=========================
+
+ =>  a transaction is a unit of work that contains one or more dmls that must be saved as a whole
+       or must be cancelled as a whole.
+
+   ex :-   money transfer
+
+	acct1-----------------------------1000-----------------------------acct2
+
+                 update1					update2
+	(bal=bal-1000)				(bal=bal+1000)
+
+	successful					failed		invalid
+
+	failed					successful		invalid
+
+	successful					successful		valid
+
+	failed					failed		valid
+
+
+ => every db txn must gurantee a property called atomocity  i.e. all or none , if txn
+      contains multiple operations , if all are successful then it must be saved ,
+      if  one of the operation fails then entire txn must be cancelled.
+
+ =>  the following commands provided by oracle to handle transactions called TCL commands 
+
+          1   COMMIT		=>   to save  txn
+          2   ROLLBACK                =>   to cancel txn
+          3   SAVEPOINT              =>    to cancel part of the txn 
+
+ 
+ => every txn has a begin point and an end point 
+
+ => a txn begins implicitly with dml command.
+
+ => a txn ends with COMMIT / ROLLBACK command. OR  ddl command (txn ends with commit).
+
+example 1 :-   
+
+ create table a(a  number(2));   => commit
+ insert into a values(10);           => txn begins T1
+ insert into a values(20);
+ insert into a values(30);
+ insert into a values(40);
+ rollback  ;                                => txn ends  
+
+    => if txn ends with rollback then it is called aborted txn and operations are cancelled
+
+     
+example 2 :- 
+
+ create table a(a  number(2));     => commit
+ insert into a values(10);             => txn begins T1      
+ insert into a values(20);
+ create table b(b  number(2));    => txn ends with commit
+ insert into a values(30);           =>  txn begins T2
+ insert into a values(40);
+ rollback  ;                                =>  txn ends with rollback
+
+ 
+ select * from a ; 
+
+10
+20
+
+example 3 :- 
+
+ create table a(a  number(2));     => commit
+ insert into a values(10);              => txn begins T1
+ insert into a values(20);
+ insert into a values(30);
+ insert into a values(40);
+ commit;                                    => txn ends 
+ rollback  ;                                  => trying to end txn without starting
+
+
+SAVEPOINT :- 
+------------------
+
+  => we can declare savepoint and we can rollback upto the savepoint.
+  => using savepoint we can cancel part of the transaction.
+
+ ex 1  :- 
+
+  create table a(a  number(2));    
+  insert into a values(10);            
+  insert into a values(20);
+  savepoint sp1 ; 
+  insert into a values(30);
+  insert into a values(40);
+  savepoint sp2 ;
+  insert into a values(50);
+  insert into a values(60);
+  rollback to sp1 ; 
+  commit ; 
+ 
+  LOCKING :- 
+ ------------------
+
+  => accessing same data by no of users at the same time is called concurrent access.
+  => when data accessed concurrently users come across problems.
+
+     1 dirty read
+     2  lost update
+     3  non repeatable read
+     4  phantom read
+  
+ => to overcome these problems every db system supports a mechanism called locking mechanism
+
+ => locks are  2 types / modes 
+
+ 1  SHARE LOCK
+ 2  EXCLUSIVE LOCK
+
+ => shared lock is applied whenever user try to read data (select stmt)
+ => exclusive lock is applied whenever user try to update data (dml commands)
+
+ 		S		X
+
+	S	YES		YES
+
+
+	X	YES		NO
+
+Ex  :- 
+
+ 	system					batch39
+
+1   update batch39.emp			2	update emp
+     set sal = 2000					set sal = 3000
+     where empno = 7369;				where empno = 7369 ;
+
+    locked + updated					-----------wait----------------
+
+3   commit  ;				4            1 row updated 
+
+   lock releases
+
+
+ DeadLock :- 
+ ----------------
+
+  => if two uses mutually waits for one another that situation is called deadlock. if deadlock
+       oracle returns error , so that one transaction can be cancelled and another can be
+       continued.
+
+	system					batch39
+
+1   update batch39.emp			2	update emp
+     set sal = 2000					set sal = 3000
+     where empno = 7369;				where empno = 7499;
+
+    locked + updated					locked + updated
+
+	system					batch39
+
+3   update batch39.emp			4	update emp
+     set sal = 2000					set sal = 3000
+     where empno = 7499;				where empno = 7369 ;
+
+    -----wait-  				                  -----------wait----------------
+
+==============================deadlock================================
+
+
+5   error
+
+6   rollback ;				7      commit ; 
+
+
+TABLE LEVEL LOCKING :- 
+-------------------------------------
+
+=> complete table is locked i.e. all the records of table are locked.
+
+             LOCK TABLE  <NAME> IN <MODE> ;
+
+ Ex :- 
+
+  SQL>LOCK TABLE EMP IN EXCLUSIVE MODE ; 
+
+ => what are transaction properties ?
+
+       ans :-       ACID properties 
+
+          A   atomocity
+          C  consistency
+          I    isolation
+          D  durability 
+
+ Atomocity :- 
+ ----------------
+
+   => atomocity means all or none ,  if txn contains multiple operations if all are successful then
+        it must be saved , if one of the operation fails then entire txn must be cancelled.
+
+ Consistent:--
+ ----------------
+
+  Transactions ensure that the database state remains consistent i.e. state of the
+ db must be consistent before and after the transaction.
+ 
+ Isolated:    Separate transactions should not interfere with each other.
+ -----------
+
+ Durability :- 
+ ------------------
+
+ Once a transaction has been committed, the database changes must be saved permanently
+ even if the machine on which the database software is running crashes later.
+ 
+ ========================================================================
+
+ DB SECURITY :- 
+-------------------------
+
+ USERS			=>  provides security at db level
+ PRIVILEGES		=>  provides security at table level
+ VIEWS 	`		=>  provides security at row & col level
+
+ DB (USERS)
+     TABLE (PRIVILEGES)
+          ROWS & COLS (VIEWS)
+
+ Granting privileges (permissions) to users :- 
+ ---------------------------------------------------------
+
+ GRANT <privileges> ON  <tabname> TO  <usernames> ;
+
+ Ex :- 
+
+BATCH39 :-
+----------------
+
+ SQL>GRANT ALL ON EMP TO VIJAY ; 
+
+VIJAY :-
+-------------
+
+ SQL>SELECT  *  FROM  BATCH39.EMP ;
+
+ SQL>UPDATE  BATCH39.EMP SET SAL=2000 WHERE EMPNO = 7369 ;
+
+
+REVOKE command :- 
+-------------------------------
+
+ BATCH39 :- 
+ ------------------
+
+ SQL>REVOKE ALL ON EMP FROM VIJAY ; 
+
+ VIJAY :- 
+ ------------
+
+ SQL>SELECT * FROM BATCH39.EMP ;  => ERROR
+
+ DB OBJECTS :- 
+ ----------------------
+
+ 1  TABLES
+ 2  VIEWS
+ 3  SYNONYMS
+ 4  SEQUENCES 
+ 
+===================================================
+
+4-sep-24
+
+ PL/SQL :- 
+ -------------
+
+		PL => procedural lang
+
+1 basic programming
+2 conditional stmts
+3 loops
+4 cursors
+5 error handling
+6 stored procedures
+7 functions
+8 packages
+9 triggers 
+
+Features :-
+--------------
+
+1  improves performance :- 
+    --------------------------------
+
+ => In pl/sql , sql commands can be grouped into one block and we submit
+      that block to oracle , so in pl/sql no of req & res between user and
+      oracle are reduced and performance is improved.
+
+2 supports conditional statements :- 
+   ----------------------------------------------
+
+  => in pl/sql we can execute sql commands based on conditions 
+
+3  supports loops :- 
+    --------------------
+
+   => In pl/sql with the help of loops we can execute sql commands
+        repeatedly multiple times.
+
+4  supports error handling :- 
+   -----------------------------------
+
+  => In pl/sql if any statement causes error then we can handle that error
+       and we can display our own simple and user friendly messages.
+
+ 5  supports reusability :- 
+     -----------------------------
+
+  =>  pl/sql programs can be stored in db , so applications which are connected to db can
+        reuse pl/sql programs
+
+  => pl/sql blocks are 2  types 
+
+      1  Anonymous Blocks
+      2  Named Blocks
+                     procedures
+                     functions
+                     packages
+                     triggers 
+
+Anonymous Blocks :- 
+-----------------------------
+
+=> a pl/sql program without name is called anonymous block
+
+   DECLARE
+        <declaration-part>;     optional
+   BEGIN
+        <statements>;
+   END;
+      /         => compilation & execution starts 
+
+ How to print messages :- 
+ -----------------------------------
+
+         DBMS_OUTPUT.PUT_LINE(message);
+         ---------------------- --------------
+              package            procedure
+
+   => by default messages are not send to output , to send messages to output execute the
+        following command.
+
+       SQL>SET SERVEROUTPUT ON 
+
+ How to write pl/sql programs :- 
+ -----------------------------------------
+
+ 1  EDITORs
+ 2  IDEs (integrated development environment) 
+
+		 EDITOR			IDE
+
+ 
+  coding		YES			YES
+
+  compilation	NO			YES
+
+  execution	NO			YES
+
+ debugging	NO			YES
+
+ example		NOTEPAD		SQL DEVELOPER
+
+ => a single environment that provides facilities for coding,compilation ,executing and
+      debugging is called IDE.
+
+ using NOTEPAD :- 
+ -------------------------
+
+ => open notepad and enter following code 
+
+  begin
+    dbms_output.put_line('welcome');
+ end;
+   /
+
+ => save the program in a file as D:\NARESH\"prog1.sql"
+ => go to sqlplus compile and run the program as follows 
+
+       SQL>@D:\NARESH\PROG1.SQL
+
+         output :- welcome
+
+Datatypes in PL/SQL :- 
+--------------------------------
+
+  1 scalar types of built-in types
+  2 user defined types
+  3 reference types 
+
+ scalar types or built-in types :- 
+ ---------------------------------------
+
+  => all built-in types are scalar types 
+  
+   1   NUMBER(P) / NUMBER(P,S)
+   2   CHAR/VARCHAR2/CLOB
+   3   NCHAR/NVARCHAR2/NCLOB
+   4   DATE / TIMESTAMP
+   5   BFILE / BLOB
+   6   BINARY_FLOAT / BINARY_DOUBLE
+   7   BINARY_INTEGER
+   8   BOOLEAN
+  
+     1 TO 6   =>  allowed  in sql, pl/sql
+
+     7,8         => allowed only in pl/sql but not allowed in sql 
+
+Declaring variables :-
+----------------------------
+
+              variablename        datatype(size);
+
+  ex :- 
+
+              x    number(4);
+              f     binary_float;
+              s    varchar2(20);
+              d    date;
+              b    boolean;
+
+ Assigning value to variable :- 
+ --------------------------------------
+
+                  variable   :=   value ;                     :=  => assignment operator
+
+                   x  :=  100;
+                   f   :=  83.56
+                  s   := 'abc';
+                  d   := '5-sep-24' ; 
+                  b   :=  true; 
+
+ Example :- 
+
+   => wap to add two numbers ? 
+
+        DECLARE
+              a   NUMBER(4);
+              b   NUMBER(4);
+              c   NUMBER(5);
+       BEGIN
+              a := 100;
+              b := 200;
+              c := a+b;
+              DBMS_OUTPUT.PUT_LINE(c);
+         END;
+             /
+
+How to input values at runtime :- 
+---------------------------------------------
+
+1             a  := &a;
+ 
+         enter value for a ;-  100
+
+              a  := 100;
+
+
+ 2          a   := &x;
+   
+             enter value for x  :-  500
+
+              a := 500;
+
+
+      DECLARE
+              a   NUMBER(4);
+              b   NUMBER(4);
+              c   NUMBER(5);
+       BEGIN
+              a := &a;
+              b := &b;
+              c := a+b;
+              DBMS_OUTPUT.PUT_LINE(c);
+         END;
+             /
+
+ => wap to input date and print day of the week ? 
+
+    DECLARE
+        d  DATE;
+    BEGIN
+        d := '&date';
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(d,'day'));
+   END;
+     /
+ 
+=> wap to input name and print first name,middle name,last name ?
+
+        input  :-  sachin ramesh tendulkar
+
+      output :- 
+
+      First Name =  sachin
+      Middle Name = ramesh
+      Last Name = tendulkar
+
+   
+ DECLARE
+         n  VARCHAR2(30);
+         f    VARCHAR2(20);
+         m  VARCHAR2(20);
+         l    VARCHAR2(20);
+ BEGIN
+        n  :=  '&name' ; 
+        f   :=  SUBSTR(n,1,INSTR(n,' ')-1);
+        l   :=  SUBSTR(n,INSTR(n,' ',1,2)+1);
+       m  :=       TRIM(RTRIM(LTRIM(n,f),l)) ;
+       DBMS_OUTPUT.PUT_LINE(' First Name = '||f);
+       DBMS_OUTPUT.PUT_LINE('Middle Name = '||m);
+       DBMS_OUTPUT.PUT_LINE(' Last Name = '||l);
+  END;
+    /
+
+        SUBSTR(string,start,[no of chars])
+        INSTR(string,char,[start,occurance])
+
+       name= sachin ramesh tendulkar
+
+       first name =  SUBSTR(name,1st char,1st space-1)
+       last name  =  SUBSTR(name,2nd space + 1)
+      middle name =SUBSTR(name,1st space + 1 ,2nd space - 1st space - 1)
+ 
+ DB Programming with PL/SQL :- 
+ --------------------------------------------
+
+  =>  To work with db executed sql commands from pl/sql program.
+  =>  the following commands can be executed from pl/sql program.
+
+   1   DML (insert,update,delete,merge,insert all)
+   2   DQL (select)
+   3   TCL  (commit,rollback,savepoint)
+
+ SELECT stmt syntax :- 
+ -------------------------------
+
+  SELECT columns INTO variables
+  FROM tabname
+  WHERE condition ; 
+
+ ex :- 
+
+  SELECT ename,sal   INTO  n , s
+  FROM emp
+  WHERE empno = 110; 
+
+Examples :- 
+
+  => wap to input empno and print name & sal  ?
+
+      DECLARE
+           veno                NUMBER(4);
+           vname            VARCHAR2(10);
+           vsal                 NUMBER(7,2);
+     BEGIN
+           veno := &empno;
+           SELECT  ename,sal INTO vname,vsal  
+           FROM emp 
+           WHERE  empno = veno ;
+           DBMS_OUTPUT.PUT_LINE(vname||'     '||vsal);
+     END;
+       /
+
+=> wap to input empno and calculate and print experience ?
+
+      DECLARE
+            veno       NUMBER(4);
+            vhire       DATE;
+            vexpr      NUMBER(2);
+     BEGIN
+            veno := &empno;      
+            SELECT hiredate INTO vhire FROM emp WHERE empno = veno; 
+            vexpr :=  (SYSDATE-vhire)/365;
+            DBMS_OUTPUT.PUT_LINE('Experience =  '||vexpr||' years');
+    END;
+        /
+ 
+
+  Experience =  ?? years 
+
+=>wap to input empno and calculate total sal ?
+                   
+                    total sal = sal + comm
+
+     DECLARE
+            veno       NUMBER(4);
+            vsal        NUMBER(7,2);
+            vcomm   NUMBER(7,2);
+            vtotsal    NUMBER(7,2);
+     BEGIN
+            veno := &empno;      
+            SELECT sal,comm INTO vsal,vcomm FROM emp WHERE empno = veno; 
+            vtotsal :=  vsal + NVL(vcomm,0);
+            DBMS_OUTPUT.PUT_LINE('Total salary =  '|| TO_CHAR(vtotsal,'L99G999'));
+    END;
+        /
+
+conditional statements :- 
+----------------------------------
+
+ 1  IF-ELSE
+ 2  MULTI IF
+ 3  NESTED IF
+
+IF-ELSE :- 
+--------------
+
+   IF  COND   THEN
+          statements ;
+  [ ELSE
+          statements; ]
+   END IF;
+
+MULTI - IF :-
+-----------------
+
+IF COND1  THEN
+          statements;
+ELSIF COND2 THEN
+        statements;
+ELSIF COND3  THEN
+         statements;
+ELSE
+         statements;
+END IF;
+
+NESTED IF :- 
+--------------------
+
+      IF  COND   THEN
+          IF  COND  THEN
+                statements;
+          ELSE
+               statements;
+          END IF;
+      ELSE
+           statements;
+      END IF;
+
+ => wap to input empno and increment sal by specific amount  and
+      after increment if sal exceeds 5000 then cancel that increment ?
+
+      DECLARE
+            veno   NUMBER(4);
+            vamt   NUMBER(4);
+            vsal     NUMBER(7,2);
+     BEGIN
+             veno := &empno;        
+             vamt  := &amount;     
+             UPDATE emp SET sal = sal + vamt WHERE empno = veno ; 
+             SELECT sal INTO vsal FROM emp WHERE empno = veno ; 
+             IF  vsal > 5000 THEN
+                        ROLLBACK;
+             ELSE
+                        COMMIT;
+             END IF;
+       END;
+          /
+
+
+9-sep-24 
+
+ => wap to input empno and increment sal as follows ?
+
+   if job=CLERK incr sal by 10%
+             SALESMAN          15%
+             MANAGER           20%
+             others                   5%
+
+ DECLARE
+     veno      NUMBER(4);
+     vjob       VARCHAR2(10);
+     vpct       NUMBER(2);
+BEGIN
+      veno := &empno ; 
+      SELECT job INTO vjob FROM emp WHERE empno = veno ; 
+      IF vjob='CLERK' THEN
+          vpct := 10;
+      ELSIF vjob='SALESMAN' THEN
+         vpct := 15;
+      ELSIF vjob='MANAGER' THEN
+          vpct := 20;
+      ELSE
+          vpct := 5;
+      END IF;
+      UPDATE emp SET sal = sal + (sal*vpct/100) WHERE empno = veno;
+      COMMIT;
+  END;
+    /
+
+=> wap to process bank transaction (w/d) ? 
+
+  ACCOUNTS
+  ACCNO	ACTYPE	BAL
+  100	S	10000
+  101	S	 20000
+
+ TRANSACTIONS
+ TRID	TTYPE	TDATE	TAMT	ACCNO 
+
+ DECLARE
+     vacno     NUMBER(4);
+     vtype     CHAR(1);
+     vamt       NUMBER(6);
+     vbal        NUMBER(8,2);
+ BEGIN
+      vacno := &acno;
+      vtype  := '&type' ;    
+      vamt  := &amount;
+      IF vtype='W' THEN
+          SELECT bal INTO vbal FROM accounts WHERE accno = vacno; 
+          IF vamt > vbal THEN
+                DBMS_OUTPUT.PUT_LINE('insufficient balance');
+          ELSE
+                UPDATE accounts SET bal = bal - vamt WHERE accno = vacno; 
+                INSERT INTO transactions VALUES(S10.NEXTVAL,'W',sysdate,vamt,vacno);
+          END IF;
+     ELSIF vtype='D' THEN
+           UPDATE accounts SET bal = bal + vamt WHERE accno = vacno; 
+           INSERT INTO transactions VALUES(S10.NEXTVAL,'D',sysdate,vamt,vacno);
+     ELSE 
+           DBMS_OUTPUT.PUT_LINE('invalid transaction type');
+     END IF;
+     COMMIT;
+ END;
+   /
+ 
+ => wap to process money transfer ? 
+
+   DECLARE 
+         vsacno        NUMBER(4);
+         vtacno         NUMBER(4);
+         vamt           NUMBER(6);
+         vbal            NUMBER(8,2);
+  BEGIN
+          vsacno := &sacno;
+          vtacno := &tacno;
+          vamt   := &amount;
+          SELECT bal INTO vbal FROM accounts WHERE accno = vsacno ; 
+          IF vamt > vbal THEN
+               DBMS_OUTPUT.PUT_LINE('insufficient balance');
+          ELSE
+               UPDATE accounts SET bal = bal - vamt WHERE accno = vsacno;
+               UPDATE accounts SET bal = bal + vamt WHERE accno = vtacno;
+               INSERT INTO transactions VALUES(S10.NEXTVAL,'W',sysdate,vamt,vsacno);
+               INSERT INTO transactions VALUES(S10.NEXTVAL,'D',sysdate,vamt,vtacno);
+               COMMIT;
+          END IF;
+    END;
+    /
+
+==========================================================================
+
+ Reference Types :- 
+ ---------------------------
+
+ 1  %TYPE
+ 2  %ROWTYPE
+
+ %TYPE :- 
+ --------------
+
+  => used to refer datatype of a column
+  => used to match variable datatype with column datatype.
+  
+   ex :-     vename    emp.ename%TYPE; 
+               
+  => whatever type and size declared for ename the same type and size assigned to variable vename
+  => adv of %TYPE is even if column type or size changes pl/sql program is not affected , It
+       reduces complexity.
+ 
+ %ROWTYPE :- 
+ ---------------------
+
+ => used to refer rowtype or record type.
+
+   ex :-            r      emp%rowtype;
+
+   SELECT * INTO r FROM emp WHERE empno = 106 ; 
+ 
+   r
+   empno	 ename	job    mgr    hiredate   sal   comm  deptno    emailid 
+   106         clark        mgr                             2450            10 
+
+               r.sal  =>  2450
+               r.job  =>   mgr
+
+ ex :- 
+
+  STUDENT
+  SNO	SNAME	S1	S2	S3
+  1	A	80	90	70
+  2	B	30	60	50
+ 
+ RESULT
+ SNO	TOTAL	AVG	RESULT
+
+=> wap to input sno and calculate total,avg,result and insert into result table ?
+
+   DECLARE
+         vsno     student.sno%TYPE;
+         s           student%ROWTYPE;
+         r            result%ROWTYPE;
+   BEGIN
+         vsno := &sno ;
+         SELECT  *   INTO  s  FROM student WHERE sno = vsno ;
+         r.total := s.s1 + s.s2 + s.s3 ;
+         r.avg  :=   r.total/3;
+         IF s.s1>=35 AND s.s2>=35 AND s.s3>=35 THEN
+              r.result := 'PASS';
+         ELSE
+              r.result := 'FAIL';
+         END IF;
+         INSERT INTO result VALUES(vsno,r.total,r.avg,r.result);
+         COMMIT;
+  END;
+  /
+
+s
+SNO	SNAME	S1	S2	S3
+  1	A	80	90	70
+
+r
+SNO	TOTAL	AVG	RESULT
+                 240          80             PASS
+10-sep-24
+
+ LOOPS :-
+-------------
+
+ => loops are used to execute statements repeatedly multiple times
+=>  pl/sql supports 3 types of loops 
+
+   1 simple loop
+   2 while loop
+   3 for loop
+
+simple loop :-
+------------------
+
+    LOOP                                                    LOOP
+          statements;                                        statements;
+          EXIT WHEN COND;                          IF cond THEN
+   END LOOP;                                                      EXIT ;
+                                                                      END IF;
+ 			               END LOOP;
+
+ if cond = false loop continues
+ if cond = true loop terminates
+
+ WHILE loop :- 
+ -------------------
+
+ WHILE(cond)
+ LOOP
+    statements
+ END LOOP;
+
+ if cond = true  loop continues
+ if cond = false loop terminates
+
+ for loop :- 
+ --------------
+
+  FOR  <var> IN <low>..<upp>
+  LOOP
+     statements;
+  END LOOP;
+
+ Ex :- 
+
+  FOR  i  IN  1..10
+  LOOP
+      statements;
+  END LOOP;
+
+=> loop variable "i" declared implicitly as number type
+=> by default "i" value is incremented by 1
+=> "i" is read only variable
+=> scope of "i" is upto the for loop.
+
+Examples :- 
+
+ => wap to print numbers from 1 to 20 ?
+
+  using simple loop :- 
+  ---------------------------
+
+   DECLARE
+         x   NUMBER(2) := 1;
+   BEGIN
+      LOOP
+           DBMS_OUTPUT.PUT_LINE(x);
+           x := x+1;
+          EXIT WHEN X>20;
+     END LOOP;
+   END;
+     /
+
+ using while loop :- 
+ ------------------------
+
+  DECLARE
+         X   NUMBER(2) := 1;
+  BEGIN
+        WHILE(X<=20)
+        LOOP
+            DBMS_OUTPUT.PUT_LINE(X);
+            X := X+1;
+       END LOOP;
+   END;
+     /
+
+using for loop :- 
+---------------------
+
+BEGIN
+   FOR X IN 1..20
+  LOOP
+      DBMS_OUTPUT.PUT_LINE(X);
+ END LOOP;
+ END;
+    /
+
+=> wap to print all ascii chars ?
+
+     ascii value		char
+     
+	0		?
+
+	1		?
+
+	65		A
+
+	97		a
+
+	255		?
+     
+ BEGIN
+   FOR X  IN  0..255
+   LOOP
+       DBMS_OUTPUT.PUT_LINE(X||'        '||CHR(X));
+   END LOOP;
+  END;
+    /
+       
+=> wap to print 2024 calendar ? 
+
+        date			day
+
+      01-jan-24		?
+      02-jan-24		?
+
+     31-dec-24		?
+
+         DECLARE
+              d1      DATE ;
+              d2      DATE;
+         BEGIN
+               d1 := '01-JAN-24' ; 
+               d2 := '31-DEC-24' ;
+               WHILE(d1<=d2)
+               LOOP
+                    DBMS_OUTPUT.PUT_LINE(d1||'              '||TO_CHAR(d1,'day'));            
+                    d1 := d1+1;
+               END LOOP;
+         END;
+           /
+
+ => wap to print sundays between two given dates ?
+
+        DECLARE
+              d1      DATE ;
+              d2      DATE;
+         BEGIN
+               d1 := '01-JAN-24' ; 
+               d2 := '31-DEC-24' ;
+               WHILE(d1<=d2)
+               LOOP
+                     IF TO_CHAR(d1,'dy') = 'sun'  THEN
+                          DBMS_OUTPUT.PUT_LINE(d1||'              '||TO_CHAR(d1,'day'));            
+                    END IF;
+                    d1 := d1+1;
+               END LOOP;
+         END;
+           /
+
+        DECLARE
+              d1      DATE ;
+              d2      DATE;
+              cnt     NUMBER(3) := 0;
+         BEGIN
+               d1 := '&date1' ; 
+               d2 := '&date2' ;
+               d1 := NEXT_DAY(d1,'sunday');
+               WHILE(d1<=d2)
+               LOOP
+                    cnt := cnt+1;
+                    DBMS_OUTPUT.PUT_LINE(d1||'              '||TO_CHAR(d1,'day'));            
+                    d1 := d1+7;
+               END LOOP;
+                    DBMS_OUTPUT.PUT_LINE('No of sundays :- ' ||cnt);
+         END;
+             /
+
+=> wap to print following pattern ?
+
+            input :-   NARESH
+ 
+            output :- 
+
+               N
+               A
+               R
+               E
+               S
+               H
+
+      DECLARE
+             s   VARCHAR2(20);
+      BEGIN 
+             s := '&string' ; 
+             FOR X  IN  1..LENGTH(s)
+             LOOP
+                 DBMS_OUTPUT.PUT_LINE(SUBSTR(s,X,1));
+            END LOOP;
+      END;
+            /
+
+> wap to print following pattern ?
+
+            input :-   NARESH
+ 
+            output :- 
+
+            N
+            NA
+            NAR
+            NARE
+            NARES
+            NARESH
+
+      DECLARE
+             s   VARCHAR2(20);
+      BEGIN 
+             s := '&string' ; 
+             FOR X  IN  1..LENGTH(s)
+             LOOP
+                 DBMS_OUTPUT.PUT_LINE(SUBSTR(s,1,X));
+            END LOOP;
+      END;
+            /
+
+=> wap to input string and print reverse ?
+
+     INPUT    :-     NARESH
+     OUTPUT :-    HSERAN
+
+    DECLARE
+         s1      VARCHAR2(20);
+         s2      VARCHAR2(20);
+     BEGIN
+         s1 := '&string';
+         FOR X IN 1..LENGTH(s1)
+         LOOP
+               s2 := s2||SUBSTR(s1,-X,1);
+         END LOOP;
+         DBMS_OUTPUT.PUT_LINE(s2);
+         IF s1 = s2 THEN
+           DBMS_OUTPUT.PUT_LINE('palindrome');
+         ELSE
+           DBMS_OUTPUT.PUT_LINE('not a palindrome');
+         END IF;
+       END;
+         /
+
+=> wap to check whether given number is prime or not ?
+=> wap to input number print sum of individual digits ?
+=> wap to print following pattern ?
+
+    *
+    **
+    ***
+    ****
+    ******
+
+=> wap to print following pattern ?
+
+              *
+             ***
+            *****
+         
+         ***********
+
+How to implement loop in SQL :- 
+ ------------------------------------------
+
+SELECT LEVEL                                                connect by (level<=10)
+FROM DUAL                                                      loop
+CONNECT BY  LEVEL <= 20 ;                                  dbms_  (level);
+                                                                                   level := level + 1;
+				       end loop;
+ => by default level initialized with 1                     
+ => by default level is incremented by 1
+ 
+11-sep-24 
+
+ CURSORS :- 
+ ----------------
+
+ =>  cursors are used to access row-by-row.
+ 
+ =>  cursors are used to process multiple rows in pl/sql program.
+
+ =>  from pl/sql program if we submit a query to oracle , it goes to db
+       and gets the data and copies that into temporary memory called cursor
+       and in pl/sql program we can give name to the cursor and access
+       one by one row from cursor and process the row.
+       
+ =>  follow below steps to use cursor
+
+  1  declare cursor
+  2  open cursor
+  3  fetch records from cursor
+  4  close cursor
+
+ Declaring cursor :- 
+ ------------------------
+
+    CURSOR <name> IS SELECT statement ; 
+
+Ex :- 
+
+   CURSOR C1 IS SELECT  ename,sal FROM emp ; 
+
+ Opening cursor :- 
+ -----------------------
+
+                       OPEN  <cursor-name>;
+
+  Ex :-
+
+	     OPEN C1;
+
+   1  select stmt submitted to oracle 
+   2  oracle executes the query and data returned by query is copied to cursor
+   3  c1 points to cursor
+
+ Fetching records from cursor :- 
+ ------------------------------------------
+
+  => "FETCH" stmt used to fetch record from cursor   
+
+              FETCH <cursor-name> INTO <variables>;
+
+ Ex :- 
+
+             FETCH C1 INTO  vename,vsal; 
+
+ => a fetch stmt fetches one row at  a time but to process multiple rows fetch stmt
+      should be executed multiple times. so fetch stmt should be in a loop.
+
+ Closing cursor :- 
+ ------------------------
+
+                 CLOSE <cursor-name>; 
+
+  ex :-        CLOSE C1 ; 
+
+  cursor attributes :- 
+  -------------------------
+
+  %FOUND :- 
+   ---------------
+
+  TRUE	=>  if fetch successful
+  FALSE    =>  if fetch unsuccessful
+
+ %NOTFOUND :- 
+  -----------------------
+
+   TRUE    =>  if fetch unsuccessful
+   FALSE   => if fetch successful
+
+ %ROWCOUNT :- 
+  -----------------------
+
+   => returns no of rows fetched successfully
+
+ c1%found
+ c1%notfound
+ c1%rowcount
+
+Examples :- 
+
+ => wap to print all employee names and salaries ? 
+
+     DECLARE
+          CURSOR c1 IS SELECT ename,sal FROM emp ; 
+          vename   emp.ename%TYPE;
+          vsal          emp.sal%TYPE;
+      BEGIN
+            OPEN C1; 
+      LOOP
+            FETCH C1 INTO vename,vsal;
+            EXIT WHEN C1%NOTFOUND;
+            DBMS_OUTPUT.PUT_LINE(vename||'      '||vsal);
+      END LOOP;
+             CLOSE C1;
+      END;
+         /
+      
+  while loop :- 
+  -----------------
+
+     DECLARE
+          CURSOR c1 IS SELECT ename,sal FROM emp ; 
+          vename   emp.ename%TYPE;
+          vsal          emp.sal%TYPE;
+      BEGIN
+            OPEN C1; 
+            FETCH C1 INTO vename,vsal;
+            WHILE(C1%FOUND)
+      LOOP
+            DBMS_OUTPUT.PUT_LINE(vename||'      '||vsal);
+            FETCH C1 INTO vename,vsal;
+      END LOOP;
+             CLOSE C1;
+      END;
+       /
+
+ FOR LOOP CURSOR / CURSOR FOR LOOP :-
+ -------------------------------------------------------------------
+
+  FOR <var>  IN   <cursor-name>
+  LOOP
+         statements; 
+ END LOOP;
+
+ FOR r  IN C1
+ LOOP
+         statements ;
+ END LOOP;
+
+ => for loop is executed no of times depends on no of rows in cursor
+
+ => Adv of for loop cursor is opening cursor,fetching records from and closing cursor
+      is not required and all these operations performed implicitly.
+
+ => loop variable "r" is also declared implicitly as rowtype.
+
+ => every time for loop executes a record is fetched from cursor and assigned to
+       loop variable "r".
+
+  DECLARE
+       CURSOR C1 IS SELECT ename,sal FROM emp;
+  BEGIN
+       FOR r  IN C1
+   LOOP
+        DBMS_OUTPUT.PUT_LINE(r.ename||'   '||r.sal);
+   END LOOP;
+   END;
+      / 
+
+  => wap to calculate total sal without using sum function ?
+
+      DECLARE
+           CURSOR C1 IS SELECT sal FROM emp ;
+           t    NUMBER := 0;
+     BEGIN
+          FOR r  IN C1
+      LOOP
+          t  :=  t  +  r.sal;
+     END LOOP;
+     DBMS_OUTPUT.PUT_LINE(t);
+     END;
+       /
+
+ => wap to find max sal without using max function ?
+
+      DECLARE
+           CURSOR C1 IS SELECT sal FROM emp ;
+           m    NUMBER := 0;
+     BEGIN
+          FOR r  IN C1
+      LOOP
+            IF  r.sal > m THEN
+                  m := r.sal;
+            END IF;
+     END LOOP;
+     DBMS_OUTPUT.PUT_LINE(m);
+     END;
+       /
+  
+     DECLARE
+           CURSOR C1 IS SELECT sal FROM emp ORDER BY sal DESC;
+           vsal  emp.sal%TYPE;
+     BEGIN
+           OPEN C1;
+            FETCH C1 INTO vsal;
+            DBMS_OUTPUT.PUT_LINE(vsal);
+            CLOSE C1;
+      END;
+            /
+ 
+ => wap to find min sal  ? 
+
+    DECLARE
+           CURSOR C1 IS SELECT sal FROM emp ;
+           vsal  emp.sal%type;
+           m    NUMBER := 0;
+     BEGIN
+          OPEN C1 ;
+          FETCH C1 INTO m;
+      LOOP
+            FETCH C1 INTO vsal;
+            IF  vsal < m THEN
+                m := vsal;
+            END IF;
+            EXIT WHEN C1%NOTFOUND;
+     END LOOP;
+          DBMS_OUTPUT.PUT_LINE(m);
+          CLOSE C1;
+     END;
+       /
+
+       DECLARE
+           CURSOR C1 IS SELECT sal FROM emp ORDER BY sal ASC;
+           vsal  emp.sal%TYPE;
+     BEGIN
+           OPEN C1;
+            FETCH C1 INTO vsal;
+            DBMS_OUTPUT.PUT_LINE(vsal);
+            CLOSE C1;
+      END;
+            /
+
+=> wap to print top 5 max salaries ? 
+
+   DECLARE
+           CURSOR C1 IS SELECT sal FROM emp ORDER BY sal  DESC;
+           vsal  emp.sal%TYPE;
+     BEGIN
+           OPEN C1;
+       LOOP
+            FETCH C1 INTO vsal;
+            EXIT WHEN  C1%ROWCOUNT > 5;
+            DBMS_OUTPUT.PUT_LINE(vsal);
+      END LOOP;
+            CLOSE C1;
+      END;
+            /
+
+=> wap to print employee names as follows ?
+
+          SMITH,ALLEN,WARD,JONES,-----------------
+
+       DECLARE
+            CURSOR C1 IS SELECT  ename FROM emp ;
+            s  VARCHAR2(1000);
+       BEGIN
+            FOR r  IN C1
+        LOOP
+              s := s||r.ename||',' ;
+        END LOOP;
+        DBMS_OUTPUT.PUT_LINE(RTRIM(s,','));
+        END;
+           /
+ 
+   LISTAGG :- 
+   ----------------
+
+   => predefined function used to concatenate column values 
+
+           LISTAGG(colname,seperator)  WITHIN GROUP (ORDER BY ---)
+
+ Ex :- 
+
+  SELECT LISTAGG(ename,',') WITHIN GROUP (ORDER BY hiredate ASC) 
+  FROM emp ; 
+
+ => display dept wise employee names ? 
+
+    SELECT deptno,
+                   LISTAGG(ename,',') WITHIN GROUP (ORDER BY sal DESC)  AS NAMES
+    FROM emp
+    GROUP BY deptno ; 
+
+=> wap to calculate all the students total,avg,result and insert into result table ?
+
+  STUDENT
+  SNO	SNAME	S1	S2	S3
+  1	A	80	90	70
+  2	B	30	60	50
+ 
+ RESULT
+ SNO	TOTAL	AVG	RESULT
+
+  DECLARE
+        CURSOR C1 IS SELECT  sno,s1,s2,s3 FROM student ;
+        r  result%ROWTYPE;
+ BEGIN
+       FOR s IN C1
+     LOOP
+        r.total := s.s1 + s.s2 + s.s3 ;
+        r.avg :=  r.total/3;
+        IF s.s1>=35 AND s.s2>=35 AND s.s3>=35 THEN
+               r.result := 'PASS';
+        ELSE
+              r.result := 'FAIL';
+        END IF;
+         INSERT INTO result VALUES(s.sno,r.total,r.avg,r.result);
+    END LOOP;
+           COMMIT;
+   END;
+     / 
+
+C1
+ SNO	S1	S2	S3
+  1	80	90	70   => s
+  2	30	60	50
+
+ r
+SNO	TOTAL	AVG	RESULT
+                  240          80             
+
+=> wap to increment employee salaries based on the pct in emp_hike table ?
+ 
+  EMP_HIKE
+  EMPNO		PCT
+  7369		20
+  7499		10
+  7521		15
+  7566		20
+  7654		12
+
+  DECLARE
+           CURSOR C1 IS SELECT empno,pct FROM emp_hike ; 
+  BEGIN
+           FOR r IN C1
+     LOOP
+           UPDATE emp SET sal = sal + (sal*r.pct/100) WHERE empno = r.empno; 
+     END LOOP;
+           COMMIT;
+    END;
+      /
+
+ERROR HANDLING / EXCEPTION HANDLING :- 
+------------------------------------------------------------------
+
+1 syntax errors
+2 logical errors
+3 runtime errors (exceptions)
+
+ => errors that are raised during program execution are called runtime errors 
+
+   ex :-               a     number(3);
+                         a  := &a ;    => 10000  =>  runtime error
+
+ => if any statement causes runtime error then program execution is terminated
+      abnormally and oracle displays error message.
+
+ => To terminate program normally and to replace system generated message
+      with our own simple and user friendly message then we need to handle
+      that runtime error.
+
+ => To handle runtime errors include a block called EXCEPTION block.
+
+      DECLARE
+              declaration-part;
+      BEGIN
+               statements ;  => stmts causes exception
+      EXCEPTION
+              statements;   =>  stmts handle exception
+      END;
+        /
+
+ => if any statement causes runtime error then control is transferred to exception
+      block and executes the statements in exception block.
+
+ => exceptions are 2 types 
+
+   1  system defined
+   2  user defined
+
+ system defined errors :- 
+ --------------------------------
+
+ 1  ZERO_DIVIDE  :- 
+    -----------------------
+
+  => raised when we try to divide a number with 0
+
+                  a  := &a;  => 100
+                  b  := &b;   => 0
+                  c := a/b;   => zero_divide error
+                   
+2  VALUE_ERROR :- 
+    ------------------------
+
+  => raised when variable type or size mismatches.
+
+  ex :-        a  number(3);
+
+                 a := &a ;  => 1000  => value_error
+
+                 a  := &a ;   => 'abc'   => value_error
+
+3  NO_DATA_FOUND :- 
+    ----------------------------
+
+  => raised when data not found in the table
+
+                 veno  := &empno;   999
+
+                 SELECT sal INTO vsal 
+                  FROM emp 
+                   WHERE empno = veno ;   => NO_DATA_FOUND
+
+ 4   TOO_MANY_ROWS :- 
+      -------------------------------
+
+    => raised when select statement returns more than one row
+
+                 SELECT ename INTO vename
+                 FROM emp 
+                 WHERE deptno  =  20 ;  => too_many_rows
+
+ 5  DUP_VAL_ON_INDEX :- 
+     ---------------------------------
+
+    => raised when we try to insert duplicate value into primary key / unique column
+
+    ex :-        CREATE TABLE  A(A   NUMBER(3)  PRIMARY KEY);
+
+                   INSERT INTO A VALUES(100);              
+   	  INSERT INTO A VALUES(100);   => DUP_VAL_ON_INDEX
+
+Ex 1 :- 
+
+   DECLARE
+         a   NUMBER(3);
+         b   NUMBER(3);
+         c   NUMBER(3);
+   BEGIN
+         a := &a;
+         b := &b;
+         c := a/b;
+         DBMS_OUTPUT.PUT_LINE(c);
+   EXCEPTION
+         WHEN ZERO_DIVIDE THEN
+                DBMS_OUTPUT.PUT_LINE('divisor cannot be zero');
+         WHEN VALUE_ERROR THEN
+                DBMS_OUTPUT.PUT_LINE('value exceeding size');
+         WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('unknown error');
+    END;
+      /
+
+13-sep-24 
+
+ => wap to input empno and print name & salary ?
+
+      DECLARE
+          veno    emp.empno%TYPE;
+          vename  emp.ename%TYPE;
+          vsal    emp.sal%TYPE;
+      BEGIN
+          veno := &empno;
+          SELECT ename,sal INTO vename,vsal 
+          FROM emp 
+          WHERE empno = veno;
+          DBMS_OUTPUT.PUT_LINE(vename||'    '||vsal);
+        EXCEPTION
+              WHEN NO_DATA_FOUND THEN
+                         DBMS_OUTPUT.PUT_LINE('employee does not exists');
+              WHEN VALUE_ERROR THEN
+                         DBMS_OUTPUT.PUT_LINE('value exceeding size');
+               WHEN OTHERS THEN
+                        DBMS_OUTPUT.PUT_LINE('unknown error');
+         END;
+           /
+
+ SQLCODE,SQLERRM :- 
+ -----------------------------------
+
+  =>  system variable used in error handling
+
+     sqlcode  =>    returns error code
+     sqlerrm   =>   returns error message
+
+ ex 
+
+  CREATE TABLE EMP55
+  (
+     empno  NUMBER(4)  PRIMARY KEY,
+     ename  VARCHAR2(10) NOT NULL,
+     sal         NUMBER(7) CHECK(sal>=3000)
+   );
+
+  wap to insert data into emp55 table ?
+
+  DECLARE
+       veno   emp55.empno%TYPE;
+       vename emp55.ename%TYPE;
+       vsal   emp55.sal%TYPE;
+   BEGIN
+        veno := &empno;
+        vename := '&ename';
+        vsal := &sal;
+        INSERT INTO emp55 VALUES(veno,vename,vsal);
+        COMMIT;
+  EXCEPTION
+         WHEN  DUP_VAL_ON_INDEX THEN
+           DBMS_OUTPUT.PUT_LINE('empno should not be duplicate');
+        WHEN OTHERS THEN
+                 IF SQLCODE = -02290  THEN
+                         DBMS_OUTPUT.PUT_LINE(' sal >= 3000');
+                 ELSE
+                        DBMS_OUTPUT.PUT_LINE(sqlerrm);
+                END IF;
+   END;
+      /
+ 
+ USER DEFINED ERRORS :- 
+ --------------------------------------
+
+ => errors raised by user are called user defined errors 
+ => to stop program execution based on the condition then raise error
+ => user defined errors are raised by using
+
+        RAISE_APPLICATION_ERROR(error code,error msg);
+
+                    error code =>  -20001 to -20999
+ 
+  Ex :- 
+
+   => wap to input empno and increment employee sal by specific amount 
+        and  sunday updates are not allowed ?
+
+       DECLARE
+              veno   emp.empno%TYPE;
+              vamt   NUMBER(5);
+       BEGIN
+              veno := &empno;
+              vamt  := &amount;
+              IF TO_CHAR(sysdate,'dy')='sun' THEN
+                      RAISE_APPLICATION_ERROR(-20001,'sunday not allowed');
+              END IF;
+              UPDATE emp SET sal = sal + vamt WHERE empno  = veno;
+              COMMIT;
+          END;
+             /                  
+
+  IF COND THEN		IF COND THEN
+       DBMS_                                      RAISE_
+  END IF;                                    END IF;
+  STMT1;                                       STMT1;
+  STMT2;                                       STMT2;
+  STMT3;                                       STMT3;
+
+
+ => wap to process money withdrawl ?
+
+ ACCOUNTS
+ ACCNO	ACTYPE	BAL
+100	S	10000
+101	S	20000
+
+TRANSACTIONS
+TRID	TTYPE	TDATE	TAMT	ACCNO
+
+CREATE SEQUENCE S10
+START WITH 1
+INCREMENT BY 1
+MAXVALUE  9999;
+
+
+DECLARE
+    vacno    accounts.accno%TYPE;
+    vamt      NUMBER(6);
+    vbal       accounts.bal%TYPE;
+BEGIN
+      vacno := &acno;
+      vamt  := &amount;
+      SELECT bal INTO vbal FROM accounts WHERE accno = vacno ;
+      IF vamt  > vbal THEN
+           RAISE_APPLICATION_ERROR(-20001,'insufficient balance');
+     END IF;
+     UPDATE accounts SET bal = bal - vamt WHERE accno = vacno; 
+     INSERT INTO transactions VALUES(S10.NEXTVAL,'W',sysdate,vamt,vacno);
+    COMMIT;
+ EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+                  DBMS_OUTPUT.PUT_LINE(' account does not exists');
+END;
+  /
+
+=> wap to transfer amount from one account to another account  ?
+
+ validations :-
+
+ 1  check source account exists or not
+ 2  check target account exists or not
+ 3  check bal is sufficient or not 
+
+ =================================================================
+ 
+Named PL/SQL Blocks :- 
+----------------------------------
+
+1  procedures
+2  functions
+3  packages
+4  triggers 
+
+sub-programs :-
+----------------------
+
+1  procedures
+2  functions
+3  packages 
+
+  Advantages :- 
+ ----------------------
+
+ 1  modular programming :- 
+     --------------------------------
+
+   => with the help of proc & func a big pl/sql program can be divided into small modules.
+
+ 2  reusability :- 
+  -------------------- 
+ 
+ => proc & func can be stored in db and applications which are connected to db
+      can reuse procedures and functions.
+
+ 3  invoked from front-end :- 
+     --------------------------------
+
+   => proc & func can be invoked from front-end applications like  java / .net 
+
+ 4  improves performance:- 
+    ---------------------------------
+
+  =>   procedures improves performance because they are precompiled
+         i.e.compiled and ready for execution , when we create a procedure
+         program is compiled and stored in db and whenever we call
+         procedure only execution is repeated but not compilation.
+
+PROCEDURES :-
+-------------------------
+
+=>  a  procedure is a named pl/sql block that accepts some input performs some
+      action on db and may or may not returns a value.
+
+=> procedures are created to perform one or more dml operations on db.
+
+=> procedures are 2 types 
+
+    1  standalone or stored procedures
+    2  packaged procedures
+
+ standalone  or stored procedures :- 
+ ------------------------------------------------
+
+  => these procedures are stored in db , so they are called stored procedures
+  => these procedures are stored as seperate object in db , so they are called standalone procedures
+ 
+ CREATE OR REPLACE  PROCEDURE <name>
+ (
+   parameters if any
+ )
+ IS
+     <declaration-part>;
+BEGIN
+      statements;
+ END;
+ /
+
+parameters :- 
+------------------
+
+=> we can declare parameters and we can pass values to parameters.
+
+=>parameters are 3 types 
+
+	1  IN (default)
+	2  OUT
+                 3  IN OUT
+
+ => IN paramter always receives value
+=> OUT parameter always sends value
+=> IN OUT receives and sends 
+
+
+	CALLING PROG			PROCEDURE
+
+	X  ==========================>	A (IN)
+				
+	Y  <==========================	B (OUT)
+
+	Z   ==========================>	C (IN OUT)
+                     <==========================
+
+Example 1  :-  procedure without parameter
+
+ =>  create a  procedure   to   incement all the employee salaries by 1000 ? 
+
+   CREATE OR REPLACE PROCEDURE raise_salary
+   IS
+   BEGIN
+        UPDATE EMP SET SAL = SAL + 1000 ;
+        COMMIT;
+ END;
+   /
+
+ procedure created  (compiled + stored in db)
+
+Execution :- 
+----------------
+
+1  SQL PROMPT
+2  another pl/sql prog
+3   front-end applilcations like java / .net
+
+Executing from sql prompt :- 
+---------------------------------------
+
+ SQL>EXECUTE raise_salary ;
+
+Example 2 :-   procedure with parameters 
+
+=> create procedure to increment specific employee sal by specific amount  ?
+
+ CREATE OR REPLACE  PROCEDURE raise_salary
+ (
+    peno  IN NUMBER ,
+    pamt  IN  NUMBER
+)
+   IS
+   BEGIN
+        UPDATE EMP SET SAL = SAL + pamt WHERE EMPNO = peno ; 
+        COMMIT;
+ END;
+   /
+ 
+
+ Execution :- 
+ ----------------
+
+ SQL>EXECUTE raise_salary(7369,1000)  ;           positional association
+
+ SQL>EXECUTE  raise_salary(peno => 7369,pamt => 1000);     named association
+
+  SQL>EXECUTE raise_salary(pamt =>1000,peno=>7369);
+
+Example 3 :-  procedure with OUT parameter
+
+  => create procedure to increment specific employee sal by specific amount and after
+       increment send the updated sal to calling program ?
+
+    CREATE OR REPLACE PROCEDURE raise_salary
+    (
+       peno IN NUMBER,
+       pamt IN NUMBER,
+       pnewsal OUT  NUMBER
+   )
+   IS
+   BEGIN
+         UPDATE emp SET sal = sal + pamt WHERE empno = peno ;
+         COMMIT;
+         SELECT sal  INTO pnewsal  FROM emp WHERE empno = peno;
+ END;
+    /
+
+Execution :- 
+
+SQL>VARIABLE K  NUMBER
+SQL> EXECUTE raise_salary(7369,1000,:K);
+SQL> PRINT :K
+ 
+SQL>VARIABLE K  NUMBER
+SQL> EXECUTE raise_salary(peno=>7369,pamt=>1000,pnewsal=>:K);
+SQL> PRINT :K
+
+Declaring parameter with default value :- 
+------------------------------------------------------
+
+ => a parameter can be declared with default value as follows 
+
+                   pamt  IN   NUMBER  DEFAULT  500
+
+  => while executing procedure if we skip passing value to paremether
+      then oracle assigns default value
+
+  CREATE OR REPLACE PROCEDURE raise_salary
+    (
+       peno IN NUMBER,
+       pamt IN NUMBER DEFAULT 500,
+       pnewsal OUT  NUMBER
+   )
+   IS
+   BEGIN
+         UPDATE emp SET sal = sal + pamt WHERE empno = peno ;
+         COMMIT;
+         SELECT sal  INTO pnewsal  FROM emp WHERE empno = peno;
+ END;
+    /
+
+Execution :-
+
+ SQL>EXECUTE raise_salary(peno => 7369,pnewsal => :K);
+
+ NOTE :-  in procedure  if parameters declared with default value then while calling procedure
+ use named association.
+
+ 15-sep-24
+
+ Example 5  :- 
+
+ => create a procedure money withdrawl   ?
+
+ ACCOUNTS
+ ACCNO	ACTYPE	BAL
+100	S	10000
+101	S	20000
+
+TRANSACTIONS
+TRID	TTYPE	TDATE	TAMT	ACCNO
+
+CREATE SEQUENCE S1
+START WITH 1
+INCREMENT BY 1
+MAXVALUE 99999;
+
+CREATE OR  REPLACE   PROCEDURE  debit
+(
+    pacno IN  NUMBER,
+    pamt  IN  NUMBER,
+    pnewbal OUT NUMBER
+)
+IS
+   vbal   accounts.bal%TYPE;
+BEGIN
+   SELECT bal INTO vbal FROM accounts WHERE  accno = pacno ;
+   IF  pamt > vbal THEN
+       RAISE_APPLICATION_ERROR(-20001,'insufficient balance');
+   END IF;
+   UPDATE accounts SET bal = bal - pamt WHERE accno =  pacno ;
+   INSERT INTO transactions VALUES(s1.nextval,'W',sysdate,pamt,pacno);
+   COMMIT;
+   SELECT bal  INTO pnewbal FROM accounts WHERE accno = pacno;
+EXCEPTION
+       WHEN NO_DATA_FOUND THEN
+             RAISE_APPLICATION_ERROR(-20002,'account does not exists');
+ END;
+   /
+
+EXECUTION :- 
+
+ SQL>VARIABLE  B  NUMBER
+ SQL>EXECUTE  DEBIT(100,1000,:B);
+ SQL> PRINT :B
+
+ => create procedure for money deposit  ?
+ => create  procedure for money transfer ?
+
+  => create a  procedure to copy datafrom custs to custt ? 
+
+  CUSTS					CUSTT
+  CID	CNAME				CID	FNAME	MNAME	LNAME
+ 10	sachin ramesh tendulkar
+ 11	mahendra singh dhoni
+
+          SUBSTR(string,start,no of chars)
+ 
+  REGEXP_SUBSTR(string,pattern,start,occurance)
+
+ex :-
+
+     REGEXP_SUBSTR( 'ABC123XYZ456','[A-Z]+',1,1) 	=>	ABC
+     REGEXP_SUBSTR( 'ABC123XYZ456','[A-Z]+',1,2) 	=>	XYZ
+     REGEXP_SUBSTR( 'ABC123XYZ456','[0-9]+',1,1) 	=>	123
+     REGEXP_SUBSTR( 'ABC123XYZ456','[0-9]+',1,2) 	=>	456
+     REGEXP_SUBSTR('SACHIN RAMESH TENDULKAR','[A-Z]+',1,1)	=> SACHIN
+     REGEXP_SUBSTR('SACHIN RAMESH TENDULKAR','[A-Z]+',1,2)	=> RAMESH
+     REGEXP_SUBSTR('SACHIN RAMESH TENDULKAR','[A-Z]+',1,3)	=> TENDULKAR
+
+ CREATE OR REPLACE PROCEDURE copy_custs_custt
+ IS
+     CURSOR C1 IS SELECT cid,cname 
+                               FROM custs
+                               WHERE cid NOT IN (SELECT cid FROM custt);
+     vfname   VARCHAR2(20);
+     vmname  VARCHAR2(20);
+     vlname    VARCHAR2(20);
+   BEGIN
+      FOR   r   IN C1
+    LOOP
+       vfname := REGEXP_SUBSTR(r.cname,'[a-z]+',1,1);
+       vmname := REGEXP_SUBSTR(r.cname,'[a-z]+',1,2);
+       vlname  := REGEXP_SUBSTR(r.cname,'[a-z]+',1,3);
+       INSERT INTO  custt  VALUES(r.cid,vfname,vmname,vlname);
+   END LOOP;
+        COMMIT;
+   END;
+     /
+ 
+EXECUTION :- 
+
+ SQL>EXECUTE  COPY_CUSTS_CUSTT ; 
+
+USER DEFINE FUNCTIONS :-
+-----------------------------------------
+ 
+=> a function is also a named PL/SQL block that accepts some input performs some calculation
+     and must return a value.
+
+ => functions are created 
+
+        1 for calculations
+        2 to fetch value from db 
+
+ CREATE OR REPLACE 
+        FUNCTION <name>(parameters if any)  RETURN <type>
+IS
+   declaration
+BEGIN
+     statements;
+     RETURN expr;
+END;
+  /
+
+17-SEP-24 
+
+Example 1 :- 
+
+ CREATE OR REPLACE FUNCTION calc
+ (
+     a  NUMBER,b NUMBER,op CHAR
+ )  RETURN NUMBER
+ IS
+     c  NUMBER;
+ BEGIN
+     IF op='+' THEN
+         c := a+b;
+    ELSIF op='-' THEN
+         c := a-b;
+    ELSIF op='*' THEN
+        c :=a*b;
+   ELSE
+        c := a/b;
+   END IF;
+   RETURN c;
+ END;
+  /
+
+Execution :- 
+----------------
+
+ 1  sql commands
+ 2  another pl/sql program
+ 3  front-end
+
+ Executing from sql commands :- 
+ -------------------------------------------
+
+ SQL>SELECT  CALC(10,20,'*') FROM DUAL ;    => 200
+
+Example 2 :- 
+
+ => create a function to check whether given year is leap year or not ? 
+
+   CREATE OR REPLACE FUNCTION  is_leap
+   (
+       y   NUMBER
+   )  RETURN VARCHAR2
+  IS
+    d   DATE;
+  BEGIN 
+      d  :=  '29-FEB-'||y;
+     RETURN 'leap year';
+ EXCEPTION
+    WHEN OTHERS THEN
+          RETURN 'not a leap year';
+ END;
+   / 
+
+Execution :- 
+
+SQL>SELECT IS_LEAP(2024) FROM DUAL ;	=>	leap year
+SQL>SELECT IS_LEAP(2023) FROM DUAL ;	=>	not a leap year
+
+
+Example 3 :- 
+
+=> create a function to calculate total amount of particualr order ?
+
+ orders			products
+ ordid  prodid   qty		prodid	pname	price
+ 1000  100       1		100	A	2000
+ 1000  101       2		101	B	1000
+ 1000  102       2		102	C	1500
+ 1001  100       3
+
+                   input    ordid   =  1000
+                   output  amount = 7000
+ 
+CREATE OR REPLACE 
+             FUNCTION getOrdAmt(pordid  NUMBER)  RETURN NUMBER
+IS
+ CURSOR C1 IS SELECT o.prodid,o.qty,p.price
+                               FROM  orders o INNER JOIN products p
+                                    ON o.prodid = p.prodid
+                           WHERE o.ordid = pordid  ;
+vvalue NUMBER ;
+vtotamt NUMBER := 0;
+BEGIN
+ FOR r IN C1
+LOOP
+    vvalue := r.qty * r.price ; 
+    vtotamt :=  vtotamt + vvalue ;
+END LOOP;
+      RETURN vtotamt;
+END;
+ /
+
+C1
+100   1    2000
+101   2    1000
+102   2    1500
+
+Execution :- 
+
+SQL>SELECT getOrdAmt(1000) from dual ;  =>  8000
+
+ difference between procedures and functions ?
+
+	procedures			functions
+
+1   may or may not returns a value		must return a value
+
+2  can return multiple values			always returns one value
+
+3 returns values using out parameter		returns value using return stmt
+
+4 cannot be executed from sql commands                  can be executed from sql commands
+
+5 procedure allows dmls			dmls are not recommended in functions
+
+6 procedures are created to perform some		created for calculation or to fetch value from db
+   action on db
+
+7 create procedure to update balance		create function to get balance 
+
+
+USER_SOURCE :- 
+---------------------------
+
+  => stores procedures & functions created by user
+
+ 
+	NAME	TYPE	LINE	TEXT
+	IS_LEAP   FUNC	1	FUNCTION IS_LEAP
+			2              (
+			3                  y NUMBER
+			4	)
+			5	IS
+			6	  d DATE;
+			7	BEGIN
+
+ => list of procedures & functions created by user ?
+
+     SELECT DISTINCT NAME,TYPE     FROM USER_SOURCE ;
+
+=> display debit procedure code  ? 
+
+    SELECT  TEXT  FROM USER_SOURCE WHERE NAME='DEBIT' ; 
+
+Droping :- 
+-------------
+
+  DROP PROCEDURE DEBIT ; 
+
+  DROP FUNCTION F1 ; 
+
+PACKAGES :- 
+-------------------
+
+ => a package is a collection of procedures & functions.
+ => related procedures & functions grouped into one program called package.
+
+Advantages :- 
+------------------
+
+ 1  easy to manage  :- 
+     -----------------------
+
+   => because related procedures & functions available in one program so managing is easy.
+
+ 2  supports overloading :- 
+     --------------------------------
+
+  => standlaone procedures & functions cannot be overloaded but in package we can
+       define two or more procedures or functions with same name with different parameters.
+
+3  supports hiding :- 
+   ------------------------
+
+ => In package we can make members (proc/func) as public and private and 
+      public members can be called from any where but private members are
+      called only with in package.
+
+ 4  improves performance :- 
+     ----------------------------------
+
+   => when application program requests for a proc/func in a package then oracle goes to db
+       and copies that package into instance ,  whenever we call proc/func then oracle will not got
+       to db , so no of requests going to db are reduced and performance is improved.
+ 
+
+=> package conains two parts 
+
+   1 package specification
+   2 package body 
+
+ package specification :- 
+ -------------------------------
+
+ => package specification contains declarations of procedures & functions.
+
+     CREATE OR REPLACE PACKAGE <name>
+     AS
+      procedure declaration ;
+      function declaration ;
+      -------------------------
+   END;
+     /
+
+package body :- 
+---------------------
+
+  => a package body contains procedure & function code 
+
+   CREATE OR REPLACE PACKAGE BODY  <NAME>
+   AS
+   PROCEDURE <NAME>(parameters)
+   IS
+  BEGIN
+        ------
+  END PROCNAME;
+  FUNCTION <NAME>(parameters) RETURN type
+  IS
+  BEGIN
+            -------
+  END FUNNAME;
+  -----------------------
+  END;
+    /
+
+18-sep-24 
+
+ => create a package to implement following operations on emp table ?
+
+     1  hire  employee  (proc)
+     2  fire   employee  (proc)
+     3  update sal         (proc)
+     4  calculate experience (func)
+     5  return top N highest paid employees  (func)
+
+ package specification :- 
+ --------------------------------
+
+ CREATE OR REPLACE PACKAGE hr  
+ AS
+ PROCEDURE hire(e NUMBER,n VARCHAR2,j VARCHAR2,s NUMBER,d NUMBER);
+ PROCEDURE fire(e NUMBER) ;
+ PROCEDURE update_sal(e NUMBER,pct NUMBER);
+ FUNCTION expr(e NUMBER) RETURN NUMBER;
+ FUNCTION getTopN(n NUMBER) RETURN  SYS_REFCURSOR;
+END;
+  /
+
+ package body :- 
+ ----------------------
+
+ CREATE OR REPLACE PACKAGE BODY hr
+ AS
+  PROCEDURE hire(e NUMBER,n VARCHAR2,j VARCHAR2,s NUMBER,d NUMBER)
+  IS
+  BEGIN
+       INSERT INTO emp(empno,ename,job,sal,hiredate,deptno)
+                  VALUES(e,n,j,s,sysdate,d);
+      COMMIT;
+ END hire;
+ PROCEDURE fire(e NUMBER)
+ IS
+ BEGIN
+     DELETE FROM emp WHERE empno = e;
+     COMMIT;
+ END fire;
+ PROCEDURE update_sal(e NUMBER,pct NUMBER)
+ IS
+BEGIN
+    UPDATE emp SET sal = sal + (sal*pct/100) WHERE empno = e;
+    COMMIT;
+END update_sal;
+FUNCTION expr(e NUMBER) RETURN NUMBER
+IS
+  vexpr NUMBER(2);
+BEGIN
+   SELECT  (sysdate-hiredate)/365 INTO vexpr 
+   FROM emp 
+   WHERE empno = e;
+   RETURN vexpr;
+END expr;
+ FUNCTION getTopN(n NUMBER) RETURN  SYS_REFCURSOR
+ IS
+ C1  SYS_REFCURSOR;
+BEGIN
+      OPEN C1 FOR  SELECT * 
+                                FROM ( SELECT EMPNO,ENAME,SAL,
+                                                    DENSE_RANK() OVER (ORDER BY SAL DESC) AS RNK
+                                            FROM EMP  )  E
+                               WHERE RNK<=n;
+    RETURN C1;
+END getTopN;
+END;
+ /
+ 
+Execution :- 
+
+ => the whole package cannot be executed only the members of the package can
+      be executed.
+
+ => package members are invoked as 
+
+                  packagename.member(parameters) 
+
+
+  SQL>EXECUTE  hr.hire(100,'abc','clerk',4000,20);
+
+  SQL>EXECUTE hr.update_sal(100,20);
+
+ SQL>EXECUTE hr.fire(100); 
+
+ SQL>SELECT hr.expr(7844) FROM DUAL ; 
+
+ SQL>SELECT hr.getTopN(5) FROM DUAL ;
+
+=> create a package to implement various bank transaction ?
+
+ ACCOUNTS
+ ACCNO	ACTYPE	BAL
+100	S	10000
+101	S	20000
+
+TRANSACTIONS
+TRID	TTYPE	TDATE	TAMT	ACCNO
+
+CREATE SEQUENCE S1
+START WITH 1
+INCREMENT BY 1
+MAXVALUE 99999;
+
+1 accoung opening (proc)
+2 accoung closing   (proc)
+3 balance enquiry   (func)
+4 money deposit     (proc)
+5 money withdrawl   (proc)
+6 money transfer      (proc)
+7 statement between two given dates  (func)
+8 latest N transactions of particular customer (func)
+
+package specification :- 
+-------------------------------
+
+CREATE OR REPLACE PACKAGE BANK
+AS
+ PROCEDURE acct_open(a NUMBER,t CHAR,b NUMBER);
+ PROCEDURE acct_close(a NUMBER);
+ FUNCTION getBal(a NUMBER) RETURN NUMBER;
+ PROCEDURE credit(a NUMBER,amt NUMBER);
+ PROCEDURE debit(a NUMBER,amt NUMBER);
+ PROCEDURE transfer(s NUMBER,t NUMBER,amt NUMBER);
+ FUNCTION getStmt(a NUMBER,s DATE,e DATE)  RETURN SYS_REFCURSOR;
+ FUNCTION getStmt(a NUMBER,n NUMBER) RETURN SYS_REFCURSOR;
+ END;
+  /
+ 
+
+Droping :- 
+--------------
+
+ SQL>DROP PACKAGE HR;   => drops both specification & body 
+
+ SQL>DROP PACKAGE BODY BANK ;  => drops only body but not specification
+
+
+================================================================
+
+TRIGGERS :- 
+-------------------
+
+ => a trigger is also a named PL/SQL Block like procedure  but executed implicitly     
+      by oracle whenever user submits DML / DDL commands to oracle.
+
+ => triggers are created 
+
+      1 to control dmls / ddls
+      2 to enforce complex rules & validations
+      3 to audit day-to-day operation on table
+
+ CREATE OR REPLACE TRIGGER <NAME>
+ BEFORE / AFTER INSERT OR UPDATE OR DELETE
+ ON <TABNAME>
+ [FOR EACH ROW]
+BEGIN
+    statements;
+END;
+  /
+
+BEFORE triggers ;- 
+----------------------------
+
+ => if trigger is before then oracle executes the trigger before executing dml
+
+AFTER triggers :-
+------------------------
+
+  => if trigger is after then oracle executes the trigger after executing dml
+
+Examples :- 
+
+ => create trigger to not to allow dmls on emp table on sunday ?
+
+  CREATE OR REPLACE TRIGGER T1
+  BEFORE INSERT OR UPDATE OR DELETE
+  ON EMP
+  BEGIN
+         IF  TO_CHAR(SYSDATE,'dy')='sun' THEN
+              RAISE_APPLICATION_ERROR(-20001,'sunday not allowed');
+        END IF;
+  END;
+    / 
+
+Execution :- 
+
+ SQL> UPDATE EMP SET SAL=2000 WHERE EMPNO = 7369 ; 
+
+ => create trigger to not to allow dmls on emp table as follows ?
+
+           MON - FRI    <10am and >4pm
+           SAT                <10am and >2pm
+           SUN               -----------------------
+ 
+  CREATE OR REPLACE TRIGGER T2
+  BEFORE INSERT OR UPDATE OR DELETE
+  ON EMP
+  BEGIN
+          IF TO_CHAR(sysdate,'d')  BETWEEN 2 AND 6   THEN
+               IF TO_CHAR(sysdate,'hh24') < 10
+                    OR
+                    TO_CHAR(sysdate,'hh24') >= 16  THEN
+                        RAISE_APPLICATION_ERROR(-20001,'only between 10am and 4pm');
+              END IF;
+         ELSIF TO_CHAR(sysdate,'d') = 7 THEN
+                  IF TO_CHAR(sysdate,'hh24') < 10
+                       OR
+                      TO_CHAR(sysdate,'hh24') >= 14 THEN
+                            RAISE_APPLICATION_ERROR(-20001,'only between 10am and 2pm');
+                  END IF;
+        ELSE
+                RAISE_APPLICATION_ERROR(-20001,'sunday not allowed');
+         END IF;
+ END;
+   /
+         
+19-sep-24 
+
+ => create trigger to not to allow to update empno  ?
+
+     CREATE OR REPLACE TRIGGER T3
+     BEFORE UPDATE OF EMPNO
+     ON EMP
+     BEGIN
+           RAISE_APPLICATION_ERROR(-20001,'empno cannot be updated');
+     END;
+      /
+
+ Testing :- 
+ 
+ SQL> UPDATE EMP SET EMPNO = 9999 WHERE EMPNO = 7844 ;  => ERROR
+
+ :NEW , :OLD variables :- 
+ -----------------------------------
+
+ =>  these two variables are called bind variables and rowtype variables.
+ => used to access data affected by dmls.
+ => record user is trying to insert is copied to :NEW variable.
+ => record user is trying to delete is copied to :OLD variable.
+ => record user is trying to update is copied to both :OLD,:NEW variables.
+
+ ex :- 
+
+   INSERT INTO emp(empno,ename,job,sal) VALUES(100,'A','clerk',4000)  =>  :NEW 
+
+   DELETE FROM emp WHERE empno = 7844; 	 =>    :OLD
+
+  UPDATE EMP SET SAL=2000 WHERE EMPNO = 7369 ; 	:OLD
+						EMPNO	SAL
+						7369	4300
+
+						:NEW
+ 						EMPNO	SAL
+						7369	2000
+
+=> to access these variables the trigger must be created with FOR EACH ROW.
+
+ Ex :- 
+
+ => create trigger to not to allow to decrement salary ?
+
+    CREATE OR REPLACE TRIGGER T4 
+    BEFORE UPDATE
+    ON EMP
+    FOR EACH ROW
+    BEGIN
+           IF :NEW.SAL  <  :OLD.SAL THEN 
+                    RAISE_APPLICATION_ERROR(-20001,'sal cannot be decremented');
+          END IF;
+    END;
+      /
+
+Testing :- 
+ 
+ SQL>  UPDATE EMP SET SAL=2000 WHERE EMPNO = 7369 ; 	
+
+  1  row is copied to both :old & :new variables
+  2  executes trigger
+
+  ORA-20001: sal cannot be decremented
+
+=> create trigger to insert employee details into emp_resign when employee resigns ?
+                
+ EMP_RESIGN
+ EMPNO	ENAME	HIREDATE	DOR
+
+CREATE TABLE EMP_RESIGN
+(
+   empno  NUMBER(4),
+   ename  VARCHAR2(10),
+   hiredate DATE,
+   dor       DATE
+ ) ;
+
+CREATE OR REPLACE TRIGGER T5
+AFTER DELETE
+ON EMP
+FOR EACH ROW
+BEGIN
+     INSERT INTO EMP_RESIGN 
+                  VALUES(:OLD.EMPNO,:OLD.ENAME,:OLD.HIREDATE,SYSDATE);
+END;
+ /
+
+
+ Testing :- 
+ ---------------
+
+ 1  DELETE FROM emp WHERE empno = 7369 ;     =>  :OLD
+
+2   DELETE FROM emp WHERE empno IN (7499,7521); 
+ 
+          7499 => :OLD => DELETED => TRIGGER
+          7521 => :OLD => DELETED => TRIGGER
+
+=> create trigger to insert details into emp_audit whenever user performs dml operations on emp ?
+
+  EMP_AUDIT
+  UNAME   OPERATION    OPTIME   NEW_ENO   NEW_ENAME   NEW_SAL   OLD_ENO   OLD_ENAME    OLD_SAL
+  
+  CREATE TABLE emp_audit
+  (
+    uname  VARCHAR2(10),
+    operation VARCHAR2(10),
+    optime     DATE,
+    new_eno   NUMBER(4),
+    new_ename VARCHAR2(10),
+    new_sal      NUMBER(7,2),
+    old_eno   NUMBER(4),
+    old_ename VARCHAR2(10),
+    old_sal      NUMBER(7,2)
+  ) ; 
+
+ CREATE OR REPLACE TRIGGER T6
+ AFTER  INSERT OR UPDATE OR DELETE
+ ON EMP
+ FOR EACH ROW
+ DECLARE
+      OP  VARCHAR2(10);
+ BEGIN
+       IF  INSERTING THEN
+           OP := 'INSERT' ; 
+      ELSIF DELETING THEN
+           OP := 'DELETE';
+     ELSE
+           OP := 'UPDATE' ;
+     END IF;
+     INSERT INTO emp_audit VALUES(USER,OP,SYSDATE,
+                                                    :NEW.EMPNO,:NEW.ENAME,:NEW.SAL,
+                                                    :OLD.EMPNO,:OLD.ENAME,:OLD.SAL);
+  END;
+    /
+    
+  How many triggers can be created on tables ?
+
+  ans :-  12 
+			I
+					S
+ 	B		
+			U
+					R
+
+	A		D
+
+
+   order of execution of triggers ? 
+
+   BEFORE  STMT
+   BEFORE  ROW
+   AFTER   ROW
+   AFTER STMT 
+
+ 
+USER_TRIGGERS :- 
+-----------------------------
+
+  => maintains  list of triggers created by user
+
+   list of triggers created on emp table ?
+
+     SELECT TRIGGER_NAME,TRIGGER_TYPE,TRIGGERING_EVENT
+     FROM USER_TRIGGERS
+     WHERE TABLE_NAME='EMP' ;
+
+Droping :- 
+--------------
+
+  SQL>DROP TRIGGER T1 ; 
+ 
+Dynamic SQL :- 
+ -------------------
+
+ => SQL commands generated at runtime are called dynamic sql commands.
+
+             ex  :-         SQL>DROP  TABLE EMP  ;   => static sql 
+
+                               tname   VARCHAR2(20)
+ 
+                               tname := '&tabname' ;
+
+                               DROP TABLE tname ;  =>  dynamic sql 
+
+ => Dynamic sql is useful when we don't know tablenames and column names until runtime.
+
+ => Dynamic SQL & DDL commands are executed by using EXECUTE IMMEDIATE.
+
+                      EXECUTE IMMEDIATE   'Dynamic SQL command'  ;
+
+ => Dynamic sql command that you want to execute should be passed as a string to EXECUTE
+      IMMEDIATE.
+
+Ex 1 :- 
+
+ => create a procedure to drop table ?  
+
+     CREATE OR REPLACE PROCEDURE drop_table
+     (
+        tname   VARCHAR2
+    )
+    IS
+    BEGIN
+         EXECUTE IMMEDIATE  'DROP  TABLE   '||tname;
+    END;
+      /
+ 
+Execute :- 
+
+   SQL>EXECUTE  DROP_TABLE('EMP');
+
+=> create a procedure to drop all tables ?
+
+    CREATE OR REPLACE PROCEDURE DROP_ALL_TABLES
+    IS
+         CURSOR C1 IS SELECT TABLE_NAME FROM USER_TABLES ;
+    BEGIN
+    FOR R IN C1
+    LOOP
+          EXECUTE IMMEDIATE  'DROP  TABLE ' ||R.TABLE_NAME||'  CASCADE CONSTRAINTS';
+    END LOOP;
+    END;
+       /
+ 
+Executing :- 
+
+SQL> EXECUTE DROP_ALL_TABLES ; 
+
+=> wap to print no of rows in all the tables ?                   
+
+       EMP     ?
+       DEPT   ?
+       CUST   ?
+
+ DECLARE 
+     CURSOR C1 IS SELECT TABLE_NAME FROM USER_TABLES ;
+     str  VARCHAR2(100);
+     cnt  NUMBER(3);
+ BEGIN
+     FOR R IN C1
+    LOOP
+         str  :=  'SELECT COUNT(*) FROM '||R.TABLE_NAME ; 
+         EXECUTE IMMEDIATE str INTO cnt ;
+         DBMS_OUTPUT.PUT_LINE(R.TABLE_NAME||'   '||cnt);
+   END LOOP;
+   END;
+     / 
+ 
+ 20-sep-24 
+
+  UTL_FILE package :- 
+ ---------------------------------
+
+   =>  built-in package used  to work with files
+   =>  using this package we can create files,write data and read data from files.
+ 
+  members :- 
+  ----------------
+
+  1  file_type  
+  2  fopen
+  3  put_line
+  4  get_line
+  5  fclose 
+ 
+ Directory Object :- 
+ ------------------------
+
+  => a directory is object in db that points to operating system directory
+  
+    SYSTEM :- 
+    ---------------
+
+    SQL>CREATE DIRECTORY  D10  AS 'D:\FILES' 
+
+    SQL>CREATE DIRECTORY  D10  AS 'D:\FILES' 
+
+=> WAP to create new file and write data into the file ?
+
+   DECLARE
+       f1  utl_file.file_type;
+   BEGIN
+       f1 :=  utl_file.fopen('D10','abc.txt','w');
+       utl_file.put_line(f1,'hello');
+       utl_file.put_line(f1,'welcome');
+       utl_file.put_line(f1,'utl_file');
+       utl_file.fclose(f1);
+  END;
+    /
+
+=> WAP to read data from file ?
+
+   DECLARE
+      f1   utl_file.file_type;
+      s    varchar2(100);
+  BEGIN
+     f1 := utl_file.fopen('D10','abc.txt','r');
+     LOOP
+         utl_file.get_line(f1,s);
+         dbms_output.put_line(s);
+    END LOOP;
+    EXCEPTION 
+                 WHEN  NO_DATA_FOUND THEN
+                         utl_file.fclose(f1);
+    END;
+     /
+
+copying data from table to file :- 
+-----------------------------------------
+
+ DECLARE
+       f1  UTL_FILE.FILE_TYPE;
+       CURSOR C1 IS  SELECT empno,ename,sal FROM emp;
+       s    VARCHAR2(500);
+ BEGIN
+       f1 :=  UTL_FILE.FOPEN('D10','emp.txt','w');
+       FOR r IN C1
+       LOOP
+            s  :=  r.empno||','||r.ename||','||r.sal;
+            UTL_FILE.PUT_LINE(f1,s);
+       END LOOP;
+       UTL_FILE.FCLOSE(f1);
+  END;
+   /
+
+ DECLARE
+       f1  UTL_FILE.FILE_TYPE;
+       CURSOR C1 IS  SELECT empno,ename,sal,hiredate FROM emp;
+       s    VARCHAR2(500);
+ BEGIN
+       f1 :=  UTL_FILE.FOPEN('D10','emp.CSV','w');
+       FOR r IN C1
+       LOOP
+            s  :=  r.empno||','||r.ename||','|| r.sal||','|| r.hiredate
+            UTL_FILE.PUT_LINE(f1,s);
+       END LOOP;
+       UTL_FILE.FCLOSE(f1);
+  END;
+   /
+
+     CSV  => comma seperated values => csv files can be opened in excel
+
+copy data from file to oracle table :- 
+------------------------------------------------
+
+CREATE TABLE EMP11
+     (
+     EMPNO NUMBER(4),
+     ENAME  VARCHAR2(10),
+     SAL  NUMBER(7)
+    );
+
+DECLARE
+   f1  UTL_FILE.FILE_TYPE;
+   s   VARCHAR2(100);
+   veno      NUMBER(4);
+   vename   VARCHAR2(10);
+   vsal         NUMBER(7,2);
+ BEGIN
+    f1  :=  UTL_FILE.FOPEN('D10','emp.txt','r');
+    LOOP
+          UTL_FILE.GET_LINE(f1,s);
+          veno  := REGEXP_SUBSTR(s,'[^,]+',1,1);
+          vename := REGEXP_SUBSTR(s,'[^,]+',1,2);
+          vsal   :=  REGEXP_SUBSTR(s,'[^,]+',1,3);
+          INSERT INTO emp11 VALUES(veno,vename,vsal);
+      END LOOP;
+      EXCEPTION
+           WHEN NO_DATA_FOUND THEN
+                          UTL_FILE.FCLOSE(f1);
+                          COMMIT;
+    END;
+      /
+
+===================================================================
+
+   BFILE / BLOB :- 
+   -----------------------
+
+   => both types are used for storing multimedia objects like audio,video,images.
+   => oracle supports 2 binary types for storing multimedia objects
+
+   1 BFILE  (Binary File)
+   2 BLOB  (Binary Large Object)
+
+  BFILE :- 
+ -----------
+
+  => BFILE is called external lob because lob stored outside db but db stores path
+  => to insert path use function BFILENAME
+
+                             BFILENAME(dir obj,file name)
+
+ Ex :- 
+
+ CREATE TABLE CUST
+ (
+  CID  NUMBER(2),
+  CNAME VARCHAR2(10),
+  CPHOTO  BFILE
+ ) ;
+
+ INSERT INTO CUST VALUES(10,'A',BFILENAME('D10','tiger.jfif'));
+
+21-sep-24 
+
+BLOB :- 
+-----------
+
+ => BLOB is called internal lob because lob stored inside db.
+ => to work with BLOB use package DBMS_LOB package.
+
+ ex :- 
+
+ CREATE TABLE CUST
+ (
+   CID   NUMBER(2),
+   CNAME VARCHAR2(10),
+   PHOTO   BLOB
+ );
+
+INSERT INTO CUST VALUES(10,'A',EMPTY_BLOB());
+
+create a procedure to update customer photo ?
+
+CREATE OR REPLACE PROCEDURE update_cust_photo
+(
+    d  IN  NUMBER,
+    f   IN  VARCHAR2
+ )
+IS      
+ s  BFILE;
+ t   BLOB;
+ x  NUMBER;
+BEGIN
+           s := BFILENAME('D10',f);
+           SELECT photo INTO t FROM cust WHERE cid = d  FOR UPDATE ;
+           DBMS_LOB.OPEN(s,DBMS_LOB.LOB_READONLY);
+           x  :=  DBMS_LOB.GETLENGTH(s);
+           DBMS_LOB.LOADFROMFILE(t,s,x);
+           UPDATE cust SET photo = t WHERE cid = d;
+           COMMIT;
+           DBMS_LOB.CLOSE(s);
+ END;
+   /
+
+EXECUTION :- 
+
+ SQL>SELECT LENGTH(PHOTO) FROM CUST WHERE CID=10;  =>  0
+
+ SQL>EXECUTE  UPDATE_CUST_PHOTO(10,'flower.jfif'); 
+
+ SQL>SELECT LENGTH(PHOTO) FROM CUST WHERE CID=10; => 6576 
+
+ blob to file :- 
+ -----------------
+
+CREATE OR REPLACE PROCEDURE BLOB_TO_FILE
+(
+  d  NUMBER,
+  f  VARCHAR2
+)
+IS
+  l_file      UTL_FILE.FILE_TYPE;
+  l_buffer    RAW(32767);
+  l_amount    BINARY_INTEGER := 32767;
+  l_pos       INTEGER := 1;
+  l_blob      BLOB;
+  l_blob_len  INTEGER;
+BEGIN
+  -- Get LOB locator
+  SELECT photo
+  INTO   l_blob
+  FROM   cust
+  WHERE cid=d;
+
+  l_blob_len := DBMS_LOB.getlength(l_blob);
+  
+  -- Open the destination file.
+ 
+  l_file := UTL_FILE.fopen('D10',f,'wb', 32767);
+
+  -- Read chunks of the BLOB and write them to the file
+  -- until complete.
+  WHILE l_pos <= l_blob_len LOOP
+    DBMS_LOB.read(l_blob, l_amount, l_pos, l_buffer);
+    UTL_FILE.put_raw(l_file, l_buffer, TRUE);
+    l_pos := l_pos + l_amount;
+  END LOOP;
+  
+  -- Close the file.
+  UTL_FILE.fclose(l_file);
+  
+EXCEPTION
+  WHEN OTHERS THEN
+    -- Close the file if something goes wrong.
+    IF UTL_FILE.is_open(l_file) THEN
+      UTL_FILE.fclose(l_file);
+    END IF;
+    RAISE;
+END;
+ /
+
+==================================================================================
+
+ Normalization :- 
+ ----------------------
+
+ => Normalization is the process of decomposing tables with redundency into number of 
+      well structured tables.
+
+ => Normalization process is set of rules and each rules is called normal form.
+
+ => There are six normal forms 
+
+    1NF
+    2NF
+    3NF
+    BCNF (boyce-codd NF)
+    4NF
+    5NF
+
+BILL
+BILLNO    BDATE   CCODE   CNAME   ADDR   ICODE   NAME   RATE    QTY   VALUE     TBILL
+1000         21-         100           A            HYD      1
+				      2
+				      3
+
+				      20
+
+above table contains redundency then it leads to insert,update,delete anamolies , to reduce
+redundency apply normalization process.
+
+1NF :- 
+-------
+
+ =>  a table said to be in 1NF  if there are no multi valued attributes in it or all the attributes
+        in table are atomic (single).
+
+ 
+BILL
+BILLNO    BDATE   CCODE   CNAME   ADDR   ICODE   NAME   RATE    QTY   VALUE     TBILL
+S	S	S	S       S             M           M           M          M       M              S	
+
+
+In thje above table  some fields are multi valued and some fields are single valued , so the
+ table is not according to 1NF , then decompose the table as follows.
+
+TABLE 1 :-
+
+BILL
+BILLNO   BDATE   CCODE    CNAME   ADDR       TBILL
+----------
+1000
+1001
+1002
+
+TABLE  2 :-
+
+ITEMS
+BILLNO  ICODE   NAME    RATE   QTY    VALUE
+-----------------------
+ 1000	1	A       100
+ 1000	2
+ 1000	3
+ 1001	1             A        100
+ 
+ 1002       1             A         100	
+
+=> In the above table if icode is repeated then name,rate are also repeated , so to reduce
+    this redundency apply 2NF.
+
+2NF :- 
+----------
+
+  => a table said to be in 2NF
+
+  1  if it is in 1NF
+  2  it should not contain any partial dependencies in it.
+
+
+Full dependency :-
+-------------------------
+
+  =>  In tables  if non key fields depends on key field then it is called full dependency
+
+Ex :- 
+
+	 R(A,B,C,D)             A  => pk
+
+	  A  =====> B,C,D
+ 
+partial dependency :- 
+------------------------------
+
+  => In table if non key field depends on part of the key field then it is called partial dependency
+
+Ex :-
+
+	R(A,B,C,D)          A,B   => pk
+
+                A ,B  ==========>  C     (full dependency)
+
+                    B ===========> D     (partial dependency)
+
+
+TABLE 1 :-
+
+BILL
+BILLNO   BDATE   CCODE    CNAME   ADDR       TBILL
+----------
+1000
+1001
+1002
+
+=> above table satisfies 2NF because there is no composite primary key
+
+TABLE  2 :-
+
+ITEMS
+BILLNO  ICODE   NAME    RATE   QTY    VALUE
+-----------------------
+ 1000	1	A       100       
+ 1000	2
+ 1000	3
+ 1001	1              A        100
+ 
+ 1002       1               A         100	
+
+        BILLNO,ICODE =========>  QTY,VALUE   (full dependency)
+                     ICODE =========>  NAME,RATE  (partial dependency)
+
+  => above table contains partial dependency , so the table is not according to 2NF then
+       decompose the table as follows.
+
+ TABLE 2 :-
+
+ ITEMS
+ ICODE    NAME    RATE
+ ----------
+
+
+ TABLE 3 :-
+
+ BILL_ITEMS
+ BILLNO   ICODE    QTY    VALUE
+ -----------------------
+
+3NF :- 
+---------
+
+  => a table said to be in 3NF 
+
+  1  if it is in 2NF
+  2  if there are no transitive dependencies in it
+
+Transitive dependency :- 
+--------------------------------
+
+=> If non key field depends on another non key field then it is called transitive dependency.
+
+     R(A,B,C,D)            A  => pk
+
+    A  ======> B,C    (full dependency)
+ 
+   C  ========> D    (transitive dependency)
+
+ TABLE 1 :-
+
+BILL
+BILLNO   BDATE   CCODE    CNAME   ADDR       TBILL
+----------
+1000
+1001
+1002
+
+  BILLNO  =======> BDATE ,TBILL  (full dependency)
+  CCODE =======>  CNAME,ADDR  (transitive dependency)
+
+ => above table contains transitive dependency , so the table is not according to
+      3NF then decompose the table as follows 
+
+  CUST
+  CCODE    CNAME   ADDR
+  ------------
+
+  BILL
+  BILLNO   BDATE   TBILL    CCODE(FK)
+  -----------
+
+ TABLE 2 :-
+
+ ITEMS
+ ICODE    NAME    RATE
+ ----------
+
+=> above table satisfies 3NF
+
+ TABLE 3 :- 
+ ------------
+
+ BILL_ITEMS
+ BILLNO   ICODE    QTY    VALUE
+ -----------------------
+
+=> above table satisfies 3NF
+
+AFTER 3NF :- 
+-----------------
+
+=> if table contains any derived attributes then we can remove these 
+     attributes permanently from tables.
+
+ Ex :-   TBILL
+            VALUE
+
+  CUST
+  CCODE    CNAME   ADDR
+  ------------
+
+  BILL
+  BILLNO   BDATE      CCODE(FK)
+  -----------
+
+
+ ITEMS
+ ICODE    NAME    RATE
+ ----------
+
+ 
+ BILL_ITEMS
+ BILLNO   ICODE    QTY     
+ -------------------------
+
+==================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

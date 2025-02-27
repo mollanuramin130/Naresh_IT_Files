@@ -1,0 +1,318 @@
+Que 1 :
+=======
+
+Write a C program to calculate the power of a base number raised to an exponent using a while loop and user defined function . 
+The program should take two inputs: the base and the exponent. If either the base or the exponent is zero or negative, 
+the program should display the message "Invalid input...Please enter positive values" and terminate. Otherwise, 
+the program should calculate and display the result as base ^ exponent = result.
+
+Create user defined function having two parameter/argument.
+function name : power()
+parameter/argument : int base, int exponent
+
+Sample input  : Enter base: 2
+                Enter exponent: -5
+Sample output : Invalid input...Please enter positive values
+
+----------------------------
+Sample input  : Enter base: 2
+                Enter exponent: 5
+Sample output : 2^5 = 32
+
+----------------------------
+
+Sample input  : Enter base: 3
+                Enter exponent: 4
+Sample output : 3^4 = 81
+
+====================================================
+Solution:
+#include<stdio.h>
+
+int main(){
+    int base,exp;
+    long value=1;
+    printf("Enter base: ");
+    scanf("%d",&base);
+    printf("Enter exponent: ");
+    scanf("%d",&exp);
+    int copy_exp=exp;
+    if(base<=0 || exp<=0){
+        printf("Invalid input...Please enter positive values\n");
+    }
+    else{
+        while (exp!=0)
+        {
+            value=value*base;
+            exp--;
+        }
+        printf("%d^%d = %ld\n",base,copy_exp,value);
+    }
+    return 0;
+}
+
+
+Using function:
+
+#include<stdio.h>
+
+long powerValue(int base, int exp){
+     
+    long value=1;    
+    
+    while (exp!=0)
+    {
+        value=value*base;
+        exp--;
+    }
+    return value;
+    
+}
+
+int main(){
+    int base,exp;
+    printf("Enter base: ");
+    scanf("%d",&base);
+    printf("Enter exponent: ");
+    scanf("%d",&exp);
+    if(base<=0 || exp<=0){
+        printf("Invalid input...Please enter positive values\n");
+    }
+    else
+    printf("%d^%d = %ld\n",base,exp,powerValue(base ,exp));
+    
+    return 0;
+}
+
+Que 2 :
+======
+
+Write a C program to calculate the factorial of a given positive integer using a while loop and user defined function. 
+The program should prompt the user to enter a number, compute its factorial, and display the result. 
+-> If the user enters a negative number, the program should display an error message: "Invalid input...Please enter a positive integer."
+-> If the input is 0, the program should print Factorial of 0 = 1 because by definition, 0!=1
+-> FORMULA => n!=1×2×3×...×n.
+
+->Create user defined function having one parameter/argument.
+function name : factorial()
+parameter/argument : int num
+
+Sample input  : Enter a positive integer: -5
+Sample output : Factorial of 5 = Invalid input...Please enter a positive integer.
+
+Sample input  : Enter a positive integer: 5
+Sample output : Factorial of 5 = 120
+
+Solution:
+#include<stdio.h>
+
+long factorial(int num){
+    long factValue=1;
+    if(num==0){
+        return 1;
+    }
+    else{
+        do
+        {
+            factValue=factValue*num;
+            num--;
+        } while (num!=0);
+    return factValue;
+    }
+}
+int main(){
+    int num;
+    printf("Enter the positive integer: ");
+    scanf("%d",&num);
+    if (num<0)
+    {
+        printf("Invalid input...Please enter a positive\n");
+    }
+    else{
+        printf("Factorial of %d = %ld\n",num,factorial(num));
+    }
+    
+    return 0;
+}
+====================================================
+
+Que 3 :
+=======
+
+Write a C program to check whether a given integer is a palindrome using a while loop and user defined function. 
+- A number is considered a palindrome if the reverse of the number is equal to the original number 
+-The program should prompt the user to enter an integer, reverse the number, and then compare it to the original number to determine if it is a palindrome.
+
+-Create user defined function having one parameter/argument.
+function name : palindrome()
+parameter/argument : int num
+
+Sample input  : Enter an integer: 121
+Sample output : 121 is palindrome number.
+
+Sample input  : Enter an integer: 1121 
+Sample output : 1121 is not palindrome number.
+
+
+
+Solution:
+
+#include<stdio.h>
+int palindrome(long number){
+    long copy_number=number;
+    long reverse=0;
+    if(number<0){
+        return 0;
+    }
+    else{
+
+    do
+        {
+            int rem=copy_number%10;
+            reverse=reverse*10+rem;
+            copy_number/=10;
+        } while (copy_number!=0);
+        if(reverse==number){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    } 
+}
+
+int main(){
+
+    long number;
+    printf("Enter an integer: ");
+    scanf("%ld",&number);
+    if(palindrome(number)){
+        printf("%ld is palindrome number\n",number);
+    }
+    else{
+        printf("%ld is not palindrome number\n",number);
+    }
+    return 0;
+}
+====================================================
+
+Que 4 :
+=======
+
+Write a C program to read one integer number from user and check it is Prime number or not using a while loop and user defined function.
+->it is a number that is not divisible by any other number except for 1 and itself.
+
+-Create user defined function having one parameter/argument.
+function name : isPrime()
+parameter/argument : int num
+
+Sample input  : Enter an integer: 5
+Sample output : 5 is prime number.
+
+Sample input  : Enter an integer: 6
+Sample output : 6 is not prime number.
+
+Solution:
+
+#include<stdio.h>
+int isPrime(int num){
+    int i=2;
+    if(num<0) num=-num;
+    while(i<num){
+        if(num%i==0){
+            return 0;
+        }
+        i++;
+    }
+    return 1;
+}
+
+int main(){
+    int num;
+    printf("Enter an integer: ");
+    scanf("%d",&num);
+    if(isPrime(num)){
+        printf("%d is prime number.\n",num);
+    }
+    else{
+        printf("%d is not prime number.\n",num);
+    }
+    return 0;
+}
+
+====================================================
+
+Que 5 :
+=======
+
+Write a C program that converts a given integer into its corresponding word representation for each digit while loop and user defined function. 
+The program should take an integer as input and output each digit of the number in words, separated by spaces.
+
+-Create user defined function having one parameter/argument.
+function name : convertToLetters()
+parameter/argument : int num
+
+Sample input  : 1256
+Sample output : one two five six
+
+Solution:
+
+#include<stdio.h>
+
+void convertToLetters(long number){
+    long rev=0;
+   
+    do
+    {
+        rev=rev*10 + (number%10);
+        number/=10;
+    } while (number!=0);
+    do
+    {
+        switch (rev%10)
+        {
+        case 0:
+            printf("Zero ");
+            break;
+        case 1:
+            printf("One ");
+            break;
+        case 2:
+            printf("Two ");
+            break;
+        case 3:
+            printf("Three ");
+            break;
+        case 4:
+            printf("Four ");
+            break;
+        case 5:
+            printf("Five ");
+            break;
+        case 6:
+            printf("Six ");
+            break;
+        case 7:
+            printf("Seven ");
+            break;
+        case 8:
+            printf("Eight ");
+            break;
+        case 9:
+            printf("Nine ");
+            break;
+        }
+        rev/=10;
+    } while (rev!=0);
+    printf("\n");
+}
+
+int main(){
+    long number;
+     printf("Enter your number : ");
+    scanf("%ld",&number);
+    convertToLetters(number);
+
+    return 0;
+}
+

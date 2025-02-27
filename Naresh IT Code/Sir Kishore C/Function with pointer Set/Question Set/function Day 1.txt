@@ -1,0 +1,88 @@
+Que 1 :
+--------
+Write a C program that performs the following:
+
+-> create int main() function.
+-> in main function read size of array, from the user.
+-> create void inputArray(int arr[], int size):
+	 A function that takes an array and its size as input and allows the user to input size number of elements into the array.
+-> create void displayArray(int arr[], int size): 
+	A function that takes an array and its size as input and displays the elements of the array in a single line, separated by spaces.
+The main function should:
+Declare an integer array.
+Call the inputArray function to read the array.
+Call the displayArray function to print the array elements.
+
+ Input:
+-------
+	Enter the size of the array: 5
+	Enter 5 elements: 12 7 19 23 45
+ Output:
+--------
+	The array elements are: 12 7 19 23 45
+=======================================================================================
+
+Que 2 : 
+--------
+
+Write a C program to calculate the sum of all elements in an integer array using function.
+
+
+-> create int main() function.
+-> create int arraySum(int arr[],int size) function. this function will take integer array as input in parameter and will return the total sum as result.
+-> in main function read size of array , then based on size create new array and store the values.
+-> call the arraySum function and print the sum which is return by arraySum function.
+
+
+Sample input:
+              Size of the array: 5
+              Array elements: 10 20 30 40 50
+
+
+Sample output: Sum of all elements in the array: 150
+
+=========================================================================================================================
+
+Que 3 :
+--------
+
+ Write a C program that finds the largest element in an array of integers using function.
+
+-> create int main() function.
+-> create int largestEle(int arr[],int size) function.
+-> in main function read size of array and based on size create new array.
+-> store size elements into array and call largestEle function by passing array as input.
+-> largestEle function will perform the operation and will return largest element of array to the main function.
+-> in the main function recive the result and print the output. 
+
+Sample input : n = 7
+               arr[]={1,100,2,3,55,3,2}
+
+Sample output : Largest element of array is : 100
+
+=========================================================================================================================
+
+Que 4 :
+--------
+Write a C program that performs the following:
+
+
+Implements the following functions:
+-> void findEven(int arr[], int size): 
+	A function to print even elements from array  and also store the counts of even elements.
+-> void findOdd(int arr[], int size): 
+	A function to print odd elements from array  and also store the counts of odd elements.
+-> The main() function should:
+	Accepts the size of an array (size) and its elements from the user.
+Find and display the even elements and their count.
+Find and display the odd elements and their count.
+Input:
+	Enter the size of the array: 6
+	Enter 6 elements: 12 7 19 8 20 33
+Output:
+	The array elements are: 12 7 19 8 20 33
+	Even elements are: 12 8 20
+	Count of even elements: 3
+	Odd elements are: 7 19 33
+	Count of odd elements: 3
+

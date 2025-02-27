@@ -1,0 +1,135 @@
+Q1) Write a program to perform addition,subtraction, multiplication and 
+    division between two numbers using 3rd variable.
+
+Solution:
+
+class ArithmeticOperation{
+	public static double addition(double a,double b){
+		return a+b;
+	}
+	
+	public static double subtraction(double a,double b){
+		return a-b;
+	}
+	
+	public static double multiplication(double a,double b){
+		return a*b;
+	}
+	
+	public static double division(double a,double b){
+		return a/b;
+	}
+}
+
+public class ArithmeticOperationMain{
+	public static void main(String []args){
+		double a=Double.parseDouble(args[0]);
+		double b=Double.parseDouble(args[1]);
+		
+		double result = ArithmeticOperation.addition(a,b);
+		System.out.println("Addition of Command line Arguments is: "+result);
+		
+		result = ArithmeticOperation.subtraction(a,b);
+		System.out.println("Subtraction of Command line Arguments is: "+result);
+		
+		result = ArithmeticOperation.multiplication(a,b);
+		System.out.println("Multiplication of Command line Arguments is: "+result);
+		
+		
+		if(b!=0){
+			result = ArithmeticOperation.division(a,b);
+			System.out.println("Division of Command line Arguments is: "+result);
+		
+		}else{
+			System.out.println("Division not possible by 0.");
+		}
+	}
+}
+
+
+
+Q2) Write a program to perform addition using command line Argument.
+
+Solution:
+class Addition{
+	public static double addition(double a,double b){
+		return a+b;
+	}
+}
+
+public class AdditionMain{
+	public static void main(String []args){
+		double a=Double.parseDouble(args[0]);
+		double b=Double.parseDouble(args[1]);
+		
+		double result = Addition.addition(a,b);
+		System.out.println("Addition of Command line Arguments is: "+result);
+		
+	}
+}
+
+
+
+Q3) Write a program to find out the area of circle by taking the value
+    from Command line arguments
+
+Solution:
+
+class AreaOfCircle{
+	public static double area(double radious){
+		final double PI=3.14;
+		return PI*radious*radious;
+	}
+}
+
+public class AreaOfCircleMain{
+	public static void main(String []args){
+		double radious=Double.parseDouble(args[0]);
+		
+		System.out.println("Area of circle is: "+AreaOfCircle.area(radious));	
+	}
+}
+
+Q4) Write a program to swap to numbers without using 3rd variable using 
+    command line argument.
+
+Solution:
+
+
+public class SwapWithout3rdVariable{
+	public static void main(String []args){
+		double firstNumber=Double.parseDouble(args[0]);
+		double secondNumber=Double.parseDouble(args[1]);
+		
+		System.out.println("Before Swap First Number :"+firstNumber+" Second Number :"+secondNumber);
+		
+		firstNumber = firstNumber + secondNumber;
+		secondNumber = firstNumber - secondNumber;
+		firstNumber = firstNumber - secondNumber;
+		
+		System.out.println("Before Swap First Number :"+firstNumber+" Second Number :"+secondNumber);
+	}
+}
+
+ 
+Q5) Write a Java program to calculate the factorial of a number where number must be taken from command line argument.
+
+Solution:
+
+
+public class FactorialMain{
+	public static void main(String []args){
+		int number=Integer.parseInt(args[0]);
+		System.out.println("Factorial value of "+number+" is: "+Factorial.factorial(number));
+	}
+}
+
+
+class Factorial{
+	public static long factorial(int number){
+		if(number ==1){
+			return 1;
+		}
+		return number*factorial(number-1);
+	}
+}

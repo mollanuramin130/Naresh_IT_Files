@@ -1,0 +1,250 @@
+Program 01 :
+-----------
+Create a Loan class to calculate loan payments based on principal, interest rate, and duration.
+
+Class name Loan with the Instance variable double principal ,private  
+ double interestRate ,private
+ int durationMonths ,private
+1.Create a public constructor with parameters are principal,interestRate and durationMonths. To initialise the instance variable.
+Access modifier:-
+
+public
+
+If any parameter value is 0 the print "Error".
+
+2.Create a method name as calculateMonthlyPayment().Public method to calculate the monthly loan payment
+
+Access modifier:-
+public
+return type:-
+double
+3.Create a method name as getPrincipal().To get the principal amount
+
+Access modifier:-
+
+public
+
+return type:-
+
+double
+
+4.Create a method name as getInterestRate().To get the interest rate
+
+Access modifier:-
+
+public
+return type:-
+double
+
+5.Create a method name as getDurationMonths().To get the loan duration in months
+
+Access modifier:-
+public
+return type:-
+
+int
+Create a Class CheckLoan to check your functionalities of the class.Like to intialise the instance variable which is present in Loan class.
+
+Solution:
+===============================================================
+CheckLoan.java
+
+package com.ssnmarket.static_factory_method.feb_21_2025.program1;
+
+public class CheckLoan {
+
+	public static void main(String[] args) {
+		
+		Loan objLoan=Loan.setLoanDetails();
+		System.out.println(objLoan);
+	}
+
+}
+
+Loan.java
+
+package com.ssnmarket.static_factory_method.feb_21_2025.program1;
+
+import java.util.Scanner;
+
+public class Loan {
+	private double principal;
+	private double interestRate;
+	private int durationMonths;
+	
+	public Loan(double principal, double interestRate, int durationMonths) {
+		
+		if(principal<=0 || interestRate<=0 || durationMonths<=0 ) {
+			System.err.println("Error: Every value must be positive..");
+		}
+		else {
+			this.principal = principal;
+			this.interestRate = interestRate;
+			this.durationMonths = durationMonths;
+		}
+	}
+	
+	public double calculateMonthlyPayment() {
+		double totalAmount=principal+(principal*((double)durationMonths/12)*interestRate)/100;
+		
+		return totalAmount/durationMonths;
+	}
+	
+	public double getPrincipal() {
+		return principal;
+	}
+	
+	public double getInterestRate() {
+		return interestRate;
+	}
+	
+	public int getDurationMonths() {
+		return durationMonths;
+	}
+	
+	public static Loan setLoanDetails() {
+		Scanner scanner=new Scanner(System.in);
+		
+		System.out.println("Enter your Principal ammount..");
+		double principal=scanner.nextDouble();
+		
+		System.out.println("Enter interest rate..");
+		double interestRate=scanner.nextDouble();
+		
+		System.out.println("Enter Duration Months..");
+		int duration=scanner.nextInt();
+		
+		Loan objLoan=new Loan(principal, interestRate, duration);
+		
+		//objLoan.calculateMonthlyPayment();
+		return objLoan;
+	}
+
+	@Override
+	public String toString() {
+		return "Loan [principal=" + principal + ", interestRate=" + interestRate + ", durationMonths=" + durationMonths
+				+ ", calculateMonthlyPayment()=" + calculateMonthlyPayment() + "]";
+	}
+	
+	
+	
+}
+
+
+
+Program-2
+----------
+
+Design a Movie class with attributes like title, release year, and genre.
+
+Create a class Movie (Business Logic Class)
+Instance Variables: 
+String title - private
+int releaseYear - private
+String genre - private
+
+
+Create a parameterized constructor to initialilize all the fields.
+Create getters and setters method for all the fields.
+
+Create another class Main which contains main method (ELC class) which will receive all the instance variable value from BLC class.
+Use elc class for:-
+// Accessing movie details using getters
+// Modifying movie details using setters
+// Displaying modified movie details
+
+Solution:
+===============================================================
+
+Main.java
+
+package com.ssnmarket.static_factory_method.feb_21_2025.program2;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Enter Movie title: ");
+		String title= scanner.nextLine();
+		
+
+		System.out.print("Enter Movie release Year: ");
+		int releaseYear= scanner.nextInt();
+		
+
+		System.out.print("Enter Movie Genre: ");
+		String genre= scanner.nextLine();
+		genre= scanner.nextLine();
+		
+		Movie objMovie=new Movie(title, releaseYear, genre);
+		
+		System.out.println("\nMovice Details\n===================\n");
+		
+		System.out.println("Movie Title: "+objMovie.getTitle()+"\nMovie Release year: "+objMovie.getReleaseYear()+"\nMovice Catagory: "+objMovie.getGenre());
+		
+		
+		System.out.print("Enter Title for updated: ");
+		objMovie.setTitle(scanner.nextLine());
+		
+		System.out.print("Enter Release year for update: ");
+		objMovie.setReleaseYear(scanner.nextInt());
+		
+		System.out.print("Enter genre for updated: ");
+		objMovie.setGenre(scanner.nextLine());
+		objMovie.setGenre(scanner.nextLine());
+		
+		System.out.println("\n\nAfter update Movie Details\n======================\n");
+		System.out.println("Movie Title: "+objMovie.getTitle()+"\nMovie Release year: "+objMovie.getReleaseYear()+"\nMovice Catagory: "+objMovie.getGenre());
+	
+	}
+
+}
+
+Movie.java
+
+package com.ssnmarket.static_factory_method.feb_21_2025.program2;
+
+public class Movie {
+	private String title;
+	private int releaseYear;
+	private String genre;
+
+	public Movie(String title, int releaseYear, String genre) {
+		this.title = title;
+		this.releaseYear = releaseYear;
+		this.genre = genre;
+	}
+
+	public void setTitle(String title) {
+		this.title=title;
+	}
+
+	public int getReleaseYear() {
+		return releaseYear;
+	}
+
+	public void setReleaseYear(int releaseYear) {
+		this.releaseYear = releaseYear;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	
+}
+
+
+

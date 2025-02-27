@@ -1,0 +1,174 @@
+Program-1
+Define a method which returns the sum of digits of the given two digit number.
+Write the method with the following specifications: 
+Name of the BLC class:TwoDigitsSum
+Name of method: getSumOfDigits()
+Access Modifier : public, static
+Arguments: one argument of type integer
+Return type: an integer value
+For example,
+If the given value is 34, return 7
+
+Create an ELC class Main to test the application
+
+Solution:
+==========================================================
+Main.java
+
+package com.ssnmarket.OOPs_Program.feb_17_2025.program1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//TwoDigitsSum objDigitsSum= new TwoDigitsSum();
+		
+		System.out.println("Sum of Digits is: "+TwoDigitsSum.getSumOfDigits(3409));
+	}
+
+}
+
+TwoDigitsSum.java
+
+package com.ssnmarket.OOPs_Program.feb_17_2025.program1;
+
+public class TwoDigitsSum {
+	public static int getSumOfDigits(int number) {
+		
+		// return (number/10)+(number%10); //This logic for two digits number only
+		
+		int sum=0;
+		
+		while(number>0) {
+			sum+=number%10;
+			number/=10;
+		}
+		
+		return sum;
+	}
+}
+
+------------------------------------------------------------------------
+Program-2 
+Define a method which returns the difference of digits of the given two digit number.
+Write the method with the following specifications: 
+Name of the BLC class:TwoDigitsDifference
+Name of method: getDiffOfDigits()
+Access Modifier : public, static
+Arguments: one argument of type integer
+Return type: an integer value
+For example,
+If the given value is 83, 8 - 3 return 5.  If x = 38, 3 - 8 return -5.
+
+Create an ELC class Main to test the application
+
+Solution:
+==========================================================
+Main.java
+
+package com.ssnmarket.OOPs_Program.feb_17_2025.program2;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("The difference of digit is: "+TwoDigitsDifference.getDiffOfDigits(83));
+	}
+
+}
+
+TwoDigitsDifference.java
+
+
+package com.ssnmarket.OOPs_Program.feb_17_2025.program2;
+
+public class TwoDigitsDifference {
+	
+	public static int getDiffOfDigits(int number) {
+		return (number/10) - (number%10); // for two Digits numbers only
+		
+	}
+}
+
+------------------------------------------------------------------------
+Program-3
+Define a method which returns the next multiple of 100 for the given number.
+Write the method with the following specifications: 
+Name of the BLC class:NextMultipleOfHundred
+Name of method: getNextMultipleOfHundred()
+Access Modifier : public, static
+Arguments: one argument of type integer
+Return type: an integer value
+For example,
+If the given value is 123, return 200.
+
+Create an ELC class Main to test the application
+
+Main.java
+
+package com.ssnmarket.OOPs_Program.feb_17_2025.program3;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		System.out.println("The Next Multiplication of 100 Of the number is: "+NextMultipleOfHundred.getNextMultipleOfHundred(123));
+	}
+
+}
+
+
+NextMultipleOfHundred.java
+
+package com.ssnmarket.OOPs_Program.feb_17_2025.program3;
+
+public class NextMultipleOfHundred {
+	
+	public static int getNextMultipleOfHundred(int number) {
+		
+		return ((number/100)+1)*100;
+	}
+}
+
+------------------------------------------------------------------------
+
+Program-4
+Define a method which returns the sum of three rounded numbers. If the right most digit of the number is less than 5, then round off its value to the previous multiple of 10 otherwise if the right most digit of the number is greater or equal to 5, and then round off to the next multiple of 10. 
+Write the method with the following specifications: 
+Name of the BLC class:RoundedSum
+Name of method: sumOfRoundedValues() 
+Access Modifier : public, static
+Arguments: three argument of type integer
+Return type: an integer value 
+For example
+If a = 23, b = 34, c = 66
+   20 + 30 + 70 = 120
+Note:Don't use any control statements and looping statements
+
+Create an ELC class Main to test the application
+------------------------------------------------------------------------
+
+Main.java
+
+package com.ssnmarket.OOPs_Program.feb_17_2025.program4;
+
+public class Main {
+
+	public static void main(String[] args) {
+		System.out.println("Sum of rounded value of three Numbers are: "+RoundedSum.sumOfRoundedValues(23, 34, 66));
+	}
+}
+
+RoundedSum.java
+
+package com.ssnmarket.OOPs_Program.feb_17_2025.program4;
+
+public class RoundedSum {
+	
+	public static int sumOfRoundedValues(int number1,int number2,int number3) {
+		int sum = (((number1/10)+(number1%10)/5)*10)+(((number2/10)+(number2%10)/5)*10)+(((number3/10)+(number3%10)/5)*10);
+		return sum;
+	}
+	
+}
+

@@ -1,0 +1,163 @@
+1) Write a java program that accepts a number as a command-line argument and prints its multiplication table.
+- if number is negative print "Error" message on console. 
+
+---------------------------------------------------------
+Solution:
+mollanuramin130@NURs-MacBook-Pro PrintTable % javac PrintTableMain.java
+mollanuramin130@NURs-MacBook-Pro PrintTable % java PrintTableMain -3   
+Enter any Positive number...%  
+
+mollanuramin130@NURs-MacBook-Pro PrintTable % javac PrintTableMain.java
+mollanuramin130@NURs-MacBook-Pro PrintTable % java PrintTableMain 10
+
+class PrintTable{
+	public static void printTable(int number){
+	if(number>0){
+		for(int i=1;i<=10;i++){
+			System.out.println(number + " X "+i+" = "+(number*i));
+		}
+	}else{
+		System.out.print("Enter any Positive number...");
+	}
+		
+	}
+}
+
+public class PrintTableMain{
+	public static void main(String args[]){
+		int number = Integer.parseInt(args[0]);
+		PrintTable.printTable(number);
+	}
+}
+
+
+2)Write a Java program that accepts three numbers as command-line arguments and calculates their average.
+- if any number is negative print "Error" message on console.
+
+---------------------------------------------
+
+Solution:
+javac AverageOfThreenumber.java  
+java AverageOfThreenumber 10 15 1
+
+
+class Average{
+	public static void averageThreeNumber(double number1,double number2,double number3){
+	if(number1<0 || number2<0 || number3<0){
+		System.out.println("Please enter all positive numbers...");
+	}else{
+		System.out.printf("Average of Three number is: %.2f\n",(number1+number2+number3)/3);
+	}
+		
+	}
+}
+
+public class AverageOfThreenumber{
+	public static void main(String args[]){
+		double number1 = Double.parseDouble(args[0]);
+		double number2 = Double.parseDouble(args[1]);
+		double number3 = Double.parseDouble(args[2]);
+
+		Average.averageThreeNumber(number1,number2,number3);
+	}
+}
+
+
+3)Write a Java program that accepts a single integer as a command-line argument and checks whether it is a prime or not.
+- if number is negative print "Error" message on console.
+
+------------------------------
+Solution:
+
+javac PrimeNumberCheck.java
+ java PrimeNumberCheck 9
+
+
+class PrimeCheck{
+	public static boolean isPrime(int number){
+		for(int i=2;i<=number/2;i++){
+			if(number%i==0){
+				return false;
+			}
+		}
+		return true;
+	}
+}
+
+public class PrimeNumberCheck{
+	public static void main(String args[]){
+		int number = Integer.parseInt(args[0]);
+		if(PrimeCheck.isPrime(number)){
+			System.out.println(number + " is a Prime Number");
+		}else{
+			System.out.println(number + " is not a Prime Number");
+		}
+	}
+}
+
+
+4)Write a Java program that accepts a single integer as a command-line argument and prints the first n numbers of the Fibonacci series.
+- if arguments length is 0 print "Error" message on console.
+
+
+-------------------------------------------
+
+Solution:
+
+class FibonacciValue{
+	public static void fibonacciValue(int lastTerm){
+		int first=0,second=1;
+		System.out.println("Fibonacci series upto "+lastTerm+" term be: ");
+		for(int i=0;i<lastTerm;i++){
+		
+			System.out.print(first+"  ");
+			int temp=first;
+			first=second;
+			second=temp+first;
+			
+		}
+		
+	}
+}
+
+public class FibonacciValueFind{
+	public static void main(String args[]){
+		int lastTerm= Integer.parseInt(args[0]);
+		FibonacciValue.fibonacciValue(lastTerm);
+	}
+}
+
+5)Write a Java program that accepts a single integer n as a command-line argument and calculates the sum of all odd and even numbers from 1 to n (inclusive). Display the results separately for odd and even sums. 
+
+input : 10 
+output :
+Sum of even numbers from 1 to 10: 30
+Sum of odd numbers from 1 to 10: 25
+
+----------------------------------------------------
+Solution:
+
+class SumValue{
+	public static void oddEvenSum(int lastTerm){
+		
+		int oddSum=0,evenSum=0;
+
+		for(int i=1;i<=lastTerm;i++){
+			if(i%2==0){
+				evenSum +=i;
+			}else{
+				oddSum +=i;
+			}
+		}
+		System.out.println("Sum of even numbers from 1 to "+lastTerm+" is : "+evenSum);
+		System.out.println("Sum of odd numbers from 1 to "+lastTerm+" is : "+oddSum);
+
+	}
+}
+
+public class OddEvenSum{
+	public static void main(String args[]){
+		int lastTerm= Integer.parseInt(args[0]);
+		SumValue.oddEvenSum(lastTerm);
+	}
+}

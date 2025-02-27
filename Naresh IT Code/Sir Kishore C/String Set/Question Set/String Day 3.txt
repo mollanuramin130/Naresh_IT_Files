@@ -1,0 +1,163 @@
+Que 1 :
+=======
+
+Write a C program to find out the sum of the numbers which is present in a given string.
+
+Sample input  : Enter a String : TS12ab345
+
+Sample output  : Sum Of the numbers is : 15
+
+===================================================
+
+Solution:
+
+#include<stdio.h>
+
+int main(){
+    char str[50];
+    printf("Enter a string with number : ");
+    scanf("%[^\n]",str);
+    int sum=0,len=0;
+    for(int i=0;str[i];i++){
+        len++;
+    }
+    for(int i=0;i<len;i++){
+        if(str[i]>='0' && str[i]<='9'){
+            sum+=str[i]-'0';
+        }
+    }
+    printf("Sum of the number is : %d \n",sum);
+}
+
+Que 2 :
+=======
+
+Write a C program to combine two string in a single String.
+
+Sample input :
+Enter first String : Naresh
+Enter Second String : it
+
+Sample output :Resulting String is : Nareshit
+
+======================================================
+
+Solution:
+
+#include<stdio.h>
+
+int main(){
+    char str1[50],str2[50];
+    printf("Enter first String : ");
+    scanf("%[^\n]",str1);
+    printf("Enter second String : ");
+    getchar();
+    scanf("%[^\n]",str2);
+
+    int lenStr1=0,lenStr2=0;
+    for(int i=0;str1[i];i++){
+        lenStr1++;
+    }
+    for(int i=0;str2[i];i++){
+        lenStr2++;
+    }
+    for(int i=lenStr1;i<lenStr1+lenStr2;i++){
+        str1[i]=str2[i-lenStr1];
+    }
+    str1[lenStr1+lenStr2]='\0';
+    printf("Resulting String is : %s\n",str1);
+}
+
+Que 3 :
+======
+
+Write a c Program to check whether two given strings are anagram of each other or not.
+
+Sample input 1:- listen
+Sample input 2:- silent
+Sample output: this are anagram String
+
+Sample input 1:- Jack
+Sample input 2:- Jake
+Sample output : this is not are anagram String
+
+
+======================================================
+
+Solution:
+
+#include<stdio.h>
+
+int main(){
+    char str1[50],str2[50];
+    printf("Enter first String : ");
+    scanf("%[^\n]",str1);
+    printf("Enter second String : ");
+    getchar();
+    scanf("%[^\n]",str2);
+
+    int lenStr1=0,lenStr2=0;
+    for(int i=0;str1[i];i++){
+        lenStr1++;
+    }
+    for(int i=0;str2[i];i++){
+        lenStr2++;
+    }
+    if(lenStr1!=lenStr2){
+        printf("This are not anagram String..\n");
+        return 0;
+    }else{
+        for(int i=0;i<lenStr1;i++){
+            for(int j=i+1;j<lenStr1;j++){
+                if(str1[i]>str1[j]){
+                    char temp=str1[i];
+                    str1[i]=str1[j];
+                    str1[j]=temp;
+                }
+                if(str2[i]>str2[j]){
+                    char temp=str2[i];
+                    str2[i]=str2[j];
+                    str2[j]=temp;
+                }
+            }
+        }
+        for(int i=0;i<lenStr1;i++){
+            if(str1[i]!=str2[i]){
+                printf("This is not anagram String..\n");
+                return 0;
+            }
+        }
+        printf("This are Anagram String..\n");
+    }
+}
+
+Que 4 :
+======
+
+Write a C program to remove all the Spaces from a given String.
+
+Sample input : Enter a String : Black cat on a mat
+Sample output : Blackcatonamat
+
+====================================================
+
+Solution:
+
+#include<stdio.h>
+
+int main(){
+    char str[50];
+    printf("Enter a string : ");
+    scanf("%[^\n]",str);
+   
+    for(int i=0;str[i];i++){
+        if(str[i]==' '){
+            for(int j=i;str[j];j++){
+                str[j]=str[j+1];
+            }
+        }
+    }
+    printf("The Final string without Space is: %s\n",str);
+}
+
+

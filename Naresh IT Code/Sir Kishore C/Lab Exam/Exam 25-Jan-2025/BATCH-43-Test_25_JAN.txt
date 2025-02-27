@@ -1,0 +1,209 @@
+				[ SET - A ]
+Que 1 :
+````````
+Write a program in C to find the frequency of characters.
+
+case 1 :
+--------
+input :
+	Enter a String : This is a test string
+	Enter the character to find frequency: i
+
+output :
+--------
+	 The frequency of i is : 3
+
+case 2 :
+--------
+input :
+	Enter a String : hello world
+	Enter the character to find frequency: a
+
+output :
+--------
+	 The frequency of i is : 0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Que 2 :
+```````
+Write a C program to convert each word first alphabet to Upper case in given String.
+
+case 1 :
+---------
+input  : 
+	Enter a String : i am a student of nareshit
+output : 
+	 I Am A Student Of Nareshit
+
+case 2 :
+---------
+input  : 
+	Enter a String : naresh it PVT LMT.
+output : 
+	 Naresh It PVT LMT.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Que 3 :
+```````
+Write a C program to sort the string data and print it.
+
+input 1:
+-------
+	 Enter a String : apple
+
+output  : 
+---------
+	After Sorting the String is : aelpp
+
+
+input 2:
+-------
+	 Enter a String : dcba
+
+output  : 
+---------
+	After Sorting the String is : abcd
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+					[ SET - B]
+
+Que 1 :
+```````
+Write a C program to print the reverse of a given String .
+
+case 1:
+-------
+input :
+	 Enter a String : NareshIT
+output : 
+	The reverse of the String is : TIhseraN
+
+
+case 2:
+-------
+input :
+	 Enter a String : cba321
+output : 
+	The reverse of the String is : 123abc
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Que 2 :
+```````
+Write a C program to check is the String contains any vowel or not.
+
+case 1:
+-------
+input  :
+	 Enter a String : Apple
+output  : 
+	This String contains vowel.
+
+case 2:
+-------
+input : 
+	Enter a String : Rhythm
+output  :
+	 There is no vowel present in this String.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Que 3 :
+```````
+Write a c program to print all the frequency of character present in string .
+
+input: 
+	Enter a String : Hello Everyone
+
+output  :-
+The frequency of H is 1
+The frequency of e is 3
+The frequency of l is 2
+The frequency of o is 2
+The frequency of   is 1  --------THIS IS FOP CHECKING THE SPACE COUNT 
+The frequency of E is 1
+The frequency of v is 1
+The frequency of r is 1
+The frequency of y is 1
+The frequency of n is 1
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+					[ SET - C]
+
+Que 1 :
+```````
+ Write a C program to combine two string in a single String.
+
+input :
+	Enter first String : Naresh
+	Enter Second String : it
+
+output :
+	Resulting String is : Nareshit
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Que 2 :
+```````
+Write a C program to remove all the Spaces from a given String.
+
+case 1: 
+--------
+input : 
+	Enter a String : Black cat on a mat
+
+output : 
+	Blackcatonamat
+
+case 2:
+--------
+input : 
+	Enter a String : Naresh   it
+
+output : 
+	Nareshit
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Que 3 :
+```````
+Write a C program to count the Count the vowel, Consonant, Digit and Special Character in a given String .
+
+input : 
+-------
+	Enter a String : Nareshit @123
+
+ output  :
+-----------
+Vowel count is : 3
+Consonant count is : 5
+Digit count is : 3
+Special Character count is : 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

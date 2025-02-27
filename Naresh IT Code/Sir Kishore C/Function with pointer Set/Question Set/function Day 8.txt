@@ -1,0 +1,50 @@
+ Que 1 : 
+--------
+Write C program to print below patter using function.
+
+            1
+        2   3   4
+    5   6   7   8   9
+10  11  12  13  14  15  16
+
+========================================================================
+Que 2 : 
+--------
+Write C program to print below patter using function.
+
+        *       
+      * * *    
+    * * * * *   
+  * * * * * * *    
+* * * * * * * * *  
+  * * * * * * *  
+    * * * * *    
+      * * *     
+        *   
+
+
+========================================================================
+Que 3 : 
+--------
+ Write a function to find the average of elements in a floating-point array using function.
+--------
+
+-> create int main() function.
+-> create float getMid(int arr[], int size) function.
+
+
+Sample input:
+Size of the array: 5
+Array elements: 10 20 30 40 50
+
+Sample output:
+Average of the elements in the array: 30
+
+
+Size of the array: 6
+Array elements: 10 20 30 40 50 60
+
+Sample output:
+Average of the elements in the array: 35
+
+

@@ -1,0 +1,171 @@
+Que 1 :
+=======
+
+Write a C program to search user given element in an array and print its index. 
+The program should prompt the user to input the element they want to search in array.
+- If the element is found in the array, the program will print the index of the element. 
+- If the element is not found, the program will display a message indicating that the element is not present in the array.
+- Read the size and elements of the array from the user
+- Check if the size of the array is negative, and print an Invalid message.
+
+Example 1:
+
+input :
+	Enter array size : 9
+	Enter 9 Elements : 3 8 4 1 9 5 9 8 9
+	Enter Element to search: 7
+output :
+	Element 7 not found in the array
+
+-------------
+
+Example 2 :
+
+input :
+	Enter array size : 9
+	Enter 9 Elements : 3 8 4 1 9 5 9 8 9
+Element to search: 9
+output :
+	Element 9 found at index 4
+-------------
+
+Example 3 :
+
+input :
+	Enter array size : -5
+output :
+	Invalid size 
+=================================================================================
+Que 2 :
+=======
+
+Write a C program to sort a given array of integers in ascending order.
+ The program should compare adjacent elements, swap them if they are in the wrong order, and repeat the process until the array is sorted.
+- Read the size and elements of the array from the user
+- Check if the size of the array is negative, and print an Invalid message.
+
+Example 1:
+
+input :
+	Enter array size : 7
+	Enter 7 Elements : 5 7 6 2 1 4 3
+output :
+	After sorting Elements is : 1 2 3 4 5 6 7
+
+----------------
+Example 2:
+
+input :
+	Enter array size : 5
+	Enter 5 Elements : 1 2 3 6 5
+output :
+	After sorting Elements is : 1 2 3 5 6
+-------------
+Example 3 :
+
+input :
+	Enter array size : -9
+output :
+	Invalid size 
+
+
+=================================================================================
+Que 3 :
+=======
+Write a C program that finds and prints all pairs of numbers from a given array whose sum is equal to a specified target value. 
+The program should iterate through the array, compare every pair of numbers, and print each pair that meets the condition.
+- Read the size and elements of the array from the user
+- Read the Target sum  from the user
+- Check if the size of the array is negative, and print an Invalid message.
+
+Example 1:
+
+input:
+	Enter array size : 5
+	Enter 5 Elements : 1 5 7 -1 5
+	Enter target Sum: 6
+
+Sample output:
+	Pair found: (1, 5)
+	Pair found: (7, -1)
+	Pair found: (1, 5)
+
+--------------
+
+Example 2:
+
+input:
+	Enter array size : 9
+	Enter 9 Elements : 3 2 4 1 6 5 9 8 7
+	Enter target Sum: 10
+
+Sample output:
+	Pair found: (3, 7)
+	Pair found: (2, 8)
+	Pair found: (4, 6)
+	Pair found: (1, 9)
+
+--------------
+
+Example 3 :
+
+input :
+	Enter array size : -7
+output :
+	Invalid size 
+
+
+=================================================================================
+Que 4 :
+=======
+Write a C program to find the minimum and maximum elements of a given array.
+
+- Read the size and elements of the array from the user
+- Check if the size of the array is negative, and print an Invalid message.
+
+Example 1:
+
+input :
+	Enter array size : 6
+	Enter 6 Elements : 3 2 1 6 5 4
+output :
+	Min Element : 1
+	Max Element : 6
+------------
+Example 2:
+
+input :
+	Enter array size : 7
+	Enter 7 Elements : 3 7 9 6 5 4 8
+output :
+	Min Element : 3
+	Max Element : 9
+--------------
+
+Example 3 :
+
+input :
+	Enter array size : -4
+output :
+	Invalid size 
+=================================
+
+Que 5 :
+=======
+
+Write a program in C to separate odd and even integers into separate arrays.
+
+Sample input :
+Input the number of elements to be stored in the array :5
+Input 5 elements in the array :
+element - 0 : 25
+element - 1 : 47
+element - 2 : 42
+element - 3 : 56
+element - 4 : 32
+
+Sample output :
+The Even array is : 42 56 32
+The Odd array is :  25 47 
+
+

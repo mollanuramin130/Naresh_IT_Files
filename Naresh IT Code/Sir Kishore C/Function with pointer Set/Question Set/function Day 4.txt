@@ -1,0 +1,174 @@
+Que 1 :
+
+Write a C program to check given String is balanced paraenthesis or not( using function).
+
+Example 1 :
+-----------
+Sample input : {[()]}
+Sample output : balanced paraenthesis 
+
+Example 2 :
+-----------
+Sample input : (([({})])
+Sample output : not a balanced paraenthesis
+
+----------------------------------------------------------------
+
+Solution:
+
+// //Method 1
+
+// #include<stdio.h>
+
+// int isBalance(char str[],int strLen);
+
+// int main(){
+//     printf("Enter Your string : ");
+//     char str[50];
+//     scanf("%[^\n]",str);
+//     int strLen=0;
+//     for(int i=0;i<str[i];i++){
+//         strLen++;
+//     }
+
+//     if(isBalance(str,strLen)){
+//         printf("Balance paraenthesis \n");
+//     }
+//     else{
+//         printf("Not a Balance paraenthesis \n");
+//     }
+// }
+
+// int isBalance(char str[],int strLen){
+
+//     for(int i=0;i<=strLen/2;i++){
+//         if((str[i]=='(' && str[strLen-i-1]!=')') || (str[i]=='{' && str[strLen-i-1]!='}') || (str[i]=='[' && str[strLen-i-1]!=']')){
+//             return 0;
+//         }
+//     }
+//     return 1;
+// }
+
+//Method 2
+
+#include <stdio.h>
+#include <string.h>
+
+int isBalance(char str[], int strLen);
+
+int main() {
+    printf("Enter your string: ");
+    char str[50];
+    scanf("%[^\n]", str);
+
+    int strLen = strlen(str);
+
+    if (isBalance(str, strLen)) {
+        printf("Balanced brackets\n");
+    } else {
+        printf("Not balanced brackets\n");
+    }
+
+    return 0;
+}
+
+int isBalance(char str[], int strLen) {
+    char stack[50]; // Stack to hold opening brackets
+    int top = -1;   // Index of the top of the stack
+
+    for (int i = 0; i < strLen; i++) {
+        if (str[i] == '(' || str[i] == '{' || str[i] == '[') {
+            // Push opening brackets onto the stack
+            stack[++top] = str[i];
+        } else if (str[i] == ')' || str[i] == '}' || str[i] == ']') {
+            // Check for matching opening bracket
+            if (top == -1) {
+                return 0; // No matching opening bracket
+            }
+            char topBracket = stack[top--]; // Pop from the stack
+            if ((str[i] == ')' && topBracket != '(') ||
+                (str[i] == '}' && topBracket != '{') ||
+                (str[i] == ']' && topBracket != '[')) {
+                return 0; // Mismatched brackets
+            }
+        }
+    }
+
+    return top == -1; // If stack is empty, brackets are balanced
+}
+
+
+Que 2 :
+
+ Create a program  using function that compresses a string by replacing repeated characters with a count of the repetition (e.g., "aaabbbcc" 	becomes "a3b3c2").
+-------
+Sample input : Enter a String : aaabbccdae
+
+Sample output as : a4b2c2
+
+----------------------------------------------------------------
+
+Solution:
+
+#include<stdio.h>
+#include<string.h>
+
+int main(){
+     printf("Enter your string: ");
+    char str[50];
+    scanf("%[^\n]", str);
+
+    int strLen = strlen(str);
+    int tempStr[256];
+    for(int i=0;i<256;i++){
+        tempStr[i]=0;
+    }
+    for(int i=0;i<strLen;i++){
+        tempStr[str[i]]++;
+    }
+    for(int i=0;i<strLen;i++){
+        if(tempStr[str[i]]>1){
+            printf("%c%d",str[i],tempStr[str[i]]);
+            tempStr[str[i]]=-1;
+        }
+    }
+    printf("\n");
+}
+
+Que 3 :
+
+ Write a program in C to find the frequency of characters using function.
+--------
+Sample input : This is a test string
+Sample input : Enter the character to find frequency: i
+
+Sample  output : The frequency of 'i' is : 3 
+
+
+Solution:
+
+
+#include<stdio.h>
+#include<string.h>
+
+int main(){
+     printf("Enter your string: ");
+    char str[50];
+    scanf("%[^\n]", str);
+
+    int strLen = strlen(str);
+    printf("Enter the character to find frequency: ");
+    char charValue;
+    getchar();
+    scanf("%c",&charValue);
+
+    int frequCount=0;
+    for(int i=0;i<strLen;i++){
+        if(str[i]==charValue){
+            frequCount++;
+        }
+    }
+    printf("The frequency of '%c' is : %d\n",charValue,frequCount);
+}
+
+

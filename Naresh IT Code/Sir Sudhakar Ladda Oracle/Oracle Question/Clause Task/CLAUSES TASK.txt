@@ -1,0 +1,581 @@
+                            CLAUSES TASK
+                     ===========================
+
+
+GROUP BY:- Group by clause is used to divide similar data items
+=========  into set of logical groups.and also group by clause    
+           reduces no of rows in each group.
+
+Syntax:-select columnname.......
+======  from tablename 
+        group by columnname;
+
+Execution order:-
+==============
+1.FROM 
+2.WHERE
+3.GROUP BY 
+4.HAVING
+5.SELECT
+6.DISTINCT
+7.ORDER BY
+8.OFFSET
+9.FETCH
+
+
+RULE:- Other than group function columns specified after select
+=====  then those all columns must be specified after group by.
+       Otherwise oracle server returns an error not a GROUP BY 
+       expression.
+
+eg1:-
+==== 
+    SQL>select deptno,job
+        from emp
+        group by deptno,job;
+
+      DEPTNO          JOB
+    ----------     ---------
+        20          MANAGER
+        20          ANALYST
+        10         PRESIDENT
+        10           CLERK
+        30         SALESMAN
+        10          MANAGER
+        20           CLERK
+        30          MANAGER
+        30           CLERK
+
+eg2:-
+====
+
+     SQL> select deptno,job,sum(sal)
+          from emp
+          group by deptno,job;
+
+
+    DEPTNO JOB         SUM(SAL)
+---------- --------- ----------
+        20 MANAGER         4175
+        20 ANALYST         8400
+        10 PRESIDENT       6300
+        10 CLERK           2600
+        30 SALESMAN       10900
+        10 MANAGER         3750
+        20 CLERK           4300
+        30 MANAGER         3950
+        30 CLERK           2050
+
+
+Note:- In all relational databases we can also use group by clause
+=====   without using group functions.
+
+EG:-
+==    
+
+    SQL>select deptno from emp
+        group by deptno;
+
+        DEPTNO
+      ----------
+          30
+          10
+          20
+
+step1:-group by deptno;
+
+deptno                                                  Resultset table    
+------                                                  ----------------
+10                         10 it reduces into '1' 10      deptno
+20                         10--------------------->         10                                       
+30                         10
+10 similar data items into 20 it reduces into '1' 20
+20  set of logical groups  20---------------------->        20
+30-----------------------> 20
+10                         30 it reduces into '1' 30
+20                         30 ---------------------->       30
+30                         30
+
+
+step2:-select deptno from....
+=====          | 
+               |-------->This deptno is selected from result set table
+                         not from the original table.
+
+
+        DEPTNO
+      ----------
+          30
+          10
+          20
+
+individual group functions means there is no problem
+---------------------------------------------------
+SQL>select sum(sal) from emp;
+
+    SUM(SAL)
+   ----------         
+     46425
+
+individual group functions there is no problem.
+
+  
+ SQL>select deptno,sum(Sal) from emp;//it won't work
+             ||          ||
+             ||          ||
+normal column means     group function means always
+record by record         all values at a time executed. 
+    executed       
+
+         synchronization is not there
+                   ||
+                   ||Solution is
+                   ||
+           we must use group by
+
+error:not agroup by expression
+
+solution:-
+=========
+SQL>select deptno,sum(sal) 
+        from emp 
+     group by deptno;
+       ||
+     it takes other than group function column.
+
+
+    
+
+HAVING Clause:- In all relational databses after group by clause we 
+==============  are not allowed to use where clause. In place of this
+                one ansi/iso SQL provided another clause having.
+               
+Generally where clause is used to restrict the rows in a table.
+where as having clause is used to restricting the groups
+after group by.
+
+in where clause we are not allowed to use group functions 
+where as in having clause we can also use group functions.
+
+-----------------------------------------------------------------------------------
+1.Write a query to display no of persons in each state 
+        from following PERSON table
+-->simply i want state wise count
+
+                                 group by
+EG:    Detailed data-------------------------------------->Summarized data
+
+
+        pid        pname        state                     state      count(*)      
+     ---------    -------      --------                  -------    ---------         
+         1         SUBBARAO      AP                         AP          4       
+         2         KIRAN         TS                         TS          2             
+         3         RAJU          TS                         MP          1           
+         4         ADITYA        MP                         MH          1              
+         5         GOWTHAM       AP                                     
+         6         VISWAJITH     MH 
+         7         SURYA         AP
+         8         SAI TEJA      AP
+
+SOLUTION:
+================================================================
+SQL> SELECT STATE,COUNT(*) FROM PERSON GROUP BY STATE;
+
+STATE       COUNT(*) 
+________ ___________ 
+AP                 4 
+TS                 2 
+MP                 1 
+MH                 1 
+
+
+
+2.Find state wise,gender wise count(population)
+  from the following PERSONS table?
+
+       PID      PNAME         GENDER        STATE
+      ------   ---------     --------      --------
+         1     SUBBARAO         M             AP
+         2      KAVYA           F             TS
+         3      KIRAN           M             TS
+         4     GOWTHAM          M             AP
+         5     KERTHI           F             AP
+         6     SURYA            M             AP
+         7    ANUSHKA           F             AP
+         8      RAJU            M             TS
+
+SOLUTION:
+================================================================
+SQL> SELECT STATE,GENDER ,COUNT(*) FROM PERSONS GROUP BY STATE,GENDER;
+
+STATE    GENDER       COUNT(*) 
+________ _________ ___________ 
+AP       M                   3 
+TS       F                   1 
+TS       M                   2 
+AP       F                   2 
+
+SQL> SELECT STATE,GENDER ,COUNT(*) FROM PERSONS GROUP BY STATE,GENDER ORDER BY COUNT(*) DESC;
+
+STATE    GENDER       COUNT(*) 
+________ _________ ___________ 
+AP       M                   3 
+AP       F                   2 
+TS       M                   2 
+TS       F                   1 
+
+SQL> SELECT STATE,GENDER ,COUNT(*) FROM PERSONS GROUP BY STATE,GENDER ORDER BY COUNT(*) ASC;
+
+STATE    GENDER       COUNT(*) 
+________ _________ ___________ 
+TS       F                   1 
+AP       F                   2 
+TS       M                   2 
+AP       M                   3 
+
+
+3.Write a query to display number of employees in each department 
+   from emp table using group by?
+
+SOLUTION:
+================================================================
+SQL> SELECT DEPTNO ,COUNT(*) AS NO_OF_EMPLOYEES FROM EMP GROUP BY DEPTNO ORDER BY DEPTNO;
+
+   DEPTNO    NO_OF_EMPLOYEES 
+_________ __________________ 
+       10                  3 
+       20                  5 
+       30                  6 
+
+
+4.Write a query to display number of employees in each job from emp
+   table using group by?
+
+SOLUTION:
+================================================================
+SQL> SELECT JOB ,COUNT(*) AS "NO OF EMPLYEES" FROM EMP GROUP BY JOB ORDER BY COUNT(*
+);
+
+JOB             NO OF EMPLYEES 
+____________ _________________ 
+PRESIDENT                    1 
+ANALYST                      2 
+MANAGER                      3 
+CLERK                        4 
+SALESMAN                     4 
+
+SQL> SELECT JOB ,COUNT(*) AS "NO OF EMPLYEES" FROM EMP GROUP BY JOB ORDER BY JOB;
+
+JOB             NO OF EMPLYEES 
+____________ _________________ 
+ANALYST                      2 
+CLERK                        4 
+MANAGER                      3 
+PRESIDENT                    1 
+SALESMAN                     4 
+
+
+5.Write a query to display deptno, minimum and maximum salary from 
+   emp using group by?
+
+SOLUTION:
+================================================================
+SQL> SELECT DEPTNO,MAX(SAL) AS MAXIMUM_SALARY,MIN(SAL) AS MINIMUM_SALARY FROM EMP GR
+OUP BY DEPTNO;
+
+   DEPTNO    MAXIMUM_SALARY    MINIMUM_SALARY 
+_________ _________________ _________________ 
+       20              3000               800 
+       30              2850               950 
+       10              5000              1300 
+
+SQL> SELECT DEPTNO,MAX(SAL) AS MAXIMUM_SALARY,MIN(SAL) AS MINIMUM_SALARY FROM EMP GROUP BY DEPTNO ORDER BY DEPTNO;
+
+   DEPTNO    MAXIMUM_SALARY    MINIMUM_SALARY 
+_________ _________________ _________________ 
+       10              5000              1300 
+       20              3000               800 
+       30              2850               950 
+
+
+6.Write a query to display those departments having more than 3
+  employees from emp table?
+
+SOLUTION:
+================================================================
+SQL> SELECT DEPTNO,COUNT(*) AS NUMBER_OF_EMP FROM EMP GROUP BY DEPTNO HAVING COUNT(*
+)>3 ;
+
+   DEPTNO    NUMBER_OF_EMP 
+_________ ________________ 
+       20                5 
+       30                6 
+
+
+
+7. Write a query to display those departments sum(sal) more than 9000
+   from emp table by using group by clause?
+
+SOLUTION:
+================================================================
+
+SQL> SELECT DEPTNO,SUM(SAL) AS TOTAL_DEPT_SALARY FROM EMP GROUP BY DEPTNO HAVING SUM(SAL)>9000;
+
+   DEPTNO    TOTAL_DEPT_SALARY 
+_________ ____________________ 
+       20                10875 
+       30                 9400 
+
+SQL> SELECT DEPTNO,SUM(SAL) AS TOTAL_DEPT_SALARY FROM EMP GROUP BY DEPTNO HAVING SUM(SAL)>9000 ORDER BY SUM(SAL);
+
+   DEPTNO    TOTAL_DEPT_SALARY 
+_________ ____________________ 
+       30                 9400 
+       20                10875 
+
+
+8.Write a query to display duplicate records from the
+  following TEST table ?
+
+SQL>select * from test;
+
+         deptno
+      ----------
+           10
+           10
+           10
+           20
+           20
+           20
+           30
+           30
+           40
+           50
+
+
+
+SOLUTION:
+================================================================
+SQL> SELECT DEPTNO,COUNT(*) FROM TEST GROUP BY DEPTNO HAVING COUNT(*)>=2;
+
+   DEPTNO    COUNT(*) 
+_________ ___________ 
+       10           3 
+       20           3 
+       30           2 
+
+SQL> SELECT DEPTNO,COUNT(*) FROM TEST GROUP BY DEPTNO HAVING COUNT(*)>1;
+
+   DEPTNO    COUNT(*) 
+_________ ___________ 
+       10           3 
+       20           3 
+       30           2 
+
+SQL> SELECT DEPTNO FROM TEST GROUP BY DEPTNO HAVING COUNT(*)>1;
+
+   DEPTNO 
+_________ 
+       10 
+       20 
+       30 
+
+
+8.Write a query to display year, no of employees per year 
+  in which more than one employee was hired from 
+            emp table using group by?
+
+SOLUTION:
+================================================================
+SQL> SELECT TO_CHAR(HIREDATE,'YYYY') AS HIRING_YEAR ,COUNT(*) FROM EMP GROUP BY TO_CHAR(HIREDATE,'YYYY') HAVING COUNT(*)>1;
+
+HIRING_YEAR       COUNT(*) 
+______________ ___________ 
+1981                    10 
+1982                     2 
+
+SQL> SELECT TO_CHAR(HIREDATE,'YYYY') AS HIRING_YEAR ,COUNT(*) FROM EMP GROUP BY TO_CHAR(HIREDATE,'YYYY') HAVING COUNT(*)>1 ORDER BY COUNT(*);
+
+HIRING_YEAR       COUNT(*) 
+______________ ___________ 
+1982                     2 
+1981                    10 
+
+SQL> SELECT TO_CHAR(HIREDATE,'YYYY') AS HIRING_YEAR ,COUNT(*) AS NO_OF_EMPLOYEES FRO
+M EMP GROUP BY TO_CHAR(HIREDATE,'YYYY') HAVING COUNT(*)>1 ORDER BY COUNT(*);
+
+HIRING_YEAR       NO_OF_EMPLOYEES 
+______________ __________________ 
+1982                            2 
+1981                           10 
+
+
+9.How many employees are joined in january or september month by
+  using group by?
+
+SOLUTION:
+================================================================
+SQL> SELECT TO_CHAR(HIREDATE,'MON') AS HIRE_MONTH ,COUNT(*) AS NO_OF_EMPLOYEES FROM EMP WHERE TO_CHAR(HIREDATE,'MON')IN(
+'JAN','SEP') GROUP BY TO_CHAR(HIREDATE,'MON');
+
+HIRE_MONTH       NO_OF_EMPLOYEES 
+_____________ __________________ 
+SEP                            2 
+JAN                            2 
+
+SQL> SELECT TO_CHAR(HIREDATE,'MONTH') AS HIRE_MONTH ,COUNT(*
+) AS NO_OF_EMPLOYEES FROM EMP WHERE TO_CHAR(HIREDATE,'MON')I
+N('JAN','SEP') GROUP BY TO_CHAR(HIREDATE,'MONTH');
+
+HIRE_MONTH       NO_OF_EMPLOYEES 
+_____________ __________________ 
+SEPTEMBER                      2 
+JANUARY                        2 
+
+
+10.Display the sum of salaries of 10th and 30th department by using
+  group by?
+
+SOLUTION:
+================================================================
+SQL> SELECT DEPTNO,SUM(SAL) AS DEPT_TOTAL_SALARY FROM EMP WH
+ERE DEPTNO IN(10,30) GROUP BY DEPTNO;
+
+   DEPTNO    DEPT_TOTAL_SALARY 
+_________ ____________________ 
+       30                 9400 
+       10                 8750 
+
+SQL> SELECT DEPTNO,SUM(SAL) AS DEPT_TOTAL_SALARY FROM EMP WHERE DEPTNO IN(10,30) GROUP BY DEPTNO ORDER BY DEPTNO;
+
+   DEPTNO    DEPT_TOTAL_SALARY 
+_________ ____________________ 
+       10                 8750 
+       30                 9400 
+
+
+11.Write a query to display no of employees joined in each QUARTER 
+   from emp table using group by?
+
+SOLUTION:
+================================================================
+SQL> SELECT TO_CHAR(HIREDATE,'Q') AS QUARTER_NO ,COUNT(*) AS NO_OF_EMP FROM EMP GROUP BY TO_CHAR(HIREDATE,'Q') ORDER BY TO_CHAR(HIREDATE,'Q');
+
+QUARTER_NO       NO_OF_EMP 
+_____________ ____________ 
+1                        4 
+2                        3 
+3                        2 
+4                        5 
+
+
+12.Write a query to display those departments sum(Sal) having more 
+  than 3 employees from emp table by using group by clause?
+
+Note:-in all realtional databases we can also use invisible group 
+===== functions with in having clause.whenever we are implimenting
+      group function reports by using group by clause then 
+      database internally having all other group functions.
+
+SQL>select deptno,sum(sal)
+    from emp
+    group by deptno
+    having count(*)>3;
+            |---> we can also use invisible group functions in having clause.
+
+SOLUTION:
+================================================================
+SQL> SELECT DEPTNO ,SUM(SAL),COUNT(*) AS NO_OF_EMP FROM EMP GROUP BY DEPTNO HAVING COUNT(*)>3;
+
+   DEPTNO    SUM(SAL)    NO_OF_EMP 
+_________ ___________ ____________ 
+       20       10875            5 
+       30        9400            6 
+
+SQL> SELECT DEPTNO ,SUM(SAL) FROM EMP GROUP BY DEPTNO HAVING
+ COUNT(*)>3;
+
+   DEPTNO    SUM(SAL) 
+_________ ___________ 
+       20       10875 
+       30        9400 
+
+
+13.Find year wise sales from the following ORDERS table
+
+SOLUTION:
+================================================================
+SQL> SELECT TO_CHAR(ORDERDATE,'YYYY') AS YEAR ,SUM(ORDERAMT) FROM ORDERS GROUP BY TO
+_CHAR(ORDERDATE,'YYYY');
+
+YEAR       SUM(ORDERAMT) 
+_______ ________________ 
+2024                3400 
+2022                2600 
+2023                1600 
+
+SQL> SELECT TO_CHAR(ORDERDATE,'YYYY') AS YEAR ,SUM(ORDERAMT) FROM ORDERS GROUP BY TO_CHAR(ORDERDATE,'YYYY') ORDER BY TO_CHAR(ORDERDATE,'YYYY');
+
+YEAR       SUM(ORDERAMT) 
+_______ ________________ 
+2022                2600 
+2023                1600 
+2024                3400 
+
+
+B.Find quarter wise sales from the following ORDERS table
+
+SQL>select to_char(orderdate,'q'),sum(orderamt)
+    from orders
+    group by to_char(orderdate,'q');
+
+orderid     ordername           orderdate            ORDERAMT
+-------    ----------         ------------          ---------
+  1	    SURYA	       12-DEC-24	       1300
+  2	   GOWTHAM	       17-JUN-22	       1800
+  3	    RAJU	       16-JAN-22	       800
+  4	   GOWTHAM	       23-DEC-23	       1000
+  5	   SURYA	       08-MAR-24	       1200
+  6	   KIRAN	       02-NOV-23	       600
+  7	   RAJU	               04-FEB-24               900
+
+SOLUTION:
+================================================================
+SQL> SELECT TO_CHAR(ORDERDATE,'Q') AS QUATER_NO ,SUM(ORDERAMT) FROM ORDERS GROUP BY 
+TO_CHAR(ORDERDATE,'Q') ORDER BY TO_CHAR(ORDERDATE,'Q');
+
+QUATER_NO       SUM(ORDERAMT) 
+____________ ________________ 
+1                        2900 
+2                        1800 
+4                        2900 
+
+SQL> SELECT TO_CHAR(ORDERDATE,'Q') AS QUATER_NO ,SUM(ORDERAMT) AS QUATER_SELL FROM O
+RDERS GROUP BY TO_CHAR(ORDERDATE,'Q') ORDER BY TO_CHAR(ORDERDATE,'Q');
+
+QUATER_NO       QUATER_SELL 
+____________ ______________ 
+1                      2900 
+2                      1800 
+4                      2900 
+
+-----------------------------------------------------------------------------------
+What are the differences b/w where and having clause?
+
+-----------------------------------------------------------------------------------
+               where                   |                   having
+-----------------------------------------------------------------------------------
+1.where clause condition is applied on |1.having clause condition is applied on
+  every row.                           |  every group.
+                                       |
+2.it filters the rows                  |2.it filters the groups
+                                       |
+3.group fuctions can not be used in    |3.group fuctions can be used in having
+  where clause                         |  clause
+                                       |
+4.where gets executed before group by  |4.having gets executed after group by
+                                       |
+5.it can be used with out group by     |5.it can not be used with out group by
+------------------------------------------------------------------------------------
+
+

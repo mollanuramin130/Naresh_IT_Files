@@ -1,0 +1,288 @@
+
+Que 1 :
+=======
+
+Write a C program to find the Maximum digit in a given integer number using while loop and user defined function. 
+For example, if the input number is 153830, the output should be 8 since 8 is the highest digit in the number.
+-create one function having one parameter.
+function name : findMax()
+parameter/argument : int num
+
+case 1:
+Sample input : 153830
+
+Sample Output : 8 is highest digit in the number.
+
+case 2:
+Sample input : 54321
+
+Sample Output : 5 is highest digit in the number.
+
+Solution:
+
+#include<stdio.h>
+
+int findMax(long number){
+    if(number<0){
+        number=-number;
+    }
+    int max=0;
+    while (number!=0)
+    {
+        int rem=number%10;
+        if(rem>max){
+            max=rem;
+        }
+        number/=10;
+    }
+    return max;
+}
+
+int main(){
+    long number;
+    printf("Enter your number : ");
+    scanf("%ld",&number);
+    printf("%d is highest digit in the number.\n",findMax(number));
+
+}
+
+====================================================
+
+Que 2 :
+=======
+
+Write C program to check given number is spy number or not using while loop and user defined function.
+-> A spy number is a number where the sum of its digits equals the product of its digits.
+For example :
+1124 is a spy number, because the sum of its digits is 1+1+2+4=8 and the product of its digits is 1*1*2*4=8 is equal
+
+-create one function having one parameter.
+function name : isSpy()
+parameter/argument : int num
+
+
+case 1:
+Sample input : 22
+
+Sample Output : Is spy number 
+
+case 2:
+Sample input : 1124
+
+Sample Output :  Is spy number
+
+case 3:
+Sample input : 123
+
+Sample Output :  Is not spy number
+
+
+
+Solution:
+
+#include<stdio.h>
+
+int isSpy(int number){
+    int sum=0,product=1;
+    if(number<0){
+        return 0;
+    }
+    else{
+        while (number!=0)
+        {
+            int rem =number%10;
+            sum+=rem;
+            product*=rem;
+            number/=10;
+        }
+        if(sum==product){
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int main(){
+    int number;
+    printf("Enter your Number : ");
+    scanf("%d",&number);
+    if(isSpy(number)){
+        printf("Is spy number\n");
+    }
+    else{
+        printf("Is not spy number\n");
+    }
+
+}
+====================================================
+
+Que 3 :
+=======
+Write a C program to find  Armstrong numbers  of given  integer using while loop and user defined function.
+The program should read  one number from the user and display Armstrong numbers in function. 
+
+
+-> An Armstrong number (also known as a Narcissistic number or Pluperfect Digital Invariant) is a number that
+    is equal to the sum of its own digits each raised to the power of the number of digits.
+-> example1 : 153 => 1^3 + 5^3 + 3^3 => 153
+-> example2 : 1634 => 1^4 + 6^4 + 3^4 + 4^4 => 1634
+
+->create one function having one parameter.
+function name : armstrong()
+parameter/argument : int num
+
+case 1:
+Sample input : 
+	Enter a number : 153
+Sample output : 
+		153 is Armstrong numbers 
+
+case 2:
+Sample input : 
+	Enter a number : 1634
+Sample output : 
+		1634 is Armstrong numbers
+
+case 3:
+Sample input : 
+	Enter a number : 234
+Sample output : 
+		234 is not Armstrong numbers 
+
+
+
+
+Solution:
+
+#include<stdio.h>
+#include<math.h>
+
+int armstrong(long number){
+    int no_of_digit=0;
+    long copy_number=number,copy_number2=number,sum=0;
+    if(number<=0){
+        return 0;
+    }
+    else{
+        while (copy_number!=0)
+        {
+            no_of_digit++;
+            copy_number/=10;
+        }
+        while (copy_number2!=0)
+        {
+            int rem=copy_number2%10;
+            sum=sum + pow(rem,no_of_digit);
+            copy_number2/=10;
+        }
+        if(number==sum){
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int main(){
+    long number;
+    printf("Enter your Number : ");
+    scanf("%ld",&number);
+    if (armstrong(number))
+    {
+        printf("%ld is Armstrong numbers\n",number);
+    }
+    else{
+        printf("%ld is not Armstrong numbers\n",number);
+    }
+    
+}
+
+====================================================
+
+Que 4 :
+=======
+
+Write a C program to find  Strong numbers . 
+The program should read one number from the user and display  Strong numbers. 
+
+A strong number is a number whose sum of the factorial of each digit is equal to the original number.
+For example:
+145 is a strong number because 1!+4!+5! = 145 (1+24+120) = 145
+
+
+case 1:
+Sample input  :	
+		Enter a number : 145
+Sample output :
+		145 is strong number
+
+case 2:
+Sample input  :	
+		Enter a number : 345
+Sample output :
+		345 is not strong number
+
+
+
+Solution
+#include<stdio.h>
+
+long factorial(int number){
+    long fact=1;
+    while (number>1)
+    {
+        fact*=number;
+        number--;
+    }
+    return fact;
+}
+int isStrong(long number){
+    long sum=0,copy_number=number;
+    if (number<0)
+    {
+        return 0; 
+    }
+    else{
+        while (number!=0)
+        {
+            int rem=number%10;
+            sum=sum+factorial(rem);
+            number/=10;
+        }
+        if (copy_number==sum)
+        {
+            return 1;
+        }
+       return 0; 
+    }
+    
+}
+
+int main(){
+    long number;
+    printf("Enter your number : ");
+    scanf("%ld",&number);
+    if(isStrong(number)){
+        printf("%ld is strong number\n",number);
+    }
+    else{
+        printf("%ld is not strong number\n",number);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

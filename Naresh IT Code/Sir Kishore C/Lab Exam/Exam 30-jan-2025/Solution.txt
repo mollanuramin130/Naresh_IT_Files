@@ -1,0 +1,45 @@
+//remove Space
+
+#include<stdio.h>
+
+int main(){
+    char str[50];
+    scanf("%[^\n]",str);
+    for(int i=0;str[i];i++){
+        if(str[i]!=' '){
+            printf("%c",str[i]);
+        }
+    }
+}
+
+//Contain vowel or not
+
+#include<stdio.h>
+
+int main(){
+    char str[50];
+    scanf("%[^\n]",str);
+    for(int i=0;str[i];i++){
+        if(str[i]=='a' || str[i]=='e' || str[i]=='i' || str[i]=='o' || str[i]=='u' || str[i]=='A' || str[i]=='E' || str[i]=='I' || str[i]=='O' || str[i]=='U' ){
+            printf("This String contains vowel.");
+            return 0;
+        }
+    }
+    printf("There is no vowel present in this String.");
+}
+
+//alphabet Count
+
+#include<stdio.h>
+
+int main(){
+    char str[50];
+    scanf("%[^\n]",str);
+    int count=0;
+    for(int i=0;str[i];i++){
+        if(str[i]!=' '){
+            count++;
+        }
+    }
+    printf("The count of alphabet is: %d",count);
+}

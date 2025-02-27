@@ -1,0 +1,495 @@
+                           OPerators Task
+                        ===================
+
+2)Relational operators
+----------------------
+.Relational operators are also called as comparison operators.
+
+.Relational operators are used in where clause only.
+
+.Every relational operator used to compare with 1 value.
+
+.Oracle sql having following relational operators.
+ =,<,<=,>,>=,<> or !=
+
+
+.Where clause is used to filtering the rows or resticting the 
+ records purpose we are using.
+
+1.Write a query to display the employee records whose 
+  salary is 3000?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE SAL=3000;
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7788 SCOTT    ANALYST       7566 09-12-82       3000                20 
+    7902 FORD     ANALYST       7566 03-12-81       3000                20 
+
+2.Write a query to display all managers from emp table?
+
+Note:-Oracle is not a case sensitive language.But string comparision 
+====      is case sensitive.
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE JOB ='MANAGER';
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7566 JONES    MANAGER       7839 02-04-81       2975                20 
+    7698 BLAKE    MANAGER       7839 01-05-81       2850                30 
+    7782 CLARK    MANAGER       7839 09-06-81       2450                10 
+
+
+3.Write a query to display the employees who are getting more
+  than 2000 salary from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE SAL>2000;
+
+   EMPNO ENAME    JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ ____________ _______ ___________ _______ _______ _________ 
+    7566 JONES    MANAGER         7839 02-04-81       2975                20 
+    7698 BLAKE    MANAGER         7839 01-05-81       2850                30 
+    7782 CLARK    MANAGER         7839 09-06-81       2450                10 
+    7788 SCOTT    ANALYST         7566 09-12-82       3000                20 
+    7839 KING     PRESIDENT            17-11-81       5000                10 
+    7902 FORD     ANALYST         7566 03-12-81       3000                20 
+
+6 rows selected. 
+
+
+4.Write a query to display the employees whose sal is 
+  3000 or more?
+
+Solution:
+=========================================================================
+
+
+SQL> SELECT * FROM EMP WHERE SAL>=3000;
+
+   EMPNO ENAME    JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ ____________ _______ ___________ _______ _______ _________ 
+    7788 SCOTT    ANALYST         7566 09-12-82       3000                20 
+    7839 KING     PRESIDENT            17-11-81       5000                10 
+    7902 FORD     ANALYST         7566 03-12-81       3000                20 
+
+
+5.Wrirte a query to display the employees who are belongs 
+  to 10th department from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE DEPTNO=10;
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ____________ _______ ___________ _______ _______ _________ 
+    7782 CLARK     MANAGER         7839 09-06-81       2450                10 
+    7839 KING      PRESIDENT            17-11-81       5000                10 
+    7934 MILLER    CLERK           7782 23-01-82       1300                10 
+
+
+6.Write a query to display the  employee records whose 
+  name is SMITH?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE ENAME='SMITH';
+
+   EMPNO ENAME    JOB          MGR HIREDATE       SAL    COMM    DEPTNO 
+________ ________ ________ _______ ___________ ______ _______ _________ 
+    7369 SMITH    CLERK       7902 17-12-80       800                20 
+
+
+7.Write a query to display the employees except job 
+  as MANAGER from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE NOT JOB='MANAGER';
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ____________ _______ ___________ _______ _______ _________ 
+    7369 SMITH     CLERK           7902 17-12-80        800                20 
+    7499 ALLEN     SALESMAN        7698 20-02-81       1600     300        30 
+    7521 WARD      SALESMAN        7698 22-02-81       1250     500        30 
+    7654 MARTIN    SALESMAN        7698 28-09-81       1250    1400        30 
+    7788 SCOTT     ANALYST         7566 09-12-82       3000                20 
+    7839 KING      PRESIDENT            17-11-81       5000                10 
+    7844 TURNER    SALESMAN        7698 08-09-81       1500       0        30 
+    7876 ADAMS     CLERK           7788 12-01-83       1100                20 
+    7900 JAMES     CLERK           7698 03-12-81        950                30 
+    7902 FORD      ANALYST         7566 03-12-81       3000                20 
+    7934 MILLER    CLERK           7782 23-01-82       1300                10 
+
+11 rows selected. 
+
+Note: Calender order is Ascending order
+====  1-JAN-2024   min date
+      2-JAN-2024
+      . 
+      .
+      31-dec-2024  max date 
+
+TO SEE FULL YEAR AS 'YYYY' FORMAT:
+
+Solution:
+=========================================================================
+
+SQL> SELECT TO_CHAR(HIREDATE,'YYYY') FROM EMP;
+
+TO_CHAR(HIREDATE,'YYYY')    
+___________________________ 
+1980                        
+1981                        
+1981                        
+1981                        
+1981                        
+1981                        
+1981                        
+1982                        
+1981                        
+1981                        
+1983                        
+1981                        
+1981                        
+1982                        
+
+SQL> SELECT TO_CHAR(HIREDATE,'YYYY') AS FULL_YEAR  FROM EMP;
+
+FULL_YEAR    
+____________ 
+1980         
+1981         
+1981         
+1981         
+1981         
+1981         
+1981         
+1982         
+1981         
+1981         
+1983         
+1981         
+1981         
+1982         
+ 
+
+
+OR,
+SQL> SELECT EXTRACT(YEAR FROM HIREDATE) FROM EMP;
+
+   EXTRACT(YEARFROMHIREDATE) 
+____________________________ 
+                        1980 
+                        1981 
+                        1981 
+                        1981 
+                        1981 
+                        1981 
+                        1981 
+                        1982 
+                        1981 
+                        1981 
+                        1983 
+                        1981 
+                        1981 
+                        1982 
+
+SQL> SELECT EXTRACT(YEAR FROM HIREDATE) AS YEAR FROM EMP;
+
+   YEAR 
+_______ 
+   1980 
+   1981 
+   1981 
+   1981 
+   1981 
+   1981 
+   1981 
+   1982 
+   1981 
+   1981 
+   1983 
+   1981 
+   1981 
+   1982 
+  
+8.Write a query to display the employee records who joined 
+  on 17th DECEMBER 1980 from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE HIREDATE='17-DEC-1980';
+
+   EMPNO ENAME    JOB          MGR HIREDATE       SAL    COMM    DEPTNO 
+________ ________ ________ _______ ___________ ______ _______ _________ 
+    7369 SMITH    CLERK       7902 17-12-80       800                20 
+
+
+9.Write a query to display the employee record who joined
+  after 1981 from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE HIREDATE>'31-DEC-1981';
+
+   EMPNO ENAME     JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ __________ _______ ___________ _______ _______ _________ 
+    7788 SCOTT     ANALYST       7566 09-12-82       3000                20 
+    7876 ADAMS     CLERK         7788 12-01-83       1100                20 
+    7934 MILLER    CLERK         7782 23-01-82       1300                10 
+
+
+OR,
+SQL> SELECT * FROM EMP WHERE HIREDATE>='01-JAN-1982';
+
+   EMPNO ENAME     JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ __________ _______ ___________ _______ _______ _________ 
+    7788 SCOTT     ANALYST       7566 09-12-82       3000                20 
+    7876 ADAMS     CLERK         7788 12-01-83       1100                20 
+    7934 MILLER    CLERK         7782 23-01-82       1300                10 
+
+
+10.Write a query to display the employee record who joined 
+   before 1981 from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE HIREDATE<'01-JAN-1981';
+
+   EMPNO ENAME    JOB          MGR HIREDATE       SAL    COMM    DEPTNO 
+________ ________ ________ _______ ___________ ______ _______ _________ 
+    7369 SMITH    CLERK       7902 17-12-80       800                20 
+
+OR,
+
+SQL> SELECT * FROM EMP WHERE HIREDATE<='31-DEC-1980';
+
+   EMPNO ENAME    JOB          MGR HIREDATE       SAL    COMM    DEPTNO 
+________ ________ ________ _______ ___________ ______ _______ _________ 
+    7369 SMITH    CLERK       7902 17-12-80       800                20 
+
+
+11.Write a query to display the employee record who joined after
+   november 1981 from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE HIREDATE>'30-NOV-1981';
+
+   EMPNO ENAME     JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ __________ _______ ___________ _______ _______ _________ 
+    7788 SCOTT     ANALYST       7566 09-12-82       3000                20 
+    7876 ADAMS     CLERK         7788 12-01-83       1100                20 
+    7900 JAMES     CLERK         7698 03-12-81        950                30 
+    7902 FORD      ANALYST       7566 03-12-81       3000                20 
+    7934 MILLER    CLERK         7782 23-01-82       1300                10 
+
+OR,
+
+SQL> SELECT * FROM EMP WHERE HIREDATE>='01-DEC-1981';
+
+   EMPNO ENAME     JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ __________ _______ ___________ _______ _______ _________ 
+    7788 SCOTT     ANALYST       7566 09-12-82       3000                20 
+    7876 ADAMS     CLERK         7788 12-01-83       1100                20 
+    7900 JAMES     CLERK         7698 03-12-81        950                30 
+    7902 FORD      ANALYST       7566 03-12-81       3000                20 
+    7934 MILLER    CLERK         7782 23-01-82       1300                10 
+
+
+12.Write a query to display the employees who are getting
+   more than 30000 annsal from emp table?
+
+Note:Generally in all relational databases we are not allowed to use
+     column aliasname in where clause.
+
+column aliasname:Is used to change column heading in final output.
+.to give column aliasname we use "AS" keyword.using "AS" keyword is 
+ optional.
+.to give column aliasname as multiple words use " ".
+.eg "ann sal"
+
+Solution:
+=========================================================================
+
+
+SQL> SELECT EMP.*,SAL*12 AS "ANNUAL SALARY" FROM EMP WHERE SAL*12>30000;
+
+   EMPNO ENAME    JOB              MGR HIREDATE        SAL    COMM    DEPTNO    ANNUAL SALARY 
+________ ________ ____________ _______ ___________ _______ _______ _________ ________________ 
+    7566 JONES    MANAGER         7839 02-04-81       2975                20            35700 
+    7698 BLAKE    MANAGER         7839 01-05-81       2850                30            34200 
+    7788 SCOTT    ANALYST         7566 09-12-82       3000                20            36000 
+    7839 KING     PRESIDENT            17-11-81       5000                10            60000 
+    7902 FORD     ANALYST         7566 03-12-81       3000                20            36000 
+
+------------------------------------------------------------------------------------------------------
+Logical operators
+-----------------
+.In all relational databases if you want to define more than one 
+   condition in where clause
+then we must use either AND or by using OR operators.
+
+AND:-AND operator displays the record if both first condition & 
+====  second contion are true.
+
+OR:-OR operator is used to displays a record if either first 
+===   condition or second condition is true.
+
+  
+
+1.Write a query to display the employees whose clerks are getting
+   more than 1000 salary from emp table?
+
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE JOB='CLERK' AND SAL>1000;
+
+   EMPNO ENAME     JOB          MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ________ _______ ___________ _______ _______ _________ 
+    7876 ADAMS     CLERK       7788 12-01-83       1100                20 
+    7934 MILLER    CLERK       7782 23-01-82       1300                10 
+
+
+2.Write a query to display the employees whose clerks are belongs 
+  to 20th department?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE JOB='CLERK' AND DEPTNO=20;
+
+   EMPNO ENAME    JOB          MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ ________ _______ ___________ _______ _______ _________ 
+    7369 SMITH    CLERK       7902 17-12-80        800                20 
+    7876 ADAMS    CLERK       7788 12-01-83       1100                20 
+
+
+Note:- In databases if we want to retrive multiple values within a 
+====     single column then we must use OR operator. 
+
+
+3.Write a query to display the all managers and clerks
+  from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE JOB='MANAGER' OR JOB='CLERK';
+
+   EMPNO ENAME     JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ __________ _______ ___________ _______ _______ _________ 
+    7369 SMITH     CLERK         7902 17-12-80        800                20 
+    7566 JONES     MANAGER       7839 02-04-81       2975                20 
+    7698 BLAKE     MANAGER       7839 01-05-81       2850                30 
+    7782 CLARK     MANAGER       7839 09-06-81       2450                10 
+    7876 ADAMS     CLERK         7788 12-01-83       1100                20 
+    7900 JAMES     CLERK         7698 03-12-81        950                30 
+    7934 MILLER    CLERK         7782 23-01-82       1300                10 
+
+7 rows selected. 
+
+4.Write a query to display the employees whose are belongs to 
+  20,30,50,70,90 departments from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE DEPTNO=20 OR DEPTNO=30 OR DEPTNO=50 OR DEPTNO=70 OR DEPTNO=90;
+
+   EMPNO ENAME     JOB             MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ___________ _______ ___________ _______ _______ _________ 
+    7369 SMITH     CLERK          7902 17-12-80        800                20 
+    7499 ALLEN     SALESMAN       7698 20-02-81       1600     300        30 
+    7521 WARD      SALESMAN       7698 22-02-81       1250     500        30 
+    7566 JONES     MANAGER        7839 02-04-81       2975                20 
+    7654 MARTIN    SALESMAN       7698 28-09-81       1250    1400        30 
+    7698 BLAKE     MANAGER        7839 01-05-81       2850                30 
+    7788 SCOTT     ANALYST        7566 09-12-82       3000                20 
+    7844 TURNER    SALESMAN       7698 08-09-81       1500       0        30 
+    7876 ADAMS     CLERK          7788 12-01-83       1100                20 
+    7900 JAMES     CLERK          7698 03-12-81        950                30 
+    7902 FORD      ANALYST        7566 03-12-81       3000                20 
+
+11 rows selected. 
+
+
+5.Write a query to display the employee records whose empnos
+  are 7902,7788,7900 from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE EMPNO=7902 OR EMPNO=7788 OR EMPNO=7900;
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7788 SCOTT    ANALYST       7566 09-12-82       3000                20 
+    7900 JAMES    CLERK         7698 03-12-81        950                30 
+    7902 FORD     ANALYST       7566 03-12-81       3000                20 
+
+
+
+6.Write a query to display the emp record whose sal 
+   between 2450 and 3000 from emp table?
+            |
+ range of values are there go with AND
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE SAL>=2450 AND SAL<=3000;
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ __________ _______ ___________ _______ _______ _________ 
+    7566 JONES    MANAGER       7839 02-04-81       2975                20 
+    7698 BLAKE    MANAGER       7839 01-05-81       2850                30 
+    7782 CLARK    MANAGER       7839 09-06-81       2450                10 
+    7788 SCOTT    ANALYST       7566 09-12-82       3000                20 
+    7902 FORD     ANALYST       7566 03-12-81       3000                20 
+
+
+7.Write a query to display the emp records whose joined in
+  1981 from emp table?
+
+Solution:
+=========================================================================
+
+SQL> SELECT * FROM EMP WHERE HIREDATE>='01-JAN-1981' AND HIREDATE<='31-DEC-1981';
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ____________ _______ ___________ _______ _______ _________ 
+    7499 ALLEN     SALESMAN        7698 20-02-81       1600     300        30 
+    7521 WARD      SALESMAN        7698 22-02-81       1250     500        30 
+    7566 JONES     MANAGER         7839 02-04-81       2975                20 
+    7654 MARTIN    SALESMAN        7698 28-09-81       1250    1400        30 
+    7698 BLAKE     MANAGER         7839 01-05-81       2850                30 
+    7782 CLARK     MANAGER         7839 09-06-81       2450                10 
+    7839 KING      PRESIDENT            17-11-81       5000                10 
+    7844 TURNER    SALESMAN        7698 08-09-81       1500       0        30 
+    7900 JAMES     CLERK           7698 03-12-81        950                30 
+    7902 FORD      ANALYST         7566 03-12-81       3000                20 
+
+10 rows selected. 
+
+
+
+

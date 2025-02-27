@@ -1,0 +1,196 @@
+Que 11 :
+=======
+
+Write C program that defines a function and print given pattern.
+
+
+A  B  C  D 
+E  F  G  H
+I  J  K  L
+M  N  O  P
+Q  R  S  T
+
+
+==================================================
+Solution:
+
+#include<stdio.h>
+
+void pattern11(int row ,int col){
+    char ch='A';
+    for(int i=1;i<=row;i++){
+        for(int j=1;j<=col;j++){
+            printf("%3c",ch++);
+        }
+        printf("\n");
+    }
+}
+
+int main(){
+    int row ,col;
+    printf("Enter your Row and Column Numbers : ");
+    scanf("%d%d",&row,&col);
+    pattern11(row,col);
+}
+
+=====================
+Que 12 :
+=======
+
+Write C program that defines a function and print given pattern.
+
+A  B  C  D  
+B  C  D  E
+C  D  E  F
+D  E  F  G
+
+Solution:
+
+#include<stdio.h>
+
+void pattern11(int row ,int col){
+    char ch='A';
+    for(int i=1;i<=row;i++){
+        for(int j=1;j<=col;j++){
+            printf("%3c",(ch+i-1+j-1));
+        }
+        printf("\n");
+    }
+}
+
+int main(){
+    int row ,col;
+    printf("Enter your Row and Column Numbers : ");
+    scanf("%d%d",&row,&col);
+    pattern11(row,col);
+}
+
+=======================================================================
+Que 13 :
+=======
+
+Write C program that defines a function and print given pattern.
+
+
+A  E  I  M
+B  F  J  N
+C  G  K  O
+D  H  L  P
+
+
+==================================================
+Solution:
+
+#include<stdio.h>
+
+void pattern11(int row ,int col){
+    char ch='A';
+    for(int i=1;i<=row;i++){
+        int a=0;
+        for(int j=1;j<=col;j++){
+            char initial=ch+i-1;
+            printf("%3c",(initial+a));
+            a=a+row;
+        }
+        printf("\n");
+    }
+}
+
+int main(){
+    int row ,col;
+    printf("Enter your Row and Column Numbers : ");
+    scanf("%d%d",&row,&col);
+    pattern11(row,col);
+}
+=====================
+Que 14 :
+=======
+
+Write C program that defines a function and print given pattern.
+
+
+1   6   11   16  
+2   7   12   17
+3   8   13   18
+4   9   14   19
+5   10  15   20
+
+
+==================================================
+Solution:
+
+
+#include<stdio.h>
+
+void pattern11(int row ,int col){
+    int start=1;
+    for(int i=1;i<=row;i++){
+        int a=0;
+        for(int j=1;j<=col;j++){
+            int initial=start+i-1;
+            printf("%3d",(initial+a));
+            a=a+row;
+        }
+        printf("\n");
+    }
+}
+
+int main(){
+    int row ,col;
+    printf("Enter your Row and Column Numbers : ");
+    scanf("%d%d",&row,&col);
+    pattern11(row,col);
+}
+
+
+=====================
+Que 15 :
+=======
+
+Write C program that defines a function and print given pattern.
+
+1   2   3   4   5
+10  9   8   7   6
+11  12  13  14  15
+20  19  18  17  16
+21  22  23  24  25
+
+Solution:
+
+#include<stdio.h>
+
+void pattern11(int row ,int col){
+    int start=1;
+    int restart=1;
+    for(int i=1;i<=row;i++){
+        start=restart;
+        for(int j=1;j<=col;j++){
+            if(i%2==1){
+                printf("%3d",start++);
+                restart++;
+            }
+            else{
+                printf("%3d",--start+col);
+                restart++;
+            }
+        }
+        printf("\n");
+    }
+}
+
+int main(){
+    int row ,col;
+    printf("Enter your Row and Column Numbers : ");
+    scanf("%d%d",&row,&col);
+    pattern11(row,col);
+}
+
+
+
+
+
+
+
+
+
+

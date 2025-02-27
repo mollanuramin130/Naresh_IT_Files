@@ -1,0 +1,61 @@
+Set-B
+=====
+Question-1
+----------
+Write a C program to do a arithmetic operation on two numbers by using Switch Case. 
+Take the operators(+,-,*,/,%) as cases and take the input from the user that what kind of operation user want to do on two number.
+
+
+Sample input :
+
+Enter num1 :10
+Enter num2 :20
+Enter operation : *
+
+
+Sample output :
+
+Multiplication is :200
+======================================================================================================================================
+Question-2
+-----------
+Write a C program to calculate the factorial of a given positive integer. 
+The program should prompt the user to enter a number, compute its factorial, and display the result. 
+-> If the user enters a negative number, the program should display an error message: "Invalid input...Please enter a positive integer."
+-> If the input is 0, the program should print Factorial of 0 = 1 because by definition, 0!=1
+-> FORMULA => n!=1×2×3×...×n.
+
+Sample input  : Enter a positive integer: -5
+Sample output : Factorial of 5 = Invalid input...Please enter a positive integer.
+
+Sample input  : Enter a positive integer: 5
+Sample output : Factorial of 5 = 120
+======================================================================================================================================
+Question-3
+-----------
+Write a C program to read one integer number from user and check it is Prime number or not
+
+Sample input  : Enter an integer: 5
+Sample output : 5 is prime number.
+
+Sample input  : Enter an integer: 6
+Sample output : 6 is not prime number.
+
+======================================================================================================================================
+Question-4
+-----------
+Write a C program to find and print all Strong numbers within a given range of two integers, N1 and N2. 
+The program should read N1 and N2 from the user and display all Strong numbers in this range. 
+
+A strong number is a number in which the sum of the factorials of its digits is equal to the number itself. 
+For example:
+145 is a strong number because 1!+4!+5!=145.
+
+Sample input  : N1 = 1 & N2 = 100000
+Sample output :
+Strong numbers between 1 and 100000 are:
+1
+2
+145
+40585
+

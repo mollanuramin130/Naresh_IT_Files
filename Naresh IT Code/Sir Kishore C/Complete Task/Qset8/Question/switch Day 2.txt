@@ -1,0 +1,151 @@
+Que 1 :
+=======
+
+Write a C program to accept id from user and display department.
+
+Id: 11 to 15 is Software department
+
+  16 to 20 is Developer department
+
+  21 to 23 is Management department
+
+case 1:
+-------
+input : 
+	Enter Id : 14
+output :
+	Software department
+case 2:
+-------
+input : 
+	Enter Id : 18
+output :
+	Developer department
+case 3:
+-------
+input : 
+	Enter Id : 21
+output :
+	Management department
+case 4:
+--------
+input : 
+	Enter Id : 25
+output :
+	Invalid Id..!
+
+
+=====================================================================
+
+Que 2 :
+=======
+
+Write a C program to take user Id as 1001 and Password as 1010. Ask the user to enter his id, if the id is valid 
+
+then ask the user to enter his password ,if the password is correct then print the name of the user, otherwise 
+
+the program will print incorrect Password and if the Id does not exits, the program will print Incorrect Id.
+
+develop this program by using Switch case. 
+
+case 1:
+--------
+input : 
+	Enter Id : 1001
+	Enter password : 1010
+output :
+	Login successful 
+
+case 2:
+--------
+input : 
+	Enter Id : 1000
+output :
+	Invalid Id 
+
+case 3:
+--------
+input : 
+	Enter Id : 1001
+	Enter password : 2020
+output :
+	Invalid password   
+	
+
+=====================================================================
+
+Que 3 :
+=======
+
+Write a C program that will ask for a person’s name and his/her game score. Then it will ask for a second person’s name and score. 
+The program will print the winner’s name and also print by how many 
+
+points that person won by comparing the scores. Develop this program by using switch case.
+
+case 1:
+--------
+input : 
+	Enter First parson name  : john
+	Enter First parson score : 85
+	Enter second parson name  : smith
+	Enter second parson score : 70
+
+output :
+	john won the match by 15 run 
+case 2:
+--------
+input : 
+	Enter First parson name  : ramesh
+	Enter First parson score : 60
+	Enter second parson name  : suresh
+	Enter second parson score : 90
+
+output :
+	suresh won the match by 30 run 
+
+	
+=====================================================================
+
+Que 4 :
+========
+
+Develop below program using switch case
+
+Write a C program that will read a float and a character from console. The character could be 'd' for deposit or 'w' for withdrawal.
+
+Starting with a Minimum balance of 2000.
+
+
+-> Ask the user to initialize the minimum balance and don't allow 0 and -ve values if it is 0 or -ve then print "amount Can't be stored".
+
+-> If the user want deposit operation then ask how much amount he want to deposit and add that amount with balance and print the balance.
+
+-> if the user want withdraw operation then ask how much amount he want to withdraw and subtract that amount from the balance and print the balance.
+
+
+
+[Note: If the deposit amount is negative or 0 print "Invalid amount". If the withdraw amount is negative , 0 or greater than balance then print "Invalid ammount"]
+
+
+Hints:
+-------
+
+Declare variables for the amount in float, balance in float and transaction code in char types.
+
+Test the transaction code, if ‘d’ it is deposit. Test the amount so that it is not negative.
+
+If the balance is not negative or positive sum-up the balance.
+
+balance = balance + amount;
+
+Test the transaction code for withdrawal, ‘w’. If the transaction code is ‘w’
+
+Minus the withdrawn amount to update the balance.
+
+balance = balance - amount;
+
+And print the balance.
+
+
+
+

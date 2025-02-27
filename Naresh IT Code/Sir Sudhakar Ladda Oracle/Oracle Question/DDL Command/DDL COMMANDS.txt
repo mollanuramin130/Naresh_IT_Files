@@ -1,0 +1,204 @@
+1.Create a STUDENT table with the following columns
+----->SNO 
+----->SNAME
+----->GENDER
+----->FEE
+----->DOB
+
+Solution:
+--------------------------------------------------------------------
+SQL> CREATE TABLE STUDENT (SNO NUMBER(3),SNAME VARCHAR2(30),GENDER VARCHAR2
+(6),FEE NUMBER(8,2),DOB VARCHAR2(20));
+
+
+
+2.What is the command to view the structure of the STUDENT table?
+
+Solution:
+--------------------------------------------------------------------
+SQL> DESC STUDENT;
+
+
+
+3.Insert records into the STUDENT table.
+
+Solution:
+--------------------------------------------------------------------
+STATIC:
+
+SQL> INSERT INTO STUDENT VALUES(001,'NUR AMIN MOLLA','MALE',28000.00,'30-12
+-1996');
+
+DYNAMICALLY:
+
+SQL> INSERT INTO STUDENT VALUES(&SNO,'&SNAME','&GENDER',&FEE,'&DOB');
+Enter value for SNO: 002
+Enter value for SNAME: SAKIL SARDAR
+Enter value for GENDER: MALE
+Enter value for FEE: 20000.00
+Enter value for DOB: 03-01-1995
+old:INSERT INTO STUDENT VALUES(&SNO,'&SNAME','&GENDER',&FEE,'&DOB')
+new:INSERT INTO STUDENT VALUES(002,'SAKIL SARDAR','MALE',20000.00,'03-01-1995')
+
+1 row inserted.
+
+
+
+4.Write a query to display all the records from the STUDENT table.
+
+Solution:
+--------------------------------------------------------------------
+SQL> SELECT * FROM STUDENT;
+
+
+
+5.Write a query to add two columns (address, m1 (marks)) to
+  the STUDENT table.
+
+Solution:
+--------------------------------------------------------------------
+SQL> ALTER TABLE STUDENT ADD ADDRESS VARCHAR2(50);
+
+SQL> ALTER TABLE STUDENT ADD (MARKS NUMBER(3));
+
+
+
+6.Write a query to increase the size of the datatype for 
+  the SNAME column.
+
+Solution:
+--------------------------------------------------------------------
+SQL> ALTER TABLE STUDENT MODIFY SNAME VARCHAR2(25);
+
+Table STUDENT altered.
+
+
+
+7.Write a query to drop two columns from the STUDENT table.
+
+Solution:
+--------------------------------------------------------------------
+SQL> ALTER TABLE STUDENT DROP COLUMN ADDRESS;
+
+Table STUDENT altered.
+
+SQL> ALTER TABLE STUDENT DROP COLUMN MARKS;
+
+Table STUDENT altered.
+
+
+
+
+8.Write a query to rename the column SNAME to NAME.
+
+Solution:
+--------------------------------------------------------------------
+SQL> ALTER TABLE STUDENT RENAME COLUMN FEE TO FEES;
+
+Table STUDENT altered.
+
+
+
+9.Write a query to drop the STUDENT table.
+
+Solution:
+--------------------------------------------------------------------
+SQL> DROP TABLE STUDENT;
+
+Table STUDENT dropped.
+
+
+
+10.Write a query to restore the STUDENT table.
+
+Solution:
+--------------------------------------------------------------------
+SQL> FLASHBACK TABLE STUDENT TO BEFORE DROP;
+
+Flashback succeeded.
+
+
+
+11.What is the command to rename the table STUDENT to STUDENTDATA?
+
+Solution:
+--------------------------------------------------------------------
+SQL> RENAME STUDENT TO STUDENTDATA;
+
+Table renamed.
+
+
+
+12.What is the command to permanently delete the data from 
+   the table in the database?
+
+Solution:
+--------------------------------------------------------------------
+
+SQL> TRUNCATE TABLE STUDENT;
+
+Table STUDENT truncated.
+
+
+
+
+13.Write a query to display the employee names and salaries from 
+  the EMP table.
+
+Solution:
+--------------------------------------------------------------------
+
+SQL> SELECT ENAME AS EMPLOYEE_NAME,SAL AS SALARY FROM EMP EMP_TABLE;
+
+EMPLOYEE_NAME        SALARY 
+_________________ _________ 
+NUR AMIN MOLLA        28000 
+SAKIL SARDAR          20000 
+
+
+
+14.Write a query to display the EMPNO, ENAME, JOB, and HIREDATE 
+  from the EMP table.
+
+Solution:
+--------------------------------------------------------------------
+
+SQL> SELECT EMPNO, ENAME, HIREDATE FROM EMP_TABLE;
+
+   EMPNO ENAME             HIREDATE      
+________ _________________ _____________ 
+       1 NUR AMIN MOLLA    30-12-1996    
+       2 SAKIL SARDAR      03-01-1995   
+
+
+ 
+
+15.Write a query to display all the records from the EMP table
+
+Solution:
+--------------------------------------------------------------------
+SQL> SELECT * FROM STUDENT;
+
+   SNO SNAME             GENDER        FEES DOB           
+______ _________________ _________ ________ _____________ 
+     1 NUR AMIN MOLLA    MALE         28000 30-12-1996    
+     2 SAKIL SARDAR      MALE         20000 03-01-1995  
+
+
+
+
+16.Write a query to display EMPNO,ENAME,JOB,BASIC_SALARY,5% of HRA,10% of DA,5% of PF,5% of ESI then calculate GROSS_SALARY and NET_SALARY from EMP Table who are working as a "MANAGER".
+
+Solution:
+--------------------------------------------------------------------
+
+SQL> SELECT EMPNO,ENAME, JOB,SAL AS BASIC_SALARY,SAL*5/100 AS HRA,SAL*10/100 AS DA,SAL*5/100 AS PF,SAL*5/100 AS ESI,SAL+SAL*5/100+SAL*10/100 AS GROSS_SALARY,SAL+SAL*5/100+SAL*10/100-SAL*5/100-SAL*5/100 AS NET_SALARY FROM EMP WHERE JOB='MANAGER';
+
+   EMPNO ENAME    JOB           BASIC_SALARY       HRA       DA        PF       ESI    GROSS_SALARY    NET_SALARY 
+________ ________ __________ _______________ _________ ________ _________ _________ _______________ _____________ 
+    7566 JONES    MANAGER               2975    148.75    297.5    148.75    148.75         3421.25       3123.75 
+    7698 BLAKE    MANAGER               2850     142.5      285     142.5     142.5          3277.5        2992.5 
+    7782 CLARK    MANAGER               2450     122.5      245     122.5     122.5          2817.5        2572.5 
+
+
+  

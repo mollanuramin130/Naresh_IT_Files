@@ -1,0 +1,118 @@
+
+Que 1 : 
+=======
+
+Using While loop Write a C program that reads two integers, N1 and N2, from the user. The program should print all the numbers from N1 to N2 (inclusive) in a single line, 
+separated by commas. 
+
+Example:
+
+Sample input : N1 = 1 , N2 = 20
+
+Sample output : 1,2,3,4,5,6,7,8...20
+
+================================================================
+
+Que 2 : 
+=======
+
+Using While loop Write a C program that reads two integers, N1 and N2, from the user. The program should print all the numbers from N1 to N2 (inclusive) in a single line, 
+separated by commas, in reverse order.
+
+Example:  
+
+Sample input : N1 = 10 , N2 = 1
+
+Sample output : 10,9,8,7,6,5,4,3,2,1
+
+================================================================
+Que 3 :
+=======
+
+Write a C program to prints all characters from capital a to z along with their ASCII values using a while loop.
+
+Sample Output : 
+
+Character and its ASCII value:
+a : 97
+b : 98
+c : 99
+.
+.
+.
+
+y: 121
+z: 122
+
+
+================================================================
+Que 4 :
+=======
+
+Write a C program to prints all characters from capital A to Z along with their ASCII values using a while loop.
+
+Sample Output : 
+
+Character and its ASCII value:
+A : 65
+B : 66
+C : 67
+.
+.
+.
+
+Y: 89
+Z: 90
+
+================================================================
+Que 5 :
+=======
+
+write a C program to prints all natural number sum from 1 to n numbers.
+
+case 1:
+-------
+input :
+	Enter a number : 10
+
+output : 
+	Sum of natural number 1 to 10 is : 55
+
+case 2:
+-------
+input :
+	Enter a number : 5
+
+output : 
+	Sum of natural number 1 to 10 is : 15
+
+================================================================
+Que 6 :
+=======
+
+Write a C program that takes a  integer as input and prints its each  digits in separate line reverse order using a while loop.
+
+
+case 1:
+-------
+input :
+	Enter a number : 1234
+
+output : 
+	4
+	3
+	2
+	1
+case 2:
+-------
+input :
+	Enter a number : 9876
+
+output : 
+	6
+	7
+	8
+	9
+
+
+

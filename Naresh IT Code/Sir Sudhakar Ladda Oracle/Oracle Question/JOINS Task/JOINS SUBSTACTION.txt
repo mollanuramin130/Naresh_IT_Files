@@ -1,0 +1,132 @@
+                               JOINS
+                             ---------
+
+
+JOIN SUBSTRACTION:-in all relational database joins eliminating 
+=================   matching rows is also called as join substaction.
+                   this join substaction is used in left,right,full
+                   outer joins.
+
+3)left outer join substaction
+=============================
+Syntax:-
+=======
+select *
+from tableA left join tableB
+on tableA.key=tableB.key
+where tableB.key is null;
+
+ex:-
+==
+
+SQL>select * from test7;
+
+       SNO
+   ----------
+        10
+        20
+        30
+
+
+SQL>select * from test8;
+
+       SNO
+   ----------
+        10
+        20
+        40
+
+ 
+
+left outer join substraction:-substraction means eliminating matching
+============================   rows.
+
+SQL>select * from test7  left join test8
+    on test7.sno=test8.sno
+    where test8.sno is null;
+
+      SNO        SNO
+   ---------- ----------
+        30
+
+
+
+---------------------------------------------------------------------------------------------
+
+1.Write a query to display employee details who have not assined 
+  any project 
+
+EMPLOYEES1
+
+EMPID      ENAME 
+-----    ---------    
+  1        SURYA
+  2        GOWTHAM
+  3        ANUSHKA
+
+PROJECTS
+
+PROJECTID         EMPID
+---------       --------
+  101              1
+  102              2
+
+SQL> SELECT E.* ,PROJECTID FROM EMPLOYEES1 E LEFT OUTER JOIN PROJECTS P ON E.EMPID=P.EMPI
+D WHERE P.PROJECTID IS NULL;
+
+   EMPID ENAME         PROJECTID 
+________ __________ ____________ 
+       3 ANUSHKA                 
+
+SQL> SELECT E.* ,PROJECTID FROM EMPLOYEES1 E , PROJECTS P WHERE E.EMPID=P.EMPID(+) AND P.
+PROJECTID IS NULL;
+
+   EMPID ENAME         PROJECTID 
+________ __________ ____________ 
+       3 ANUSHKA                 
+
+
+-----------------------------------------------------------------------------------
+
+
+2.Write a query to display the employee details who have not been 
+  assined any department
+
+ 
+
+SQL> SELECT * FROM EMPLOYEES;
+
+       EMPID     NAME         DEPTNO
+     -------  ----------      --------
+         1      KIRAN           10
+         2     GOWTHAM          20
+         3      SURYA
+         4      RAJU            20
+
+
+SQL> SELECT * FROM DEPARTMENTS;
+
+      DEPTNO      DNAME
+     -------    ----------
+        10         HR
+        20         IT
+        40      FINANCE
+ SQL> SELECT E.* ,DNAME FROM EMPLOYEES E LEFT OUTER JOIN DEPARTMENTS D ON E.DEPTNO=D.DEPTNO WHERE E.DEPTNO IS NULL;
+
+   EMPID NAME        DEPTNO DNAME    
+________ ________ _________ ________ 
+       3 SURYA                       
+
+SQL> SELECT E.* ,DNAME FROM EMPLOYEES E ,DEPARTMENTS D WHERE E.DEPTNO=D.DEPTNO AND E.DEPT
+NO IS NULL;
+
+no rows selected
+SQL> SELECT E.* ,DNAME FROM EMPLOYEES E ,DEPARTMENTS D WHERE E.DEPTNO=D.DEPTNO(+) AND E.D
+EPTNO IS NULL;
+
+   EMPID NAME        DEPTNO DNAME    
+________ ________ _________ ________ 
+       3 SURYA                       
+
+
+

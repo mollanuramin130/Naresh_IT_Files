@@ -1,0 +1,268 @@
+1. Which of these is long data type literal?
+a) 0x99fffL
+b) ABCDEFG
+c) 0x99fffa
+d) 99671246
+
+Ans: a
+
+2. Which of these can be returned by the operator &?
+a) Integer
+b) Boolean
+c) Character
+d) Integer or Boolean
+
+Ans: d
+
+3. Literals in java must be appended by which of these?
+a) L
+b) l
+c) D
+d) L and l
+
+Ans: d
+
+
+4. Literal can be of which of these data types?
+a) integer
+b) float
+c) boolean
+d) all of the mentioned
+
+Ans: d
+
+
+5. Which of these can not be used for a variable name in Java?
+a) identifier
+b) keyword
+c) identifier & keyword
+d) none of the mentioned
+
+Ans: b
+
+
+6. Which of these is an incorrect string literal?
+a) “Hello World”
+b) “Hello\nWorld”
+c) “\”Hello World\””
+d)"Hello
+   world"
+
+Ans: d
+
+
+7. Which of these is necessary condition for automatic type conversion in Java?
+a) The destination type is smaller than source type
+b) The destination type is larger than source type
+c) The destination type can be larger or smaller than source type
+d) None of the mentioned
+
+Ans: b
+
+
+8. What will be the error in the following Java code?
+    byte b = 50;
+    b = b * 50;
+a) b cannot contain value 100, limited by its range
+b) * operator has converted b * 50 into int, which can not be converted to byte without casting
+c) b cannot contain value 50
+d) No error in this code
+
+Ans: b
+
+
+9. If an expression contains double, int, float, long, then the whole expression will be promoted into which of these data types?
+a) long
+b) int
+c) double
+d) float
+
+Ans: c
+
+
+10. What will be the output of the following Java code?
+
+    class CharIncrement 
+    {
+        public static void main(String args[]) 
+        {
+            char c1 = 'D';
+            char c2 = 84;
+            c2++;
+            c1++;
+            System.out.println(c1 + " "  + c2);
+        } 
+    }
+a) E U
+b) U E
+c) V E
+d) U F
+
+Ans: a
+
+
+11. What will be the output of the following Java code?
+
+    class Conversion 
+    {
+        public static void main(String args[]) 
+        {
+            double a = 295.04;
+            int  b = 300;
+            byte c = (byte) a;
+            byte d = (byte) b;
+            System.out.println(c + " "  + d);
+        } 
+    }
+a) 38 43
+b) 39 44
+c) 295 300
+d) 295.04 300
+
+Ans: b
+
+
+12. What will be the output of the following Java program?
+
+    class Test 
+    {    
+        public void main( String[] args ) 
+        {  
+            System.out.println( "Hello" + args[0] ); 
+        } 
+    }
+a) Hello c
+b) Hello
+c) Hello world
+d) Runtime Error
+
+Ans: d
+
+
+________________________________________________________________________
+Que-1)
+Write a java which program the sum of digits of the given two digit number.
+program determined by the following rules:
+
+if the given value is in between 10 and 99, return sum of it's digits. Example: if x = 34, print 7
+if the given value is negative, print -3
+if the given value is greater than 99, print -2
+if the given value is in between 0 and 9, print -1
+
+
+Solution:
+---------------------------------------------------------------------
+package com.ssnmarket.feb_05_2025.Digit_Sum;
+
+import java.util.Scanner;
+
+public class Digit_Sum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter your Number : ");
+		int number =sc.nextInt();
+		if(number<0) {
+			System.out.println(-3);
+		}else if (number>99) {
+			System.out.println(-2);
+		}else if (number>=0 && number<=9) {
+			System.out.println(-1);
+		}else {
+			int sum=0;
+			System.out.println("The digit sum of "+number+" is: "+(number%10+number/10));
+		}
+	}
+
+}
+
+
+Que-2)
+Write a java program which print the next multiple of 100 for the given number.
+Program is determined by the following rules:
+
+if the given value is negative or zero, return -1
+if the given value is positive, return the next multiple of the given number. Example: if x = 123, return 200.
+
+package com.ssnmarket.feb_05_2025.Next_Multiple;
+
+import java.util.Scanner;
+
+public class NextMultiplicationFind {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter your Number : ");
+		int number =sc.nextInt();
+		if(number<=0) {
+			System.out.println(-1);
+		}
+		else {
+			System.out.println("Next multiplication of "+number+" is: "+(number/100+1)*100);
+		}
+		sc.close();
+	}
+
+}
+
+
+Que-3)
+Write a java program which print the given three digit number is palindrome or not 
+
+Program is determined by the following rules:
+
+if the given number is an three digit number, Example: if x = 232, print 1. if x = 345, print 0
+if 1 then print a message that the number is pallindrome
+if 0 then print a message that the number is not a pallindrome
+if the given number is negative or zero, print -1
+if -1 then print a message that the given number is -ve kindly provide the +ve number only
+if the given number is not an three digit number, print -2
+if -2 then print the message that this program can check the operation for the 3 number only.
+
+
+
+package com.ssnmarket.feb_05_2025.Palindrom_Check;
+
+import java.util.Scanner;
+
+public class PalindromCheck {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter your Number : ");
+		int number =sc.nextInt();
+		int temp=number,revNumber=0;
+		if(number<=0) {
+			System.out.println(-1+"\nThe given number is -ve kindly provide the +ve number only");
+		}
+		else {
+			int count=0;
+			while(temp>0) {
+				int rem=temp%10;
+				revNumber=revNumber*10+rem;
+				temp=temp/10;
+				count++;
+			}if (count!=3) {
+				System.out.println(-2+"\nThis program can check the operation for the 3 number only.");
+			}
+			else if(revNumber==number) {
+				System.out.println(1+"\nThe number is pallindrome");
+			}else {
+				System.out.println(0+"\nThe number is not a pallindrome");
+			}	
+		}
+		
+		sc.close();
+	}
+
+}
+
+
+
+
+
+
+

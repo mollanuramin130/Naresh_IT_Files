@@ -1,0 +1,884 @@
+
+
+Object Oriented Programming (OOPs)
+-----------------------------------
+Object Oriented Progamming means working with real life Objects so first of all we need to know that "What is an Object ?"
+
+What is an Object ?
+--------------------
+An object is a physical entity which exist in the read world.
+Example : Car, Mouse, Remote, Laptop and so on
+
+An Object is having 3 characteristics :
+
+1) Identification of the Object [Name of the Object]
+2) State of an Object [Data OR Properties of an Object]
+3) Functionality of the Object [What an object can perform]
+
+An Object Oriented programming is a technique through which we can develop and design the programs using CLASS and OBJECT.
+
+Writing Programs on real life Objects is known as Object Oriented Progamming.
+
+In OOPs we concentrate on Objects rather than function(Method).
+
+Advantages of OOPs :
+-------------------
+There are 3 advantages :
+
+1) Modularity (Dividing the bigger task into number of smaller task)
+2) Reusability (We can reuse the BLC classes [WORA])
+3) Flexibility (Easy to maintain [Interface])
+
+Features Of OOPs :
+------------------
+There are six features :
+
+1) Class
+2) Object
+3) Abstraction
+4) Encapsulation
+5) Inheritance
+6) Polymorphism
+
+11-02-2025
+-----------
+What is a class :
+-------------------
+A class is a model/bluprint/template/prototype for creating the Object. Object creation is possible by using class template.
+
+A class is a logical entity which does not take any space.
+
+A class is user-defined data type which contains fields and methods.
+
+Example :
+---------
+public class Demo
+{
+   Fields 
+     + 
+   Methods
+}
+
+*A class is a component which is used to defined Object properties and Object behavior.
+ 
+ public class Student
+ {
+    Fields [Student Properties]    
+      +      
+    Methdos [Student Behavior]
+ }
+ 
+---------------------------------------------------------------------
+WAP to provide student properties and student behavior by using OOP.
+(Diagram is available)
+
+Student.java
+--------------
+package com.ravi.oop;
+
+//BLC
+public class Student 
+{
+	int rollNumber;         //Non static variable
+	String studentName;     //Non static variable
+	String studentAddress;  //Non static variable
+	
+	public void talk()
+	{
+		System.out.println("My name is :"+studentName);
+		System.out.println("Roll number is :"+rollNumber);		
+		System.out.println("Address is :"+studentAddress);
+	}
+
+	public void writeExam()
+	{
+		System.out.println("Hello Everyone !!!, My name is :"+studentName+ " every saturday we have weekly test");
+	}
+	
+	
+}
+
+StudentDemo.java
+-----------------
+package com.ravi.oop;
+
+//ELC
+public class StudentDemo 
+{
+	public static void main(String[] args) 
+	{
+		Student  raj = new Student();
+		//Initializing the properties through reference variable
+        raj.rollNumber = 111;
+        raj.studentName = "Raj";
+        raj.studentAddress ="Ameerpet";
+        
+        //calling the behavior
+        raj.talk();
+        raj.writeExam();
+        
+        System.out.println("-------------------");
+        
+        Student priya = new Student();
+        //Initializing the properties through reference variable
+        priya.rollNumber = 222;
+        priya.studentName = "Priya";
+        priya.studentAddress = "S R Nagar";
+        
+        //calling the Behavior
+        priya.talk();
+        priya.writeExam();
+        
+	}
+
+}
+
+Steps to develop OOP :
+----------------------
+1) Create BLC and ELC class.
+2) Create an Objec for BLC class, inside the ELC class in the main 
+   method.
+3) Think about Object properties and behaviour and write inside the 
+   BLC class.
+4) In the ELC class, With the help of Object reference initialize
+   all the Object properties.
+5) By using Object reference call the methods.
+-----------------------------------------------------------------
+12-02-2025
+----------
+Instance Variable OR Non static Field :
+---------------------------------------
+Instance variable we can declare at class level.
+
+If a non static variable is declared inside the class but outside of the method then it is called Instance Variable OR 
+Non static field.
+
+Example :
+---------
+public class Student
+{
+  int rollNumber;  //Instance Variable OR Non static field
+  
+  public void m1()
+  {
+  }
+}
+
+An instance variable is automatically created and initialized with default value at the time of Object creation. 
+[We can't even think about instance variable without object creation]
+
+public class Test 
+{
+	int x = 200; //Instance Variable OR Non static filed
+	
+	public static void main(String[] args) 
+	{
+		System.out.println(x);	//error
+	}
+}
+
+An instance variable is used to represent the properties of an object hence without object instance variable will not exist.
+
+As far as it's scope is concerned, An instance variable can be accessible anywhere within the class as well as outside of 
+the class also using valid access modifier.
+
+Whenever we create an object, a separate copy of all the instance variables will be created.
+----------------------------------------------------------------
+Initializing the Object properties using Method without parameter (Using Scanner class) :
+----------------------------------
+package com.ravi.method_initialization;
+
+import java.util.Scanner;
+
+public class Employee 
+{
+   int employeeNumber;  //0
+   String employeeName; //null
+   double employeeSalary; //0.0
+   
+   public void setEmployeeData()
+   {
+	   Scanner sc = new Scanner(System.in);
+	   System.out.print("Enter employee Number :");
+	   employeeNumber = sc.nextInt();
+	   System.out.print("Enter employee Name :");
+	   employeeName = sc.nextLine();
+	   employeeName = sc.nextLine();
+	   System.out.print("Enter employee Salary :");
+	   employeeSalary = sc.nextDouble();	  
+   }
+   
+   public void getEmployeeData()
+   {
+	   System.out.println("Employee Number is :"+employeeNumber);
+	   System.out.println("Employee Name is :"+employeeName);
+	   System.out.println("Employee Salary is :"+employeeSalary);
+   }  
+   
+}
+
+package com.ravi.method_initialization;
+
+public class EmployeeDemo 
+{
+	public static void main(String[] args) 
+	{
+		Employee scott = new Employee();
+		scott.setEmployeeData();
+		scott.getEmployeeData();
+		
+		System.out.println(".............");
+		
+		Employee smith = new Employee();
+		smith.setEmployeeData();
+		smith.getEmployeeData();		
+		
+	}
+
+}
+----------------------------------------------------------------
+What is parameter variable ?:
+-----------------------------
+If a variable is declared inside a method as a parameter (not inside a method body) then it is parameter variable.
+
+It used to receive the values from the outer world so the end user will provide the values and these values are received by 
+parameter variable in the program.
+
+Initializing the object properties using parameter variable :
+-------------------------------------------------------------
+package com.ravi.initialization_through_parameter;
+
+public class Customer 
+{
+    int customerId;
+    String customerName;
+    
+    public void setCustomerData(int id, String name)
+    {
+    	customerId = id;
+    	customerName = name;
+    }
+    
+    public void getCustomerData()
+    {
+    	System.out.println("Customer Id is :"+customerId);
+    	System.out.println("Customer Name is :"+customerName);
+    } 
+    
+}
+
+package com.ravi.initialization_through_parameter;
+
+public class CustomerDemo 
+{
+	public static void main(String[] args) 
+	{
+		Customer martin = new Customer();
+		martin.setCustomerData(111, "Mr Martin");
+		martin.getCustomerData();
+		
+		System.out.println("..............");
+		
+		Customer alen = new Customer();
+		alen.setCustomerData(222, "Mr. Alen");
+		alen.getCustomerData();		
+		
+	}
+
+}
+
+Note : Upto here, We know total 3 ways to initialize the object
+properties (instance variable) which are as follows :
+  
+   1) Using Object reference(raj.rollNumber = 122)
+   2) Using Method without parameter (Scanner class)
+   3) Using Method with Parameter (Park Story)
+----------------------------------------------------------------
+What is a constructor [Constructor Introduction]
+-----------------------------------------------
+If the name of the class and name of the method both are exactly same and it should not contain any return type then it is called 
+constructor. 
+
+Example :
+
+Case 1:
+-------
+public class Demo
+{
+   public void Demo() //Method
+   {
+   }
+}   
+
+Case 2:
+-------
+public class Demo
+{
+   public  Demo() //Constructor
+   {
+   }
+}   
+-----------------------------------------------------------------
+13-02-2025
+-----------
+
+Default constructor added by compiler :
+---------------------------------------
+In java, Whenever we write a class and If we don't write any kind of constructor then automatically compiler will add one 
+default no argument constructor in the class at the time of compilation.
+
+Demo.java
+-----------
+public class Demo
+{
+   //Programmer has not provided any constructor
+}
+
+javac Demo.java (Compilation)
+[After compilation Demo.class file will be generated]
+
+Demo.class
+----------
+public class Demo
+{
+  public Demo() //Default No Argument Constructor [Added by 
+  {                                             java compiler]
+  }
+}
+
+*Every java class must have at-least one constructor either 
+ explicitly written by user OR implicitly added by java compiler.
+
+The access modifier of default no argument constructor [added by java compiler] will depend upon class access modifier that means, 
+If the class is public then default no argument constructor will also be public otherwise not.
+
+Example :
+---------
+public class Test
+{
+}
+
+javac Test.java [java compiler will compile and add default constructor]
+
+javap Test.class [To see the Constructor added by java compiler]
+-----------------------------------------------------------------
+
+Why compiler is adding default constructor to our class :
+---------------------------------------------------------
+We have 2 reasons that why compiler is adding default constructor :
+
+1) Without default constructor, Object creation is not possible in java by using new keyword, 
+if the class does not contain user-defined constructor.
+
+2) As we know only class level variables are having default values so, new keyword will initialize all 
+the non static variable with the support of java compiler with default values as shown below.
+  
+ Data type - Default value
+   byte  - 0
+   short - 0
+   int   - 0
+   long  - 0
+   float - 0.0
+   double - 0.0
+   char - (space) '\u0000'  
+   boolean - false
+   String - null
+   Object - null (For any class i.e reference variable the default value is null)
+
+Program that describes new keyword is repsonsible to allocate 
+the default values for non static variables :
+
+Student.java
+-------------
+package com.ravi.oop;
+
+public class Student 
+{
+   int roll;
+   String name;
+         
+   public void show()
+   {
+	   System.out.println(roll);  //0
+	   System.out.println(name);  //null
+   }
+}
+StudentDemo.java
+-----------------
+package com.ravi.oop;
+
+public class StudentDemo 
+{
+	public static void main(String[] args) 
+	{
+		Student raj = new Student();
+		raj.show();
+		
+
+	}
+
+}
+
+Here we will get output as default values i.e 0 , null 
+---------------------------------------------------------------
+How to initialize the object properties with parameter variable as per our requirement :
+
+Based on the requirement we can initailize the instance variable with parameter variable as shown in the program below :
+
+package com.ravi.oop;
+
+public class Employee 
+{
+   int employeeId;
+   String employeeName;
+   double employeeSalary; 
+   char employeeGrade;
+   
+   public void setEmployeeData(int id, String name, double salary)
+   {
+	   employeeId = id;
+	   employeeName = name;
+	   employeeSalary = salary;
+   }
+   
+   public void calculateEmployeeGrade()
+   {
+	   if(employeeSalary >=100000)
+	   {
+		   employeeGrade = 'A';
+	   }
+	   else if(employeeSalary >=75000)
+	   {
+		   employeeGrade = 'B';
+	   }
+	   else if(employeeSalary >=50000)
+	   {
+		   employeeGrade = 'C';
+	   } 
+	   else
+	   {
+		   employeeGrade = 'D';
+	   }
+	   
+   }
+   
+   
+   
+   public String getEmployeeData()
+   {
+	   return "[Id is :"+employeeId+", Name is :"+employeeName+", Salary is "+employeeSalary+", Grade is :"+employeeGrade+"]";
+   } 
+   
+}
+package com.ravi.oop;
+
+public class EmployeeDemo {
+
+	public static void main(String[] args) 
+	{
+		Employee scott = new Employee();
+		scott.setEmployeeData(101, "Scott", 120000);
+		scott.calculateEmployeeGrade();
+		System.out.println(scott.getEmployeeData());
+
+	}
+
+}
+---------------------------------------------------------------
+14-02-2025
+-----------
+Role of instance variable OR Non static field (Object Properties)
+while creating an object.
+
+In java, Whenever we create an object, a separate copy of all the instance variables will be created with each and every object.
+
+
+package com.ravi.role_of_instance_variable;
+
+public class Test
+{
+   int x = 100;
+   
+   public static void main(String [] args)
+   {
+       Test t1 = new Test();
+       Test t2 = new Test();
+       
+       ++t1.x;   --t2.x;       
+       
+       System.out.println(t1.x); //101       
+       System.out.println(t2.x); //99 
+   }
+}
+----------------------------------------------------------------
+What is the role of class variable OR static field in Object creation ?
+
+What is a static field ?
+------------------------
+It is a variable which we should declare at class level.
+
+If we declare a variable inside a class with static modifier then it is called static field OR Class Variable.
+
+In order to access the static field, Object is not required, We can access the static field with the help of class name.
+
+A static field is automatically created and initialized with default value at THE TIME LOADING THE .CLASS FILE INTO JVM MEMORY.
+
+Whenever we create an object in java then a single copy of static field will be created and the same single copy will be 
+sharable by all the objects.
+
+* It is sharable by all the objects hence if we modify the value
+  by any of the Object reference then it will be mofifiable for
+  all the objects.
+
+package com.ravi.role_of_static_field;
+
+public class Demo 
+{
+	static int x = 100;
+
+	public static void main(String[] args)
+	{
+		Demo d1 = new Demo();
+		Demo d2 = new Demo();
+		
+		++d1.x;   ++d2.x;
+		
+		System.out.println(d1.x); //102
+		System.out.println(d2.x); //102
+	}
+}
+
+Note : The main purpose of static field to save the memory.
+----------------------------------------------------------------
+When we should declare a variable as an instance and we should decalre as static variable ?
+
+Instance Variable :
+-------------------
+If the value of the variable is different with respect to object 
+then we should declare the variable as an instance variable.
+
+Static Variable :
+-----------------
+If the value of the variable will be common with respect to all the objects then we should use static variable.
+
+Example 1:
+----------
+public class Student
+{
+  int roll;
+  String name;
+  String address;
+  static String collegeName = "NIT";
+  static String courseName = "Java";
+}  
+
+Example 2:
+-----------
+public class Customer
+{
+   int accountNumber;
+   String customerName;
+   String customerAddress;
+   long mobileNumber;
+   String emailId;
+   static String ifscCode = "SBIHYD00123";
+   static String branchLocation ="S.R Nagar";
+}
+----------------------------------------------------------------
+//Programs :
+------------
+2 files :
+------------
+Student.java
+-------------
+package com.ravi.role_of_instance_variable;
+
+public class Student
+{
+	  int rollNumber;
+	  String studentName;
+	  String studentAddress;
+	  static String collegeName = "NIT";
+	  static String courseName = "Java";
+	  
+	  public void setStudentData(int roll, String name, String address)
+	  {
+		 rollNumber = roll;
+		 studentName = name;
+		 studentAddress = address;
+	  } 
+	  
+	  public void showStudentData()
+	  {
+		  System.out.println("Roll Number is :"+rollNumber);
+		  System.out.println("Name is :"+studentName);
+		  System.out.println("Address is :"+studentAddress);
+		  System.out.println("College Name is :"+collegeName);
+		  System.out.println("Course is :"+courseName);		  
+	  }  
+}
+
+package com.ravi.role_of_instance_variable;
+
+public class VariableDeclaration {
+
+	public static void main(String[] args) 
+	{
+		Student raj = new Student();
+		raj.setStudentData(101, "Raj", "Ameerpet");
+		raj.showStudentData();
+		
+		System.out.println("...............");
+		Student priya = new Student();
+		priya.setStudentData(102, "Priya", "S.R Nagar");
+		priya.showStudentData();
+
+	}
+
+}
+================================================================
+What is variable shadow ?
+-------------------------
+If class level variables and method level variables are having exactly same name then method level variable will hide 
+class level variable inside the method body OR constructor OR block, This concept is known as Variable Shadow.
+
+package com.ravi.role_of_instance_variable;
+
+class Customer
+{
+	int customerId = 111;
+	String customerName = "Scott";
+	double customerBill = 12000;
+	
+	public void show(double customerBill)
+	{
+		int customerId = 222;
+		String customerName = "Alen";
+		
+		System.out.println(customerId); //222
+		System.out.println(customerName); //Alen	
+		System.out.println(customerBill); //18000	
+		
+	}
+	
+}
+
+public class VariableShadow {
+
+	public static void main(String[] args) 
+	{
+		Customer cust = new Customer();
+		cust.show(18000);
+
+	}
+
+}
+----------------------------------------------------------------
+this keyword in java :
+----------------------
+Whenever instance variable name and parameter variable name both are same then at the time of instance variable initialization 
+our runtime environment will provide more priority to parameter variable/local variable, parameter variables are hiding 
+the instance variables (Due to variable shadow)
+
+To avoid the above said problem, Java software people introduced "this" keyword.
+
+this keyword always refers to the current object and instance variables are the part of the object so by using this keyword we 
+can represent instance variable.
+
+We cannot use this (non static member) keyword from static area (Static context)[static method, static block and static nested 
+ineer class]
+
+2 files :
+----------
+Manager.java
+-------------
+package com.ravi.this_keyword;
+
+public class Manager 
+{
+   int managerId;
+   String managerName;
+   
+   public void setManagerData(int managerId, String managerName)
+   {
+	  this.managerId = managerId;
+	  this.managerName = managerName;
+	   
+   } 
+	
+   public void getManagerData()
+   {
+	 System.out.println("Manager Id is :"+managerId);  
+	 System.out.println("Manager Name is :"+managerName);  
+   }   
+	
+}
+
+ManagerDemo.java
+-----------------
+package com.ravi.this_keyword;
+
+public class ManagerDemo {
+
+	public static void main(String[] args)
+	{
+		Manager alen = new Manager();
+		alen.setManagerData(111, "Alen");
+        alen.getManagerData();
+	}
+
+}
+----------------------------------------------------------------
+Program on Local search algorithm :[Diagram 15-FEB]
+
+package com.ravi.this_keyword;
+
+class Test
+{
+	static int a = 100;  //static Field 
+	int b = 200; //Non static Field
+	
+	public void accept(int c)   //Parameter Variable
+	{
+		int d = 400;  //Local Variable
+		System.out.println("Static Field :"+Test.a);
+		System.out.println("Non Static Field :"+this.b);
+		System.out.println("Parameter Variable :"+c);
+		System.out.println("Local Variable :"+d);
+	}
+}
+public class LocalSearchAlgorithm 
+{
+	public static void main(String[] args) 
+	{
+		Test t1 = new Test();
+		t1.accept(300);
+	}
+
+}
+================================================================
+Data Hiding :
+------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+   
+   
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

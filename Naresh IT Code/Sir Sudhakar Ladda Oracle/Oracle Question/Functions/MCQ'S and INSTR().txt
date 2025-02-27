@@ -1,0 +1,474 @@
+                          MCQ'S and INSTR()
+                        ====================
+
+
+Ceil() and Floor():- These two functions always return integers.
+===================
+
+Ceil() returns nearest greatest integer where as
+floor() returns nearest lowest integer.
+
+
+Eg:-
+===
+SQL>select ceil(1.3) from dual;
+
+SQL>select floor(1.9) from dual;
+
+
+          | 
+          |
+          |        1.4 near to 1,but ceil() returns greatest
+          |              integer is 2
+          |                |
+       ---|----------------|-----------------------------
+          |1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2
+          |
+
+--------------------------------------------------------------------------
+
+1)what is the output of following
+SQL>select mod(10,2) from dual;
+A.1
+B.error
+c.0
+D.none
+
+ANS:- C
+
+--------------------------------------------------------------------------
+ 
+2.select round(89.4),trunc(89.8) from dual;
+Which values are displayed
+A.89,90
+B.90,90
+C.90,89
+D.89,89
+
+ANS:- D
+
+--------------------------------------------------------------------------
+
+3.select round(45.95),trunc(45.95) from dual;
+which values are displayed
+A.46 and 45
+B.45 and 46
+C.46 and 46
+D.none
+
+ANS:- A
+
+--------------------------------------------------------------------------
+
+4.select greatest(500,800,100,150,200) from dual;
+A.100
+B.800
+C.200
+D.error
+
+ANS:- B
+
+--------------------------------------------------------------------------
+
+5.select ceil(7.2),floor(7.8) from dual;
+A.7,8
+B.none
+C.8,8
+D.8,7
+
+ANS:- D
+
+--------------------------------------------------------------------------
+
+6.What is the full form of DDL command
+A.Data deleting language            B.Data definition language
+C.Data delegating language          D.Dummy data language
+
+ANS:- B
+
+--------------------------------------------------------------------------
+
+7.Which is not a DML command?
+A.DROP              B.DELETE
+C.SELECT            D.INSERT
+
+ANS:- A
+
+--------------------------------------------------------------------------
+8.On which commands Rollback is supported?
+A.DDL               B.DDL & DML
+C.DML               D.none of the above
+
+ANS:- C
+
+--------------------------------------------------------------------------
+
+9.DELETE command is
+A.Deletes all records perminently
+B.Delete all records or specified records temporarly
+C.Delete all records or specified record perminently
+D.Deletes all records temporarly
+
+ANS:- C
+
+-------------------------------------------------------------------------
+
+10.Which of the following statements contains an error?
+A.select * from emp where empid=1003;
+B.select empid from emp where empid=1006;
+C.select empid from emp;
+D.select empid where empid=1009 and lastname='GELLER'; 
+
+ANS:- D
+
+--------------------------------------------------------------------------
+
+11.The command to eliminate a table from a table from a database
+A.REMOVE TABLE CUSTOMERS;
+B.DROP TABLE CUSTOMERS;
+C.DELETE TABLE CUSTOMERS;
+D.UPDATE TABLE CUSTOMERS;
+
+ANS:- B
+
+--------------------------------------------------------------------------
+
+12.What is the syntax for creating a table?
+
+A.create table [schema]table(column datatype [default.expr][...]);
+B.create table into [schema]table(column datatype [default.expr][...]);
+C.create table values [schema]table(column datatype[default.expr][...]);
+D.none of the above
+
+ANS:- A
+
+--------------------------------------------------------------------------
+
+13.What is the output of the following statement?
+  select * from emp where sal between 4000 and 2000
+A.it returns who are getting the salaries from 4000 to 2000
+B.it returns who are getting the salaries from 2000 to 4000
+C.both A and B
+D.None of the above
+
+ANS:- D
+
+--------------------------------------------------------------------------
+
+14.SELECT * FROM EMPLOYEE WHERE SALARY>10000 
+  AND DEPT_ID=101;
+WHICH OF THE FOLLOWING FEILDS ARE DISPLAYED AS OUTPUT
+A.SALARY,DEPT_ID
+B.EMPLOYEE
+C.SALARY
+D.ALL THE FEILDS OF THE EMPLOYEE
+
+ANS:-D
+--------------------------------------------------------------------------
+
+15.in oracle which datatypes are supported to store images,
+   audio,vedios?
+A.varchar2        B.date
+C.LOB,BLOB,CLOB   D.none of the above
+
+ANS:- C
+
+--------------------------------------------------------------------------
+
+16.Null means
+A.Zero
+B.-1
+C.1
+D.Empty
+
+ANS:- D
+
+--------------------------------------------------------------------------
+
+17.chose the expression that deletes a column
+A.delete status from queue
+B.alter table queue drop column status
+C.delete column status from queue
+D.alter table queue drop status column
+
+ANS:- B
+
+--------------------------------------------------------------------------
+Q.check the outputs of following instr() queries
+
+SQL> select instr('ABC*D','*') from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('ABC*D','*') FROM DUAL;
+
+   INSTR('ABC*D','*') 
+_____________________ 
+                    4 
+
+SQL>select instr('ABCDEFGHCDKMNBCDJ','CD',5,2) from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('ABCDEFGHCDKMNBCDJ','CD',5,2) FROM DUAL;
+
+   INSTR('ABCDEFGHCDKMNBCDJ','CD',5,2) 
+______________________________________ 
+                                    15 
+
+
+SQL>select instr('ABCDEFGHCDKMNBCDJ','CD',1,4) from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('ABCDEFGHCDKMNBCDJ','CD',1,4) FROM DUAL;
+
+   INSTR('ABCDEFGHCDKMNBCDJ','CD',1,4) 
+______________________________________ 
+                                     0 
+
+
+SQL> select instr('ABCDEFGHCDKMNBCDJ','CD',-5,2) from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('ABCDEFGHCDKMNBCDJ','CD',1,4) FROM DUAL;
+
+   INSTR('ABCDEFGHCDKMNBCDJ','CD',-5,2) 
+______________________________________ 
+                                     3 
+
+SQL>select instr('krishna stami lord krishna jai krishna',
+                 'krishna',1,2) from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('krishna stami lord krishna jai krishna',
+                      'krishna',1,2) FROM DUAL;
+
+   INSTR('KRISHNASTAMILORDKRISHNAJAIKRISHNA','KRISHNA',1,2) 
+___________________________________________________________ 
+                                                         20 
+
+
+
+SQL>select instr('krishna stami lord krishna jai krishna',
+                  'krishna',-1,3) from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('krishna stami lord krishna jai krishna',
+                      'krishna',-1,3) FROM DUAL;
+
+   INSTR('KRISHNASTAMILORDKRISHNAJAIKRISHNA','KRISHNA',-1,3) 
+___________________________________________________________ 
+                                                         1 
+
+
+SQL>select instr('krishna stami lord krishna jai krishna',
+                  'radha') from dual;
+
+SOLUTION:
+==========================================================================SQL> SELECT INSTR('krishna stami lord krishna jai krishna','radha') FROM DUAL;
+
+   INSTR('KRISHNASTAMILORDKRISHNAJAIKRISHNA','RADHA') 
+_____________________________________________________ 
+                                                    0 
+
+
+SQL>select instr('ravi teja ravi varma','ravi',1,2) from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('ravi teja ravi varma','ravi',1,2) FROM DUAL;
+
+   INSTR('RAVITEJARAVIVARMA','RAVI',1,2) 
+________________________________________ 
+                                      11 
+
+
+SQL>select instr('ravi teja ravi varma','ravi',6) from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('ravi teja ravi varma','ravi',6) FROM DUAL;
+
+   INSTR('RAVITEJARAVIVARMA','RAVI',6) 
+______________________________________ 
+                                    11 
+
+
+SQL>select instr('ravi teja ravi varma','ravi',-1,1) from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('ravi teja ravi varma','ravi',-1,1) FROM DUAL;
+
+   INSTR('RAVITEJARAVIVARMA','RAVI',-1,1) 
+______________________________________ 
+                                    11 
+
+
+SQL>select instr('ravi teja ravi varma','ravi',-1,2) from dual;
+
+SOLUTION:
+==========================================================================
+SQL> SELECT INSTR('ravi teja ravi varma','ravi',-1,2) FROM DUAL;
+
+   INSTR('RAVITEJARAVIVARMA','RAVI',-1,2) 
+______________________________________ 
+                                    1 
+
+
+
+--------------------------------------------------------------------------
+
+Q)Example
+  -------
+create the table as below
+     
+           NAME      
+     -----------------
+       RADHA KRISHNA
+       GOWTHAM RAJ
+       SUBBA RAO
+       NAGA RAJU
+       MADAM SIR
+ add two columns FNAME and LNAME  by using alter with add command and
+ set the output by using substr(),instr()as follows.
+         
+          FNAME            LNAME
+       ---------        ----------
+         RADHA            KRISHNA 
+        GOWTHAM            RAJ
+        SUBBA              RAO
+        NAGA               RAJU
+        MADAM              SIR      
+
+
+SQL> CREATE TABLE TEST (NAME VARCHAR2(20));
+
+Table TEST created.
+
+SQL> INSERT INTO TEST VALUES('&NAME');
+Enter value for NAME: RADHA KRISHNA
+old:INSERT INTO TEST VALUES('&NAME')
+new:INSERT INTO TEST VALUES('RADHA KRISHNA')
+
+1 row inserted.
+
+SQL> /
+Enter value for NAME: GOWTHAM RAJ
+old:INSERT INTO TEST VALUES('&NAME')
+new:INSERT INTO TEST VALUES('GOWTHAM RAJ')
+
+1 row inserted.
+
+SQL> /
+Enter value for NAME: SUBBA RAO
+old:INSERT INTO TEST VALUES('&NAME')
+new:INSERT INTO TEST VALUES('SUBBA RAO')
+
+1 row inserted.
+
+SQL> /
+Enter value for NAME: NAGA RAJU
+old:INSERT INTO TEST VALUES('&NAME')
+new:INSERT INTO TEST VALUES('NAGA RAJU')
+
+1 row inserted.
+
+SQL> /
+Enter value for NAME: MADAM SIR
+old:INSERT INTO TEST VALUES('&NAME')
+new:INSERT INTO TEST VALUES('MADAM SIR')
+
+1 row inserted.
+
+SQL> /
+Enter value for NAME: NUR AMIN
+old:INSERT INTO TEST VALUES('&NAME')
+new:INSERT INTO TEST VALUES('NUR AMIN')
+
+1 row inserted.
+
+SQL> SELECT * FROM TEST;
+
+NAME             
+________________ 
+RADHA KRISHNA    
+GOWTHAM RAJ      
+SUBBA RAO        
+NAGA RAJU        
+MADAM SIR        
+NUR AMIN         
+
+6 rows selected. 
+
+SQL> ALTER TABLE TEST ADD LNAME VARCHAR2(10);
+
+Table TEST altered.
+
+SQL> ALTER TABLE TEST ADD FNAME VARCHAR(10);
+
+Table TEST altered.
+
+SQL> DESC TEST;
+
+Name     Null?    Type            
+________ ________ _______________ 
+NAME              VARCHAR2(20)    
+LNAME             VARCHAR2(10)    
+FNAME             VARCHAR2(10) 
+
+   
+SQL> SELECT * FROM TEST;
+
+NAME             LNAME    FNAME    
+________________ ________ ________ 
+RADHA KRISHNA                      
+GOWTHAM RAJ                        
+SUBBA RAO                          
+NAGA RAJU                          
+MADAM SIR                          
+NUR AMIN                           
+
+6 rows selected. 
+
+SQL> UPDATE TEST SET FNAME=SUBSTR(NAME,1,INSTR(NAME,' ',1,1)-1), LNAME=SUBSTR(NAME,
+INSTR(NAME,' ',1,1)+1);
+
+6 rows updated.
+
+SQL> SELECT * FROM TEST;
+
+NAME             LNAME      FNAME      
+________________ __________ __________ 
+RADHA KRISHNA    KRISHNA    RADHA      
+GOWTHAM RAJ      RAJ        GOWTHAM    
+SUBBA RAO        RAO        SUBBA      
+NAGA RAJU        RAJU       NAGA       
+MADAM SIR        SIR        MADAM      
+NUR AMIN         AMIN       NUR        
+
+6 rows selected. 
+
+Q)Find 4th appearence of 'a' in the string 'Maharashtraa'
+
+SQL> SELECT INSTR('Maharashtraa','a',1,4) FROM DUAL;
+
+   INSTR('MAHARASHTRAA','A',1,4) 
+________________________________ 
+                              11 
+
+SQL> SELECT INSTR('Maharashtraa','A',1,4) FROM DUAL;
+
+   INSTR('MAHARASHTRAA','A',1,4) 
+________________________________ 
+                               0 
+
+
+
+
+
+

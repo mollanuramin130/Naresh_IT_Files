@@ -1,0 +1,694 @@
+                                JOINS
+                             ==========
+
+left outer join:-This join returns all rows from left side table
+================  and matching rows from right side table.and also
+                  this join returns null values in place of non
+                  matching rows in another table.
+
+execution:-
+==========
+left outer join=====>inner join+left side table remaing
+                                records(here left side table
+                                         is main table)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Right outer join:-This join returns all rows from right side table
+================  and matching rows from left side table and also
+                  returns null values in place of non matching
+                  rows in another table.
+
+
+execution:-
+==========
+Right outer join=====>inner join+right side table remaing
+                                records(here right side table
+                                         is main table)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL> SELECT * FROM EMPLOYEES;
+
+       EMPID     NAME         DEPTNO
+     -------  ----------      --------
+         1      KIRAN           10
+         2     GOWTHAM          20
+         3      SURYA
+         4      RAJU            20
+
+
+SQL> SELECT * FROM DEPARTMENTS;
+
+      DEPTNO      DNAME
+     -------    ----------
+        10         HR
+        20         IT
+        40      FINANCE
+
+
+
+1.Write a query to display employee details along with department details
+   also display the employees to whom deptno is not assign?
+
+SQL> SELECT * FROM EMPLOYEES E , DEPARTMENTS D WHERE E.DEPTNO=D.DEPTNO(+);
+
+   EMPID NAME          DEPTNO    DEPTNO DNAME    
+________ __________ _________ _________ ________ 
+       1 KIRAN             10        10 HR       
+       2 GOWTHAM           20        20 IT       
+       3 SURYA                                   
+       4 RAJU              20        20 IT       
+
+SQL> SELECT * FROM EMPLOYEES E LEFT OUTER JOIN DEPARTMENTS D ON E.DEPTNO=D.DEPTNO;
+
+   EMPID NAME          DEPTNO    DEPTNO DNAME    
+________ __________ _________ _________ ________ 
+       1 KIRAN             10        10 HR       
+       2 GOWTHAM           20        20 IT       
+       3 SURYA                                   
+       4 RAJU              20        20 IT       
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2.Write a query to display departments and their employees,including departments
+  without any employees?
+
+SQL> SELECT * FROM EMPLOYEES E RIGHT OUTER JOIN DEPARTMENTS D ON E.DEPTNO=D.DEPTNO;
+
+   EMPID NAME          DEPTNO    DEPTNO DNAME      
+________ __________ _________ _________ __________ 
+       1 KIRAN             10        10 HR         
+       2 GOWTHAM           20        20 IT         
+       4 RAJU              20        20 IT         
+                                     40 FINANCE    
+
+SQL> SELECT * FROM EMPLOYEES E ,DEPARTMENTS D WHERE E.DEPTNO(+)=D.DEPTNO;
+
+   EMPID NAME          DEPTNO    DEPTNO DNAME      
+________ __________ _________ _________ __________ 
+       1 KIRAN             10        10 HR         
+       2 GOWTHAM           20        20 IT         
+       4 RAJU              20        20 IT         
+                                     40 FINANCE    
+
+SQL> SELECT EMPID,NAME,E.DEPTNO,DNAME FROM EMPLOYEES E ,DEPARTMENTS D WHERE E.DE
+PTNO(+)=D.DEPTNO;
+
+   EMPID NAME          DEPTNO DNAME      
+________ __________ _________ __________ 
+       1 KIRAN             10 HR         
+       2 GOWTHAM           20 IT         
+       4 RAJU              20 IT         
+                              FINANCE    
+
+SQL> SELECT EMPID,NAME,E.DEPTNO,DNAME FROM EMPLOYEES E RIGHT OUTER JOIN DEPARTME
+NTS D ON E.DEPTNO=D.DEPTNO;
+
+   EMPID NAME          DEPTNO DNAME      
+________ __________ _________ __________ 
+       1 KIRAN             10 HR         
+       2 GOWTHAM           20 IT         
+       4 RAJU              20 IT         
+                              FINANCE    
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3.Write a query to display all employeenames, all departmentnames
+   from emp,dept tables by using full outer join?
+
+
+SQL> SELECT * FROM EMPLOYEES E FULL OUTER JOIN DEPARTMENTS D ON E.DEPTNO=D.DEPTNO;
+
+   EMPID NAME          DEPTNO    DEPTNO DNAME      
+________ __________ _________ _________ __________ 
+       1 KIRAN             10        10 HR         
+       2 GOWTHAM           20        20 IT         
+       3 SURYA                                     
+       4 RAJU              20        20 IT         
+                                     40 FINANCE    
+
+SQL> SELECT * FROM EMPLOYEES E , DEPARTMENTS D WHERE E.DEPTNO=D.DEPTNO(+)
+     UNION
+     SELECT * FROM EMPLOYEES E , DEPARTMENTS D WHERE E.DEPTNO(+)=D.DEPTNO;
+
+   EMPID NAME          DEPTNO    DEPTNO DNAME      
+________ __________ _________ _________ __________ 
+       1 KIRAN             10        10 HR         
+       2 GOWTHAM           20        20 IT         
+       3 SURYA                                     
+       4 RAJU              20        20 IT         
+                                     40 FINANCE    
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+4.Write a query to display the customers and order details.and find the 
+  customers who have place an order
+ 
+CUSTOMERS
+
+CUSTOMERID       CUSTOMERNAME
+----------      --------------
+    1              GOWTHAM
+    2               KIRAN
+    3               RAJU
+
+ORDERS
+
+ORDERID       CUSTOMERID        ORDERDATE
+--------     ------------      -----------
+  101             1             12-JAN-24
+  102             2             16-JAN-24     
+
+
+SQL> SELECT C.CUSTOMERID, CUSTOMERNAME, ORDERID, ORDERDATE FROM CUSTOMERS C INNER J
+OIN ORDERS O ON C.CUSTOMERID=O.CUSTOMERID;
+
+   CUSTOMERID CUSTOMERNAME       ORDERID ORDERDATE    
+_____________ _______________ __________ ____________ 
+            1 GOWTHAM                101 12-01-24     
+            2 KIRAN                  102 16-01-24     
+
+SQL> SELECT C.CUSTOMERID, CUSTOMERNAME, ORDERID, ORDERDATE FROM CUSTOMERS C , ORDER
+S O WHERE C.CUSTOMERID=O.CUSTOMERID;
+
+   CUSTOMERID CUSTOMERNAME       ORDERID ORDERDATE    
+_____________ _______________ __________ ____________ 
+            1 GOWTHAM                101 12-01-24     
+            2 KIRAN                  102 16-01-24     
+
+
+5.Write a query to display the customer details and order details 
+  including customers without orders
+
+
+
+SQL> SELECT C.CUSTOMERID, CUSTOMERNAME, ORDERID, ORDERDATE FROM CUSTOMERS C LEFT OU
+TER JOIN ORDERS O ON C.CUSTOMERID=O.CUSTOMERID;
+
+   CUSTOMERID CUSTOMERNAME       ORDERID ORDERDATE    
+_____________ _______________ __________ ____________ 
+            1 GOWTHAM                101 12-01-24     
+            2 KIRAN                  102 16-01-24     
+            3 RAJU                                    
+
+SQL> SELECT C.CUSTOMERID, CUSTOMERNAME, ORDERID, ORDERDATE FROM CUSTOMERS C , ORDER
+S O WHERE C.CUSTOMERID=O.CUSTOMERID(+);
+
+   CUSTOMERID CUSTOMERNAME       ORDERID ORDERDATE    
+_____________ _______________ __________ ____________ 
+            1 GOWTHAM                101 12-01-24     
+            2 KIRAN                  102 16-01-24     
+            3 RAJU                                    
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6.Write a query to find the patients who have booked an appointment 
+  but haven't visited yet.
+
+
+PATIENTS
+
+PATIENTID          PATIENTNAME            CONTACTNUMBER
+---------        ---------------         ---------------
+   1                 ANUSHKA               9876543210
+   2                 SURYA                 9876500000
+   3                 GOWTHAM               9876511111
+
+
+
+APPOINTMENTS
+
+APPOINTMENTID      PATIENTID         APPOINTMENTDATE        STATUS
+-------------     -----------       -----------------     -----------
+   401                 1               24-DEC-24          CHECKED-IN
+   402                 2               28-DEC-24          SCHEDULED
+
+
+SQL> SELECT P.PATIENTID, PATIENTNAME,CONTACTNO, APPOINTMENTID,APPOINTMENTDATE,STATU
+S FROM PATIENTS P INNER JOIN APPOINTMENTS A ON P.PATIENTID=A.PATIENTID AND STATUS='
+SCHEDULED';
+
+   PATIENTID PATIENTNAME        CONTACTNO    APPOINTMENTID APPOINTMENTDATE    STATUS       
+____________ ______________ _____________ ________________ __________________ ____________ 
+           2 SURYA             9876500000              402 28-12-24           SCHEDULED    
+
+
+SQL> SELECT P.PATIENTID, PATIENTNAME,CONTACTNO, APPOINTMENTID,APPOINTMENTDATE,STATUS FROM PATIENTS P , APPOINTMENTS A WHERE P.PATIENTID=A.PATIENTID AND STATUS='SCHEDU
+LED';
+
+   PATIENTID PATIENTNAME        CONTACTNO    APPOINTMENTID APPOINTMENTDATE    STATUS       
+____________ ______________ _____________ ________________ __________________ ____________ 
+           2 SURYA             9876500000              402 28-12-24           SCHEDULED    
+
+
+7.Write a query to display the patient details and appointment details 
+  including patients with out appointments.
+
+
+SQL> SELECT P.PATIENTID, PATIENTNAME,CONTACTNO, APPOINTMENTID,APPOINTMENTDATE,STATUS FROM PATIENTS P , APPOINTMENTS A WHERE P.PATIENTID=A.PATIENTID(+);
+
+   PATIENTID PATIENTNAME        CONTACTNO    APPOINTMENTID APPOINTMENTDATE    STATUS        
+____________ ______________ _____________ ________________ __________________ _____________ 
+           1 ANUSHKA           9876543210              401 24-12-24           CHECKED-IN    
+           2 SURYA             9876500000              402 28-12-24           SCHEDULED     
+           3 GOWTHAM           9876511111                                                   
+
+
+SQL> SELECT P.PATIENTID, PATIENTNAME,CONTACTNO, APPOINTMENTID,APPOINTMENTDATE,STATUS FROM PATIENTS P LEFT OUTER JOIN APPOINTMENTS A ON P.PATIENTID=A.PATIENTID;
+
+   PATIENTID PATIENTNAME        CONTACTNO    APPOINTMENTID APPOINTMENTDATE    STATUS        
+____________ ______________ _____________ ________________ __________________ _____________ 
+           1 ANUSHKA           9876543210              401 24-12-24           CHECKED-IN    
+           2 SURYA             9876500000              402 28-12-24           SCHEDULED     
+           3 GOWTHAM           9876511111                                                   
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+8.Write a query to display customer details and order details
+  and find the orders that haven't been shipped yet
+
+
+CUSTOMERS2 
+
+CUSTOMERID       CUSTOMERNAME         LOCATION
+----------      --------------       ----------
+    1              SURYA               NEW YORK
+    2              ANUSHKA             CHICAGO
+    3              KIRAN               DALLAS
+
+
+ORDERS2
+
+ORDERID      CUSTOMERID       ORDERDATE         STATUS
+-------     ------------     -----------       --------
+  501           1             13-APR-24         SHIPPED
+  502           2             18-APR-24         PENDING
+  503           3             26-APR-24         PENDING
+
+
+SQL> SELECT C2.*,ORDERID,ORDERDATE,STATUS FROM CUSTOMERS2 C2 INNER JOIN ORDERS2 O2 ON C2.CUST
+OMERID=O2.CUSTOMERID AND STATUS='PENDING';
+
+   CUSTOMERID CUSTOMERNAME    LOCATION       ORDERID ORDERDATE    STATUS     
+_____________ _______________ ___________ __________ ____________ __________ 
+            2 ANUSHKA         CHICAGO            502 18-04-24     PENDING    
+            3 KIRAN           DALLAS             503 26-04-24     PENDING    
+
+SQL> SELECT C2.*,ORDERID,ORDERDATE,STATUS FROM CUSTOMERS2 C2, ORDERS2 O2 WHERE C2.CUSTOMERID=
+O2.CUSTOMERID AND STATUS='PENDING';
+
+   CUSTOMERID CUSTOMERNAME    LOCATION       ORDERID ORDERDATE    STATUS     
+_____________ _______________ ___________ __________ ____________ __________ 
+            2 ANUSHKA         CHICAGO            502 18-04-24     PENDING    
+            3 KIRAN           DALLAS             503 26-04-24     PENDING    
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+9.Write a query to display the employee details and project details  
+  for employees assigned to a project
+
+EMPLOYEES1
+
+EMPID      ENAME 
+-----    ---------    
+  1        SURYA
+  2        GOWTHAM
+  3        ANUSHKA
+
+PROJECTS
+
+PROJECTID         EMPID
+---------       --------
+  101              1
+  102              2
+
+
+SQL> SELECT * FROM EMPLOYEES1 E1 INNER JOIN PROJECTS P ON E1.EMPID=P.EMPID;
+
+   EMPID ENAME         PROJECTID    EMPID 
+________ __________ ____________ ________ 
+       1 SURYA               101        1 
+       2 GOWTHAM             102        2 
+
+SQL> SELECT E1.EMPID,ENAME,PROJECTID FROM EMPLOYEES1 E1 INNER JOIN PROJECTS P ON E1.EMPID=P.E
+MPID;
+
+   EMPID ENAME         PROJECTID 
+________ __________ ____________ 
+       1 SURYA               101 
+       2 GOWTHAM             102 
+
+SQL> SELECT E1.EMPID,ENAME,PROJECTID FROM EMPLOYEES1 E1 ,PROJECTS P WHERE E1.EMPID=P.EMPID;
+
+   EMPID ENAME         PROJECTID 
+________ __________ ____________ 
+       1 SURYA               101 
+       2 GOWTHAM             102 
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10.Write a query to fetch all employee records from the employee details
+  table who have a salary record in the employee salary table
+
+EMPLOYEE DETAILS TABLE:-
+======================
+
+empid     name         dob          state
+-------  ------      -------       -------
+  1      JOHN       23-apr-95       NY
+  2      SMITH      15-aug-90       CA
+  3      ROHAN      27-apr-96       TX
+  4      JOHNSON    12-feb-75       CA
+  5      BROWN      05-nov-00       AL
+  6      JILL       15-jun-99       CA
+  7      JAMES      12-sep-83       WA
+  8      JACK       25-sep-82       CA
+
+EMPLOYEE SALARY TABLE:-
+======================
+
+  ID          SALARY
+------      ----------
+   1           15000
+   2           20000
+   3           25000
+   4           18000
+   5           35000
+   6           40000
+   7           45000
+
+
+
+SQL> SELECT * FROM EMPLOYEE_DETAILS;
+
+   EMPID NAME       DOB         STATE    
+________ __________ ___________ ________ 
+       1 JOHN       23-04-95    NY       
+       2 SMITH      15-08-90    CA       
+       3 ROHAN      27-04-96    TX       
+       4 JOHNSON    12-02-75    CA       
+       5 BROWN      05-11-00    AL       
+       6 JILL       15-06-99    CA       
+       7 JAMES      12-09-83    WA       
+       8 JACK       25-10-82    CA       
+
+8 rows selected. 
+
+SQL> SELECT * FROM EMPLOYEE_SALARY;
+
+   ID    SALARY 
+_____ _________ 
+    1     15000 
+    2     20000 
+    3     25000 
+    4     18000 
+    5     35000 
+    6     40000 
+    7     45000 
+
+7 rows selected. 
+
+SQL> SELECT ED.* ,SALARY FROM EMPLOYEE_DETAILS ED INNER JOIN EMPLOYEE_SALARY ES ON ED.EMPID=ES.ID;
+
+   EMPID NAME       DOB         STATE       SALARY 
+________ __________ ___________ ________ _________ 
+       1 JOHN       23-04-95    NY           15000 
+       2 SMITH      15-08-90    CA           20000 
+       3 ROHAN      27-04-96    TX           25000 
+       4 JOHNSON    12-02-75    CA           18000 
+       5 BROWN      05-11-00    AL           35000 
+       6 JILL       15-06-99    CA           40000 
+       7 JAMES      12-09-83    WA           45000 
+
+7 rows selected. 
+
+SQL> SELECT ED.* ,SALARY FROM EMPLOYEE_DETAILS ED , EMPLOYEE_SALARY ES WHERE ED.EMPID=ES.ID;
+
+   EMPID NAME       DOB         STATE       SALARY 
+________ __________ ___________ ________ _________ 
+       1 JOHN       23-04-95    NY           15000 
+       2 SMITH      15-08-90    CA           20000 
+       3 ROHAN      27-04-96    TX           25000 
+       4 JOHNSON    12-02-75    CA           18000 
+       5 BROWN      05-11-00    AL           35000 
+       6 JILL       15-06-99    CA           40000 
+       7 JAMES      12-09-83    WA           45000 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+11.consider the following two tables perform inner join ,left outer 
+  join ,right outer join,full outer join and check the outputs.
+
+SQL>select * from test7;
+
+       SNO
+   ----------
+        10
+        20
+        30
+
+SQL>select * from test8;
+
+       SNO
+   ----------
+        10
+        20
+        40
+
+
+SQL> SELECT * FROM TEST7 T7,TEST8 T8 WHERE T7.SNO=T8.SNO;
+
+   SNO    SNO 
+______ ______ 
+    10     10 
+    20     20 
+
+SQL> SELECT * FROM TEST7 T7,TEST8 T8 WHERE T7.SNO=T8.SNO(+);
+
+   SNO    SNO 
+______ ______ 
+    10     10 
+    20     20 
+    30        
+
+SQL> SELECT * FROM TEST7 T7,TEST8 T8 WHERE T7.SNO(+)=T8.SNO;
+
+   SNO    SNO 
+______ ______ 
+    10     10 
+    20     20 
+           40 
+
+SQL> SELECT * FROM TEST7 T7,TEST8 T8 WHERE T7.SNO=T8.SNO(+)
+     UNION
+     SELECT * FROM TEST7 T7,TEST8 T8 WHERE T7.SNO(+)=T8.SNO;;
+
+   SNO    SNO 
+______ ______ 
+    10     10 
+    20     20 
+    30        
+           40 
+
+  
+SQL> SELECT * FROM TEST7 T7,TEST8 T8 WHERE T7.SNO=T8.SNO(+)
+     UNION
+     SELECT * FROM TEST7 T7,TEST8 T8 WHERE T7.SNO(+)=T8.SNO;
+
+   SNO    SNO 
+______ ______ 
+    10     10 
+    20     20 
+    30        
+           40 
+
+
+SQL> SELECT * FROM TEST7 T7 INNER JOIN TEST8 T8 ON T7.SNO=T8.SNO;
+
+   SNO    SNO 
+______ ______ 
+    10     10 
+    20     20 
+
+SQL> SELECT * FROM TEST7 T7 LEFT OUTER JOIN TEST8 T8 ON T7.SNO=T8.SNO;
+
+   SNO    SNO 
+______ ______ 
+    10     10 
+    20     20 
+    30        
+
+SQL> SELECT * FROM TEST7 T7 RIGHT OUTER JOIN TEST8 T8 ON T7.SNO=T8.SNO;
+
+   SNO    SNO 
+______ ______ 
+    10     10 
+    20     20 
+           40 
+
+SQL> SELECT * FROM TEST7 T7 FULL OUTER JOIN TEST8 T8 ON T7.SNO=T8.SNO;
+
+   SNO    SNO 
+______ ______ 
+    10     10 
+    20     20 
+           40 
+    30        
+
+
+12.Describe in these two tables what is o/p of inner join,left outer
+ join ,right outer join,full outer join
+
+NOTE:- guess with out executing queries what is output in all cases
+
+SQL> select * from test10;
+
+       SNO
+   ----------
+         1
+         1
+
+SQL> select * from test20;
+
+       SNO
+   ----------
+         1
+         1
+         1
+
+SQL> SELECT * FROM TEST10;
+
+   SNO 
+______ 
+     1 
+     1 
+
+SQL> SELECT * FROM TEST20;
+
+   SNO 
+______ 
+     1 
+     1 
+     1 
+
+SQL> SELECT * FROM TEST10 T10,TEST20 T20 WHERE T10.SNO=T20.SNO;
+
+   SNO    SNO 
+______ ______ 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+
+6 rows selected. 
+
+SQL> SELECT * FROM TEST10 T10,TEST20 T20 WHERE T10.SNO=T20.SNO(+);
+
+   SNO    SNO 
+______ ______ 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+
+6 rows selected. 
+
+SQL> SELECT * FROM TEST10 T10,TEST20 T20 WHERE T10.SNO(+)=T20.SNO;
+
+   SNO    SNO 
+______ ______ 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+
+6 rows selected. 
+
+SQL> SELECT * FROM TEST10 T10,TEST20 T20 WHERE T10.SNO=T20.SNO(+)
+     UNION
+     SELECT * FROM TEST10 T10,TEST20 T20 WHERE T10.SNO(+)=T20.SNO;
+
+   SNO    SNO 
+______ ______ 
+     1      1 
+
+SQL> SELECT * FROM TEST10 T10 INNER JOIN TEST20 T20 ON T10.SNO=T20.SNO;
+
+   SNO    SNO 
+______ ______ 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+
+6 rows selected. 
+
+SQL> SELECT * FROM TEST10 T10 LEFT OUTER JOIN TEST20 T20 ON T10.SNO=T20.SNO;
+
+   SNO    SNO 
+______ ______ 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+
+6 rows selected. 
+
+SQL> SELECT * FROM TEST10 T10 RIGHT OUTER JOIN TEST20 T20 ON T10.SNO=T20.SNO;
+
+   SNO    SNO 
+______ ______ 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+
+6 rows selected. 
+
+SQL> SELECT * FROM TEST10 T10 FULL OUTER JOIN TEST20 T20 ON T10.SNO=T20.SNO;
+
+   SNO    SNO 
+______ ______ 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+
+6 rows selected. 
+
+SQL> SELECT * FROM TEST10 T10 JOIN TEST20 T20 ON T10.SNO=T20.SNO;
+
+   SNO    SNO 
+______ ______ 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+     1      1 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------

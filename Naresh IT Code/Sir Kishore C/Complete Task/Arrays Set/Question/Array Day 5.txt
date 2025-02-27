@@ -1,0 +1,327 @@
+Que 1 :  
+=======
+
+Write a C program that creates a 2D array of size 3x3. The program should prompt the user to input the elements of the matrix, 
+with each input being labeled by its row and column index (e.g., element - [0],[0]). 
+After all the elements are entered, the program should print the matrix in a 3x3 format, with each row of the matrix displayed on a new line.
+
+Sample input :
+Input elements in the matrix:
+element - [0],[0] : 1
+element - [0],[1] : 2
+element - [0],[2] : 3
+element - [1],[0] : 4
+element - [1],[1] : 5
+element - [1],[2] : 6
+element - [2],[0] : 7
+element - [2],[1] : 8
+element - [2],[2] : 9
+
+Sample output :
+The matrix is:
+1 2 3
+4 5 6
+7 8 9
+
+====================================
+Solution:
+
+
+#include<stdio.h>
+
+int main(){
+    printf("Enter Rows and Columns of the matrix :");
+    int row,col;
+    scanf("%d%d",&row,&col);
+    int matrix[row][col];
+    printf("Enter the elements in the matrix : \n");
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix[i][j]);
+        }
+    }
+
+    printf("The Matrix is :\n");
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            printf("%d ",matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+Que 2 :  
+=======
+
+Write a C program that performs the addition of two square matrices of the same size. 
+The program should first ask for the size of the matrix , then prompt the user to input elements for both matrices. 
+After the matrices are entered, the program should display both matrices and their sum.
+
+Sample input :
+
+Input the size of the square matrix : 2
+Input elements in the first matrix:
+element - [0],[0] : 1
+element - [0],[1] : 2
+element - [1],[0] : 3
+element - [1],[1] : 4
+
+Input elements in the second matrix:
+element - [0],[0] : 5
+element - [0],[1] : 6
+element - [1],[0] : 7
+element - [1],[1] : 8
+
+
+Sample output :
+
+The First matrix is:
+1 2
+3 4
+
+The Second matrix is:
+5 6
+7 8
+
+The Addition of two matrices is:
+
+6 8
+10 12
+
+====================================
+
+#include<stdio.h>
+
+int main(){
+    printf("Input Rows and Columns of the 1st matrix :");
+    int row1,col1,row2,col2;
+    scanf("%d%d",&row1,&col1);
+    printf("Input Rows and Columns of the 2nd matrix :");
+    scanf("%d%d",&row2,&col2);
+    int matrix1[row1][col1];
+    int matrix2[row2][col2];
+
+    printf("Input elements in the first matrix : \n");
+    for(int i=0;i<row1;i++){
+        for(int j=0;j<col1;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix1[i][j]);
+        }
+    }
+    printf("Input elements in the second matrix : \n");
+    for(int i=0;i<row2;i++){
+        for(int j=0;j<col2;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix2[i][j]);
+        }
+    }
+
+    printf("First Matrix is :\n");
+    for(int i=0;i<row1;i++){
+        for(int j=0;j<col1;j++){
+            printf("%d ",matrix1[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("Second Matrix is :\n");
+    for(int i=0;i<row2;i++){
+        for(int j=0;j<col2;j++){
+            printf("%d ",matrix2[i][j]);
+        }
+        printf("\n");
+    }
+    if (row1!=row2 || col1!=col2)
+    {
+        printf("Two Matrix are not equal.\n");
+    }
+    else{
+        printf("The Addition of two matrices is: ");
+        for(int i=0;i<row1;i++){
+            for(int j=0;j<col1;j++){
+                printf("%4d",matrix1[i][j]+matrix2[i][j]);
+            }
+            printf("\n");
+        }
+    }
+
+}
+
+Que 3 :  
+=======
+
+Write a C program that computes the transpose of a given matrix. 
+The program should first prompt the user to input the dimensions (rows and columns) of the matrix, followed by the elements of the matrix. 
+After obtaining the matrix, the program should display both the original matrix and its transpose.
+
+Sample input:
+Input the rows and columns of the matrix: 2 2
+Input elements in the matrix:
+element - [0],[0] : 1
+element - [0],[1] : 2
+element - [1],[0] : 3
+element - [1],[1] : 4
+
+
+Sample output :
+The matrix is:
+1 2
+3 4
+
+The transpose of the matrix is:
+1 3
+2 4
+
+====================================
+
+Solution:
+
+
+#include<stdio.h>
+
+int main(){
+    printf("Enter Rows and Columns of the matrix :");
+    int row,col;
+    scanf("%d%d",&row,&col);
+    int matrix[row][col];
+    printf("Enter the elements in the matrix : \n");
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix[i][j]);
+        }
+    }
+
+    printf("The Matrix transpose is :\n");
+    for(int i=0;i<row;i++){
+        for(int j=0;j<=i;j++){
+            int temp=matrix[i][j];
+            matrix[i][j]=matrix[j][i];
+            matrix[j][i]=temp;
+        }
+    }
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            printf("%4d",matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+Que 4 :
+=======
+
+Write a program in C to find the sum of the principal diagonal of a matrix.
+
+Sample input :
+Input the size of the square matrix : 3
+Input elements in the 3x3 matrix:
+element - [0],[0] : 1
+element - [0],[1] : 2
+element - [0],[2] : 3
+element - [1],[0] : 2
+element - [1],[1] : 4
+element - [1],[2] : 6
+element - [2],[0] : 3
+element - [2],[1] : 6
+element - [2],[2] : 9
+
+Sample output :
+The matrix is :
+1 2 3
+2 4 6
+3 6 9
+
+Addition of the principal Diagonal elements is : 14
+
+====================================
+
+Solution:
+
+
+#include<stdio.h>
+
+int main(){
+    printf("Enter Rows and Columns of the matrix :");
+    int row,col;
+    scanf("%d%d",&row,&col);
+    int matrix[row][col];
+    printf("Enter the elements in the matrix : \n");
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix[i][j]);
+        }
+    }
+
+    printf("Addition of the principal Diagonal elements is :");
+    int sum=0;
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            if(i==j){
+                sum+=matrix[i][j];
+            }
+        }
+    }
+    printf("%d",sum);
+}
+
+Que 5 :
+=======
+
+Write a program in C to find the sum of the horizontal diagonal of a matrix.
+
+Sample input :
+Input the size of the square matrix : 3
+Input elements in the 3x3 matrix:
+element - [0],[0] : 1
+element - [0],[1] : 2
+element - [0],[2] : 3
+element - [1],[0] : 2
+element - [1],[1] : 4
+element - [1],[2] : 6
+element - [2],[0] : 3
+element - [2],[1] : 6
+element - [2],[2] : 9
+
+Sample output :
+The matrix is :
+1 2 3
+2 4 6
+3 6 9
+
+Addition of the horizontal Diagonal elements is : 10
+
+==========================================
+
+Solution:
+
+
+#include<stdio.h>
+
+int main(){
+    printf("Enter Rows and Columns of the matrix :");
+    int row,col;
+    scanf("%d%d",&row,&col);
+    int matrix[row][col];
+    printf("Enter the elements in the matrix : \n");
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix[i][j]);
+        }
+    }
+
+    printf("Addition of the horizontal Diagonal elements is :");
+    int sum=0;
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            if(i+j==row-1){
+                sum+=matrix[i][j];
+            }
+        }
+    }
+    printf("%d",sum);
+}
+

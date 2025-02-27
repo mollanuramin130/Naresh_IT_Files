@@ -1,0 +1,532 @@
+                               JOIN TASK
+                              ==============
+
+JOINS:- Joins are used to retrieve data from single or 
+======            multiple tables. 
+ 
+
+.In all databases when we are joining 'n' tables then we must use 
+ 'n-1' joining conditions. 
+
+.join condition decides which record in one table should joined
+ with which record in another table.
+
+1.Inner join:- This join also returns matching rows only. Here also
+=============   joining conditional columns must belongs to same 
+                data type. Whenever tables having common columns then
+                only we are using this join. Inner join (9i) 
+                performance is very high compare to oracle 8i 
+                equi join.
+
+-----------------------------------------------------------------------------------
+Q)What is join? and how many types of joins? Read each join purpose?
+ 
+NOTE:-Equi join and inner join is same. if we are interested in inner 
+      join write the queries by using inner join.no problem
+
+
+USING ALIASNAMES JOINS:-
+======================
+   In oracle we can also use table aliasnames in joins. whenever joins
+having aliasnames then those joins improves performance of the query
+because those joins very fastly retrieve data from database.in this
+case we must create table aliasnames in from clause and then only
+we must use those aliasnames in place of table with in select list
+and also with in the joining condition.
+
+-----------------------------------------------------------------------------------
+1.Write a query to display the employee names and their 
+  department names from emp, dept tables.
+
+SOLUTION:
+================================================================
+
+SQL> SELECT ENAME,DNAME FROM EMP E JOIN DEPT D ON E.DEPTNO=D.DEPTNO;
+
+ENAME     DNAME         
+_________ _____________ 
+SMITH     RESEARCH      
+ALLEN     SALES         
+WARD      SALES         
+JONES     RESEARCH      
+MARTIN    SALES         
+BLAKE     SALES         
+CLARK     ACCOUNTING    
+SCOTT     RESEARCH      
+KING      ACCOUNTING    
+TURNER    SALES         
+ADAMS     RESEARCH      
+JAMES     SALES         
+FORD      RESEARCH      
+MILLER    ACCOUNTING    
+
+14 rows selected. 
+
+SQL> SELECT ENAME,DNAME FROM EMP E ,DEPT D WHERE E.DEPTNO=D.DEPTNO;
+
+ENAME     DNAME         
+_________ _____________ 
+SMITH     RESEARCH      
+ALLEN     SALES         
+WARD      SALES         
+JONES     RESEARCH      
+MARTIN    SALES         
+BLAKE     SALES         
+CLARK     ACCOUNTING    
+SCOTT     RESEARCH      
+KING      ACCOUNTING    
+TURNER    SALES         
+ADAMS     RESEARCH      
+JAMES     SALES         
+FORD      RESEARCH      
+MILLER    ACCOUNTING 
+
+
+2.Write a query to display the employee names and their
+  locations from emp, dept tables
+
+SOLUTION:
+================================================================
+SQL> SELECT ENAME,LOC AS JOB_LOCATION FROM EMP E ,DEPT D WHERE E.DEPTNO=D.DEPTNO;
+
+ENAME     JOB_LOCATION    
+_________ _______________ 
+SMITH     DALLAS          
+ALLEN     CHICAGO         
+WARD      CHICAGO         
+JONES     DALLAS          
+MARTIN    CHICAGO         
+BLAKE     CHICAGO         
+CLARK     NEW YORK        
+SCOTT     DALLAS          
+KING      NEW YORK        
+TURNER    CHICAGO         
+ADAMS     DALLAS          
+JAMES     CHICAGO         
+FORD      DALLAS          
+MILLER    NEW YORK        
+
+14 rows selected. 
+
+SQL> SELECT ENAME,LOC AS JOB_LOCATION FROM EMP E INNER JOIN DEPT D ON E.DEPTNO=D.DEPTNO;
+
+ENAME     JOB_LOCATION    
+_________ _______________ 
+SMITH     DALLAS          
+ALLEN     CHICAGO         
+WARD      CHICAGO         
+JONES     DALLAS          
+MARTIN    CHICAGO         
+BLAKE     CHICAGO         
+CLARK     NEW YORK        
+SCOTT     DALLAS          
+KING      NEW YORK        
+TURNER    CHICAGO         
+ADAMS     DALLAS          
+JAMES     CHICAGO         
+FORD      DALLAS          
+MILLER    NEW YORK        
+
+3.Write a query to display the employees who are working
+  in the location Chicago from emp, dept tables by using
+  inner join?
+
+Note: If we want to filter the data after joining condition then we 
+===== must use and operator in 8i joins. where as in 9i joins we are
+      using either AND operator or WHERE clause also.
+
+SOLUTION:
+================================================================
+
+SQL> SELECT ENAME,LOC AS JOB_LOCATION FROM EMP E ,DEPT D WHERE E.DEPTNO=D.DEPTNO AND LOC='CHICAGO';
+
+ENAME     JOB_LOCATION    
+_________ _______________ 
+ALLEN     CHICAGO         
+WARD      CHICAGO         
+MARTIN    CHICAGO         
+BLAKE     CHICAGO         
+TURNER    CHICAGO         
+JAMES     CHICAGO         
+
+6 rows selected. 
+
+SQL> SELECT ENAME ,LOC AS JOB_LOCATION FROM EMP E INNER JOIN DEPT D ON E.DEPTNO=D.DEPTNO WHERE LOC='CHICAGO';
+
+ENAME     JOB_LOCATION    
+_________ _______________ 
+ALLEN     CHICAGO         
+WARD      CHICAGO         
+MARTIN    CHICAGO         
+BLAKE     CHICAGO         
+TURNER    CHICAGO         
+JAMES     CHICAGO         
+
+6 rows selected. 
+
+SQL> SELECT ENAME ,LOC AS JOB_LOCATION FROM EMP E INNER JOIN DEPT D ON E.DEPTNO=D.DEPTNO AND LOC='CHICAG
+O';
+
+ENAME     JOB_LOCATION    
+_________ _______________ 
+ALLEN     CHICAGO         
+WARD      CHICAGO         
+MARTIN    CHICAGO         
+BLAKE     CHICAGO         
+TURNER    CHICAGO         
+JAMES     CHICAGO         
+
+
+4.Write a query to display no of employees in each location from 
+  emp, dept tables by using equi join or inner join?
+
+SOLUTION:
+================================================================
+
+SQL> SELECT LOC AS LOCATION,COUNT(*) AS NO_OF_EMPLOYEES FROM EMP E INNER JOIN DEPT D ON E.DEPTNO=D.DEPTNO GROUP BY LOC;
+
+LOCATION       NO_OF_EMPLOYEES 
+___________ __________________ 
+DALLAS                       5 
+CHICAGO                      6 
+NEW YORK                     3 
+
+
+5.Write a query to display dname, sum(Sal) from emp,dept
+   tables by using equi join or inner join?
+
+SOLUTION:
+================================================================
+SQL> SELECT DNAME,SUM(SAL) AS DEPT_EXEPDATURE FROM EMP INNER JOIN DEPT ON EMP.DEPTNO=DEPT.DEPTNO GROUP BY DNAME;
+
+DNAME            DEPT_EXEPDATURE 
+_____________ __________________ 
+RESEARCH                   10875 
+SALES                       9400 
+ACCOUNTING                  8750 
+
+SQL> SELECT DNAME,SUM(SAL) AS DEPT_EXEPDATURE FROM EMP JOIN DEPT ON EMP.DEPTNO=DEPT.DEPTNO GROUP BY DNAM
+E;
+
+DNAME            DEPT_EXEPDATURE 
+_____________ __________________ 
+RESEARCH                   10875 
+SALES                       9400 
+ACCOUNTING                  8750 
+
+SQL> SELECT DNAME,SUM(SAL) AS DEPT_EXEPDATURE FROM EMP JOIN DEPT ON EMP.DEPTNO=DEPT.DEPTNO GROUP BY DNAME ORDER BY SUM(SAL) DESC;
+
+DNAME            DEPT_EXEPDATURE 
+_____________ __________________ 
+RESEARCH                   10875 
+SALES                       9400 
+ACCOUNTING                  8750 
+
+SQL> SELECT DNAME,SUM(SAL) AS DEPT_EXEPDATURE FROM EMP JOIN DEPT ON EMP.DEPTNO=DEPT.DEPTNO GROUP BY DNAME ORDER BY SUM(SAL) ASC;
+
+DNAME            DEPT_EXEPDATURE 
+_____________ __________________ 
+ACCOUNTING                  8750 
+SALES                       9400 
+RESEARCH                   10875 
+
+SQL> SELECT DNAME,SUM(SAL) AS DEPT_EXEPDATURE FROM EMP JOIN DEPT ON EMP.DEPTNO=DEPT.DEPTNO GROUP BY DNAME ORDER BY SUM(SAL);
+
+DNAME            DEPT_EXEPDATURE 
+_____________ __________________ 
+ACCOUNTING                  8750 
+SALES                       9400 
+RESEARCH                   10875 
+
+SQL> SELECT DNAME,SUM(SAL) AS DEPT_EXEPDATURE FROM EMP, DEPT WHERE EMP.DEPTNO=DEPT.DEPTNO GROUP BY DNAME
+ ORDER BY SUM(SAL);
+
+DNAME            DEPT_EXEPDATURE 
+_____________ __________________ 
+ACCOUNTING                  8750 
+SALES                       9400 
+RESEARCH                   10875 
+
+
+6.Write a query to display blake employee record along with dept details
+   from emp, dept tables?
+
+SOLUTION:
+================================================================
+
+SQL> SELECT * FROM EMP ,DEPT WHERE DEPT.DEPTNO=EMP.DEPTNO AND ENAME='BLAKE';
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO    DEPTNO DNAME    LOC        
+________ ________ __________ _______ ___________ _______ _______ _________ _________ ________ __________ 
+    7698 BLAKE    MANAGER       7839 01-05-81       2850                30        30 SALES    CHICAGO    
+
+SQL> SELECT * FROM EMP INNER JOIN DEPT ON DEPT.DEPTNO=EMP.DEPTNO AND ENAME='BLAKE';
+
+   EMPNO ENAME    JOB            MGR HIREDATE        SAL    COMM    DEPTNO    DEPTNO DNAME    LOC        
+________ ________ __________ _______ ___________ _______ _______ _________ _________ ________ __________ 
+    7698 BLAKE    MANAGER       7839 01-05-81       2850                30        30 SALES    CHICAGO    
+
+SQL> SELECT ENAME,JOB,SAL,EMP.DEPTNO,DNAME,LOC FROM EMP INNER JOIN DEPT ON DEPT.DEPTNO=EMP.DEPTNO AND EN
+AME='BLAKE';
+
+ENAME    JOB            SAL    DEPTNO DNAME    LOC        
+________ __________ _______ _________ ________ __________ 
+BLAKE    MANAGER       2850        30 SALES    CHICAGO    
+
+SQL> SELECT ENAME,JOB,SAL,EMP.DEPTNO,DNAME,LOC FROM EMP ,DEPT WHERE DEPT.DEPTNO=EMP.DEPTNO AND ENAME='BL
+AKE';
+
+ENAME    JOB            SAL    DEPTNO DNAME    LOC        
+________ __________ _______ _________ ________ __________ 
+BLAKE    MANAGER       2850        30 SALES    CHICAGO    
+
+-----------------------------------------------------------------------------------
+7.Check the following non equi join output
+SQL>select * from test3;
+ 
+      deptno
+     ---------
+        10
+        20
+
+SQL> SELECT * FROM TEST3;
+
+   DEPTNO 
+_________ 
+       10 
+       20 
+
+
+SQL>select * from test4;
+       
+       deptno
+     ---------
+         10
+         20
+         30
+SQL> SELECT * FROM TEST4;
+
+   DEPTNO 
+_________ 
+       10 
+       20 
+       30 
+
+SQL>select * from 
+    test3 , test4
+    where test3.deptno>test4.deptno;
+
+        (or)
+
+SQL>select * from 
+    test3 join test4
+    on test3.deptno>test4.deptno;
+
+
+SOLUTION:
+================================================================
+SQL> SELECT T3.DEPTNO FROM TEST3 T3, TEST4 T4 WHERE T3.DEPTNO>T4.DEPTNO ;
+
+   DEPTNO 
+_________ 
+       20 
+
+SQL> SELECT * FROM TEST3 T3, TEST4 T4 WHERE T3.DEPTNO>T4.DEPTNO ;
+
+   DEPTNO    DEPTNO 
+_________ _________ 
+       20        10 
+
+SQL> SELECT * FROM TEST3 T3, TEST4 T4 WHERE T3.DEPTNO<T4.DEPTNO ;
+
+   DEPTNO    DEPTNO 
+_________ _________ 
+       10        20 
+       10        30 
+       20        30 
+
+SQL> SELECT * FROM TEST3 T3 INNER JOIN TEST4 T4 ON T3.DEPTNO<T4.DEPTNO ;
+
+   DEPTNO    DEPTNO 
+_________ _________ 
+       10        20 
+       10        30 
+       20        30 
+
+SQL> SELECT * FROM TEST3 T3 INNER JOIN TEST4 T4 ON T3.DEPTNO>T4.DEPTNO ;
+
+   DEPTNO    DEPTNO 
+_________ _________ 
+       20        10 
+
+SQL> SELECT * FROM TEST3 T3 JOIN TEST4 T4 ON T3.DEPTNO>T4.DEPTNO ;
+
+   DEPTNO    DEPTNO 
+_________ _________ 
+       20        10 
+
+SQL> SELECT * FROM TEST3 T3 JOIN TEST4 T4 ON T3.DEPTNO<T4.DEPTNO ;
+
+   DEPTNO    DEPTNO 
+_________ _________ 
+       10        20 
+       10        30 
+       20        30 
+
+
+
+NOTE:-in oracle when ever one table columns values lies between another table
+=====  two columns then also we are retrieving data from those tables
+       by using non equi join.
+
+EG:-
+===
+SQL>select * from emp;
+
+SQL> SELECT * FROM EMP;
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ____________ _______ ___________ _______ _______ _________ 
+    7369 SMITH     CLERK           7902 17-12-80        800                20 
+    7499 ALLEN     SALESMAN        7698 20-02-81       1600     300        30 
+    7521 WARD      SALESMAN        7698 22-02-81       1250     500        30 
+    7566 JONES     MANAGER         7839 02-04-81       2975                20 
+    7654 MARTIN    SALESMAN        7698 28-09-81       1250    1400        30 
+    7698 BLAKE     MANAGER         7839 01-05-81       2850                30 
+    7782 CLARK     MANAGER         7839 09-06-81       2450                10 
+    7788 SCOTT     ANALYST         7566 09-12-82       3000                20 
+    7839 KING      PRESIDENT            17-11-81       5000                10 
+    7844 TURNER    SALESMAN        7698 08-09-81       1500       0        30 
+    7876 ADAMS     CLERK           7788 12-01-83       1100                20 
+    7900 JAMES     CLERK           7698 03-12-81        950                30 
+    7902 FORD      ANALYST         7566 03-12-81       3000                20 
+    7934 MILLER    CLERK           7782 23-01-82       1300                10 
+
+
+SQL>select * from salgrade;
+
+SQL> SELECT * FROM SALGRADE;
+
+   GRADE    LOSAL    HISAL 
+________ ________ ________ 
+       1      700     1200 
+       2     1201     1400 
+       3     1401     2000 
+       4     2001     3000 
+       5     3001     9999 
+
+SQL>select ename, sal, losal, hisal 
+    from emp  join salgrade
+    on sal between losal and hisal;
+
+SQL> SELECT ENAME,SAL,LOSAL,HISAL,GRADE FROM EMP JOIN SALGRADE ON SAL BETWEEN LOSAL AND HISAL;
+
+ENAME         SAL    LOSAL    HISAL    GRADE 
+_________ _______ ________ ________ ________ 
+SMITH         800      700     1200        1 
+JAMES         950      700     1200        1 
+ADAMS        1100      700     1200        1 
+WARD         1250     1201     1400        2 
+MARTIN       1250     1201     1400        2 
+MILLER       1300     1201     1400        2 
+TURNER       1500     1401     2000        3 
+ALLEN        1600     1401     2000        3 
+CLARK        2450     2001     3000        4 
+BLAKE        2850     2001     3000        4 
+JONES        2975     2001     3000        4 
+SCOTT        3000     2001     3000        4 
+FORD         3000     2001     3000        4 
+KING         5000     3001     9999        5 
+
+14 rows selected. 
+
+SQL> SELECT ENAME,SAL,LOSAL,HISAL,GRADE FROM EMP JOIN SALGRADE ON SAL BETWEEN LOSAL AND HISAL ORDER BY ENAME;
+
+ENAME         SAL    LOSAL    HISAL    GRADE 
+_________ _______ ________ ________ ________ 
+ADAMS        1100      700     1200        1 
+ALLEN        1600     1401     2000        3 
+BLAKE        2850     2001     3000        4 
+CLARK        2450     2001     3000        4 
+FORD         3000     2001     3000        4 
+JAMES         950      700     1200        1 
+JONES        2975     2001     3000        4 
+KING         5000     3001     9999        5 
+MARTIN       1250     1201     1400        2 
+MILLER       1300     1201     1400        2 
+SCOTT        3000     2001     3000        4 
+SMITH         800      700     1200        1 
+TURNER       1500     1401     2000        3 
+WARD         1250     1201     1400        2 
+    
+
+          (OR)
+
+SQL>select ename,sal,losal,hisal
+    from emp  , salgrade
+    where sal between losal and hisal;
+
+SQL> SELECT ENAME,SAL,LOSAL,HISAL,GRADE FROM EMP, SALGRADE WHERE SAL BETWEEN LOSAL AND HISAL ORDER BY EN
+AME;
+
+ENAME         SAL    LOSAL    HISAL    GRADE 
+_________ _______ ________ ________ ________ 
+ADAMS        1100      700     1200        1 
+ALLEN        1600     1401     2000        3 
+BLAKE        2850     2001     3000        4 
+CLARK        2450     2001     3000        4 
+FORD         3000     2001     3000        4 
+JAMES         950      700     1200        1 
+JONES        2975     2001     3000        4 
+KING         5000     3001     9999        5 
+MARTIN       1250     1201     1400        2 
+MILLER       1300     1201     1400        2 
+SCOTT        3000     2001     3000        4 
+SMITH         800      700     1200        1 
+TURNER       1500     1401     2000        3 
+WARD         1250     1201     1400        2 
+
+14 rows selected. 
+
+SQL> SELECT ENAME,SAL,LOSAL,HISAL,GRADE FROM EMP, SALGRADE WHERE SAL BETWEEN LOSAL AND HISAL;
+
+ENAME         SAL    LOSAL    HISAL    GRADE 
+_________ _______ ________ ________ ________ 
+SMITH         800      700     1200        1 
+JAMES         950      700     1200        1 
+ADAMS        1100      700     1200        1 
+WARD         1250     1201     1400        2 
+MARTIN       1250     1201     1400        2 
+MILLER       1300     1201     1400        2 
+TURNER       1500     1401     2000        3 
+ALLEN        1600     1401     2000        3 
+CLARK        2450     2001     3000        4 
+BLAKE        2850     2001     3000        4 
+JONES        2975     2001     3000        4 
+SCOTT        3000     2001     3000        4 
+FORD         3000     2001     3000        4 
+KING         5000     3001     9999        5 
+
+14 rows selected. 
+
+
+8. Write a query to display employees who are comes under grade 3 from emp ,salgrade tables/.
+
+
+SOLUTION:
+================================================================
+SQL> SELECT ENAME ,SAL,GRADE FROM EMP JOIN SALGRADE ON (SAL BETWEEN LOSAL AND HISAL) AND GRADE=3;
+
+ENAME         SAL    GRADE 
+_________ _______ ________ 
+ALLEN        1600        3 
+TURNER       1500        3 
+
+SQL> SELECT ENAME ,SAL,GRADE FROM EMP JOIN SALGRADE ON (SAL BETWEEN LOSAL AND HISAL) WHERE GRADE=3;
+
+ENAME         SAL    GRADE 
+_________ _______ ________ 
+ALLEN        1600        3 
+TURNER       1500        3 
+
+   

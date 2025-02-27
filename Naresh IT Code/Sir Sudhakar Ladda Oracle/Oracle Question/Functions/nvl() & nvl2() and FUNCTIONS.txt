@@ -1,0 +1,371 @@
+                            nvl() & nvl2()
+                          ==================
+1.Write a query to display ename, sal, comm, sal+comm of the 
+    employees from emp table?
+
+
+SQL> SELECT ENAME,SAL,COMM,SAL+COMM FROM EMP;
+
+ENAME         SAL    COMM    SAL+COMM 
+_________ _______ _______ ___________ 
+SMITH         800                     
+ALLEN        1600     300        1900 
+WARD         1250     500        1750 
+JONES        2975                     
+MARTIN       1250    1400        2650 
+BLAKE        2850                     
+CLARK        2450                     
+SCOTT        3000                     
+KING         5000                     
+TURNER       1500       0        1500 
+ADAMS        1100                     
+JAMES         950                     
+FORD         3000                     
+MILLER       1300                     
+
+SQL> SELECT ENAME,SAL,COMM,SAL+NVL(COMM,0) FROM EMP;
+
+ENAME         SAL    COMM    SAL+NVL(COMM,0) 
+_________ _______ _______ __________________ 
+SMITH         800                        800 
+ALLEN        1600     300               1900 
+WARD         1250     500               1750 
+JONES        2975                       2975 
+MARTIN       1250    1400               2650 
+BLAKE        2850                       2850 
+CLARK        2450                       2450 
+SCOTT        3000                       3000 
+KING         5000                       5000 
+TURNER       1500       0               1500 
+ADAMS        1100                       1100 
+JAMES         950                        950 
+FORD         3000                       3000 
+MILLER       1300                       1300 
+
+2.update the employee commission with in emp table by using nvl2() 
+  based on following conditions?
+
+1.if comm-->null then update
+     comm-->500
+
+2.if comm-->not null then update
+     comm-->comm+500
+
+SQL> UPDATE EMP SET COMM=NVL2(COMM,COMM+500,500);
+
+14 rows updated.
+
+SQL> SELECT * FROM EMP;
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ____________ _______ ___________ _______ _______ _________ 
+    7369 SMITH     CLERK           7902 17-12-80        800     500        20 
+    7499 ALLEN     SALESMAN        7698 20-02-81       1600     800        30 
+    7521 WARD      SALESMAN        7698 22-02-81       1250    1000        30 
+    7566 JONES     MANAGER         7839 02-04-81       2975     500        20 
+    7654 MARTIN    SALESMAN        7698 28-09-81       1250    1900        30 
+    7698 BLAKE     MANAGER         7839 01-05-81       2850     500        30 
+    7782 CLARK     MANAGER         7839 09-06-81       2450     500        10 
+    7788 SCOTT     ANALYST         7566 09-12-82       3000     500        20 
+    7839 KING      PRESIDENT            17-11-81       5000     500        10 
+    7844 TURNER    SALESMAN        7698 08-09-81       1500     500        30 
+    7876 ADAMS     CLERK           7788 12-01-83       1100     500        20 
+    7900 JAMES     CLERK           7698 03-12-81        950     500        30 
+    7902 FORD      ANALYST         7566 03-12-81       3000     500        20 
+    7934 MILLER    CLERK           7782 23-01-82       1300     500        10 
+
+------------------------------------------------------------------------------------------------------
+
+                         concatination operator
+                       =========================
+
+1.display the output as following from emp table by using 
+  concatination operator
+
+   SMITH earns 2000
+   ALLEN earns 3600
+
+SQL> SELECT ENAME || ' earns ' || SAL FROM EMP;
+
+ENAME||'EARNS'||SAL    
+______________________ 
+SMITH earns 800        
+ALLEN earns 1600       
+WARD earns 1250        
+JONES earns 2975       
+MARTIN earns 1250      
+BLAKE earns 2850       
+CLARK earns 2450       
+SCOTT earns 3000       
+KING earns 5000        
+TURNER earns 1500      
+ADAMS earns 1100       
+JAMES earns 950        
+FORD earns 3000        
+MILLER earns 1300      
+
+
+2.display the output as following from emp table by using 
+  concatination operator 
+
+   SMITH  works as CLERK
+   ALLEN  works as SALESMAN
+
+SQL> SELECT ENAME || ' works as ' || JOB FROM EMP;
+
+ENAME||'WORKSAS'||JOB       
+___________________________ 
+SMITH works as CLERK        
+ALLEN works as SALESMAN     
+WARD works as SALESMAN      
+JONES works as MANAGER      
+MARTIN works as SALESMAN    
+BLAKE works as MANAGER      
+CLARK works as MANAGER      
+SCOTT works as ANALYST      
+KING works as PRESIDENT     
+TURNER works as SALESMAN    
+ADAMS works as CLERK        
+JAMES works as CLERK        
+FORD works as ANALYST       
+MILLER works as CLERK       
+
+
+3.combine the two strings NARESH,IT
+
+QL> SELECT 'NARESH' || ' '|| 'IT' FROM DUAL;
+
+'NARESH'||''||'IT'    
+_____________________ 
+NARESH IT             
+
+
+
+------------------------------------------------------------------------------------------------------
+
+
+                           Functions Task
+                         =================
+
+
+1)Write a query to display emp table enames to uppercase?
+
+SQL> SELECT UPPER(ENAME) FROM EMP;
+
+UPPER(ENAME)    
+_______________ 
+SMITH           
+ALLEN           
+WARD            
+JONES           
+MARTIN          
+BLAKE           
+CLARK           
+SCOTT           
+KING            
+TURNER          
+ADAMS           
+JAMES           
+FORD            
+MILLER          
+
+2)Write a query to display emp table enames to lowercase?
+
+SQL> SELECT LOWER(ENAME) FROM EMP;
+
+LOWER(ENAME)    
+_______________ 
+smith           
+allen           
+ward            
+jones           
+martin          
+blake           
+clark           
+scott           
+king            
+turner          
+adams           
+james           
+ford            
+miller          
+
+3)Modify all emp table enames to initcap case perminently?
+
+SQL> UPDATE EMP SET ENAME=INITCAP(ENAME);
+
+14 rows updated.
+
+SQL> SELECT * FROM EMP;
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ____________ _______ ___________ _______ _______ _________ 
+    7369 Smith     CLERK           7902 17-12-80        800     500        20 
+    7499 Allen     SALESMAN        7698 20-02-81       1600     800        30 
+    7521 Ward      SALESMAN        7698 22-02-81       1250    1000        30 
+    7566 Jones     MANAGER         7839 02-04-81       2975     500        20 
+    7654 Martin    SALESMAN        7698 28-09-81       1250    1900        30 
+    7698 Blake     MANAGER         7839 01-05-81       2850     500        30 
+    7782 Clark     MANAGER         7839 09-06-81       2450     500        10 
+    7788 Scott     ANALYST         7566 09-12-82       3000     500        20 
+    7839 King      PRESIDENT            17-11-81       5000     500        10 
+    7844 Turner    SALESMAN        7698 08-09-81       1500     500        30 
+    7876 Adams     CLERK           7788 12-01-83       1100     500        20 
+    7900 James     CLERK           7698 03-12-81        950     500        30 
+    7902 Ford      ANALYST         7566 03-12-81       3000     500        20 
+    7934 Miller    CLERK           7782 23-01-82       1300     500        10 
+
+SQL> COMMIT;
+
+4)create table with fname,lastname insert the records as follows
+
+SQL> CREATE TABLE PINFO (FNAME VARCHAR2(20),LNAME VARCHAR2(10));
+
+Table PINFO created.
+
+FNAME      LNAME     
+---------- ---------- 
+gowtham    raj        
+naga       raj        
+subba      rao        
+kavya      sri
+
+SQL> INSERT INTO PINFO values('&FNAME','&LNAME');
+Enter value for FNAME: gotwthan
+Enter value for LNAME: raj
+old:INSERT INTO PINFO values('&FNAME','&LNAME')
+new:INSERT INTO PINFO values('gotwthan','raj')
+
+1 row inserted.
+
+SQL> /
+Enter value for FNAME: naga
+Enter value for LNAME: raj
+old:INSERT INTO PINFO values('&FNAME','&LNAME')
+new:INSERT INTO PINFO values('naga','raj')
+
+1 row inserted.
+
+SQL> /
+Enter value for FNAME: subba
+Enter value for LNAME: rao
+old:INSERT INTO PINFO values('&FNAME','&LNAME')
+new:INSERT INTO PINFO values('subba','rao')
+
+1 row inserted.
+
+SQL> /
+Enter value for FNAME: kavya
+Enter value for LNAME: sri
+old:INSERT INTO PINFO values('&FNAME','&LNAME')
+new:INSERT INTO PINFO values('kavya','sri')
+
+1 row inserted.
+
+->add a new column NAME by using alter with add
+      
+
+SQL> ALTER TABLE PINFO ADD NAME VARCHAR2(30);
+
+Table PINFO altered.
+
+SQL> SELECT * FROM PINFO;
+
+FNAME       LNAME    NAME    
+___________ ________ _______ 
+gotwthan    raj              
+naga        raj              
+subba       rao              
+kavya       sri              
+
+--->set the output for the NAME column as follows
+
+     NAME
+  -----------
+  Gowtham Raj
+  Naga Raju
+  Subba Rao
+  Kavya Sri
+
+SQL> UPDATE PINFO SET NAME=FNAME||' '||LNAME;
+
+4 rows updated.
+
+SQL> SELECT * FROM PINFO;
+
+FNAME       LNAME    NAME            
+___________ ________ _______________ 
+gotwthan    raj      gotwthan raj    
+naga        raj      naga raj        
+subba       rao      subba rao       
+kavya       sri      kavya sri       
+
+
+SQL> SELECT INITCAP(NAME) FROM PINFO;
+
+INITCAP(NAME)    
+________________ 
+Gotwthan Raj     
+Naga Raj         
+Subba Rao        
+Kavya Sri        
+
+
+Hint:-our requirement is combine FNAME and LNAME means use 
+====   concatination operator.and their starting letter
+       of name column  is capital letter for that one use initcap
+       store it in a NAME column by using single update command.
+
+5)Write a query to display the emp records whose names
+  having 4 characters by using length function?
+
+SQL> SELECT * FROM EMP WHERE LENGTH(ENAME)=4;
+
+   EMPNO ENAME    JOB              MGR HIREDATE        SAL    COMM    DEPTNO 
+________ ________ ____________ _______ ___________ _______ _______ _________ 
+    7521 Ward     SALESMAN        7698 22-02-81       1250    1000        30 
+    7839 King     PRESIDENT            17-11-81       5000     500        10 
+    7902 Ford     ANALYST         7566 03-12-81       3000     500        20 
+
+
+6)display the emp records whose names are having more than 5
+  charcters by using length function?
+
+SQL> SELECT * FROM EMP WHERE LENGTH(ENAME)>5;
+
+   EMPNO ENAME     JOB             MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ___________ _______ ___________ _______ _______ _________ 
+    7654 Martin    SALESMAN       7698 28-09-81       1250    1900        30 
+    7844 Turner    SALESMAN       7698 08-09-81       1500     500        30 
+    7934 Miller    CLERK          7782 23-01-82       1300     500        10 
+
+
+7)what the o/p of the following
+SQL>select length('AB CD') from dual
+
+A)4
+B)5
+C)6
+D)none of the above
+
+SQL> SELECT LENGTH('AB CD') FROM DUAL;
+
+   LENGTH('ABCD') 
+_________________ 
+                5 
+
+8.What is the output of the following
+SQL>select initcap('AB CD EF') from dual;
+
+A)Ab cd ef
+B)AB CD EF
+C)Ab Cd E f
+D)none of the above
+ 
+SQL> SELECT INITCAP('AB CD EF') FROM DUAL;
+
+INITCAP('ABCDEF')    
+____________________ 
+Ab Cd Ef             
+
+

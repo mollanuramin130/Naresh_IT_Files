@@ -1,0 +1,48 @@
+
+Que 1 :
+--------
+Write a C program to print all twisted prime number from array.
+
+Twisted Prime number means a number itself is prime number and the reverse of that number also prime number.
+Examle : 2,5,7,11,23 -----> here 2,5,7,11 are twisted prime numbers but 23 is not twisted prime number.
+Note : first call isPrime function if the element is prime then call reverse function after reversing the number again check than reverse number is prime or not.
+
+-> create int main() function
+-> create int isPrime(int n) functions (Will return 0 as false otherwise 1 as true)
+-> create int reverse(int n) function (will return )
+
+Sample input : int arr[]={1,2,3,4,5,7,11,15,23};
+
+Sample output : twisted prime numbers are : 2,3,5,7,11
+=======================================================================
+
+Que 2 :
+--------
+Write a C program to find the number of words in a sentence using function.
+
+
+-> create int main() function.
+-> create int getWordCount(char str[]) function.
+
+Sample input : Enter a sentence: Hello, this is a sample sentence.
+
+Sample output: Number of words in the sentence: 6
+
+=======================================================================
+
+Que 3 :
+--------
+
+ Write a C program to check if a string contains only digits.
+
+-> create int main() function.
+-> create bool isContainsDigits(char str[]) function. this function will take string as input and will return (true if String contains only digits otherwise return false).
+-> in main function read String and pass it to isContainsDigits fuction by calling it and print the result.
+
+
+Sample input  : 12345
+Sample output : The string contains only digits.
+
+
+Sample input : 45A7
+Sample output : The string contains non-digit characters

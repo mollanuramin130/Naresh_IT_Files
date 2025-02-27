@@ -1,0 +1,62 @@
+drop table person;
+drop table persons;
+drop table test;
+
+create table person
+(
+pid number(10),
+pname varchar2(10),
+state char(2)
+);
+
+insert into person values(1,'SUBBARAO','AP');
+insert into person values(1,'KIRAN','TS');
+insert into person values(2,'RAJU','TS');
+insert into person values(4,'ADITYA','MP');
+insert into person values(5,'GOWTHAM','AP');
+insert into person values(6,'VISWAJITH','MH');
+insert into person values(7,'SURYA','AP');
+insert into person values(8,'SAI TEJA','AP');
+
+
+
+create table persons
+(
+pid number(10),
+pname varchar2(10),
+gender char,
+state char(2)
+);
+
+insert into persons values(1,'SUBBARAO','M','AP');
+
+insert into persons values(2,'KAVYA','F','TS');
+
+insert into persons values(3,'KIRAN','M','TS');
+
+insert into persons values(4,'GOWTHAM','M','AP');
+
+insert into persons values(5,'KERTHI','F','AP');
+
+insert into persons values(6,'SURYA','M','AP');
+
+insert into persons values(7,'ANUSHKA','F','AP');
+
+insert into persons values(8,'RAJU','M','TS');
+
+create table test
+(
+deptno number(10)
+);
+
+insert into test values(10);
+insert into test values(10);
+insert into test values(10);
+insert into test values(20);
+insert into test values(20);
+insert into test values(20);
+insert into test values(30);
+insert into test values(30);
+insert into test values(40);
+insert into test values(50);
+commit;

@@ -1,0 +1,395 @@
+Q1) Find the output of the following program
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		for(;false;)
+		System.out.println("Hello World!");
+	}
+}
+
+java.lang.Error: Unresolved compilation problem: 
+	Unreachable code
+
+
+Q2) Find the output of the following program
+
+public class Test
+{ 
+  public static void main(String [ ] args) 
+   { 
+     int a=1;
+     switch(a) 
+     { 
+       default: 
+       System.out.println("You choose correct option"); 
+     }
+   }
+}
+
+Output: You choose correct option
+
+Q3) Find the output of the following program
+class Test28 
+{
+    public static void main(String[] args) 
+    {
+	for(int i=0; i <= 3 ; i++)
+    {
+    switch(i)
+    {
+    case 0:
+    System.out.println("i is 0");
+    break;
+    case 1:
+    System.out.println("i is 1");
+    break;
+    case 2:
+    System.out.println("i is 2");
+    break;
+    default:
+    System.out.println("i is grater than 2");
+    }
+}
+
+}
+}
+
+i is 0
+i is 1
+i is 2
+i is grater than 2
+
+Q4) Find the output of the following program
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		byte b =2;		
+		switch(b)
+		{	case 23:
+			case 128: //Error
+		}		
+	}
+}
+
+java.lang.Error: Unresolved compilation problem: 
+	Case constant of type int is incompatible with switch selector type byte
+
+Q5) Find the output of the following program
+public class Test
+{
+      public static void main(String[] argv)
+      {
+           final int a = 1;
+            int b=  2;
+            
+           int x = 0;
+           switch (x) 
+           {
+                 case a:     
+                 case b: //error    
+           }
+     }
+}
+
+java.lang.Error: Unresolved compilation problem: 
+	case expressions must be constant expressions
+
+
+Q6) Find the output of the following program
+public class Test
+{
+       public static void main(String[] argv)
+       {
+             int temp = 90;
+             switch(temp) 
+             {
+                  case 80 :  System.out.println("80");
+                  case 80 :  System.out.println("80");   
+                  case 90 :  System.out.println("90");
+                  default :  System.out.println("default");
+             }
+       }
+}
+
+java.lang.Error: Unresolved compilation problems: 
+	Duplicate case
+	Duplicate case
+
+Q7) Find the output of the following program
+
+public class Test
+{
+        public static void main(String[] argv)
+        {
+               int x = 1;
+               switch(x) 
+               {
+                     case 1: 
+                     {
+                           System.out.println("x is one"); 
+                           break;
+                     }
+                     case 2:  
+                     {
+                           System.out.println("x is two"); 
+                           break;
+                     }
+                     case 3:  
+                     {
+                           System.out.println("x is two");  break;
+                     }
+               }
+               System.out.println("out of the switch");
+       }
+}
+
+x is one
+out of the switch
+
+Q8) Find the output of the following program
+
+public class Test
+{
+       public static void main(String[] argv)
+       {
+            int x = 2;
+            switch (x) 
+            {
+                 case 2:
+                 case 4:
+                 case 6:
+                 case 8:
+                 case 10: {
+                            System.out.println("x is an even number");  break;
+                          }
+            }
+      }
+}
+
+x is an even number
+
+Q9) Find the output of the following program
+public class Test
+{
+       public static void main(String[] argv)
+       {
+             int x = 2;
+             switch (x) 
+             {
+                   case 2:  System.out.println("2");
+                   default: System.out.println("default");
+                   case 3: System.out.println("3");
+                   case 4: System.out.println("4");
+             }
+        }
+}
+
+2
+default
+3
+4
+
+
+Q10) Find the output of the following program
+
+public class Test
+{
+      public static void main(String[] argv) 
+      {
+           short x = 200;
+           switch( x ) {
+                  case 100 : System.out.println("One hundred");break ;
+                  case 200 : System.out.println("Two hundred");break ;
+                  case 33000 : System.out.println("Thirty thousand ");//Error
+			       break ;
+          }
+      }
+}
+
+Error: Case constant of type int is incompatible with switch selector type short
+
+Q11) Find the output of the following program
+
+public class Test
+{
+      public static void main(String[] argv) 
+      {
+           long  x = 400;
+           switch( x ) { //Error
+                  case 100 : System.out.println("One hundred");break ;
+                  case 200 : System.out.println("Two hundred");break ;
+                  case 400 : System.out.println("Three hundred");break ;
+          }
+      }
+}
+
+Error:
+Cannot switch on a value of type long. Only convertible int values, strings or enum variables are permitted
+
+Q12) Find the output of the following program
+
+public class Test 
+{
+      public static void main(String[] argv) 
+      {
+           int j = 3;
+           switch (j) 
+           {
+                case 2:
+                      System.out.println("value is two");
+                case 2 + 1:
+                     System.out.println("value is three");
+                     break;
+                default:
+                     System.out.println("value is " + j);
+                     break;
+          }
+    }
+}
+
+Value is three
+
+Q13) Find the output of the following program
+
+class Test 
+{
+        public static void main(String args[]) 
+        {    
+          final int a=10,b=20;
+          while(a<b)
+          { 
+          System.out.println("Hello");
+          }
+          System.out.println("World"); //Error
+        } 
+}
+
+Error: Unresolved compilation problem: 
+	Unreachable code
+
+
+Q14) Which of these selection statements test only for equality?
+
+a) if
+b) switch
+c) if & switch
+d) none of the mentioned
+
+Ans: b
+
+
+Explanation:
+The if statement can test for equality (==) as well as other relational conditions like <, >, <=, >=, !=, etc.
+The switch statement, on the other hand, only checks for equality (==) between the switch expression and case values.
+Therefore, the only selection statement that tests only for equality is switch.
+
+
+Q15) Find the output of the following program
+
+public class Test
+{
+      public static void main(String[] argv)
+      {
+            String s = "xyz";
+            switch (s.length()) 
+            {
+                 case 1:
+                       System.out.println("length is one");
+                       break;
+                 case 2:
+                       System.out.println("length is two");
+                       break;
+                 case 3:
+                       System.out.println("length is three");
+                       break;
+                 default:
+                       System.out.println("no match");
+           }
+      }
+}
+
+length is three
+
+Q16) WAP in java to print all even numbers from 1 - 100
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		  for(int i=2;i<=100;i+=2) {
+			  System.out.print(i+" ");
+		  }
+	}
+}
+
+
+OR,
+
+//without using loop.
+class Test 
+{
+	int printValue(int number) {
+		if(number==100) {
+			System.out.println(number);
+			return 0;
+		}else {
+			System.out.println(number);
+			return printValue(number+2);
+		}
+	}
+	public static void main(String[] args) 
+	{
+		  new Test().printValue(2);
+	}
+}
+
+OR
+
+class Test 
+{
+	void printValue(int number) {
+		if(number==100) {
+			System.out.println(number);
+		}else {
+			System.out.println(number);
+			printValue(number+2);
+		}
+	}
+	public static void main(String[] args) 
+	{
+		  new Test().printValue(2);
+	}
+}
+
+
+Q17) WAP in java to print the sum of first hundred natural number
+
+public static void main(String[] args) 
+	{
+		int sum=0;
+		  for(int i=1;i<=100;i++) {
+			  sum+=i;
+		  }
+		  System.out.println("Sum of first hundred number is: "+sum);
+	}
+
+Q18) WAP in java to print table of the given number (Number must be taken from Scanner class)
+
+class Test 
+{
+	
+	public static void main(String[] args) 
+	{
+		Scanner sc= new Scanner(System.in);
+		System.out.print("Enter the table number : ");
+		int number=sc.nextInt();
+		
+		for(int i=1;i<=10;i++) {
+			System.out.println(number + " X "+i+" = "+number*i);
+		}
+		sc.close();
+	}
+}

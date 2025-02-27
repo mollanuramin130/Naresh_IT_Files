@@ -1,0 +1,38 @@
+Write a c program to print common elements of two arrays using function.
+
+-> create function  int commonElements(int arr1[], int arr2[],int size1,int size2) to write a logic for print common elements
+ 
+-> inside int main() promote the user to enter size of two array and read two array and call commonElements function to perform a logic. 
+
+   Input : 
+	Enter first array size : 5
+	Enter second array size : 7
+	Enter first array elements : 1 2 3 4 5
+	Enter second array elements : 5 7 8 1 1 2 10
+
+   Output : Common elements are : 1 2 5
+=============================================================================================
+Que-2:
+------
+
+Write a c program to print all the LEADERS in the array using function.
+   NOTE : An element is leader if it is greater than all the elements to its right side.
+
+-> Example : 
+
+   Input : {10,9,14,23,15,0,9}
+          
+   Output :  Leader elements are : 23, 15, 9 
+
+=============================================================================================
+Que- 3:
+------
+
+Write a c program to store Nth prime numbers into array and print.
+NOTE : find prime numbers and store into array and print.
+
+input : 3
+ Output1 :2 3 5
+
+   Input2 : 5
+   Output2 :2 3 5 7 11

@@ -1,0 +1,205 @@
+Que 1 :
+=======
+
+Write a program in C to find the sum of rows and columns of a matrix.
+
+Sample input :
+Input the size of the square matrix : 2
+Input elements in the 2*2 matrix :
+element - [0],[0] : 5
+element - [0],[1] : 6
+element - [1],[0] : 7
+element - [1],[1] : 8
+
+Sample Output :
+The matrix is :
+5 6
+7 8
+
+The sum or rows and columns of the matrix is :
+5   6  11
+7   8  15
+12 14
+
+===================================
+
+Solution:
+
+
+#include<stdio.h>
+
+int main(){
+    printf("Enter Rows and Columns of the matrix : ");
+    int row,col;
+    scanf("%d%d",&row,&col);
+    
+    int matrix[row][col];
+    
+    printf("Enter elements of matrix : \n");
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix[i][j]);
+        }
+    }
+    
+    int colSumArr[col];
+    for(int i=0;i<col;i++){
+        colSumArr[i]=0;
+    }
+    for(int i=0;i<row;i++){
+        int sum=0;
+        for(int j=0;j<col;j++){
+            sum+=matrix[i][j];
+            printf("%4d",matrix[i][j]);
+            colSumArr[j]+=matrix[i][j];
+        }
+        printf("%4d\n",sum);
+    }
+    for(int i=0;i<col;i++){
+        printf("%4d",colSumArr[i]);
+    }   
+printf("\n");
+}
+
+Que 2 : 
+=======
+
+Write a program in C to accept two matrices and check whether they are equal.
+
+Sample input :
+Input Rows and Columns of the 1st matrix :2 2
+Input Rows and Columns of the 2nd matrix :2 2
+Input elements in the first matrix :
+element - [0],[0] : 1
+element - [0],[1] : 2
+element - [1],[0] : 3
+element - [1],[1] : 4
+
+Input elements in the second matrix :
+element - [0],[0] : 1
+element - [0],[1] : 2
+element - [1],[0] : 3
+element - [1],[1] : 4
+
+Sample output :
+The first matrix is :
+1 2
+3 4
+The second matrix is :
+1 2
+3 4
+Two matrices are equal.
+
+===================================
+
+Solution:
+
+
+#include<stdio.h>
+
+int main(){
+    printf("Input Rows and Columns of the 1st matrix :");
+    int row1,col1,row2,col2;
+    scanf("%d%d",&row1,&col1);
+    printf("Input Rows and Columns of the 2nd matrix :");
+    scanf("%d%d",&row2,&col2);
+    int matrix1[row1][col1];
+    int matrix2[row2][col2];
+
+    printf("Input elements in the first matrix : \n");
+    for(int i=0;i<row1;i++){
+        for(int j=0;j<col1;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix1[i][j]);
+        }
+    }
+    printf("Input elements in the second matrix : \n");
+    for(int i=0;i<row2;i++){
+        for(int j=0;j<col2;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix2[i][j]);
+        }
+    }
+
+    printf("First Matrix is :\n");
+    for(int i=0;i<row1;i++){
+        for(int j=0;j<col1;j++){
+            printf("%d ",matrix1[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("Second Matrix is :\n");
+    for(int i=0;i<row2;i++){
+        for(int j=0;j<col2;j++){
+            printf("%d ",matrix2[i][j]);
+        }
+        printf("\n");
+    }
+    if (row1!=row2 || col1!=col2)
+    {
+        printf("Two Matrix are not equal.\n");
+    }
+    else{
+        for(int i=0;i<row1;i++){
+            for(int j=0;j<col1;j++){
+                if(matrix1[i][j]!=matrix2[i][j]){
+                    printf("Two Matrix are not Equal...\n");
+                    return 0;
+                }
+            }
+        }
+    printf("Two Matrix are equal.\n");
+    }
+
+}
+
+Que 3 :
+=======
+
+Write a C program to find the maximum element of each row.
+
+Examples: 
+
+Input : [1, 2, 3, 21]
+        [12, 1, 65, 9]
+        [1, 56, 34, 2]
+
+Output :
+Maximum element of row 1: 21
+Maximum element of row 2: 65
+Maximum element of row 3: 56
+
+===================================
+   
+Solution:
+
+#include<stdio.h>
+
+int main(){
+    printf("Enter Rows and Columns of the matrix : ");
+    int row,col;
+    scanf("%d%d",&row,&col);
+    
+    int matrix[row][col];
+    
+    printf("Enter elements of matrix : \n");
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            printf("element - [%d],[%d] : ",i,j);
+            scanf("%d",&matrix[i][j]);
+        }
+    }
+    
+    for(int i=0;i<row;i++){
+        int max=matrix[i][0];
+        for(int j=0;j<col;j++){
+            if(max<matrix[i][j]){
+                max=matrix[i][j];
+            }
+        }
+        printf("Maximum element of row %d: %d\n",i+1,max);
+    }
+
+}

@@ -1,0 +1,177 @@
+Que 1:
+-------
+Write a program in C to find the number occurring odd number of times in an array using function.
+
+-> create function odddNumbersOfTimes(int arr[], int size).
+-> create main() and read the size and array from the user and call odddNumbersOfTimes function to perform the logic.
+Sample input :
+The given array is : 8 3 8 5 4 3 4 3 5 1
+
+Sample output :
+The element odd number of times is : 3 1
+
+======================================================================
+
+Solution:
+
+
+#include<stdio.h>
+void odddNumbersOfTimes(int arr[], int size);
+
+int main(){
+    printf("Enter the array size : ");
+    int size;
+    scanf("%d",&size);
+    int arr[size];
+    printf("Enter the array elements : ");
+    for(int i=0;i<size;i++){
+        scanf("%d",&arr[i]);
+    }
+    
+    odddNumbersOfTimes(arr,size);
+}
+
+void odddNumbersOfTimes(int arr[], int size){
+    int count;
+    int tempArr[size];
+    for(int i=0;i<size;i++){
+        tempArr[i]=0;
+    }
+    printf("The element odd number of times is : ");
+    for(int i=0;i<size;i++){
+        count=1;
+        if(tempArr[i]!=-1){
+            for(int j=i+1;j<size;j++){
+                if(arr[i]==arr[j]){
+                    tempArr[j]=-1;
+                    count++;
+                }
+            }
+            if(count%2==1){
+                printf("%3d",count);
+            }
+        }
+    }
+    printf("\n");
+}
+=========
+
+Que 2 :
+--------
+Write a program in C to count the total number of duplicate elements in an array using function.
+
+-> create function findDuplicate(int arr[], int size) inside this function write logic for print duplicate elements.
+->inside main() promote the user enter array size and elements and call findDuplicate
+function.
+
+Sample input :
+Enter array size : 6
+Enter 6 elements : 
+element - 0 : 5
+element - 1 : 2
+element - 2 : 2
+element - 3 : 3
+element - 4 : 5
+element - 5 : 2
+
+
+Sample output :
+Total number of duplicate elements found in the array is : 5 2
+
+======================================================================
+
+Solution:
+
+#include<stdio.h>
+void findDuplicate(int arr[], int size);
+
+int main(){
+    printf("Enter the array size : ");
+    int size;
+    scanf("%d",&size);
+    int arr[size];
+    printf("Enter the array elements : ");
+    for(int i=0;i<size;i++){
+        scanf("%d",&arr[i]);
+    }
+    
+    findDuplicate(arr,size);
+}
+
+void findDuplicate(int arr[], int size){
+    int count;
+    int tempArr[size];
+    for(int i=0;i<size;i++){
+        tempArr[i]=0;
+    }
+    printf("Total number of duplicate elements found in the array is : ");
+    for(int i=0;i<size;i++){
+        count=1;
+        if(tempArr[i]!=-1){
+            for(int j=i+1;j<size;j++){
+                if(arr[i]==arr[j]){
+                    tempArr[j]=-1;
+                    count++;
+                }
+            }
+            if(count>1){
+                printf("%3d",arr[i]);
+            }
+        }
+    }
+    printf("\n");
+}
+=========
+Que 3 :
+--------
+ Write a C program  using function that takes an array of integers as input and prints pairs of numbers 
+-> create one printPairs(int arr[], int size) to write a logic. 
+   such that the first number in the pair starts from the beginning of the array and the second number starts from the end of the array. 
+->inside main() promote the user enter array size and elements and call printPairs funtion.
+
+
+   Input : 
+	Enter a size : 6
+	Enter 6 elements : 1 2 3 4 5 6
+   Output :   
+            (1,6)
+            (2,5)
+            (3,4)
+
+
+Input : 
+	Enter a size : 5
+	Enter 6 elements : 5 6 7 8 9
+  Output :   
+            (5,9)
+            (6,8)
+            (7)
+
+
+Solution:
+
+#include<stdio.h>
+void printPairs(int arr[], int size);
+
+int main(){
+    printf("Enter the array size : ");
+    int size;
+    scanf("%d",&size);
+    int arr[size];
+    printf("Enter the array elements : ");
+    for(int i=0;i<size;i++){
+        scanf("%d",&arr[i]);
+    }
+    
+    printPairs(arr,size);
+}
+
+void printPairs(int arr[], int size){
+    
+    for(int i=0;i<size/2;i++){
+        printf("(%d,%d)\n",arr[i],arr[size-1-i]);
+    }
+    if(size%2==1){
+        printf("(%d)\n",arr[size/2]);
+    }
+}

@@ -1,0 +1,251 @@
+Que-1) Write a java program to calculate the curved surface area of a cube?
+ Formula-6*side Square.
+
+
+package com.ssnmarket.feb_04_2025.Curved_Surface;
+
+import java.util.Scanner;
+
+public class CurvedSurfaceArea {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the length of surface: ");
+		int length=sc.nextInt();
+		System.out.println("The curved surface area of a cube is: "+(6*length*length));
+		sc.close();
+	}
+}
+
+
+Que-2) write a java program to calculate the total surface area of a cylinder? 
+ Formula- 2 pi square r + 2 pi r h (take the pi as 3.14).
+
+package com.ssnmarket.feb_04_2025.Curved_Surface_of_Cylinder;
+
+import java.util.Scanner;
+
+public class AreaOfCylinder {
+	final static double PI=3.14;
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter the height of cylinder: ");
+		float height=sc.nextFloat();
+		System.out.print("Enter the radious of cylinder: ");
+		float radious=sc.nextFloat();
+		System.out.println("The total surface area of a cylinder is: "+((2*PI*radious*radious)+(2*PI*height*radious)));
+		sc.close();
+
+	}
+
+}
+
+
+Que-3) write a Java program to calculate compound interest for 3 years? 
+ Formula- amount=principle*((1+rate/100)*(1+rate/100)*(1+rate/100));
+
+
+package com.ssnmarket.feb_04_2025.CompoundInterest;
+
+import java.util.Scanner;
+
+public class CompoundInterest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the principal amount : ");
+		float principal=scanner.nextFloat();
+		System.out.println("Enter the interest rate : ");
+		float rate=scanner.nextFloat();
+		float amount=principal*(1+(rate/100))*(1+(rate/100))*(1+(rate/100));
+		System.out.println("Compound interest for 3 years of "+principal+" is:"+(amount-principal));
+	}
+
+}
+
+
+Que-4) write Java Program Convert Fahrenheit To Celsius | Vice Versa
+ Formula-
+ Celsius=(Fahrenheit-32)*5/9;
+ Fahrenheit=((9*Celsius)/5)+32;
+ Note [ Write two seprate program for converting celsius into 
+Fahrenheit
+ and Fahrenheit into celsius ]
+
+Fahrenheit to Celsius:
+package com.ssnmarket.feb_04_2025.ConvertFahrenheit_Celsius;
+
+import java.util.Scanner;
+
+public class ConvertFahrenheit_Celsius {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Fahrenheit value: ");
+		float fahrenheit=sc.nextFloat();
+		System.out.println(fahrenheit+" deg Fahrenheit = "+((fahrenheit-32)*(5.0/9))+" deg Celsius.");
+
+	}
+
+}
+ Celsius to Fahrenheit:
+
+package com.ssnmarket.feb_04_2025.ConvertFahrenheit_Celsius;
+
+import java.util.Scanner;
+
+public class CelsiusToFahrenheit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter Celsius value: ");
+		float celsius=sc.nextFloat();
+		System.out.println(celsius+" deg Celsius = "+(((9*celsius)/5)+32)+" deg Fahrenheit.");
+
+	}
+
+}
+
+
+Que-5) 
+--------------------------------------------------------------
+public class Literals_Integers 
+ {
+ public static void main (String args[])
+ {
+ int decimal_int=1234;
+ int octal_int=077;
+ int hexadec_int=0x1ff2;
+ int binary_int=0b1010101;
+ System.out.println("This is a Decimal Literal: "+decimal_int);
+ System.out.println("This is an Octal Literal: "+octal_int);
+ System.out.println("This is a Hexa Decimal Literal: "+hexadec_int);
+ System.out.println("This is a Binary Literal: "+binary_int);
+ }
+ }
+[What will be the output of the above program]
+_________________________________________________________________________
+Que-6) 
+--------------------------------------------------------------
+public class Literals_Float
+{
+ public static void main (String args[])
+ {
+ float val_float=1.7732f;
+ double val_double=1.7732d;
+ float val_exponent=123E4f;
+ System.out.println("This is a Floating Point Literal"+val_float);
+ System.out.println("This is a Decimal Literal"+val_double);
+ System.out.println("This is an Exponential 
+Literal"+val_exponent);
+ }
+} 
+[What will be the output of the above program]
+
+This is a Decimal Literal: 1234
+This is an Octal Literal: 63
+This is a Hexa Decimal Literal: 8178
+This is a Binary Literal: 85
+
+_________________________________________________________________________
+_________________________________________________________________________
+_
+Que-7)
+---------------------------------------------------------------
+public class AutomaticTypeConversion
+{
+ public static void main (String args[])
+ {
+ int intVariable = 100;
+ long longVariable = intVariable;
+ float floatVariable = longVariable;
+ System.out.println ("Integer Value is : " + intVariable);
+ System.out.println ("Float Value is : " + floatVariable);
+ System.out.println ("Long Value is : " + longVariable);
+ }
+}
+[What will be the output of the above program]
+
+Integer Value is : 100
+Float Value is : 100.0
+Long Value is : 100
+
+_________________________________________________________________________
+__
+Que-8)
+---------------------------------------------------------------
+public class ExplicitTypeCasting
+{
+ public static void main (String[]args)
+ {
+ double doubleVariable = 100.04;
+ long longVariable = (long) doubleVariable;
+ int intVariable = (int) longVariable;
+ System.out.println ("Double Value is : " + doubleVariable);
+ System.out.println ("Long Value is : " + longVariable);
+ System.out.println ("Integer Value is : " + intVariable);
+ }
+}
+[What will be the output of the above program]
+
+Double Value is : 100.04
+Long Value is : 100
+Integer Value is : 100
+
+________________________________________________________________________
+Que-9)
+----------------------------------------------------------------
+class Sample
+{
+ public static void main(String[] args) 
+ {
+ int a=10;
+ float b=4.5f;
+ double c=5.2;
+ long d=(long)-8.98;
+System.out.println(a);
+System.out.println(b); 
+System.out.println(c); 
+System.out.println(d);
+}
+}
+[What will be the output of the above program]
+
+10
+4.5
+5.2
+-8
+
+_________________________________________________________________________
+____
+Que-10)
+---------------------------------------------------------------
+public class Sample {
+public static void main(String[] args) {
+int a=10;
+float b=4.5f;
+double c=5.2;
+long d=378293L;
+ long e=(long)-8.98;
+System.out.println(a);
+System.out.println(b); 
+System.out.println(c); 
+System.out.println(d);
+ System.out.println(e);
+Sample.main("java");
+}
+}
+
+ERROR:
+Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
+	The method main(String[]) in the type Sample is not applicable for the arguments (String)
+
+	at com.ssnmarket.feb_04_2025.ConvertFahrenheit_Celsius.Sample.main(Sample.java:15)
+
+
+________________________________________________________________________

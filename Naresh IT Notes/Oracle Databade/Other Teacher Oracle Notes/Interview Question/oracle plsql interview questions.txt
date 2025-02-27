@@ -1,0 +1,71 @@
+Interview questions for PLSQL Developers
+
+
+
+1) when to use cursor and when to use collection?
+
+2) what is triggering events or trigger predicate clauses?
+
+3) can we use DDL, DML commands in PLSQL block?
+
+4) How to trace error line number in PLSQL?
+
+5) what is instead of trigger?
+
+6) what is exception in PLSQL? types of exception?
+
+7) what is cursor for loop?
+
+8) what is pragma exception_init?
+
+9) what is raise_application_error?
+
+10) what is SQL CODE and SQL ERRM?
+
+11) what is exception propagation?
+
+12) what is parameterized cursor?
+
+13) how to handle exception in PLSQL?
+
+14) what is follows clause in trigger?
+
+15) what is mutating error? how to avoid mutating error using compound trigger?
+
+16) what is pragma autonomous_transaction?
+
+17) what are advantages of the packages in oracle?
+
+18) what is use of limit clause in bulk collect?
+
+19) Can we use commit / rollback commands in trigger?
+
+20) what is index by table, nested table, varray diff between them?
+
+21) what is overloading procedure?
+
+22) what is Bulk Exception in PLSQL? what is save exceptions?
+
+23) diff between cursor and refcursor?
+
+24) diff between strong refcursor and weak refcursor?
+
+25) diff between constraints and triggers?
+
+26) what are the types of the triggers?
+
+27) when to use procedure, when to use function?
+
+28) what is cursor? it's types?
+
+29) diff between row level trigger and statement level trigger?
+
+30) diff between cursor and collection?
+
+31) diff between procedure and packages?
+
+32) diff between procedure and function?
+
+33) what is DDL trigger or system trigger?
+
+34) diff between index by table, nested table, varray?

@@ -1,0 +1,394 @@
+                                      JOINS
+                                   ==========
+
+
+Self join:-joining a table to itself is called self join.here 
+=========  joining joining conditional columns must belongs to
+           same data type.
+
+Method1:-compare one table one column any value with all other values
+========  in same table.
+
+Method2:-compare two different column values in a same table(these
+========  columns belong to same data type).
+
+
+whenever we are using self joins then we must create table
+aliasnames in from clause.these aliasnames must be different names.
+these aliasnames internally behave like exact tables when query
+execution time.
+
+-----------------------------------------------------------------------------------
+1. Write a query to display the employees who are getting same salary
+    as scott salary from emp table using self join?
+
+NOTE:-when we are comparing one column any value with all
+====   other values in same column by using self join then
+       we must display data from second alias table only.
+
+SQL> SELECT E1.ENAME AS EMPLOYEE_NAME ,E1.SAL AS EMPLOYEE_SALARY FROM EMP E1 JOIN EMP E2 ON E1.SAL=E2.SAL WHERE E2.ENAME='SCOTT';
+
+EMPLOYEE_NAME       EMPLOYEE_SALARY 
+________________ __________________ 
+SCOTT                          3000 
+FORD                           3000 
+
+SQL> SELECT E1.ENAME AS EMPLOYEE_NAME ,E1.SAL AS EMPLOYEE_SALARY FROM EMP E1 JOIN EMP E2 ON E1.SAL=E2.SAL AND E2.ENAME='SCOTT';
+
+EMPLOYEE_NAME       EMPLOYEE_SALARY 
+________________ __________________ 
+SCOTT                          3000 
+FORD                           3000 
+
+SQL> SELECT E1.ENAME AS EMPLOYEE_NAME ,E1.SAL AS EMPLOYEE_SALARY FROM EMP E1 , EMP E2 W
+HERE E1.SAL=E2.SAL AND E2.ENAME='SCOTT';
+
+EMPLOYEE_NAME       EMPLOYEE_SALARY 
+________________ __________________ 
+SCOTT                          3000 
+FORD                           3000 
+
+
+2.Write a query to display the employee names and their manager names
+  from emp table by using self join
+
+SQL> SELECT M.ENAME AS MANAGERS, E.ENAME AS EMPLOYEES FROM EMP M JOIN EMP E ON M.EMPNO=
+E.MGR;
+
+MANAGERS    EMPLOYEES    
+___________ ____________ 
+FORD        SMITH        
+BLAKE       ALLEN        
+BLAKE       WARD         
+KING        JONES        
+BLAKE       MARTIN       
+KING        BLAKE        
+KING        CLARK        
+JONES       SCOTT        
+BLAKE       TURNER       
+SCOTT       ADAMS        
+BLAKE       JAMES        
+JONES       FORD         
+CLARK       MILLER       
+
+13 rows selected. 
+
+SQL> SELECT M.ENAME AS MANAGERS, E.ENAME AS EMPLOYEES FROM EMP M , EMP E WHERE M.EMPNO=
+E.MGR;
+
+MANAGERS    EMPLOYEES    
+___________ ____________ 
+FORD        SMITH        
+BLAKE       ALLEN        
+BLAKE       WARD         
+KING        JONES        
+BLAKE       MARTIN       
+KING        BLAKE        
+KING        CLARK        
+JONES       SCOTT        
+BLAKE       TURNER       
+SCOTT       ADAMS        
+BLAKE       JAMES        
+JONES       FORD         
+CLARK       MILLER       
+
+13 rows selected. 
+
+SQL> SELECT M.ENAME AS MANAGERS, E.ENAME AS EMPLOYEES FROM EMP M , EMP E WHERE M.EMPNO=E.MGR ORDER BY M.ENAME;
+
+MANAGERS    EMPLOYEES    
+___________ ____________ 
+BLAKE       JAMES        
+BLAKE       MARTIN       
+BLAKE       ALLEN        
+BLAKE       TURNER       
+BLAKE       WARD         
+CLARK       MILLER       
+FORD        SMITH        
+JONES       SCOTT        
+JONES       FORD         
+KING        BLAKE        
+KING        JONES        
+KING        CLARK        
+SCOTT       ADAMS        
+
+13 rows selected. 
+
+SQL> SELECT M.ENAME AS MANAGERS, E.ENAME AS EMPLOYEES FROM EMP M JOIN EMP E ON M.EMPNO=
+E.MGR ORDER BY M.ENAME;
+
+MANAGERS    EMPLOYEES    
+___________ ____________ 
+BLAKE       JAMES        
+BLAKE       MARTIN       
+BLAKE       ALLEN        
+BLAKE       TURNER       
+BLAKE       WARD         
+CLARK       MILLER       
+FORD        SMITH        
+JONES       SCOTT        
+JONES       FORD         
+KING        BLAKE        
+KING        JONES        
+KING        CLARK        
+SCOTT       ADAMS        
+
+
+3.Write a query to display the employee records who are reporting
+   to BLAKE manager by using self join?
+
+SQL> SELECT M.ENAME AS MANAGERS, E.ENAME AS EMPLOYEES FROM EMP M JOIN EMP E ON M.EMPNO=E.MGR WHERE M.ENAME='BLAKE';
+
+MANAGERS    EMPLOYEES    
+___________ ____________ 
+BLAKE       ALLEN        
+BLAKE       WARD         
+BLAKE       MARTIN       
+BLAKE       TURNER       
+BLAKE       JAMES        
+
+SQL> SELECT M.ENAME AS MANAGERS, E.ENAME AS EMPLOYEES FROM EMP M , EMP E WHERE M.EMPNO=
+E.MGR AND M.ENAME='BLAKE';
+
+MANAGERS    EMPLOYEES    
+___________ ____________ 
+BLAKE       ALLEN        
+BLAKE       WARD         
+BLAKE       MARTIN       
+BLAKE       TURNER       
+BLAKE       JAMES        
+
+
+4.Write a query to display the employees who are getting more salary 
+   than their manager salary from emp table using self join?
+
+SQL> SELECT  E.ENAME AS EMPLOYEES,E.SAL AS SALARY,M.ENAME AS MANAGER,M.SAL AS MANAGER_S
+ALARY FROM EMP M , EMP E WHERE M.EMPNO=E.MGR AND M.SAL<E.SAL;
+
+EMPLOYEES       SALARY MANAGER       MANAGER_SALARY 
+____________ _________ __________ _________________ 
+SCOTT             3000 JONES                   2975 
+FORD              3000 JONES                   2975 
+
+SQL> SELECT  E.ENAME AS EMPLOYEES,E.SAL AS SALARY,M.ENAME AS MANAGER,M.SAL AS MANAGER_SALARY FROM EMP M JOIN EMP E ON M.EMPNO=E.MGR WHERE M.SAL<E.SAL;
+
+EMPLOYEES       SALARY MANAGER       MANAGER_SALARY 
+____________ _________ __________ _________________ 
+SCOTT             3000 JONES                   2975 
+FORD              3000 JONES                   2975 
+
+
+5.Write a query to display BLAKE'S manager name from emp table by
+  using self join?
+
+SQL> SELECT M.ENAME AS MANAGERS, E.ENAME AS EMPLOYEES FROM EMP M JOIN EMP E ON M.EMPNO=
+E.MGR WHERE E.ENAME='BLAKE';
+
+MANAGERS    EMPLOYEES    
+___________ ____________ 
+KING        BLAKE        
+
+SQL> SELECT M.ENAME AS MANAGERS, E.ENAME AS EMPLOYEES FROM EMP M , EMP E WHERE M.EMPNO=
+E.MGR AND E.ENAME='BLAKE';
+
+MANAGERS    EMPLOYEES    
+___________ ____________ 
+KING        BLAKE        
+
+
+6.Write a query to display the employees who are joining
+         before their managers from emp table
+                by using self join?
+SQL> SELECT E.ENAME AS EMPLOYEE_NAME ,E.HIREDATE AS EMP_DOJ,M.ENAME AS MANAGER_NAME,M.HIREDATE AS MGR_DOJ FROM EMP M JOIN EMP E ON E.MGR=M.EMPNO WHERE E.HIREDATE<M.HIREDATE;
+
+EMPLOYEE_NAME    EMP_DOJ     MANAGER_NAME    MGR_DOJ     
+________________ ___________ _______________ ___________ 
+SMITH            17-12-80    FORD            03-12-81    
+ALLEN            20-02-81    BLAKE           01-05-81    
+WARD             22-02-81    BLAKE           01-05-81    
+JONES            02-04-81    KING            17-11-81    
+BLAKE            01-05-81    KING            17-11-81    
+CLARK            09-06-81    KING            17-11-81    
+
+6 rows selected. 
+
+SQL> SELECT E.ENAME AS EMPLOYEE_NAME ,E.HIREDATE AS EMP_DOJ,M.ENAME AS MANAGER_NAME,M.HIREDATE AS MGR_DOJ FROM EMP M , EMP E WHERE E.MGR=M.EMPNO AND E.HIREDATE<M.HIREDATE;
+
+EMPLOYEE_NAME    EMP_DOJ     MANAGER_NAME    MGR_DOJ     
+________________ ___________ _______________ ___________ 
+SMITH            17-12-80    FORD            03-12-81    
+ALLEN            20-02-81    BLAKE           01-05-81    
+WARD             22-02-81    BLAKE           01-05-81    
+JONES            02-04-81    KING            17-11-81    
+BLAKE            01-05-81    KING            17-11-81    
+CLARK            09-06-81    KING            17-11-81    
+
+
+7.Write a query to display those doctors which are working
+  in same hospital with different specality from the below
+  table?
+
+note:-Here h1 or h2 any table we can use in select why because of
+=====  condition is not there direct comparing.
+
+SQL>select * from hospital;
+
+         ID      NAME    HOSPITALNAME     SPECALITY
+      ------ ----------  -------------    ----------
+         1     SMITH        APPOLO        PHYSICIAN
+         2     ALLEN        APPOLO        HOMEOPATHY
+         3     WARD         KIMS          PHYSICIAN
+         4     JONES        PRIME         PHYSICIAN 
+
+
+SQL> SELECT H1.NAME AS DOCTOR,H1.HOSPITALNAME AS HOSPITAL_NAME,H1.SPECALITY AS SPECALITY FROM
+ HOSPITAL H1 JOIN HOSPITAL H2 ON H1.HOSPITALNAME=H2.HOSPITALNAME WHERE H1.SPECALITY != H2.SPE
+CALITY;
+
+DOCTOR    HOSPITAL_NAME    SPECALITY     
+_________ ________________ _____________ 
+ALLEN     APPOLO           HOMEOPATHY    
+SMITH     APPOLO           PHYSICIAN     
+
+SQL> SELECT H1.NAME AS DOCTOR,H1.HOSPITALNAME AS HOSPITAL_NAME,H1.SPECALITY AS SPECALITY FROM HOSPITAL H1 ,HOSPITAL H2 WHERE H1.HOSPITALNAME=H2.HOSPITALNAME AND H1.SPECALITY != H2.SPECAL
+ITY;
+
+DOCTOR    HOSPITAL_NAME    SPECALITY     
+_________ ________________ _____________ 
+ALLEN     APPOLO           HOMEOPATHY    
+SMITH     APPOLO           PHYSICIAN     
+
+
+7.FETCH STUDENT_NAME AND COURSE_NAME ORDER BY STUDENT ID.ONLY FIRST 20 RECORDS FROM THE    FOLLOWING TABLES(HCL INTERVIEW QUESTION)
+
+            STUDENT TABLE
+   |-----------------|-------------------|
+   |  STUDENT_ID     |    STUDENT_NAME   |
+   |-----------------|-------------------|
+
+
+            FEE TABLE
+   |-----------------|-------------------|
+   |    STUDENT_ID   |     COURSE_FEE    |
+   |-----------------|-------------------|
+
+
+              COURSE TABLE
+   |-----------------|-------------------|
+   |    COURSE_FEE   |     COURSE_NAME   |
+   |-----------------|-------------------|
+
+SQL> SELECT S.STUDENT_NAME, C.COURSE_NAME  
+FROM STUDENT S  
+JOIN FEE F ON S.STUDENT_ID = F.STUDENT_ID  
+JOIN COURSE C ON F.COURSE_FEE = C.COURSE_FEE  
+ORDER BY S.STUDENT_ID  
+LIMIT 20;
+
+
+-----------------------------------------------------------------------------------------------
+     				   JOINS MCQ'S
+                               =================
+
+1.The ---- clause must contain a join condition for 
+   joining two tables.
+
+A.FROM               B.WHERE
+C.BOTH A & B         D.NONE OF THE ABOVE
+
+ANS:- A
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.Which type of join includes records from the right table that have no matching 
+  key in the left table in the result set?
+
+A. Left outer join
+B. Right outer join
+C. Full outer join
+D. Half outer join
+
+ANS:- B
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.which one is the correct syntax for joins?
+
+A.select * from t1,t2 where t1.column1=t2.column2
+B.select t1.c1,t2.c2 from table1 t1,table2 t2 where t1.c1=t2.c2
+C.select t1.c1,t2.c2 from t1,t2 where c1.t1=c2.t2
+D.none of the above
+
+ANS:- B
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.The same table appears twice in FROM clause then that type
+   of join is called as
+
+A.simple join                 B.non equi join
+C.equi join                   D.self join
+
+ANS:- D
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5.By using which type of join we are getting unmatched rows
+   of both the tables in the from clause
+
+A.self join              B.full outer join
+C.right outer join       D.left outer join
+
+ANS:- B
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6.WHICH OF THE FOLLOWING JOIN RETURNS ALL THE RECORDS FROM LEFT TABLE AND
+  MATCHING RECORDS FROM RIGHT TABLE
+
+PICK ONE OR MORE OPTIONS
+
+A.LEFT JOIN                   B.LEFT INNER JOIN
+C.LEFT RIGHT JOIN             D.LEFT OUTER JOIN
+
+ANS:- A,D
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+7.CONSIDER FOLLOWING TABLES
+
+                   TABLE S1
+     |----------------|--------------------------|
+     | COLUMN         |      DESCRIPTION         |
+     |--------------- |--------------------------|
+     |  ID            |      UNIQUE IDENTIFIER   |
+     |----------------|--------------------------|
+     | NAME           |       STUDENT NAME       |
+     |----------------|--------------------------|
+ 
+
+
+                    TABLE S2
+     |----------------|--------------------------|
+     | COLUMN         |      DESCRIPTION         |
+     |--------------- |--------------------------|
+     |  ID            |      UNIQUE IDENTIFIER   |
+     |----------------|--------------------------|
+     | NAME           |       STUDENT NAME       |
+     |----------------|--------------------------|
+               
+      
+
+WHICH OF THE FOLLOWING SQL QUERIES WILL RESULT IN STUDENTS NAMES COMMON TO BOTH
+TABLES HAVING THE SAME ID SORTED ALPHABITICALLY?MULTIPLE STUDENTS CAN HAVE SAME 
+NAME BUT THEIR IDS WILL BE UNIQUE
+
+A.SELECT S1.NAME FROM S1 INNER JOIN S2 ON S1.ID=S2.ID ORDER BY S1.NAME
+B.SELECT NAME FROM S1 OUTER JOIN S2 ON S1.SID=S2.ID ORDER BY ID
+C.SELECT S1.SNAME FROM S1 LEFT JOIN S2 ON S1.ID=S2.ID ORDER BY NAME
+D.SELECT NAME FROM S2 LEFT JOIN ON S1.ID=S2.ID
+
+ANS:- A
+
+
+
+

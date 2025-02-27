@@ -1,0 +1,106 @@
+Program 01:
+-----------
+Write a  program in Java that will generate and print the bill at Dominos for four chicken rolls (@ Rs 60 per chicken rolls) and three vegetable puffs (@ Rs 25 per vegetable puffs). There is a special discount of Rs 50 on the final bill amount. Calculate and print final bill as well as all item bill.
+------------------------------------------------------
+
+Solution:
+
+
+
+Program 02:
+-----------
+Write a Java program to check if a given number is a palindrome. A number is a palindrome if it remains the same when its digits are reversed.
+------------------------------------------------------
+
+Solution:
+
+
+
+Program 03:
+----------
+Write a program in Java to display the following pattern on the screen without using loop.
+@@@@@@@@
+@      @
+@      @
+@      @
+@      @
+@      @
+@@@@@@@@
+
+------------------------------------------------------
+
+Solution:
+
+package com.ssnmarket.jan_30_2025.pattern;
+
+public class Pattern {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int row=7,col=7;
+		
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				if(i==0||i==row-1||j==0||j==col-1) {					
+					System.out.print("@ ");
+				}
+				else {
+					System.out.print("  ");
+				}
+			}
+			System.out.println();
+		}
+		
+		System.out.println("@ @ @ @ @ @\n@         @\n@         @\n@         @\n@         @\n@ @ @ @ @ @");
+	} 
+
+}
+
+
+
+Program 04:
+-----------
+Write a program to input the basic salary of a person. He gets 15% of the basic as HRA, 15% of the basic as Conveyance allowance and 10% of the basic as Entertainment allowance. The total salary is calculated by adding Basic + HRA + Conveyance + Entertainment Allowance. Calculate and print the total salary of person.
+Take the Basic Salary from Command Line Argument
+------------------------------------------------------
+
+Solution:
+
+package com.ssnmarket.jan_30_2025.Salary_Calculate;
+
+public class SalaryCalculation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		double basic = Double.parseDouble(args[0]);
+		double hra = basic * (15.0 / 100);
+		double entertainment = basic * (10.0 / 100);
+		double conveyance = basic * (15.0 / 100);
+		double total=(basic+hra+entertainment+conveyance);
+		
+		System.out.println("The total salary is: "+total);
+	}
+
+}
+
+
+Program 05 :
+-------------
+Write a program in java to Fahrenheit to Celsius Program
+Formula is :-  celsius=((fahrenheit-32)*5)/9;
+------------------------------------------------------
+Solution:
+
+package com.ssnmarket.jan_30_2025.Fahrenheit_Calculate;
+
+public class FahrenheitCalculate {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		double fahrenheit = Double.parseDouble(args[0]);
+		double celsius=((fahrenheit-32)*5)/9.0;
+		
+		System.out.println(fahrenheit +" Fahrenheit = "+celsius+" Celsius");
+	}
+
+}

@@ -1,0 +1,269 @@
+Read the class notes and develop the programs.
+Program 01:
+-----------
+Write a Program on OOPs to define Product class properties and behaviour.
+
+properties :
+productId : int
+productName : String
+productPrice : double
+
+Initialize these properties with the help of Methods using Scanner class not by using Object reference.
+
+behavior:
+setProductData() : public void
+getProductInfo() : public void
+
+Product.java
+
+package com.ssnmarket.OOPs_Program.Feb_12_2025.program1;
+
+public class Product {
+
+	public static void main(String[] args) {
+		
+		ProductDetails foodProduct=new ProductDetails();
+		
+		foodProduct.setProductData();
+		foodProduct.getProductInfo();
+		
+		System.out.println("----------------------------------\n");
+		
+		ProductDetails liquidProductDetails=new ProductDetails();
+		
+		liquidProductDetails.setProductData();
+		liquidProductDetails.getProductInfo();
+		
+		System.out.println("----------------------------------\n");
+		foodProduct.getProductInfo();
+		
+		System.out.println("----------------------------------\n");
+	}
+
+}
+
+
+ProductDetails.java
+
+package com.ssnmarket.OOPs_Program.Feb_12_2025.program1;
+
+import java.util.Scanner;
+
+public class ProductDetails {
+	int productId;
+	String productName;
+	double productPrice;
+
+	public void setProductData() {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Enter your product id: ");
+		productId = scanner.nextInt();
+		System.out.print("Enter your product Name: ");
+		productName = scanner.nextLine();
+		productName = scanner.nextLine();
+		System.out.print("Enter your product price: ");
+		productPrice = scanner.nextDouble();
+	}
+	
+	public void getProductInfo() {
+		System.out.println("Product Id is: "+productId);
+		System.out.println("Product name is: "+productName);
+		System.out.println("Product price is: "+productPrice);
+	}
+}
+
+Program 02:
+-----------
+Write a Program on OOPs to define Employee class properties and behaviour.
+
+properties :
+employeeId : int
+employeeName : String
+employeeSalary : double
+
+Initialize these properties with the help of Methods using Scanner class not by using Object reference.
+
+behavior:
+setEmployeeData() : public void
+getEmployeeData() : public void
+
+EmployeeDetails.java
+
+package com.ssnmarket.OOPs_Program.Feb_12_2025.program2;
+
+import java.util.Scanner;
+
+public class EmployeeDetails {
+	int employeeId;
+	String employeeName;
+	double employeeSalary;
+	
+	public void setEmployeeData() {
+		Scanner scanner=new Scanner(System.in);
+		
+		System.out.print("Enter employee ID: ");
+		employeeId=scanner.nextInt();
+		
+		System.out.print("Enter employee Name: ");
+		employeeName=scanner.nextLine();
+		employeeName=scanner.nextLine();
+		
+		System.out.print("Enter employee Salary: ");
+		employeeSalary=scanner.nextDouble();
+	}
+	
+	public void getEmployeeData() {
+		System.out.println("Employee Id is: "+employeeId);
+		System.out.println("Employee Id is: "+employeeName);
+		System.out.println("Employee Id is: "+employeeSalary);
+	}
+	
+}
+
+Employee.java
+
+package com.ssnmarket.OOPs_Program.Feb_12_2025.program2;
+
+public class Employee {
+
+	public static void main(String[] args) {
+		EmployeeDetails nurDetails=new EmployeeDetails();
+		nurDetails.setEmployeeData();
+		nurDetails.getEmployeeData();
+		
+		System.out.println("\n--------------------------\n");
+		
+		EmployeeDetails riteshDetails=new EmployeeDetails();
+		
+		riteshDetails.setEmployeeData();
+		riteshDetails.getEmployeeData();
+		
+
+	}
+
+}
+
+Note : Create two more programs based on your imagination
+
+Program 3
+
+NareshIt.java
+
+package com.ssnmarket.OOPs_Program.Feb_12_2025.program3_Imagination;
+
+public class NareshIt {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		NareshItDetails amerpeetDetails=new NareshItDetails();
+		
+		amerpeetDetails.setBranchData();
+		amerpeetDetails.getBranchData();
+		
+		System.out.println("_____________________________________");
+		
+		NareshItDetails SRNagarDetails=new NareshItDetails();
+		
+		SRNagarDetails.setBranchData();
+		SRNagarDetails.getBranchData();
+		
+	}
+
+}
+
+
+NareshItDetails.java
+
+package com.ssnmarket.OOPs_Program.Feb_12_2025.program3_Imagination;
+
+import java.util.Scanner;
+
+public class NareshItDetails {
+	int branchId;
+	String branchName;
+	int branchNumberOfEmployee;
+	double averageSalary;
+	double totalSalaryExpences;
+	
+	public void setBranchData() {
+		Scanner scanner=new Scanner(System.in);
+
+		System.out.print("Enter the Branch Id: ");
+		branchId=scanner.nextInt();
+		
+		System.out.print("Enter the Branch Name: ");
+		branchName=scanner.nextLine();
+		branchName=scanner.nextLine();
+		
+		System.out.println("Enter total number of employees: ");
+		branchNumberOfEmployee=scanner.nextInt();
+		
+		System.out.print("Enter the Average salary of Employee: ");
+		averageSalary=scanner.nextDouble();
+		
+		totalSalaryExpences=branchNumberOfEmployee*averageSalary;
+		
+	}
+	
+	public void getBranchData() {
+		System.out.println("\n\nName of Branch : "+branchName+"\nTotal number of employees are: "+branchNumberOfEmployee+"\nTotal salay of the Branch is: "+totalSalaryExpences);
+	}
+	
+}
+
+
+Program 4:
+
+Television.java
+
+package com.ssnmarket.OOPs_Program.Feb_12_2025.program4_Imagination;
+
+public class Telivision {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TelivisionDetails samsungTVDetails=new TelivisionDetails();
+		
+		samsungTVDetails.setTelivisionData();
+		samsungTVDetails.getTelivisionData();
+		
+		TelivisionDetails lgTVDetails=new TelivisionDetails();
+		lgTVDetails.setTelivisionData();
+		lgTVDetails.getTelivisionData();
+	}
+
+}
+
+
+TelevisionDetails.java
+
+package com.ssnmarket.OOPs_Program.Feb_12_2025.program4_Imagination;
+
+import java.util.Scanner;
+
+public class TelivisionDetails {
+	int telivisionSerialNumber;
+	String telivisionName;
+	double telivisionPrice;
+	
+	public void setTelivisionData() {
+		Scanner scanner=new Scanner(System.in);
+		
+		System.out.print("Enter the Telivision Serial Number: ");
+		telivisionSerialNumber=scanner.nextInt();
+		
+		System.out.print("Enter the Telivision Name: ");
+		telivisionName=scanner.nextLine();
+		telivisionName=scanner.nextLine();
+		
+		System.out.print("Enter the Telivision Price: ");
+		telivisionPrice=scanner.nextDouble();
+		
+		
+	}
+	
+	public void getTelivisionData() {
+		System.out.println("\n\nTelivision Serial No: "+telivisionSerialNumber+"\nTelivision Name: "+telivisionName+"\nTelivision Price: "+telivisionPrice+"\n");
+	}
+}

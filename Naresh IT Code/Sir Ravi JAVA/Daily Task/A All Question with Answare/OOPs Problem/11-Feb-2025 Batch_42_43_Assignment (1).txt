@@ -1,0 +1,198 @@
+Program 01
+----------
+Write a Program on OOPs to define Dog class properties and behaviour.
+
+properties :
+
+name    : String
+height  : double
+age	: int
+
+behaviour:
+
+getDogInformation() : public void
+             bark() : public void    
+------------------------------------------------------------------------
+Dog.java
+
+package com.ssnmarket.OOPs_Program.Feb_11_2025;
+
+public class Dog {
+	//properties
+	
+	String dogName;
+	double dogHeight;
+	int dogAge;
+	
+	public void getDogInformation() {
+		System.out.println("Dog name is: "+dogName+".\nDog height is: "+dogHeight+"feet.\nDog age is: "+dogAge+"years");
+	}
+	public void bark() {
+		System.out.println(dogName+" dog bark Bhao!! Bhao!!....");
+	}
+}
+
+
+DogDetais.java
+
+
+package com.ssnmarket.OOPs_Program.Feb_11_2025;
+
+public class DogDetails {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Dog desiDog = new Dog();
+		
+		desiDog.dogName="Popy";
+		desiDog.dogHeight= 2.4;
+		desiDog.dogAge = 10;
+		
+		desiDog.getDogInformation();
+		desiDog.bark();
+		
+		Dog hybridDog = new Dog();
+		
+		hybridDog.dogName="Tom";
+		hybridDog.dogHeight=3.1;
+		hybridDog.dogAge=8 ;
+		
+		hybridDog.getDogInformation();
+		hybridDog.bark();
+	}
+
+}
+
+
+Program 02
+----------
+Write a Program on OOPs to define Fan class properties and behaviour.
+
+properties :
+
+name    : String
+coil    : String
+wings	: int
+
+behaviour:
+
+switchOn()  : public void
+switchOff() : public void   
+
+Fan.java
+
+
+package com.ssnmarket.OOPs_Program.Feb_11_2025.Program2;
+
+public class Fan {
+	String fanName;
+	String coilName;
+	int fanWings;
+	
+	public void switchOn() {
+		System.out.println(fanName + " fan is now on.");
+		System.out.println("Since fan is on "+fanWings+" wings not visiable.");
+	}
+	public void switchOff() {
+		System.out.println(fanName + " fan is now Off.");
+		System.out.println("Since fan is off "+fanWings+" wings are visiable.");
+		System.out.println("Fan containg coil name is: "+coilName);
+
+	}
+}
+
+FanDetails.java
+
+package com.ssnmarket.OOPs_Program.Feb_11_2025.Program2;
+
+public class FanDetails {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Fan secFan=new Fan();
+		secFan.fanName="SEC";
+		secFan.fanWings=3;
+		secFan.coilName="silver";
+		
+		secFan.switchOn();
+		secFan.switchOff();
+		System.out.println("------------------------------------------");
+		
+		Fan bajaFan=new Fan();
+		
+		bajaFan.fanName="Super fast Lumina";
+		bajaFan.fanWings=4;
+		bajaFan.coilName="Golden";
+		
+		bajaFan.switchOn();
+		bajaFan.switchOff();
+		
+		System.out.println("------------------------------------------");
+		
+		secFan.fanName="Rapid Cooler";
+		secFan.switchOn();
+		secFan.switchOff();
+
+	}
+
+}
+
+
+------------------------------------------------------------------------
+Program 03
+-----------
+Write 2 programs on OOPs by your own thinking and imagination.
+
+Book.java
+
+package com.ssnmarket.OOPs_Program.Feb_11_2025.Program3;
+
+public class Book {
+	String bookName;
+	int bookPages;
+	String bookAuthorName;
+	double bookPrice;
+	
+	public void bookDetails() {
+		System.out.println("Book name is: "+bookName);
+		System.out.println("Total pages: "+bookPages);
+		System.out.println("Book price: "+bookPrice);
+	}
+	
+	public void bookAuthorDetails() {
+		System.out.println("book Author name is: "+bookAuthorName);
+		System.out.println(bookAuthorName+" born in India.");
+	}
+}
+
+BookDetails.java
+
+package com.ssnmarket.OOPs_Program.Feb_11_2025.Program3;
+
+public class BookDetails {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Book storyBook=new Book();
+		storyBook.bookName="Mistory of Forest";
+		storyBook.bookAuthorName="Sartrendrona Nath Basu";
+		storyBook.bookPages=210;
+		storyBook.bookPrice=350.50;
+		
+		storyBook.bookDetails();
+		storyBook.bookAuthorDetails();
+		
+		System.out.println("---------------------------------------");
+		
+		Book poemBook=new Book();
+		poemBook.bookName="Nature poem";
+		poemBook.bookAuthorName="Jems Scott";
+		poemBook.bookPages=120;
+		poemBook.bookPrice=650.50;
+		
+		poemBook.bookDetails();
+		poemBook.bookAuthorDetails();
+	}
+
+}

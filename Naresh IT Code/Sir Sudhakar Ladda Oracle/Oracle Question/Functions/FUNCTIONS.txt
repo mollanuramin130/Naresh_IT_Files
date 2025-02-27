@@ -1,0 +1,346 @@
+ *
+***Substr():- It will extract portion of the string within given
+ * ========        string based on last two parameters.
+
+
+Syntax:-
+========
+substr(columnname ,substing position, no of characters position);
+          (or)           |->where to start        |->how many char
+      string name                                    cters from that
+                                                     position
+
+
+Starting position-> can be +ve or –ve
+Starting position and no of characters position-> must be numbers
+
+
+1)Execute the following substr() queries
+  ======================================
+
+SQL>select substr('ABCDEFGH',2,3) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('ABCDEFGH',2,3) FROM DUAL;
+
+SUBSTR('ABCDEFGH',2,3)    
+_________________________ 
+BCD                       
+
+
+SQL> select substr('ABCDEFGH',-2,3) from dual; 
+
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('ABCDEFGH',-2,3) FROM DUAL;
+
+SUBSTR('ABCDEFGH',-2,3)    
+_________________________ 
+GH                       
+
+SQL> select substr('ABCDEFGH',-4) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('ABCDEFGH',-4) FROM DUAL;
+
+SUBSTR('ABCDEFGH',-4)    
+_________________________ 
+EFGH                      
+
+
+SQL>select substr('GOWTHAM RAJ',1,7) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('GOWTHAN RAJ',1,7) FROM DUAL;
+
+SUBSTR('GOWTHANRAJ',1,7)    
+___________________________ 
+GOWTHAN                     
+
+
+SQL)select substr('GOWTHAM RAJ',9) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('GOWTHAN RAJ',9) FROM DUAL;
+
+SUBSTR('GOWTHANRAJ',9)    
+_________________________ 
+RAJ                       
+
+         
+SQL)select substr('GOWTHAM RAJ',4,4) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('GOWTHAN RAJ',4,4) FROM DUAL;
+
+SUBSTR('GOWTHANRAJ',4,4)    
+___________________________ 
+THAN                        
+
+
+SQL)select substr('GOWTHAM RAJ',-1) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('GOWTHAN RAJ',-1) FROM DUAL;
+
+SUBSTR('GOWTHANRAJ',-1)    
+___________________________ 
+J                       
+
+
+SQL)select substr('GOWTHAM RAJ',-3,4) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('GOWTHAN RAJ',-3,4) FROM DUAL;
+
+SUBSTR('GOWTHANRAJ',-3,4)    
+___________________________ 
+RAJ                        
+
+
+SQL> select substr('GOWTHAM RAJ',-8) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('GOWTHAN RAJ',-8) FROM DUAL;
+
+SUBSTR('GOWTHANRAJ',-8)    
+___________________________ 
+THAN RAJ                        
+
+
+Q)select substr('RAJ KUMAR',5) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('RAJ KUMAR',5) FROM DUAL;
+
+SUBSTR('RAJKUMAR',5)    
+_______________________ 
+KUMAR                   
+
+
+Q)select substr('RAJ KUMAR',1,3) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('RAJ KUMAR',1,3) FROM DUAL;
+
+SUBSTR('RAJKUMAR',1,3)    
+_________________________ 
+RAJ                       
+
+
+Q)select substr('RAJ KUMAR',6,3) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('RAJ KUMAR',6,3) FROM DUAL;
+
+SUBSTR('RAJKUMAR',6,3)    
+_________________________ 
+UMA                       
+
+
+Q)select substr('RAJ KUMAR',-4) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('RAJ KUMAR',-4) FROM DUAL;
+
+SUBSTR('RAJKUMAR',-4)    
+_________________________ 
+UMAR                       
+
+
+Q)select substr('RAJ KUMAR',-5) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('RAJ KUMAR',-5) FROM DUAL;
+
+SUBSTR('RAJKUMAR',-5)    
+_________________________ 
+KUMAR                       
+
+
+Q)select substr('RAJ KUMAR',-9,3) from dual;
+
+SOLUTION:
+========================================================
+
+SQL> SELECT SUBSTR('RAJ KUMAR',-9,3) FROM DUAL;
+
+SUBSTR('RAJKUMAR',-9,3)    
+_________________________ 
+RAJ                       
+
+2)Write a query to display employee records whose name started
+   with M by using substring function?
+
+SOLUTION:
+========================================================
+
+SQL> SELECT * FROM EMP WHERE SUBSTR(ENAME,1,1)='M';
+
+   EMPNO ENAME     JOB             MGR HIREDATE        SAL    COMM    DEPTNO 
+________ _________ ___________ _______ ___________ _______ _______ _________ 
+    7654 Martin    SALESMAN       7698 28-09-81       1250    1900        30 
+    7934 Miller    CLERK          7782 23-01-82       1300     500        10 
+
+
+3)Create the table person as below
+
+genarate the password as pname first 4 letter and dob last 2 digits by using substr()
+    pname                 dob           
+  ---------           ----------       
+  kiran kumar        30-june-96
+  Anushka sheetty    31-dec-92
+
+SQL>alter table person add password varchar2(10);
+SQL>select * from person;
+
+   pname                 dob          password      
+  ---------           ----------    ------------       
+  kiran kumar        30-june-96
+  Anushka sheetty    31-dec-92
+
+SOLUTION:
+========================================================
+
+SQL> CREATE TABLE PERSON (PNAME VARCHAR2(20), DOB DATE);
+
+Table PERSON created.
+
+SQL> INSERT INTO PERSON VALUES('&PNAME','&DOB');
+Enter value for PNAME: kiran kumar
+Enter value for DOB: 30-jun-96
+old:INSERT INTO PERSON VALUES('&PNAME','&DOB')
+new:INSERT INTO PERSON VALUES('kiran kumar','30-jun-96')
+
+1 row inserted.
+
+SQL> select * from person;
+
+PNAME          DOB         
+______________ ___________ 
+kiran kumar    30-06-96    
+
+SQL> INSERT INTO PERSON VALUES('&PNAME','&DOB');
+Enter value for PNAME: Anushka sheetty
+Enter value for DOB: 31-dec-1992
+old:INSERT INTO PERSON VALUES('&PNAME','&DOB')
+new:INSERT INTO PERSON VALUES('Anushka sheetty','31-dec-1992')
+
+1 row inserted.
+
+SQL> select * from person;
+
+PNAME              DOB         
+__________________ ___________ 
+kiran kumar        30-06-96    
+Anushka sheetty    31-12-92    
+
+SQL> select extract(year from dob) from person;
+
+   EXTRACT(YEARFROMDOB) 
+_______________________ 
+                   1996 
+                   1992 
+
+SQL> ALTER TABLE PERSON ADD PASSWORD VARCHAR2(10);
+
+Table PERSON altered.
+
+SQL> DESC PERSON;
+
+Name        Null?    Type            
+___________ ________ _______________ 
+PNAME                VARCHAR2(20)    
+DOB                  DATE            
+PASSWORD             VARCHAR2(10)    
+SQL> SELECT * FROM PERSON;
+
+PNAME              DOB         PASSWORD    
+__________________ ___________ ___________ 
+kiran kumar        30-06-96                
+Anushka sheetty    31-12-92                
+
+
+SQL> UPDATE PERSON SET PASSWORD=SUBSTR(PNAME,1,4) || SUBSTR(DOB,-2);
+
+2 rows updated.
+
+SQL> SELECT * FROM PERSON;
+
+PNAME              DOB         PASSWORD    
+__________________ ___________ ___________ 
+kiran kumar        30-06-96    kira96      
+Anushka sheetty    31-12-92    Anus92      
+
+SQL> UPDATE PERSON SET PASSWORD=INITCAP(SUBSTR(PNAME,1,4)) || SUBSTR(DOB,-2);
+
+2 rows updated.
+
+SQL> SELECT * FROM PERSON;
+
+PNAME              DOB         PASSWORD    
+__________________ ___________ ___________ 
+kiran kumar        30-06-96    Kira96      
+Anushka sheetty    31-12-92    Anus92      
+
+
+4)genarate mailids to all employees by taking ename first 3 characters and
+ empno last 3 digits as username for the domain tcs.com 
+
+SOLUTION:
+========================================================
+
+SQL> UPDATE EMP SET MAIL_ID=LOWER(SUBSTR(ENAME,1,3))||SUBSTR(EMPNO,-3)||'@tcs.com';
+
+14 rows updated.
+
+SQL> SELECT * FROM EMP;
+
+   EMPNO ENAME     JOB              MGR HIREDATE        SAL    COMM    DEPTNO MAIL_ID           
+________ _________ ____________ _______ ___________ _______ _______ _________ _________________ 
+    7369 Smith     CLERK           7902 17-12-80        800     500        20 smi369@tcs.com    
+    7499 Allen     SALESMAN        7698 20-02-81       1600     800        30 all499@tcs.com    
+    7521 Ward      SALESMAN        7698 22-02-81       1250    1000        30 war521@tcs.com    
+    7566 Jones     MANAGER         7839 02-04-81       2975     500        20 jon566@tcs.com    
+    7654 Martin    SALESMAN        7698 28-09-81       1250    1900        30 mar654@tcs.com    
+    7698 Blake     MANAGER         7839 01-05-81       2850     500        30 bla698@tcs.com    
+    7782 Clark     MANAGER         7839 09-06-81       2450     500        10 cla782@tcs.com    
+    7788 Scott     ANALYST         7566 09-12-82       3000     500        20 sco788@tcs.com    
+    7839 King      PRESIDENT            17-11-81       5000     500        10 kin839@tcs.com    
+    7844 Turner    SALESMAN        7698 08-09-81       1500     500        30 tur844@tcs.com    
+    7876 Adams     CLERK           7788 12-01-83       1100     500        20 ada876@tcs.com    
+    7900 James     CLERK           7698 03-12-81        950     500        30 jam900@tcs.com    
+    7902 Ford      ANALYST         7566 03-12-81       3000     500        20 for902@tcs.com    
+    7934 Miller    CLERK           7782 23-01-82       1300     500        10 mil934@tcs.com    
+
+
+
+ 

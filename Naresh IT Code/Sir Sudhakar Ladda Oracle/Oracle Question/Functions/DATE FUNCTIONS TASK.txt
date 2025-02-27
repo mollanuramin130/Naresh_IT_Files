@@ -1,0 +1,266 @@
+
+                               Date Functions Task
+                            ========================
+
+1.Write a query to display current system date?
+
+SOLUTION:
+===================================================================
+SQL> SELECT SYSDATE FROM DUAL;
+
+SYSDATE     
+___________ 
+17-02-25    
+
+
+2.Display the current system date and time?
+
+SOLUTION:
+===================================================================
+SQL> SELECT SYSTIMESTAMP FROM DUAL;
+
+SYSTIMESTAMP                          
+_____________________________________ 
+17-02-25 12:58:17.435428000 PM GMT    
+
+
+3.Find the last date from sysdate?
+
+SOLUTION:
+===================================================================
+SQL> SELECT LAST_DAY(SYSDATE) FROM DUAL;
+
+LAST_DAY(SYSDATE)    
+____________________ 
+28-02-25             
+
+
+4.Find the last date from given date 16-APR-2024?
+
+SOLUTION:
+===================================================================
+SQL> SELECT LAST_DAY('16-APR-2024') FROM DUAL;
+
+LAST_DAY('16-APR-2024')    
+__________________________ 
+30-04-24                   
+
+
+5.Find next month first date?
+
+SOLUTION:
+===================================================================SQL> SELECT LAST_DAY(SYSDATE)+1 AS NEXT_MONTH_FIRST_DATE FROM DUAL;
+
+NEXT_MONTH_FIRST_DATE    
+________________________ 
+01-03-25                 
+
+
+6.Find current month 1st date?
+
+SOLUTION:
+===================================================================
+SQL> SELECT ADD_MONTHS(LAST_DAY(SYSDATE),-1)+1 AS CURR_MON_FIRST_DAY FROM DUAL;
+
+CURR_MON_FIRST_DAY    
+_____________________ 
+01-02-25              
+
+
+SQL> UPDATE PERSON SET SUB_STRING_TEST=ADD_MONTHS(LAST_DAY(SYSDATE),-1)+1;
+
+2 rows updated.
+
+SQL> SELECT * FROM PERSON;
+
+PNAME              DOB         PASSWORD    SUB_STRING_TEST    
+__________________ ___________ ___________ __________________ 
+kiran kumar        30-06-96    Kira96      01-02-25           
+Anushka sheetty    31-12-92    Anus92      01-02-25           
+
+
+
+7.Find next friday date?
+
+SOLUTION:
+===================================================================
+SQL> SELECT NEXT_DAY(SYSDATE,'FRIDAY') FROM DUAL;
+
+NEXT_DAY(SYSDATE,'FRIDAY')    
+_____________________________ 
+21-02-25                      
+
+SQL> SELECT NEXT_DAY(SYSDATE,'FRIDA') FROM DUAL;
+
+NEXT_DAY(SYSDATE,'FRIDA')    
+____________________________ 
+21-02-25                     
+
+SQL> SELECT NEXT_DAY(SYSDATE,'FRI') FROM DUAL;
+
+NEXT_DAY(SYSDATE,'FRI')    
+__________________________ 
+21-02-25                   
+
+
+8.Find next month first sunday date?
+
+SOLUTION:
+===================================================================
+SQL> SELECT NEXT_DAY(LAST_DAY(SYSDATE)+1,'SUNDAY') FROM DUAL;
+
+NEXT_DAY(LAST_DAY(SYSDATE)+1,'SUNDAY')    
+_________________________________________ 
+02-03-25                                  
+
+
+9.Find the experience of all employees from emp table by using 
+   months_between()?
+
+SOLUTION:
+===================================================================
+
+SQL> SELECT ENAME ,TRUNC(MONTHS_BETWEEN(SYSDATE,HIREDATE)/12) AS EXPERIANCE_IN_YEAR FROM EMP;
+
+ENAME        EXPERIANCE_IN_YEAR 
+_________ _____________________ 
+SMITH                        44 
+ALLEN                        43 
+WARD                         43 
+JONES                        43 
+MARTIN                       43 
+BLAKE                        43 
+CLARK                        43 
+SCOTT                        42 
+KING                         43 
+TURNER                       43 
+ADAMS                        42 
+JAMES                        43 
+FORD                         43 
+MILLER                       43 
+
+
+10.Calulate age( in the form of years and months) of kiran. if dob of
+   kiran is 31-DEC-1997?
+
+SOLUTION:
+===================================================================
+SQL> SELECT TRUNC(MONTHS_BETWEEN(SYSDATE,'31-DEC-1997')/12) AS YEAR ,
+     TRUNC(MOD(MONTHS_BETWEEN(SYSDATE,'31-DEC-1997'),12)) AS MONTHS FROM DUAL;
+
+   YEAR    MONTHS 
+_______ _________ 
+     27         1 
+
+-----------------------------------------------------------------------------------
+  -----------------------------------------------------------------------------------
+DATE FUNCTIONS:-In oracle by default date format is DD-MON-YY
+==============
+
+   oracle having following predefined date functions.these
+are
+
+1.sysdate
+2.systimestamp
+3.add_months()
+4.last_day()
+5.next_day()
+6.months_between()
+
+1.sysdate :-it returns current date of the system in oracle 
+==========     date format.
+
+1.Write a query to display current system date?
+
+SQL>select sysdate from dual;
+
+
+      SYSDATE
+     ---------
+     02-JAN-25    
+
+
+2.systimestamp:-it returns current date of the system and time
+
+2.Display the current system date and time?
+
+SQL>select systimestamp from dual;
+
+
+          SYSTIMESTAMP
+  -----------------------------------
+  02-JAN-25 11.33.06.283000 AM +05:30
+
+
+
+
+3.last_day():-it returns last date of the specified month with in 
+============   given date.
+
+3.Find the last date of the current month?
+
+SQL>select last_day(sysdate) from dual;
+
+
+      LAST_DAY
+      ---------
+      31-JAN-25
+
+
+4.Find the last date from given date 16-APR-2024?
+
+SQL>select last_day('16-APR-2024') from dual;
+
+
+      LAST_DAY
+     ---------
+     30-APR-24
+
+
+5.Find next month first date?
+
+SQL>select last_day(sysdate)+1 from dual;
+
+
+    LAST_DAY
+    ---------
+    01-FEB-25
+
+
+6.Find current month 1st date?
+
+SQL>select last_day(add_months(sysdate,-1))+1 from dual;
+
+
+    LAST_DAY
+   ---------
+   01-JAN-25
+
+
+4.next_day():-it is used to get next date based on the week day
+============
+
+7.Find next friday date
+
+SQL> select next_day(sysdate,'fri') from dual;
+
+
+     NEXT_DAY
+    ---------
+    03-JAN-25
+
+
+8.Find next month first sunday date
+
+SQL>select next_day(last_day(sysdate),'sun') from dual;
+
+
+     NEXT_DAY
+    ---------
+    02-FEB-25
+
+
+
+
+
+
