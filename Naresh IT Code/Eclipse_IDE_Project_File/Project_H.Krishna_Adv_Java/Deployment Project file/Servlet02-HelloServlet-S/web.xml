@@ -1,0 +1,10 @@
+<web-app>
+	<servlet>
+		<servlet-name>httpServlet</servlet-name>
+		<servlet-class>com.nit.hk.servlets.HttpServletDemo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>httpServlet</servlet-name>
+		<url-pattern>/hs</url-pattern>
+	</servlet-mapping>
+</web-app>
