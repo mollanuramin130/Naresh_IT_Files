@@ -1,0 +1,138 @@
+✅ Spring Core Assignment – Cab Billing Console Application
+_____________________________________________________________
+📚 Objective
+-------------------------
+Develop a Spring Core (Annotation-based) console application that simulates a cab booking billing system.
+The system should accept customer ride details and dynamically calculate the bill based on distance and customer history (first-time or repeated).
+
+📌 Requirements
+------------------------
+🔹 Functional Requirements
+
+The application should:
+Prompt the user continuously with a menu:
+ |- Press 1: Enter cab customer details and generate the bill.
+ |- Press 2: Exit the application.
+
+Accept the following customer details:
+
+> Customer ID
+> Customer Name
+> Pickup Location
+> Drop Location
+> Distance (in km)
+> Phone Number
+> Billing Rules:
+  |- If the phone number is booking for the first time, the bill is ₹0.
+  |- If not the first booking:
+     |- First 4 km → Flat rate: ₹80
+     |- Every additional km → ₹6 per km
+
+Print a message as output:
+----------------------------
+CustomerName, please pay your bill of Rs. <amount>
+
+📦 Modules and Components to Implement
+=======================================
+🔸 1. CabCustomer – POJO
+-----------------------------
+A plain Java object to store:
+
+> Customer ID
+> Customer Name
+> Pickup Location
+> Drop Location
+> Distance
+> Phone Number
+
+No annotations required.
+
+🔸 2. CabCustomerService – Service Bean
+---------------------------------------
+Responsibilities:
+|- Maintain a list of all customers
+|- Check if the current customer is a first-time user (based on phone number)
+|- Calculate bill based on distance and first-time check
+|- Register this bean using @Bean and @Qualifier("customerService") in configuration.
+
+🔸 3. BillingApp – Core Business Bean
+-----------------------------------------
+Responsibilities:
+
+|- Inject and hold a reference to CabCustomerService
+|- Receive customer details via setter method (setCustomer)
+
+Call service methods to:
+--------------------------
+Add customer to the record
+
+|- Print the final bill
+|- Declare as a bean with @Bean and @Qualifier("billingApp").
+
+🔸 4. AppConfig – Spring Configuration Class
+---------------------------------------------
+Responsibilities:
+
+|- Annotated with @Configuration and @ComponentScan
+
+Create and wire beans:
+
+> CabCustomerService
+> BillingApp (injecting the service via setter method)
+
+🔸 5. Main – Driver Class
+----------------------------
+Responsibilities:
+
+> Initialize Spring context with AnnotationConfigApplicationContext
+> Show continuous menu using Scanner inside a loop
+
+Dynamically:
+-----------------------------
+Read customer data from the console
+
+> Create CabCustomer objects
+> Inject into BillingApp and print bill
+
+💡 Spring Concepts Practiced
+
+> @Configuration	For creating Java-based config class
+
+> @ComponentScan	To enable auto-detection of components
+
+> @Bean	To define       CabCustomerService and BillingApp beans
+
+> @Qualifier	        To distinguish beans when injecting manually
+
+> Dependency Injection	Setter-based injection in BillingApp
+
+> Spring Context   	AnnotationConfigApplicationContext to manage beans
+
+✅ Expected Output Example:
+_________________________________
+Press 1 to print the bill
+Press 2 to exit
+Enter your choice: 1
+
+Enter the Customer id: 101
+Enter the Customer name: ABC
+Enter the pickup location: MG_Road
+Enter the drop location: Whitefield
+Enter the distance: 8
+Enter the phone number: 9876543210
+
+ABC, please pay your bill of Rs. 0.0   ← (First time)
+
+Press 1 to print the bill
+Press 2 to exit
+Enter your choice: 1
+
+Enter the Customer id: 102
+Enter the Customer name: DEF
+Enter the pickup location: Whitefield
+Enter the drop location: Silk Board
+Enter the distance: 8
+Enter the phone number: 9876543210
+
+DEF, please pay your bill of Rs. 104.0 ← (Second booking)
+

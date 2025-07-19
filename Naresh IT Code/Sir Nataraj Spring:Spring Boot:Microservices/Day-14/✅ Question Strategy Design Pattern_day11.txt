@@ -1,0 +1,203 @@
+
+✅ Question: Strategy Design Pattern using Spring Configuration
+__________________________________________________________________
+📘 Scenario:
+-------------------
+You are building a Message Conversion System where different output formats (like HTML and PDF) can be applied to user-provided messages.
+
+The application must follow the Strategy Design Pattern,
+where the conversion logic is decoupled from the main converter class. 
+Each conversion type (HTML or PDF) should be handled by a separate strategy class that implements a common interface.
+
+Additionally, the solution should be fully configured using Java-based Spring configuration
+ (@Configuration, @Bean) — no annotations like @Component, @Autowired, or @ComponentScan in the implementation classes.
+
+🔧 Requirements:
+✅ Interface
+Create an interface named IMessageConverter with the following method:
+String convertTo(String message);
+
+✅ Concrete Implementations
+
+Create a class HtmlMessageConverter that wraps the input message in HTML tags.
+Example: "<html>Hello</html>"
+
+Create a class PdfMessageConverter that wraps the input message in PDF-like tags.
+Example: "<pdf> Hello </pdf>"
+
+✅ Main Converter Class
+Create a class MessageConverter that:
+
+Accepts a Map<String, IMessageConverter> via constructor.
+
+Based on user input (either "html" or "pdf"), delegates message conversion to the correct strategy.
+
+If an unknown format is entered, return "Invalid converter type".
+
+✅ Spring Configuration
+
+Create a class AppConfig annotated with @Configuration.
+
+Register all beans (HtmlMessageConverter, PdfMessageConverter, and MessageConverter) using @Bean methods.
+
+In the messageConverter() method, inject the two strategies into a Map<String, IMessageConverter> and pass it to MessageConverter.
+
+✅ Test Class
+Create a class Test that:
+
+Uses AnnotationConfigApplicationContext to load the context.
+
+Takes input from the user:
+
+Message content
+
+Format type (html or pdf)
+
+Calls the convertInto() method of MessageConverter with user input.
+
+Prints the converted output.
+
+🧪 Example Input/Output:
+Enter the message:
+Hello Strategy
+Enter html to convert the message in html format
+Enter pdf to convert the message in pdf format
+Enter your choice:
+html
+Output:
+<html>Hello Strategy</html>
+
+📄 Constraints:
+❌ Do not use @Autowired, @Component, or @ComponentScan in the implementation classes.
+
+✅ All dependency injection should be handled via Java-based @Bean methods in AppConfig.
+
+
+Solution:
+======================================================================
+
+
+package com.nt.sbeans;
+
+public interface IMessageConverter {
+	String convertTo(String message);
+}
+
+package com.nt.sbeans;
+
+public class HtmlMessageConverter implements IMessageConverter {
+
+	@Override
+	public String convertTo(String message) {
+
+		return "<html>"+message+"</html>";
+	}
+
+}
+
+
+package com.nt.sbeans;
+
+public class PdfMessageConverter implements IMessageConverter{
+
+	@Override
+	public String convertTo(String message) {
+		return "<pdf> "+message+" </pdf>";
+	}
+
+}
+
+package com.nt.sbeans;
+
+import java.util.Map;
+
+public class MessageConverter {
+	private Map<String, IMessageConverter> map;
+	
+	public MessageConverter(Map<String, IMessageConverter> map) {
+		this.map=map;
+	}
+	
+	public String messageConverter(String type,String message) {
+		IMessageConverter obj=map.get(type.toLowerCase());
+		if(obj!=null) {
+			return obj.convertTo(message);
+		}else {
+			return "Invalid converter type";
+		}
+	}
+}
+
+
+package com.nt.config;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.nt.sbeans.HtmlMessageConverter;
+import com.nt.sbeans.IMessageConverter;
+import com.nt.sbeans.MessageConverter;
+import com.nt.sbeans.PdfMessageConverter;
+
+@Configuration
+public class AppConfig {
+	@Bean("html")
+	public IMessageConverter assignHtmlMessageConverter() {
+		return new HtmlMessageConverter();
+	}
+	
+	@Bean("pdf")
+	public IMessageConverter assignPdfMessageConverter() {
+		return new PdfMessageConverter();
+	}
+	
+	@Bean("map")
+	public Map<String, IMessageConverter> assignMap(){
+		return new HashMap<>();
+	}
+	
+	@Bean("messageConverter")
+	public MessageConverter assignMessageConverter() {
+		
+		Map<String, IMessageConverter> map=new HashMap<String, IMessageConverter>();
+		map.put("html",assignHtmlMessageConverter());
+		map.put("pdf",assignPdfMessageConverter());
+		
+		return new MessageConverter(map);
+	}
+}
+
+
+package com.nt.main;
+
+import java.util.Scanner;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nt.config.AppConfig;
+import com.nt.sbeans.MessageConverter;
+
+public class ClientApp {
+	public static void main(String[] args) {
+		try(AnnotationConfigApplicationContext context = new
+				AnnotationConfigApplicationContext(AppConfig.class);
+				Scanner sc=new Scanner(System.in);
+				) {
+			System.out.print("Enter your Message: ");
+			String message=sc.nextLine();
+			System.out.print("Message Convert type(HTML/PDF): ");
+			String type=sc.nextLine();
+			MessageConverter messageConverter = context.getBean("messageConverter",MessageConverter.class);
+			String converter = messageConverter.messageConverter(type, message);
+			System.out.println(converter);
+			
+		} catch (Exception e) {
+			
+		}
+	}
+}
+
+

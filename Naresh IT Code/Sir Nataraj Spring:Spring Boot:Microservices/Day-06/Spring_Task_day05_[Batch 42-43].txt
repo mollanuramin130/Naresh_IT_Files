@@ -1,0 +1,606 @@
+
+
+Que-1
+_____________________
+📝 Spring Core Practical Assignment: Customer Bank Account Simulation
+___________________________________________________________________________
+🔧 Use Case:
+-----------------------
+Design a Spring Core-based application to simulate a banking system where a Customer owns a bank Account.
+The system must initialize account data using Spring XML configuration and perform basic banking 
+operations like deposit and withdrawal.
+
+✅ Requirements:
+----------------------
+1. Class 1: Customer
+_____________________________
+Fields:
+
+> firstName (String)
+> lastName (String)
+
+|- Constructor:
+   > No-arg constructor
+   > Parameterized constructor for full initialization
+
+|- Methods:
+  > Getters and Setters for all fields
+
+|- Override toString() 
+   to display customer information
+
+2. Class 2: Account
+_____________________________
+Fields:
+
+> accountNo (int)
+> balance (double)
+> interestRate (float)
+> customer (HAS-A relationship with Customer)
+
+> Constructor:
+  |- No-arg constructor to initialize default values
+
+Methods:
+______________________
+> deposit(double amount): Adds amount to current balance
+> withdraw(double amount): Deducts amount from balance if sufficient funds exist
+> Getters and Setters for all fields
+> Override toString() to display full account information including customer
+
+🧾 Spring XML Configuration (application05-context.xml):
+__________________________________________________________
+|- Create a <bean> for Customer and inject:
+    > firstName = "Virat"
+    > lastName = "Kohli"
+
+|- Create a <bean> for Account and inject:
+    > accountNo = 1231231
+    > balance = 4000.0
+    > interestRate = 5.5
+    > Inject customer bean into account using ref
+
+🎯 Client Class: Tester
+___________________________________________________________
+Load the Spring configuration using ClassPathXmlApplicationContext.
+
+Retrieve the account bean.
+
+Print account info before and after:
+
+Deposit ₹4000
+
+Withdraw ₹2000
+
+💡 Expected Output (Sample):
+______________________________________
+After getting the object 
+Account [customer=Customer [firstName=virat, lastName=kholi], balance=4000.0, accountNo=1231231, interestRate=5.5]
+After deposite 
+Account [customer=Customer [firstName=virat, lastName=kholi], balance=8000.0, accountNo=1231231, interestRate=5.5]
+After withdraw
+Account [customer=Customer [firstName=virat, lastName=kholi], balance=6000.0, accountNo=1231231, interestRate=5.5]
+
+📂 Project Structure Guidelines:
+____________________________________
+src/
+├── com/
+│   └── task/
+│       └── springCore/
+│           ├── Customer.java
+│           ├── Account.java
+│           └── Tester.java
+├── com/
+│   └── bd/
+│       └── commons/
+│           └── application05-context.xml
+
+📌 Instructions:
+|- Use only Spring XML configuration for bean definition and property injection.
+|- Avoid annotation-based configuration.
+|- Properly separate model classes and configuration.
+|- Ensure the output clearly reflects changes in account state after deposit and withdrawal.
+
+Solution:
+=======================================================================
+
+package com.task.springCore;
+
+public class Customer {
+	private String firstName;
+	private String lastName;
+	
+	public Customer() {
+		super();
+	}
+
+	public Customer(String firstName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
+	
+}
+
+package com.task.springCore;
+
+public class Account {
+	private int accountNo;
+	private double balance;
+	private float interestRate;
+	private Customer customer;
+	
+	
+	public Account() {
+		super();
+		
+	}
+
+	public boolean deposit(double amount) {
+		this.balance+=amount;
+		return true;
+	}
+	
+	public boolean withdraw(double amount) {
+		if(amount<=this.balance) {
+			this.balance-=amount;
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	public int getAccountNo() {
+		return accountNo;
+	}
+
+	public void setAccountNo(int accountNo) {
+		this.accountNo = accountNo;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public float getInterestRate() {
+		return interestRate;
+	}
+
+	public void setInterestRate(float interestRate) {
+		this.interestRate = interestRate;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [customer=" + customer + ", accountNo=" + accountNo + ", balance=" + balance + ", interestRate="
+				+ interestRate + "]";
+	}
+
+		
+	
+}
+
+application05-context.xml
+=========================
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+           
+        <bean id="customer" class="com.task.springCore.Customer">
+        	<constructor-arg name="firstName" value="Virat"/>
+        	<constructor-arg name="lastName" value="Kohli"/>
+        </bean>
+        
+        <bean name="account" class="com.task.springCore.Account">
+        	<property name="accountNo" value="1231231"/>
+        	<property name="balance" value="4000"/>
+        	<property name="interestRate" value="5.5"/>
+        	<property name="customer" ref="customer"/>
+        </bean>
+        
+</beans>
+
+
+
+
+package com.nt.main.question1;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.task.springCore.Account;
+
+public class Tester {
+	public static void main(String[] args) {
+		ClassPathXmlApplicationContext cxt= new
+				ClassPathXmlApplicationContext("com/bd/commons/application05-context.xml");
+		
+		Account account=cxt.getBean("account",Account.class);
+		
+		System.out.println("After getting the object");
+		System.out.println(account);
+		
+		System.out.println("\nAfter deposite ");
+		account.deposit(4000);
+		System.out.println(account);
+		
+		System.out.println("\nAfter withdraw");
+		account.withdraw(2000);
+		System.out.println(account);
+	}
+}
+
+________________________________________________________________________________________________________________________
+Que-2
+___________________________________________________________________________
+Spring Core Assignment Question: Fee Management System Simulation
+__________________________________________________________________________
+Use Case:
+You are building a Spring Core application to simulate a student fee submission system.
+Students can be categorized as either DayScholars or Hostellers, each having additional fees (transport or hostel) 
+added to their base exam fee. Based on the amount paid by the student, the system should calculate the due or excess 
+amount and display the student's details accordingly.
+
+✅ Requirements:
+____________________________
+Base Class: Student
+-------------------
+Fields:
+----------
+|- name      (String)
+   Modifier  (private)
+
+|- studentId (int)
+   Modifier  (private)
+
+|- examFee  (double)
+   Modifier  (private)
+
+|- amount (double) → the amount student has paid
+   Modifier  (private)
+
+[ Take name ,id , examFee with the use of constructor injection ]
+[ Take amount with the use of setter injection ]
+
+
+Methods:
+=============
+> payFee():
+  |- Calculates the difference between examFee and amount.
+     [ if the amount is > than fee return the output as +ve amount ]
+     [ if the amount is < than fee return the output as -ve amount ] 
+     [ if the amount is == fee then return the output as 0 amount  ]
+
+
+> displayDetails():
+ |- Returns student's information.
+ |- call toString from this method and return 
+
+> Provide both a default and a parameterized constructor.
+  [ In parameterized constructor take only 3 parameter as name, id ,examFee ] 
+
+> Use toString() 
+ |- to represent student data.
+ |- [ 
+
+Subclass 1: 
+_________________________________________________________________________________
+DayScholar (inherits Student)
+------------------------------
+Additional Field:
+------------------
+> transportFee (double) 
+  |-  Modifier  (private)
+
+> Override payFee() 
+  |- to consider examFee + transportFee.
+     [ if the amount is > than fee return the output as +ve amount ]
+     [ if the amount is < than fee return the output as -ve amount ] 
+     [ if the amount is == fee then return the output as 0 amount  ]
+
+
+> Override displayDetails() 
+  |- to include transportFee.
+  
+
+Subclass 2:
+__________________________________________________________________________________
+Hosteller (inherits Student)
+--------------------------------
+Additional Field:
+-------------------
+> hostelFee (double)
+  |- Modifier  (private)
+
+> Override payFee() 
+  |- to consider examFee + hostelFee.
+     [ if the amount is > than fee return the output as +ve amount ]
+     [ if the amount is < than fee return the output as -ve amount ] 
+     [ if the amount is == fee then return the output as 0 amount  ]
+
+> Override displayDetails() 
+  |- to include hostelFee.
+
+
+Spring Configuration:
+________________________________________________________________________________
+Use Spring Core XML configuration to define beans for DayScholar students.
+> Inject values using constructor injection.
+> Inject amount using <property> tag.
+> Add at least 3 student beans with varying amount paid.
+
+Client Class: FeeSubmission
+________________________________________________________________________________
+Use ApplicationContext to load XML config.
+
+> Get the bean objects using context.getBean().
+> Call payFee() and based on return value:
+  |- If positive: show how much more to pay.
+  |- If negative: show how much refund to give.
+  |- If zero: show dues are clear.
+
+> Display all student details using toString().
+
+____________________________________________________________________________________________________|
+🧾 Expected Output Sample:                                                                         ||                 
+____________________________________________________________________________________________________|
+have to pay more amount of Rs.                                                                      |
+Rs. 0.0                                                                                             |
+DayScholar [transportFee=3000.0, name=Virat, studentId=101, Amount for fee 13000.0, examFee=4000.0] |
+--------------------------------                                                                    |
+have to pay more amount of Rs.                                                                      |
+Rs. 4000.0                                                                                          |
+DayScholar [transportFee=3000.0, name=Dhoni, studentId=102, Amount for fee 3000.0, examFee=4000.0]  |
+-----------------------------------                                                                 |
+All due clear !!                                                                                    |
+DayScholar [transportFee=3000.0, name=Rohit, studentId=102, Amount for fee 7000.0, examFee=4000.0]  |
+_____________________________________________
+_______________________________________________________|
+
+
+Solution:
+==========================================================================
+
+package com.task.springCore.problem2;
+
+public class Student {
+	private String name;
+	private int studentId;
+	private double examFee;
+	private double amount;
+	
+	
+	
+	public Student() {
+		super();
+	}
+
+	public Student(String name, int studentId, double examFee) {
+		super();
+		this.name = name;
+		this.studentId = studentId;
+		this.examFee = examFee;
+	}
+	
+	
+
+	public double getAmount() {
+		return amount;
+	}
+
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	
+	public double payFee() {
+		return amount-examFee;
+	}
+
+	public String displayDetails() {
+		return toString();
+	}
+	
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", studentId=" + studentId + ", examFee=" + examFee + ", amount=" + amount
+				+ "]";
+	}
+	
+	
+}
+
+
+
+
+package com.task.springCore.problem2;
+
+public class DayScholar extends Student{
+	private double transportFee;
+	
+	
+	
+	public DayScholar(String name, int studentId, double examFee, double transportFee) {
+		super(name, studentId, examFee);
+		this.transportFee = transportFee;
+	}
+
+
+	@Override
+	public double payFee() {
+
+		return super.payFee()-this.transportFee;
+	}
+
+	
+	public double getTransportFee() {
+		return transportFee;
+	}
+
+
+	public void setTransportFee(double transportFee) {
+		this.transportFee = transportFee;
+	}
+
+
+	@Override
+	public String toString() {
+		return super.toString()+ "DayScholar [transportFee=" + transportFee + "]";
+	}
+	
+	public String displayDetails() {
+		return toString();
+	}
+	
+}
+
+
+
+package com.task.springCore.problem2;
+
+public class Hosteller extends Student{
+	private double hostelfee;
+	
+	public Hosteller(String name, int studentId, double examFee, double hostelfee) {
+		super(name, studentId, examFee);
+		this.hostelfee = hostelfee;
+	}
+
+	@Override
+	public double payFee() {
+		
+		return super.payFee()-hostelfee;
+	}
+
+
+	@Override
+	public String toString() {
+		return super.toString()+ "Hosteller [hostelfee=" + hostelfee + "]";
+	}
+	
+	public String displayDetails() {
+		return toString();
+	}
+	
+}
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+           
+       <bean id="studentVirat" class="com.task.springCore.problem2.DayScholar">
+       		<constructor-arg name="name" value="Virat"/>
+       		<constructor-arg name="studentId" value="101"/>
+       		<constructor-arg name="examFee" value="4000"/>
+       		<constructor-arg name="transportFee" value="3000"/>
+       		<property name="amount" value="13000"></property>
+       </bean>
+           
+       <bean id="studentDhoni" class="com.task.springCore.problem2.DayScholar">
+       		<constructor-arg name="name" value="Dhoni"/>
+       		<constructor-arg name="studentId" value="102"/>
+       		<constructor-arg name="examFee" value="4000"/>
+       		<constructor-arg name="transportFee" value="3000"/>
+       		<property name="amount" value="6000"></property>
+       </bean>
+           
+       <bean id="studentRohit" class="com.task.springCore.problem2.DayScholar">
+       		<constructor-arg name="name" value="Rohit"/>
+       		<constructor-arg name="studentId" value="103"/>
+       		<constructor-arg name="examFee" value="4000"/>
+       		<constructor-arg name="transportFee" value="3000"/>
+       		<property name="amount" value="7000"></property>
+       </bean>
+       
+       <bean id="studentShami" class="com.task.springCore.problem2.Hosteller">
+       		<constructor-arg name="name" value="Shami"/>
+       		<constructor-arg name="studentId" value="104"/>
+       		<constructor-arg name="examFee" value="4000"/>
+       		<constructor-arg name="hostelfee" value="25000"/>
+       		<property name="amount" value="22000"></property>
+       </bean>
+
+</beans>
+
+
+
+package com.nt.main.problem2;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.task.springCore.problem2.Student;
+
+public class Tester {
+	public static void main(String[] args) {
+		ClassPathXmlApplicationContext cxt= new
+				ClassPathXmlApplicationContext("com/bd/commons/problem2/application05-context.xml");
+		
+		String[] studentIds = {"studentVirat", "studentDhoni", "studentRohit","studentShami"};
+
+        for (String id : studentIds) {
+            Student student = (Student) cxt.getBean(id);
+            double balance = student.payFee();
+
+            if (balance > 0) {
+                System.out.println("Refund amount Rs. ");
+                System.out.println("Rs. " + balance);
+            } else if (balance < 0) {
+                System.out.println("Have to pay more amount of Rs.");
+                System.out.println("Rs. " + Math.abs(balance));
+            } else {
+                System.out.println("All due clear !!");
+            }
+
+            System.out.println(student.displayDetails());
+            System.out.println("\n"+"=".repeat(80)+"\n\n");
+        }
+	}
+}
+
+
+
+
+
+
+

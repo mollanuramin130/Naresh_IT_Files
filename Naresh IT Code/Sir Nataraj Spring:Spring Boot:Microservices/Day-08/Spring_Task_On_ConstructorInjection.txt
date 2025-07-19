@@ -1,0 +1,347 @@
+
+Task 1: Notification System Using Constructor Injection
+🎯 Objective:
+Build a notification delivery system where messages can be sent via Email or SMS, with services injected via constructor using AppConfig.
+
+📌 Steps:
+Define an Interface
+Create a NotificationService interface with a method to send messages.
+
+Implement Two Services
+Implement EmailNotificationService and SmsNotificationService as concrete classes.
+
+Create a Notifier Component
+Define a Notifier class that receives a NotificationService through constructor injection.
+
+Configure AppConfig
+Use Java configuration to declare beans and inject the required service into Notifier.
+
+Run and Test
+Initialize the context with AnnotationConfigApplicationContext and test sending a notification.
+
+Solution:
+======================================================================================================
+package com.nt.sbeans.task1;
+
+public interface NotificationService {
+	void sendMessage();
+}
+
+package com.nt.sbeans.task1;
+
+import org.springframework.stereotype.Component;
+
+@Component("emailNotification")
+public class EmailNotificationService implements NotificationService {
+
+	@Override
+	public void sendMessage() {
+		System.out.println("Sending Notification Through Email!!!!");
+	}
+
+}
+
+package com.nt.sbeans.task1;
+
+import org.springframework.stereotype.Component;
+
+@Component("smsNotification")
+public class SmsNotificationService implements NotificationService {
+
+	@Override
+	public void sendMessage() {
+		System.out.println("Sending Notification Through SMS!!!!");
+
+	}
+
+
+}
+
+
+package com.nt.sbeans.task1;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Notifier {
+	NotificationService notificationService;
+
+	@Autowired
+	public Notifier(@Qualifier("emailNotification") NotificationService notificationService) {
+		super();
+		this.notificationService = notificationService;
+	}
+	
+	public void sendNotification() {
+		notificationService.sendMessage();
+	}
+	
+	
+}
+
+package com.nt.config.task1;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan(basePackages = {"com.nt.sbeans.task1"})
+public class AppConfig {
+
+}
+
+package com.nt.client.task1;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nt.config.task1.AppConfig;
+import com.nt.sbeans.task1.Notifier;
+
+public class MainApp {
+	public static void main(String[] args) {
+		try(AnnotationConfigApplicationContext context=new 
+				AnnotationConfigApplicationContext(AppConfig.class);){
+			Notifier notifier = context.getBean(Notifier.class);
+			notifier.sendNotification();
+		}
+		
+		
+	}
+}
+
+ 
+======================================================================================================
+
+Task 2: Report Generator with Multiple Report Formats
+🎯 Objective:
+Design a reporting system where different report formats (PDF or Excel) can be generated using constructor injection with AppConfig.
+
+📌 Steps:
+Create an Interface
+Define ReportService with a method to generate reports.
+
+Implement PDF and Excel Generators
+Implement PdfReportService and ExcelReportService.
+
+Create a ReportGenerator Class
+This class takes ReportService via its constructor.
+
+Configure in AppConfig
+Register both implementations and inject the required one into ReportGenerator.
+
+Execute the Application
+Load the context and call the report generation method to simulate output.
+
+Solution:
+======================================================================================================
+package com.nt.sbeans.task2;
+
+public interface ReportService {
+	void generateReport();
+}
+
+
+package com.nt.sbeans.task2;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ExcelReportService implements ReportService {
+
+	@Override
+	public void generateReport() {
+		System.out.println("Report Generated Throung Excel..");
+
+	}
+
+}
+
+
+package com.nt.sbeans.task2;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class PdfReportService implements ReportService {
+
+	@Override
+	public void generateReport() {
+		System.out.println("Report Generated Throung PDF..");
+
+	}
+
+}
+
+
+package com.nt.sbeans.task2;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ReportGenerator {
+	private ReportService reportService;
+	
+	@Autowired
+	public ReportGenerator(@Qualifier("pdfReportService") ReportService reportService) {
+		this.reportService=reportService;
+	}
+	
+	public void generateReport() {
+		reportService.generateReport();
+	}
+	
+}
+
+
+package com.nt.config.task2;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan(basePackages = {"com.nt.sbeans.task2"})
+public class AppConfig {
+
+}
+
+
+package com.nt.client.task2;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nt.config.task2.AppConfig;
+import com.nt.sbeans.task2.ReportGenerator;
+import com.nt.sbeans.task2.ReportService;
+
+public class MainApp {
+	public static void main(String[] args) {
+		try(AnnotationConfigApplicationContext context=new 
+				AnnotationConfigApplicationContext(AppConfig.class);){
+			ReportGenerator reportGenerator = context.getBean(ReportGenerator.class);
+			reportGenerator.generateReport();
+		}
+		
+		
+	}
+}
+
+======================================================================================================
+
+Task 3: Shipping System with Carrier Selection
+🎯 Objective:
+Develop a shipping system where a shipment can be processed by either FedEx or DHL, injected via constructor using AppConfig.
+
+📌 Steps:
+Define a Shipping Interface
+Create ShippingService with a method to ship a package.
+
+Implement Carriers
+Define FedExService and DhlService as implementations.
+
+Create a ShipmentProcessor
+Inject a ShippingService instance through the constructor.
+
+AppConfig Configuration
+Configure the preferred service as a bean and inject it into ShipmentProcessor.
+
+Load and Test
+Use Spring context to run a sample shipment request.
+
+
+Solution:
+======================================================================================================
+package com.nt.sbeans.task3;
+
+public interface ShippingService {
+	void shipPackage();
+}
+
+
+package com.nt.sbeans.task3;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class DhlService implements ShippingService {
+
+	@Override
+	public void shipPackage() {
+		System.out.println("Shipping Process by DHL Service..");
+
+	}
+
+}
+
+
+package com.nt.sbeans.task3;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class FedExService implements ShippingService {
+
+	@Override
+	public void shipPackage() {
+		System.out.println("Shipping Process by FedEx Service..");
+
+	}
+
+}
+
+
+package com.nt.sbeans.task3;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ShipmentProcessor {
+	private ShippingService shippingService;
+	
+	@Autowired
+	public ShipmentProcessor(@Qualifier("dhlService") ShippingService shippingService) {
+		this.shippingService=shippingService;
+	}
+	
+	public void shipPackage() {
+		shippingService.shipPackage();
+	}
+}
+
+package com.nt.config.task3;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan(basePackages = {"com.nt.sbeans.task3"})
+public class AppConfig {
+
+}
+
+
+package com.nt.client.task3;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nt.config.task3.AppConfig;
+import com.nt.sbeans.task3.ShipmentProcessor;
+
+public class MainApp {
+	public static void main(String[] args) {
+		try(AnnotationConfigApplicationContext context=new 
+				AnnotationConfigApplicationContext(AppConfig.class);){
+			ShipmentProcessor shipmentProcessor = context.getBean(ShipmentProcessor.class);
+			shipmentProcessor.shipPackage();
+		}
+		
+		
+	}
+}
+
+======================================================================================================

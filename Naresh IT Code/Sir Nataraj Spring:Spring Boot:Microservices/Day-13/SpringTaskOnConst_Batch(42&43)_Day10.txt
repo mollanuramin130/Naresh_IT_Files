@@ -1,0 +1,365 @@
+Question 1:
+-------------------------
+You need to build a system where different types of loans (like Home Loan, Car Loan) have different interest rates.
+The logic to calculate interest should be injected into a LoanProcessor class using constructor injection.
+
+🔧 Requirements:
+✅ 1. Interface
+Name: InterestCalculator
+
+Method:
+double calculateInterest(double principal);
+
+✅ 2. Implementations
+Class: HomeLoanCalculator
+
+double rateOfInterest = 8.5;
+
+Implements InterestCalculator
+
+Class: CarLoanCalculator
+---------------------------------------
+
+double rateOfInterest = 10.5;
+
+Implements InterestCalculator
+
+Each implementation must override the method calculateInterest(double principal) and compute:
+
+interest = (principal * rateOfInterest) / 100
+✅ 3. Dependent Class
+Class: LoanProcessor
+
+Dependency: InterestCalculator
+
+Inject this using a constructor.
+
+Method:
+void processLoan(double principal)
+This method should:
+
+Call calculateInterest(principal) on the injected object
+
+Print:
+
+Principal amount
+
+Calculated interest
+
+Total payable amount
+
+✅ 4. Java Configuration
+Class: AppConfig with @Configuration
+
+Define @Bean methods for:
+
+HomeLoanCalculator
+
+CarLoanCalculator
+
+LoanProcessor → inject either loan calculator (choose one for now)
+---------------------------------------------------------------------------------------------------------------------------------
+Solution:
+======================================================================================================================================
+
+package com.nt.component;
+
+public interface InterestCalculator {
+	double calculateInterest(double principal);
+}
+
+
+package com.nt.component;
+
+public class CarLoanCalculator implements InterestCalculator{
+	private double rateOfInterest=10.5;
+	private int time=1;
+	
+	@Override
+	public double calculateInterest(double principal) {
+		
+		return principal*time*rateOfInterest/100;
+	}
+
+}
+
+package com.nt.component;
+
+public class HomeLoanCalculator implements InterestCalculator {
+	private double rateOfInterest=8.5;
+	private int time=1;
+	
+	@Override
+	public double calculateInterest(double principal) {
+		
+		return principal*time*rateOfInterest/100;
+	}
+
+}
+
+
+package com.nt.component;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class LoanProcessor {
+	private InterestCalculator iCalculator;
+	
+	@Autowired
+	public LoanProcessor(@Qualifier("homeLoan") InterestCalculator iCalculator) {
+		this.iCalculator=iCalculator;
+	}
+	
+	public void processLoan(double principal) {
+		double calculateInterest = iCalculator.calculateInterest(principal);
+		System.out.println("Principal Amount: "+principal+
+				"\nCalculated interest: "+calculateInterest+
+				"\nTotal payable Amount: "+(calculateInterest+principal));
+	}			
+}
+
+package com.nt.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import com.nt.component.CarLoanCalculator;
+import com.nt.component.HomeLoanCalculator;
+
+@Configuration
+@ComponentScan(basePackages = "com.nt.component")
+public class AppConfig {
+	@Bean(name="homeLoan")
+	public HomeLoanCalculator assignHomeLoanObj() {
+		return new HomeLoanCalculator();
+	}
+	@Bean(name="carLoan")
+	public CarLoanCalculator assignCarLoanObj() {
+		return new CarLoanCalculator();
+	}
+}
+
+
+package com.nt.main;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nt.component.LoanProcessor;
+import com.nt.config.AppConfig;
+
+public class LoanTester {
+	public static void main(String[] args) {
+		try(
+				AnnotationConfigApplicationContext context = new 
+				AnnotationConfigApplicationContext(AppConfig.class);
+				){
+			LoanProcessor loanProcessor = context.getBean(LoanProcessor.class);
+			loanProcessor.processLoan(65000);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+======================================================================================================================================
+
+Question-2
+--------------------
+Scenario:
+The system should calculate the bill for food items ordered by the user. The bill varies based on whether the item is Veg or Non-Veg. The calculation logic should be injected into a FoodOrderApp class using constructor injection.
+
+🔧 Requirements:
+✅ 1. Interface
+Name: BillingService
+
+Method:
+double getBill(String item);
+Accepts food item name, returns total bill amount (price).
+
+✅ 2. Implementations
+Class: VegBillingService
+
+Predefined veg item prices: e.g., "Idli" → ₹30, "Dosa" → ₹50
+
+Implements BillingService
+
+Method should return the item's price or 0 if not found
+
+Class: NonVegBillingService
+
+Predefined non-veg prices: e.g., "Chicken Biryani" → ₹150, "Mutton Curry" → ₹200
+
+Implements BillingService
+
+Method should return the item's price or 0 if not found
+
+✅ 3. Dependent Class
+Class: FoodOrderApp
+
+Dependency: BillingService
+
+Injected via constructor
+
+Method:
+void orderFood(String item)
+This method should:
+
+Call getBill(item)
+
+Print:
+
+Item Name
+
+Price (Bill Amount)
+
+Message like "Thank you for your order!"
+
+✅ 4. Java Configuration
+Class: AppConfig with @Configuration
+
+Define @Bean methods for:
+
+VegBillingService
+
+NonVegBillingService
+
+FoodOrderApp → Inject one of the above services via constructor
+
+✅ 5. main() Method
+Load the Spring context using AnnotationConfigApplicationContext
+
+Get the FoodOrderApp bean
+
+Call orderFood("Dosa") or "Chicken Biryani"
+
+Solution:
+======================================================================================================================================
+package com.nt.component_q2;
+
+public interface BillingService {
+	double getBill(String item);
+}
+
+
+package com.nt.component_q2;
+
+public class NonVegBillingService implements BillingService{
+
+	@Override
+	public double getBill(String item) {
+		switch (item.toLowerCase()) {
+		case "chicken biryani": {
+			
+			return 150;
+		}
+		case "mutton curry":{
+			return 200;
+		}
+		default:
+			return 0;
+		}
+	}
+
+}
+
+
+package com.nt.component_q2;
+
+public class VegBillingService implements BillingService{
+
+	@Override
+	public double getBill(String item) {
+		switch (item.toLowerCase()) {
+		case "idli": {
+			
+			return 30;
+		}
+		case "dosa":{
+			return 50;
+		}
+		default:
+			return 0;
+		}
+	}
+
+}
+
+
+package com.nt.component_q2;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class FoodOrderApp {
+	private BillingService billingService;
+	
+	@Autowired
+	public FoodOrderApp(@Qualifier("nonVegObj") BillingService billingService) {
+		this.billingService=billingService;
+	}
+	
+	public void orderFood(String item) {
+		double bill = billingService.getBill(item);
+		System.out.println("Item Name: "+item+
+				"\nPrice (Bill Amount): "+bill
+				+ "\n\"Thank you for your order!\"");
+	}
+}
+
+
+package com.nt.config_q2;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import com.nt.component_q2.NonVegBillingService;
+import com.nt.component_q2.VegBillingService;
+
+@Configuration
+@ComponentScan("com.nt.component_q2")
+public class AppConfig {
+	@Bean
+	public VegBillingService vegObj() {
+		return new VegBillingService();
+	}
+	
+	@Bean
+	public NonVegBillingService nonVegObj() {
+		return new NonVegBillingService();
+	}
+}
+
+
+package com.nt.main_q2;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nt.component_q2.FoodOrderApp;
+import com.nt.config_q2.AppConfig;
+
+public class BillingTester {
+	public static void main(String[] args) {
+		try(
+				AnnotationConfigApplicationContext context = new 
+				AnnotationConfigApplicationContext(AppConfig.class);
+				){
+			FoodOrderApp foodOrderApp = context.getBean(FoodOrderApp.class);
+//			foodOrderApp.orderFood("idli");
+			foodOrderApp.orderFood("Chicken Biryani");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+======================================================================================================================================
+
+

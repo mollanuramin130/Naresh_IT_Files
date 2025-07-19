@@ -1,0 +1,283 @@
+
+
+Spring Core Task01: Payment Processing System Using @Qualifier with AppConfig
+🎯 Objective:
+Develop a Spring Core console application where multiple payment methods (e.g., UPI and Card) are implemented. Use @Qualifier to resolve ambiguity when injecting the appropriate payment service.
+
+📁 Suggested Packages to Create:
+com.nit.service — Interface and its implementations (UPI, Card)
+
+com.nit.config — Java-based configuration class
+
+com.nit.client — Main class to run the application
+
+🛠️ Task Steps:
+1️⃣ Define an Interface
+Create a PaymentService interface with a method to process payments.
+
+2️⃣ Create Two Implementations
+One class for UPIPaymentService
+
+One class for CardPaymentService
+
+Annotate each implementation with @Component and give them unique names using @Component("name").
+
+3️⃣ Create a Processor Class
+Define a PaymentProcessor class that depends on PaymentService.
+
+Use @Autowired with @Qualifier("beanName") in the constructor or setter to inject the desired payment implementation.
+
+4️⃣ Configure Java-Based AppConfig
+Create a configuration class using @Configuration.
+
+Use @ComponentScan("basePackage") to auto-detect beans.
+
+5️⃣ Write the Main Application Runner
+Load the context using AnnotationConfigApplicationContext.
+
+Get the PaymentProcessor bean.
+
+Call the method to process payment with some test amount.
+
+6️⃣ Test the Application
+Run the application with cardService injected.
+
+Change the @Qualifier value to upiService and rerun.
+
+Observe how different implementations get executed based on the qualifier.
+
+Solution:
+==========================================================================
+
+package com.nit.service.task1;
+
+public interface PaymentService {
+	public void processPayment(double amount);
+}
+
+
+package com.nit.service.task1;
+
+import org.springframework.stereotype.Component;
+
+@Component("upi")
+public class UPIPaymentService implements PaymentService{
+
+	@Override
+	public void processPayment(double amount) {
+		System.out.println("Thank you making payment by using UPI of amount: "+amount);
+		
+	}
+
+}
+
+
+package com.nit.service.task1;
+
+import org.springframework.stereotype.Component;
+
+@Component("card")
+public class CardPaymentService implements PaymentService{
+
+	@Override
+	public void processPayment(double amount) {
+		System.out.println("Thank you making payment by using Card of amount: "+amount);
+		
+	}
+
+}
+
+
+package com.nit.service.task1;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class PaymentProcessor {
+	private PaymentService paymentService;
+	
+	@Autowired
+	@Qualifier("card")
+	public void setPaymentService(PaymentService paymentService) {
+		System.out.println("PaymentProcessor.setPaymentService() invoke...");
+		this.paymentService=paymentService;
+	}
+	
+	public void makePayment(double amount) {
+		paymentService.processPayment(amount);
+	}
+	
+	
+}
+
+package com.nit.config.task1;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan(basePackages = "com.nit.service.task1")
+public class AppConfig {
+	
+}
+
+
+package com.nit.client.task1;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nit.config.task1.AppConfig;
+import com.nit.service.task1.PaymentProcessor;
+
+public class MainApp {
+	public static void main(String[] args) {
+		try(AnnotationConfigApplicationContext cxt=new
+				AnnotationConfigApplicationContext(AppConfig.class);
+				){
+			
+			PaymentProcessor paymentProcessor = cxt.getBean(PaymentProcessor.class);
+			paymentProcessor.makePayment(2450);
+		}
+		
+	}
+}
+
+==========================================================================
+
+
+Spring Core Task02: Vehicle Maintenance System Using @Qualifier
+🎯 Objective:
+Create a Spring Core application where vehicle maintenance is handled differently for two types of vehicles (Car and Bike). Use @Qualifier to inject the appropriate maintenance logic.
+
+📁 Suggested Packages:
+com.nit.service — Interface and its implementations (Car, Bike)
+
+com.nit.config — Java-based config class
+
+🛠️ Task Steps:
+1️⃣ Create MaintenanceService Interface
+Method: performService()
+
+2️⃣ Implement for Two Vehicle Types
+
+CarMaintenanceService
+
+BikeMaintenanceService
+Use @Component("carService") and @Component("bikeService")
+
+3️⃣ Create VehicleWorkshop Class
+Inject MaintenanceService using @Autowired and @Qualifier
+
+4️⃣ Java Configuration with @ComponentScan
+AppConfig class to scan the base package
+
+5️⃣ Main Class to Simulate Maintenance
+Load context, get the VehicleWorkshop, and call maintenance method
+
+6️⃣ Test
+Change the qualifier to switch between car and bike service
+
+💡 All These Tasks Teach:
+How to resolve multiple bean ambiguity with @Qualifier
+
+Java-based Spring configuration (AppConfig)
+
+Real-world service abstraction
+
+Solution:
+==========================================================================
+package com.nit.service.task2;
+
+public interface MaintenanceService {
+	public void performService();
+}
+
+
+package com.nit.service.task2;
+
+import org.springframework.stereotype.Component;
+
+@Component("bikeService")
+public class BikeMaintenanceService implements MaintenanceService {
+
+	@Override
+	public void performService() {
+		System.out.println("Bike Performance Service Process done!!!");
+
+	}
+
+}
+
+
+
+package com.nit.client.task2;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nit.config.task2.AppConfig;
+import com.nit.service.task2.VehicleWorkshop;
+
+public class CarMainApp {
+	public static void main(String[] args) {
+		AnnotationConfigApplicationContext context = new
+				AnnotationConfigApplicationContext(AppConfig.class);
+		
+		VehicleWorkshop vehicleWorkshop = context.getBean(VehicleWorkshop.class);
+		vehicleWorkshop.maintenance();
+	}
+}
+
+
+package com.nit.service.task2;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class VehicleWorkshop {
+	@Autowired
+	@Qualifier("bikeService")
+	private MaintenanceService maintenanceService;
+	
+	public void maintenance() {
+		maintenanceService.performService();
+	}
+	
+}
+
+
+package com.nit.config.task2;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan(basePackages = "com.nit.service.task2")
+public class AppConfig {
+	
+}
+
+
+package com.nit.client.task2;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.nit.config.task2.AppConfig;
+import com.nit.service.task2.VehicleWorkshop;
+
+public class CarMainApp {
+	public static void main(String[] args) {
+		try(AnnotationConfigApplicationContext context = new
+				AnnotationConfigApplicationContext(AppConfig.class);){
+			
+			VehicleWorkshop vehicleWorkshop = context.getBean(VehicleWorkshop.class);
+			vehicleWorkshop.maintenance();
+		}
+		
+	}
+}
+
+

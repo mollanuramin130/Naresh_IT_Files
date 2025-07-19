@@ -1,0 +1,218 @@
+ Java + Spring Framework Coding Exercise: Cake Order System
+________________________________________________________________
+Problem Statement
+-------------------------
+You are required to design a Cake ordering system using Java and Spring Framework (Core). 
+The system should allow customers to place cake orders with various 
+customization options like flavour, quantity, shape, and a message on the cake.
+
+Requirements
+--------------------------
+Abstract Class Cake
+_________________________________
+> Create an abstract class Cake with the following:
+
+Properties:
+--------------------------
+> cake_Flavour (String)
+> cake_quantity (float)
+> cake_price (static float, default 300)
+> shape_of_cake (String)
+
+Constructors:
+--------------------------
+> No-arg constructor: initializes default values.
+> Parameterized constructor: accepts flavour, quantity, and shape.
+
+> Getters and Setters for all fields.
+
+> A method getOrder() that returns a formatted string with cake details
+  and total price (cake_price * quantity).
+
+Class OrderCake extending Cake
+_________________________________
+> Additional property: message_on_cake (String)
+
+Overloaded constructors:
+----------------------------
+|- One matching Cake’s constructor.
+|- One that includes the message_on_cake parameter.
+|- Override getOrder() to include the message if present.
+
+Spring XML Configuration
+_________________________________
+Configure the following beans in an XML file:
+
+> ordercake (default constructor)
+> ordercake1 (constructor with flavour, quantity, shape)
+> ordercake2 (constructor with all parameters including message)
+
+Main Class: CakeOrderApplication
+__________________________________
+Load the Spring context from application-context.xml.
+
+|- Retrieve all three beans and print their getOrder() output.
+
+Expected Output
+____________________________________
+When the application runs, it should print the details of all 3 orders 
+(with or without message) along with the total price based on quantity.
+
+Sample (approximate) output:
+------------------------------
+Cake [cake_Flavour=vanilla, cake_quantity=1.0,
+shape_of_cake=square is ready !! kindly pay Rs.300.0]
+------------------------------
+Cake [cake_Flavour=vanilla, cake_quantity=2.0, 
+shape_of_cake=round is ready !! kindly pay Rs.600.0]
+------------------------------
+OrderCake [message_on_cake=Happy birthday, 
+order =Cake [cake_Flavour=vanilla, cake_quantity=2.0, shape_of_cake=round is ready
+!! kindly pay Rs.600.0]]
+
+
+Solution:
+=======================================================================
+package com.implimentation.beans;
+
+public abstract class Cake {
+	private String cake_Flavour;
+	private float cake_quantity;
+	private static float cake_price=300;
+	private String shape_of_cake;
+	
+	public Cake() {
+		this.cake_Flavour = "Vanilla";
+		this.cake_quantity = 1.5f;
+		this.shape_of_cake = "Circle";
+	}
+
+	public Cake(String cake_Flavour, float cake_quantity, String shape_of_cake) {
+		super();
+		this.cake_Flavour = cake_Flavour;
+		this.cake_quantity = cake_quantity;
+		this.shape_of_cake = shape_of_cake;
+	}
+
+	public String getCake_Flavour() {
+		return cake_Flavour;
+	}
+
+	public void setCake_Flavour(String cake_Flavour) {
+		this.cake_Flavour = cake_Flavour;
+	}
+
+	public float getCake_quantity() {
+		return cake_quantity;
+	}
+
+	public void setCake_quantity(float cake_quantity) {
+		this.cake_quantity = cake_quantity;
+	}
+
+	public static float getCake_price() {
+		return cake_price;
+	}
+
+	public static void setCake_price(float cake_price) {
+		Cake.cake_price = cake_price;
+	}
+
+	public String getShape_of_cake() {
+		return shape_of_cake;
+	}
+
+	public void setShape_of_cake(String shape_of_cake) {
+		this.shape_of_cake = shape_of_cake;
+	}
+	
+	public String getOrder() {
+		return "Cake Flavour: "+cake_Flavour+
+				"\nNumber of Cake: "+cake_quantity+
+				"\nCake Shape: "+shape_of_cake+
+				"\nCake Price: "+cake_price+
+				"\nTotal Price: "+(cake_quantity*cake_price);
+	}
+}
+
+
+
+package com.implimentation.beans;
+
+public class OrderCake extends Cake{
+	private String message_on_cake;
+
+	public OrderCake() {
+		super();
+	}
+
+	public OrderCake(String cake_Flavour, float cake_quantity, String shape_of_cake) {
+		super(cake_Flavour, cake_quantity, shape_of_cake);
+	}
+
+	public OrderCake(String cake_Flavour, float cake_quantity, String shape_of_cake,String message_on_cake) {
+		super(cake_Flavour, cake_quantity, shape_of_cake);
+		this.message_on_cake = message_on_cake;
+	}
+	
+	@Override
+	public String getOrder() {
+		// TODO Auto-generated method stub
+		if(message_on_cake!=null) {
+			return super.getOrder()+"\n"+message_on_cake;
+		}
+		return super.getOrder();
+	}
+	
+}
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+           
+        <bean id="dOrderCake" class="com.implimentation.beans.OrderCake"/>
+        
+        <bean id="pOrderCake" class="com.implimentation.beans.OrderCake">
+        	<constructor-arg name="cake_Flavour" value="Stwabary"></constructor-arg>
+        	<constructor-arg name="cake_quantity" value="3"></constructor-arg>
+        	<constructor-arg name="shape_of_cake" value="Square"></constructor-arg>
+        </bean>
+        <bean id="pOrderCakeWm" class="com.implimentation.beans.OrderCake">
+        	<constructor-arg name="cake_Flavour" value="Choklet"></constructor-arg>
+        	<constructor-arg name="cake_quantity" value="2"></constructor-arg>
+        	<constructor-arg name="shape_of_cake" value="Rectangle"></constructor-arg>
+        	<constructor-arg name="message_on_cake" value="Happy Birthday Nur"></constructor-arg>
+        </bean>
+</beans>
+
+
+package com.nt.main.question1;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.implimentation.beans.OrderCake;
+
+public class CakeOrderApplication {
+	public static void main(String[] args) {
+		ClassPathXmlApplicationContext cxt=new 
+				ClassPathXmlApplicationContext("com/configuration/commons/application-context.xml");
+		
+		OrderCake bean = cxt.getBean("dOrderCake",OrderCake.class);
+		System.out.println(bean.getOrder());
+		
+		System.out.println("==============================\n");
+		OrderCake bean2 = cxt.getBean("pOrderCake",OrderCake.class);
+		System.out.println(bean2.getOrder());
+		
+		System.out.println("==============================\n");
+		OrderCake bean3 = cxt.getBean("pOrderCakeWm",OrderCake.class);
+		System.out.println(bean3.getOrder());
+	}
+}
+
+
